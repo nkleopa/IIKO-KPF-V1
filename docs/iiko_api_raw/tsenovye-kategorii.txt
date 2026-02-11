@@ -1,0 +1,265 @@
+Ценовые категории 
+
+  
+
+    
+
+  
+Стратегия расчета
+Получение ценовых категорий
+Параметры запроса
+Что в ответе
+Примеры запроса и результата
+Получение ценовой категории по идентификатору
+Параметры запроса
+Пример запроса и результата 
+
+  
+  
+
+  
+
+API ценовых категорий
+
+Версия iiko: 7.8
+Описание полей
+Ценовая категория
+ClientPriceCategoryDto
+
+ПолеТипОписание
+	id	UUID	Идентификатор.
+	name	String	Название.
+	deleted	boolean	Удалена или нет.
+	code	String	Пользовательский код элемента справочника.
+	assignableManually	boolean	Может быть назначена вручную в iikoFront.
+	pricingStrategy	PricingStrategyDto	Стратегия расчёта новой цены.
+
+Стратегия расчета
+
+PricingStrategyDto
+
+ПолеТипОписание
+	type	Enum	
+Тип стратегии.
+
+Значение
+Описание
+	ABSOLUTE_VALUE	Стратегия, где скидка/наценка задаётся как абсолютное число, которое будет прибавляться к базовой цене.
+	PERCENT	Стратегия вычисления, когда скидка/надбавка задаётся в % от базовой цены.
+	delta	BigDecimal	
+Абсолютное значение скидки/надбавки. Если знак '-', то скидка, если '+', то надбавка. Актуально ABSOLUTE_VALUE.
+	percent	BigDecimal	Значение скидки/надбавки в процентах. Если знак '-', то скидка, если '+', то надбавка. Диапазон значений: [-100, +inf). Актуально для PERCENT.
+
+Получение ценовых категорий
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/priceCategories
+      
+    
+  
+
+Параметры запроса
+
+Параметр
+Тип
+Описание
+	includeDeleted	Boolean	Включать ли в ответ удаленные элементы. По умолчанию false.
+	id	List<UUID>	Список идентификаторов ценовых категорий, которые требуется получить. Если не задано, то фильтрации по идентификаторам нет.
+	revisionFrom	Integer	В ответе будут сущности с ревизией выше данной. По умолчанию '-1'.
+Что в ответе
+
+Список ценовых категорий.
+Поле revision - максимальная ревизия, доступная для выгрузки во внешние системы на момент запроса (это значит, что в базе присутствуют записи с такой ревизией, а записей с ревизией выше этой в базе нет).
+Эту ревизию можно использовать в качестве параметра revisionFrom в следующем запросе на получение списка ценовых категорий.
+Примеры запроса и результата
+
+Запрос
+
+https://localhost:8080/resto/api/v2/entities/priceCategories/?includeDeleted=true
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{
+  "result": "SUCCESS",
+  "errors": [
+  ],
+  "response": [
+    {
+      "id": "95035a38-cd23-4b3b-92d8-1db673b6848f",
+      "name": "Доставка",
+      "deleted": false,
+      "code": "3",
+      "assignableManually": true,
+      "pricingStrategy": {
+        "type": "PERCENT",
+        "percent": -5            
+      }
+      
+    },
+    {
+      "id": "515d91b3-f4e3-46fa-abc2-de7567df95c9",
+      "name": "Ценовая категория",
+      "deleted": true,
+      "code": "1",
+      "assignableManually": false,
+      "pricingStrategy": {
+        "type": "PERCENT",
+        "percent": 3            
+      }
+      
+    },
+    {
+      "id": "67a54111-99ff-40cc-9f34-f2feddd0ff2b",
+      "name": "Сторублевка",
+      "deleted": false,
+      "code": "2",
+      "assignableManually": false,
+      "pricingStrategy": {
+        "type": "ABSOLUTE_VALUE",
+        "delta": 100            
+      }
+      
+    }
+    
+    ],
+  "revision": 187420
+}
+  
+
+Запрос
+
+https://localhost:8080/resto/api/v2/entities/priceCategories?id=95035a38-cd23-4b3b-92d8-1db673b6848f&id=67a54111-99ff-40cc-9f34-f2feddd0ff2b
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{
+  "result": "SUCCESS",
+  "errors": [
+  ],
+  "response": [
+    {
+      "id": "95035a38-cd23-4b3b-92d8-1db673b6848f",
+      "name": "Доставка",
+      "deleted": false,
+      "code": "3",
+      "assignableManually": true,
+      "pricingStrategy": {
+        "type": "PERCENT",
+        "percent": -5            
+      }
+      
+    },
+    {
+      "id": "67a54111-99ff-40cc-9f34-f2feddd0ff2b",
+      "name": "Сторублевка",
+      "deleted": false,
+      "code": "2",
+      "assignableManually": false,
+      "pricingStrategy": {
+        "type": "ABSOLUTE_VALUE",
+        "delta": 100            
+      }
+      
+    }
+    
+    ],
+  "revision": 187512
+}
+  
+
+Получение ценовой категории по идентификатору
+
+  
+
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/priceCategories/byId
+      
+    
+  
+
+Параметры запроса
+
+Параметр
+Тип
+Описание
+	id	UUID	Идентификатор ценовой категории.
+Пример запроса и результата
+
+Запрос
+
+https://localhost:8080/resto/api/v2/entities/priceCategories/byId/?id=95035a38-cd23-4b3b-92d8-1db673b6848f
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{
+  "id": "95035a38-cd23-4b3b-92d8-1db673b6848f",
+  "name": "Доставка",
+  "deleted": false,
+  "code": "3",
+  "assignableManually": true,
+  "pricingStrategy": {
+    "type": "PERCENT",
+    "percent": -5    
+  }
+}

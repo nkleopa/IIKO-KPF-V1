@@ -1,0 +1,865 @@
+Работа с быстрым меню 
+
+  
+
+    
+
+  
+Доступ
+Описание быстрого меню
+Получение списка быстрых меню (GET)
+Параметры запроса
+Что в ответе
+Пример
+Получение списка быстрых меню (POST)
+Параметры запроса
+Что в ответе
+Создание быстрого меню
+Тело запроса
+Что в ответе
+Пример запроса и результата
+Тело запроса
+Что в ответе
+Пример запроса и результата
+Удаление быстрого меню
+Тело запроса
+Что в ответе
+Пример запроса и результата 
+
+  
+  
+
+  
+
+Доступ 
+
+Чтобы пользоваться данным API:
+У пользователя, под чьим именем осуществляется вход, должно быть право B_QMENU "Просматривать быстрое меню".
+Описание быстрого меню
+
+Быстрое  меню состоит из трех страниц. Каждая страница из 3 х 8 ячеек. В ячейке  может содержаться либо элемент номенклатуры, либо группа элементов  номенклатуры.
+
+ПолеТип
+
+Описание
+	id	UUID	UUID быстрого меню.
+	deleted	boolean	Удалено или нет.
+	dependsOnWeekDay	boolean	
+Зависит ли меню от дня недели.
+	departmentId	UUID	Подразделение, для которого действует данное быстрое меню.
+	sectionId	UUID	Отделение, для которого действует данное быстрое меню. Если null, то быстрое меню для всего подразделения.
+	pageNames	List<String>	
+Названия страниц (3 штуки).
+	labels
+	List<QuickLabelDto>	
+Список ячеек.
+
+ПолеТип
+
+Описание
+	day	Integer
+	
+День недели. Допустимые значения: 0, 1, 2, 3, 4, 5, 6, null.
+Понедельник - 0. Воскресение - 6.
+	page	Integer
+	Номер страницы. Допустимые значения: 0, 1, 2.
+	x
+	Integer
+	Х-координата ячейки. Допустимые значения: 0, 1, 2.
+
+	y
+	Integer
+	Y-координата ячейки. Допустимые значения: 0, 1, 2, 3, 4, 5, 6, 7.
+
+	entityId
+	UUID
+	UUID сущности.
+
+	entityType
+	Enum	
+Тип сущности.
+
+Поле
+Описание
+	PRODUCT	Элемент номенклатуры.
+	PRODUCT_GROUP	Группа элементов номенклатуры.
+Получение списка быстрых меню (GET)
+
+  
+    
+	
+        
+      	
+        
+https://host:port/resto/api/v2/entities/quickLabels/list
+      
+    
+  
+
+Параметры запроса
+
+ПараметрТип
+
+Описание
+	includeDeleted	boolean
+	Включать ли в ответ удаленные быстрые меню. По умолчанию false.
+	revisionFrom	Integer
+	Номер ревизии, начиная с которой необходимо отфильтровать сущности.
+	id
+	List<UUID>
+	Возвращаемые быстрые меню должны иметь id из этого списка.
+
+	departmentId
+	List<UUID>
+	Возвращаемые быстрые меню должны принадлежать подразделению, у которого id из этого списка.
+
+	sectionId
+	List<UUID>
+	Возвращаемые быстрые меню должны принадлежать отделению, у которого id из этого списка. Может содержать null. См. примеры.
+
+Что в ответе
+
+Список всех быстрых меню для всего подразделения. Содержит "общее"  быстрое меню для всего подразделения и быстрое меню для конкретного  отделения.
+Пример
+
+  
+   https://localhost:9080/resto/api/v2/entities/quickLabels/list?departmentId=6713a472-973e-4215-8e0f-e3142945befd
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+
+  
+  
+
+     
+	
+Copy Code
+Код
+	[
+    {
+        "id": "345f5b9d-a356-f4e8-016b-080f9c44002a",
+        "deleted": false,
+        "dependsOnWeekDay": false,
+        "departmentId": "6713a472-973e-4215-8e0f-e3142945befd",
+        "sectionId": "a6f56349-202e-46dc-9c75-b2982b0273f0",
+        "pageNames": [
+            "1",
+            "2",
+            "3"
+        ],
+        "labels": [
+            {
+                "day": null,
+                "page": 0,
+                "x": 0,
+                "y": 1,
+                "entityId": "60ad6980-3d2b-4476-a980-281dc5b97fc1",
+                "entityType": "PRODUCT_GROUP"
+            },
+            {
+                "day": null,
+                "page": 0,
+                "x": 1,
+                "y": 0,
+                "entityId": "94d10421-bf94-4d2a-afc8-26f669fd2f2d",
+                "entityType": "PRODUCT"
+            },
+            {
+                "day": null,
+                "page": 0,
+                "x": 1,
+                "y": 1,
+                "entityId": "6220a626-7887-4b6b-89c8-718442cd5c93",
+                "entityType": "PRODUCT"
+            },
+            {
+                "day": null,
+                "page": 0,
+                "x": 0,
+                "y": 0,
+                "entityId": "bfeb731c-1865-4287-97ba-87a2057e1435",
+                "entityType": "PRODUCT_GROUP"
+            }
+        ]
+    },
+    {
+        "id": "611ac04d-e8b3-42a6-a61e-ac3ff6f9fa1b",
+        "deleted": false,
+        "dependsOnWeekDay": false,
+        "departmentId": "6713a472-973e-4215-8e0f-e3142945befd",
+        "sectionId": null,
+        "pageNames": [
+            "I",
+            "II",
+            "III"
+        ],
+        "labels": [
+            {
+                "day": null,
+                "page": 0,
+                "x": 2,
+                "y": 0,
+                "entityId": "6220a626-7887-4b6b-89c8-718442cd5c93",
+                "entityType": "PRODUCT"
+            },
+            {
+                "day": null,
+                "page": 0,
+                "x": 0,
+                "y": 1,
+                "entityId": "faa9d8d0-757e-4564-b604-d08c6ddb6f48",
+                "entityType": "PRODUCT"
+            },
+            {
+                "day": null,
+                "page": 0,
+                "x": 1,
+                "y": 0,
+                "entityId": "56ca36c8-eb11-4f0a-802c-f96d0ce68e27",
+                "entityType": "PRODUCT"
+            },
+            {
+                "day": null,
+                "page": 0,
+                "x": 0,
+                "y": 0,
+                "entityId": "94d10421-bf94-4d2a-afc8-26f669fd2f2d",
+                "entityType": "PRODUCT"
+            },
+            {
+                "day": null,
+                "page": 0,
+                "x": 1,
+                "y": 1,
+                "entityId": "3bd4a358-b7cd-4a5d-8bff-ae286d949f93",
+                "entityType": "PRODUCT"
+            }
+        ]
+    }
+]
+  
+
+"Общее" быстрое меню подразделения. Фильтруем по sectionId = null.
+  
+   https://localhost:9080/resto/api/v2/entities/quickLabels/list?departmentId=6713a472-973e-4215-8e0f-e3142945befd&sectionId=null 
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	[
+    {
+        "id": "611ac04d-e8b3-42a6-a61e-ac3ff6f9fa1b",
+        "deleted": false,
+        "dependsOnWeekDay": false,
+        "departmentId": "6713a472-973e-4215-8e0f-e3142945befd",
+        "sectionId": null,
+        "pageNames": [
+            "I",
+            "II",
+            "III"
+        ],
+        "labels": [
+            {
+                "day": null,
+                "page": 0,
+                "x": 2,
+                "y": 0,
+                "entityId": "6220a626-7887-4b6b-89c8-718442cd5c93",
+                "entityType": "PRODUCT"
+            },
+            {
+                "day": null,
+                "page": 0,
+                "x": 0,
+                "y": 1,
+                "entityId": "faa9d8d0-757e-4564-b604-d08c6ddb6f48",
+                "entityType": "PRODUCT"
+            },
+            {
+                "day": null,
+                "page": 0,
+                "x": 1,
+                "y": 0,
+                "entityId": "56ca36c8-eb11-4f0a-802c-f96d0ce68e27",
+                "entityType": "PRODUCT"
+            },
+            {
+                "day": null,
+                "page": 0,
+                "x": 0,
+                "y": 0,
+                "entityId": "94d10421-bf94-4d2a-afc8-26f669fd2f2d",
+                "entityType": "PRODUCT"
+            },
+            {
+                "day": null,
+                "page": 0,
+                "x": 1,
+                "y": 1,
+                "entityId": "3bd4a358-b7cd-4a5d-8bff-ae286d949f93",
+                "entityType": "PRODUCT"
+            }
+        ]
+    }
+]
+  
+
+Получение списка быстрых меню (POST)
+
+  
+    
+	
+        
+      	
+        
+https://host:port/resto/api/v2/entities/quickLabels/list
+      
+    
+  
+
+Параметры запроса
+
+ПараметрТип
+
+Описание
+	includeDeleted	boolean
+	Включать ли в ответ удаленные быстрые меню. По умолчанию false.
+	revisionFrom	Integer
+	Номер ревизии, начиная с которой необходимо отфильтровать сущности.
+	id
+	List<UUID>
+	Возвращаемые быстрые меню должны иметь id из этого списка.
+
+	departmentId
+	List<UUID>
+	Возвращаемые быстрые меню должны принадлежать подразделению, у которого id из этого списка.
+
+	sectionId
+	List<UUID>
+	Возвращаемые быстрые меню должны принадлежать отделению, у которого id из этого списка. Может содержать null. См. примеры.
+
+Что в ответе
+
+Список быстрых меню.
+
+Создание быстрого меню
+
+  
+    
+	
+        
+      	https://host:port/resto/api/v2/entities/quickLabels/save
+    
+  
+
+Тело запроса
+
+Список ячеек
+
+ПолеТип
+
+Описание
+	dependsOnWeekDay	boolean
+	
+Зависит ли меню от дня недели.
+	departmentId	UUID
+	Подразделение, для которого действует данное быстрое меню.
+	sectionId
+	UUID
+	Отделение, для которого действует данное быстрое меню. Если null, то быстрое меню для всего подразделения.
+	pageNames
+	List<String>
+	Названия страниц (3 штуки).
+	labels
+	List<QuickLabelDto>	
+Список ячеек
+
+ПолеТип
+
+Описание
+	day	Integer
+	
+День недели. Допустимые значения: 0, 1, 2, 3, 4, 5, 6, null.
+Понедельник - 0. Воскресение - 6.
+	page	Integer
+	Номер страницы. Допустимые значения: 0, 1, 2.
+
+	x
+	Integer
+	Х-координата ячейки. Допустимые значения: 0, 1, 2.
+
+	y
+	Integer
+	Y-координата ячейки. Допустимые значения: 0, 1, 2, 3, 4, 5, 6, 7.
+
+	entityId
+	UUID
+	UUID сущности.
+
+  
+
+    [+]
+    
+      Пример тела запроса
+    
+  
+  
+
+    [-]
+    
+      Пример тела запроса
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{
+    "dependsOnWeekDay": false,
+    "departmentId": "6713a472-973e-4215-8e0f-e3142945befd",
+    "sectionId": "a6f56349-202e-46dc-9c75-b2982b0273f0",
+    "pageNames": [
+        "1",
+        "2",
+        "3"
+    ],
+    "labels": [
+        {
+            "day": null,
+            "page": 0,
+            "x": 0,
+            "y": 1,
+            "entityId": "60ad6980-3d2b-4476-a980-281dc5b97fc1"
+        },
+        {
+            "day": null,
+            "page": 0,
+            "x": 1,
+            "y": 0,
+            "entityId": "94d10421-bf94-4d2a-afc8-26f669fd2f2d"
+        },
+        {
+            "day": null,
+            "page": 0,
+            "x": 1,
+            "y": 1,
+            "entityId": "6220a626-7887-4b6b-89c8-718442cd5c93"
+        },
+        {
+            "day": null,
+            "page": 0,
+            "x": 0,
+            "y": 0,
+            "entityId": "bfeb731c-1865-4287-97ba-87a2057e1435"
+        }
+    ]
+}
+  
+
+Что в ответе
+
+Созданное быстрое меню.
+Пример запроса и результата
+
+Запрос
+
+https://localhost:9080/resto/api/v2/entities/quickLabels/save
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{
+    "id": "345f5b9d-a356-f4e8-016b-080f9c44002a",
+    "deleted": false,
+    "dependsOnWeekDay": false,
+    "departmentId": "6713a472-973e-4215-8e0f-e3142945befd",
+    "sectionId": "a6f56349-202e-46dc-9c75-b2982b0273f0",
+    "pageNames": [
+        "1",
+        "2",
+        "3"
+    ],
+    "labels": [
+        {
+            "day": null,
+            "page": 0,
+            "x": 0,
+            "y": 1,
+            "entityId": "60ad6980-3d2b-4476-a980-281dc5b97fc1",
+            "entityType": "PRODUCT_GROUP"
+        },
+        {
+            "day": null,
+            "page": 0,
+            "x": 1,
+            "y": 0,
+            "entityId": "94d10421-bf94-4d2a-afc8-26f669fd2f2d",
+            "entityType": "PRODUCT"
+        },
+        {
+            "day": null,
+            "page": 0,
+            "x": 1,
+            "y": 1,
+            "entityId": "6220a626-7887-4b6b-89c8-718442cd5c93",
+            "entityType": "PRODUCT"
+        },
+        {
+            "day": null,
+            "page": 0,
+            "x": 0,
+            "y": 0,
+            "entityId": "bfeb731c-1865-4287-97ba-87a2057e1435",
+            "entityType": "PRODUCT_GROUP"
+        }
+    ]
+}
+  
+
+Редактирование быстрого меню
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/quickLabels/update
+      
+    
+  
+
+Тело запроса
+
+Список ячеек.
+
+ПолеТип
+
+Описание
+	id	Integer
+	
+День недели. Допустимые значения: 0, 1, 2, 3, 4, 5, 6, null.
+Понедельник - 0. Воскресение - 6.
+	dependsOnWeekDay	Integer
+	Номер страницы. Допустимые значения: 0, 1, 2.
+	departmentId	Integer
+	Х-координата ячейки. Допустимые значения: 0, 1, 2.
+
+	sectionId	Integer
+	Y-координата ячейки. Допустимые значения: 0, 1, 2, 3, 4, 5, 6, 7.
+
+	pageNames
+	UUID
+	UUID сущности.
+	labels
+	List<QuickLabelDto>	
+Список ячеек.
+
+ПолеТип
+
+Описание
+	day	Integer
+	
+День недели. Допустимые значения: 0, 1, 2, 3, 4, 5, 6, null.
+Понедельник - 0. Воскресение - 6.
+	page	Integer
+	Номер страницы. Допустимые значения: 0, 1, 2.
+	x
+	Integer
+	Х-координата ячейки. Допустимые значения: 0, 1, 2.
+
+	y
+	Integer
+	Y-координата ячейки. Допустимые значения: 0, 1, 2, 3, 4, 5, 6, 7.
+
+	entityId
+	UUID
+	UUID сущности.
+
+  
+
+    [+]
+    
+      Пример тела запроса
+    
+  
+  
+
+    [-]
+    
+      Пример тела запроса
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{
+    "id": "345f5b9d-a356-f4e8-016b-080f9c44002a",
+    "dependsOnWeekDay": false,
+    "departmentId": "6713a472-973e-4215-8e0f-e3142945befd",
+    "sectionId": "a6f56349-202e-46dc-9c75-b2982b0273f0",
+    "pageNames": [
+        "X",
+        "XX",
+        "XXX"
+    ],
+    "labels": [
+        {
+            "day": null,
+            "page": 0,
+            "x": 0,
+            "y": 1,
+            "entityId": "60ad6980-3d2b-4476-a980-281dc5b97fc1"
+        },
+        {
+            "day": null,
+            "page": 0,
+            "x": 1,
+            "y": 0,
+            "entityId": "94d10421-bf94-4d2a-afc8-26f669fd2f2d"
+        },
+        {
+            "day": null,
+            "page": 0,
+            "x": 1,
+            "y": 1,
+            "entityId": "6220a626-7887-4b6b-89c8-718442cd5c93"
+        },
+        {
+            "day": null,
+            "page": 0,
+            "x": 0,
+            "y": 0,
+            "entityId": "bfeb731c-1865-4287-97ba-87a2057e1435"
+        }
+    ]
+}
+  
+
+Что в ответе
+
+Отредактированное быстрое меню.
+Пример запроса и результата
+
+Запрос
+
+  
+   https://localhost:9080/resto/api/v2/entities/quickLabels/update
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{
+    "id": "345f5b9d-a356-f4e8-016b-080f9c44002a",
+    "deleted": false,
+    "dependsOnWeekDay": false,
+    "departmentId": "6713a472-973e-4215-8e0f-e3142945befd",
+    "sectionId": "a6f56349-202e-46dc-9c75-b2982b0273f0",
+    "pageNames": [
+        "X",
+        "XX",
+        "XXX"
+    ],
+    "labels": [
+        {
+            "day": null,
+            "page": 0,
+            "x": 0,
+            "y": 1,
+            "entityId": "60ad6980-3d2b-4476-a980-281dc5b97fc1",
+            "entityType": "PRODUCT_GROUP"
+        },
+        {
+            "day": null,
+            "page": 0,
+            "x": 1,
+            "y": 0,
+            "entityId": "94d10421-bf94-4d2a-afc8-26f669fd2f2d",
+            "entityType": "PRODUCT"
+        },
+        {
+            "day": null,
+            "page": 0,
+            "x": 1,
+            "y": 1,
+            "entityId": "6220a626-7887-4b6b-89c8-718442cd5c93",
+            "entityType": "PRODUCT"
+        },
+        {
+            "day": null,
+            "page": 0,
+            "x": 0,
+            "y": 0,
+            "entityId": "bfeb731c-1865-4287-97ba-87a2057e1435",
+            "entityType": "PRODUCT_GROUP"
+        }
+    ]
+}
+  
+
+Удаление быстрого меню
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/
+      
+    
+  
+
+Тело запроса
+
+ПолеТип
+
+Описание
+	id	UUID
+	UUID быстрого меню
+Пример тела запроса
+
+	
+Copy Code
+Код
+	{
+    "id": "345f5b9d-a356-f4e8-016b-080f9c44002a"
+}
+Что в ответе
+
+Быстрое меню, помеченное как удаленное.
+Пример запроса и результата
+
+Запрос
+
+https://localhost:9080/resto/api/v2/entities/quickLabels/delete
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{
+    "id": "345f5b9d-a356-f4e8-016b-080f9c44002a",
+    "deleted": true,
+    "dependsOnWeekDay": false,
+    "departmentId": "6713a472-973e-4215-8e0f-e3142945befd",
+    "sectionId": "a6f56349-202e-46dc-9c75-b2982b0273f0",
+    "pageNames": [
+        "X",
+        "XX",
+        "XXX"
+    ],
+    "labels": [
+        {
+            "day": null,
+            "page": 0,
+            "x": 0,
+            "y": 1,
+            "entityId": "60ad6980-3d2b-4476-a980-281dc5b97fc1",
+            "entityType": "PRODUCT_GROUP"
+        },
+        {
+            "day": null,
+            "page": 0,
+            "x": 1,
+            "y": 0,
+            "entityId": "94d10421-bf94-4d2a-afc8-26f669fd2f2d",
+            "entityType": "PRODUCT"
+        },
+        {
+            "day": null,
+            "page": 0,
+            "x": 1,
+            "y": 1,
+            "entityId": "6220a626-7887-4b6b-89c8-718442cd5c93",
+            "entityType": "PRODUCT"
+        },
+        {
+            "day": null,
+            "page": 0,
+            "x": 0,
+            "y": 0,
+            "entityId": "bfeb731c-1865-4287-97ba-87a2057e1435",
+            "entityType": "PRODUCT_GROUP"
+        }
+    ]
+}

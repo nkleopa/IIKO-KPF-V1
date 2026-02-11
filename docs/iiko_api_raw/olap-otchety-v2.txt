@@ -1,0 +1,457 @@
+OLAP-отчет v2 
+
+  
+
+    
+
+  
+Поля OLAP-отчета
+Параметры запроса
+Что в ответе
+Пример запроса
+Ответ
+Общая информация (General info)
+Тело запроса
+Фильтры
+Фильтр по значению
+Фильтр по диапазону
+Фильтр по дате
+Фильтр по дате и времени 
+
+  
+  
+
+  
+
+   Поля OLAP-отчета
+
+Версия iiko: 4.1
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/reports/olap/columns
+      
+    
+  
+
+Параметры запроса
+
+                       Параметры                                                    Описание                             
+	         reportType       	
+           Тип отчета:         
+             SALES - По продажам           
+             TRANSACTIONS - По транзакциям           
+             DELIVERIES - По доставкам           
+Что в ответе
+
+Json структура списка полей с информацией по возможностям фильтрации, агрегации и группировки.         
+           Устаревшие поля (deprecated) не выводятся.
+Структура списка полей 
+
+	
+Copy Code
+JSON
+	"FieldName": {
+  "name": "StringValue",
+  "type": "StringValue",
+  "aggregationAllowed": booleanValue,
+  "groupingAllowed": booleanValue,
+  "filteringAllowed": booleanValue,
+  "tags": [
+    "StringValue1",
+    "StringValue2",
+    ...,
+    "StringValueN",
+  ]
+}
+
+                       Название                                                              Значение                                                    Описание                             
+	FieldName 	         Строка       	         Название колонки отчета. Именно это название используется для получения данных отчета       
+	name 	           Строка         	           Название колонки отчета в iikoOffice. Справочная информация.         
+	         type       	         Строка       	
+           Тип поля. Возможны следующие значения:         
+             ENUM - Перечислимые значения           
+             STRING - Строка           
+             ID - Внутренний идентификатор объекта в iiko (начиная с 5.0)           
+             DATETIME - Дата и время           
+             INTEGER - Целое           
+             PERCENT - Процент (от 0 до 1)           
+             DURATION_IN_SECONDS - Длительность в секундах           
+             AMOUNT - Количество           
+             MONEY - Денежная сумма           
+	aggregationAllowed
+	           true/false         	           Если true, то по данной колонке можно агрегировать данные         
+	groupingAllowed
+	           true/false         	           Если true, то по данной колонке можно группировать данные         
+	filteringAllowed
+	           true/false         	           Если true, то по данной колонке можно фильтровать данные         
+	tags
+	           Список строк         	           Список категорий отчета, к которому относится данное поле. Справочная информация. Соответствует списку в верхнем правом углу конструктора отчета в iikoOffice.         
+   Пример запроса
+
+   https://localhost:8080/resto/api/v2/reports/olap/columns?key=5b119afe-9468-ab68-7d56-c71495e39ee4&reportType=SALES 
+   Ответ 
+
+	
+Copy Code
+JSON
+	{
+  "PercentOfSummary.ByCol": {
+    "name": "% по столбцу",
+    "type": "PERCENT",
+    "aggregationAllowed": true,
+    "groupingAllowed": false,
+    "filteringAllowed": false,
+    "tags": [
+      "Оплата"
+    ]
+  },
+  "PercentOfSummary.ByRow": {
+    "name": "% по строке",
+    "type": "PERCENT",
+    "aggregationAllowed": true,
+    "groupingAllowed": false,
+    "filteringAllowed": false,
+    "tags": [
+      "Оплата"
+    ]
+  },
+  "Delivery.Email": {
+    "name": "e-mail доставки",
+    "type": "STRING",
+    "aggregationAllowed": false,
+    "groupingAllowed": true,
+    "filteringAllowed": true,
+    "tags": [
+      "Доставка",
+      "Клиент доставки"
+    ]
+  }
+}
+
+Общая информация (General info)
+
+Версия iiko: 4.1
+  
+    
+	
+        
+      	https://host:port/resto/api/v2/reports/olap
+    
+  
+
+Content-type: Application/json; charset=utf-8
+   Тело запроса
+
+	
+Copy Code
+JSON
+	{
+  "reportType": "EnumValue",
+  "buildSummary": "true",
+  "groupByRowFields": [
+    "groupByRowFieldName1",
+    "groupByRowFieldName2",
+    ...,
+    "groupByRowFieldNameN"
+  ],
+  "groupByColFields": [
+    "groupByColFieldName1",
+    "groupByColFieldName2",
+    ...,
+    "groupByColFieldNameL"
+  ],
+  "aggregateFields": [
+    "AggregateFieldName1",
+    "AggregateFieldName2",
+    ...,
+    "AggregateFieldNameM"
+  ],
+  "filters": {
+    filter1,
+    filter2,
+    ...
+    filterK
+  }
+}
+
+             Название                                  Значение                                  Описание                     
+	reportType
+	
+           SALES         
+           TRANSACTIONS         
+           DELIVERIES         	
+           Тип отчета:         
+             SALES - По продажам           
+             TRANSACTIONS - По проводками           
+             DELIVERIES - По доставкам           
+	buildSummary	true/false
+	Параметр появился в Version(iiko) 5.3.4. Считать ли итоговые значения. Необязательное, до версии 9.1.2 по умолчанию true, с версии 9.1.2 по умолчанию false.
+
+	groupByRowFields 	       Список полей для группировки по строкам     	       Имена полей, по которым доступна группировка. Список полей можно получить через метод reports/olap/columns, как элементы данного списка используются поля FieldName из возвращаемой reports/olap/columns структуры. Для указания в данном списке доступны поля, у которых groupingAllowed = true
+	groupByColFields 	       Список полей для группировки по столбцам     	       Необязательный. Имена полей, по которым доступна группировка. Список полей можно получить через метод reports/olap/columns, как элементы данного списка используются поля FieldName из возвращаемой reports/olap/columns структуры. Для указания в данном списке доступны поля, у которых groupingAllowed = true
+	aggregateFields 	       Список полей для агрегации     	       Имена полей, по которым доступна агрегация. Список полей можно получить через метод reports/olap/columns, как элементы данного списка используются поля FieldName из возвращаемой reports/olap/columns структуры. Для указания в данном списке доступны поля, у которых filteringAllowed = true
+	filters 	       Список фильтров     	        См. описание структуры фильтров. Для указания в данном списке доступны поля, у которых filteringAllowed = true
+
+  
+	
+
+	  	
+	    
+	  
+	  	
+	    
+
+Поля агрегации,  учитывающие начальный остаток товара и денежный остаток  (StartBalance.Amount, StartBalance.Money, FinalBalance.Amount,  FinalBalance.Money) вычисляются суммированием всей таблицы проводок за все время  работы системы (всей базы данных) без каких-либо оптимизаций. То есть,  такой запрос может выполняться очень долго и замедлять работу сервера.
+Если  начальный остаток необходим, оставляйте в этом OLAP-запросе только те  поля группировки, по которым он действительно необходим (как правило,  это  Account.Name и Product.Name), и вызывайте такой запрос как можно реже и в не рабочее время.
+В 5.2 добавлено API для быстрого получения остатков: Отчеты по балансам. Во всех случаях рекомендуется пользоваться им вместо OLAP.
+В 5.5 OLAP-отчеты с остатками оптимизированы с использованием балансовых таблиц ATransactionSum, ATransactionBalance, при условии, что применяются группировки и фильтры по полям из этих таблиц, см. признак StartBalanceOptimizable в описании полей.
+То есть, правильно составленный запрос приведет к суммированию  не всей таблицы проводок, а только лишь открытого периода. Обратите  особое внимание на то, что оптимизировано только поле Account.Name (счет  "текущей" стороны проводки, в том числе склад), а не Store (первый  попавшийся "склад" проводки, взятый из: левой, правой части проводки,  строки документа или самого документа).
+Фильтры
+
+   Фильтр по значению 
+
+	
+Copy Code
+JSON
+	"FieldName": {
+"filterType": "filterTypeEnum",
+"values": ["Value1","Value2",...,"ValueN"]
+}
+
+   Работает для полей с типами: 
+ENUM   
+     STRING
+                      Название                                          Значение                                          Описание                    
+	FieldName
+	           Имя поля для фильтрации         	
+             Поле FieldName из возвращаемой reports/olap/columns структуры
+	filterType
+	           IncludeValues / ExcludeValues         	
+             IncludeValues - в фильтрации участвуют только перечисленные значения поля           
+             ExcludeValues - в фильтрации участвуют значения поля, за исключением перечисленных           
+	values 	           Список значений поля         	           В зависимости от типа поля, это могут быть или enum из Расшифровки кодов базовых типов или текстовое значение поля         
+
+	
+Copy Code
+JSON
+	"DeletedWithWriteoff": {
+"filterType": "ExcludeValues",
+"values": ["DELETED_WITH_WRITEOFF","DELETED_WITHOUT_WRITEOFF"]
+},
+"OrderDeleted": {
+"filterType": "IncludeValues",
+"values": ["NOT_DELETED"]
+}
+   Фильтр по диапазону 
+
+	
+Copy Code
+JSON
+	"FieldName": {
+"filterType": "Range",
+"from": Value1,
+"to": Value2,
+"includeLow": booleanValue,
+"includeHigh": booleanValue
+}
+
+   Работает для полей с типами: 
+     INTEGER   
+     PERCENT   
+     AMOUNT   
+     MONEY   
+                      Название                                          Значение                                          Описание                    
+	FieldName
+	           Имя поля для фильтрации         	
+             Поле FieldName из возвращаемой reports/olap/columns структуры           
+	filterType
+	            Range         	           Фильтр по диапазону значений         
+	           from         	           Нижняя граница диапазона         	           Значение в формате, соответствующем типу поля         
+	           to         	           Верхняя граница диапазона         	           Значение в формате, соответствующем типу поля         
+	           includeLow         	           true/false         	
+             Необязательное, по умолчанию true           
+             true - нижняя граница диапазона включается в фильтр           
+             false - нижняя граница диапазона не включается в фильтр           
+	           includeHigh         	           true/false         	
+             Необязательное, по умолчанию false           
+             true - верхняя граница диапазона включается в фильтр           
+             false - верхняя граница диапазона не включается в фильтр           
+
+	
+Copy Code
+JSON
+	"SessionNum": {
+"filterType": "Range",
+"from": 758,
+"to": 760,
+"includeHigh": true
+}
+
+   Фильтр по дате 
+
+	
+Copy Code
+JSON
+	"FieldName": {
+"filterType": "DateRange",
+"periodType": "periodTypeEnum",
+"from": "fromDateTime",
+"to": "toDateTime",
+"includeLow": booleanValue,
+"includeHigh": booleanValue
+}
+
+Работает для полей с типами:
+DATETIME   
+     DATE
+                      Название                                          Значение                                          Описание                    
+	FieldName 	           Имя поля для фильтрации         	
+             Поле FieldName из возвращаемой reports/olap/columns структуры           
+	filterType
+	           DateRange         	           Фильтр по диапазону значений         
+	periodType
+	
+             CUSTOM - вручную           
+             OPEN_PERIOD - текущий открытый период           
+             TODAY - сегодня           
+             YESTERDAY - вчера           
+             CURRENT_WEEK - текущая неделя           
+             CURRENT_MONTH - текущий месяц           
+             CURRENT_YEAR - текущий год           
+             LAST_WEEK - прошлая неделя           
+             LAST_MONTH - прошлый месяц           
+             LAST_YEAR - прошлый год           	
+             Если период CUSTOM, то период задается вручную, используются поля from, to, includeLow, includeHigh           
+             Для остальных типов периода данные параметры игнорируются (можно не использовать), кроме параметра from, его передача обязательна, его значение может быть любым.
+	           from         	           Начальная дата         	
+             Дата в формате yyyy-MM-dd'T'HH:mm:ss.SSS           
+	           to         	           Конечная дата         	           Дата в формате yyyy-MM-dd'T'HH:mm:ss.SSS         
+	           includeLow         	           true/false         	
+             Необязательное, по умолчанию true
+             true - нижняя граница диапазона включается в фильтр           
+             false - нижняя граница диапазона не включается в фильтр           
+	           includeHigh         	           true/false         	           Необязательное, по умолчанию false
+             true - верхняя граница диапазона включается в фильтр. Внимание: включение верхней границы имеет смысл только у полей, выдающих округленную ДАТУ, а не ДАТУ-ВРЕМЯ.           
+             false - верхняя граница диапазона не включается в фильтр           
+
+		
+           В OLAP-отчете по проводкам ("reportType": "TRANSACTIONS") для фильтрации по *дате* рекомендуется использовать поле DateTime.DateTyped(или DateTime.Typed — но это дата-время)         
+           В OLAP-отчете по продажам, а также доставкам используется поле OpenDate.Typed.         
+           В 4.1 вместо отсутствующих полей OpenDate.Typed и DateTime.DateTyped используются поля OpenDate и DateTime.OperDayFilter соответственно.         
+           Начиная с 5.5, каждый OLAP-запрос должен содержать фильтр по дате         
+
+	
+Copy Code
+JSON
+	"OpenDate.Typed": {
+"filterType": "DateRange",
+"periodType": "CUSTOM",
+"from": "2014-01-01T00:00:00.000",
+"to": "2014-01-03T00:00:00.000" 
+}
+Фильтр по дате и времени
+
+	
+Copy Code
+XML
+	"filters": { 
+"OpenDate.Typed": { 
+"filterType": "DateRange", 
+"periodType": "CUSTOM", 
+"from": "2018-09-04", 
+"to": "2018-09-04", 
+"includeLow": true, 
+"includeHigh": true 
+},
+"OpenTime": {
+"filterType": "DateRange",
+"periodType": "CUSTOM",
+"from": "2018-09-04T01:00:00.000",
+"to": "2018-09-04T23:00:00.000",
+"includeLow": true,
+"includeHigh": true
+}
+}
+
+Ответ
+
+	
+Copy Code
+JSON
+	{
+  "data": [
+    {
+      "GroupFieldName1": "Value11",
+      "GroupFieldName2": "Value12",
+       ...,
+      "GroupFieldNameN": "Value1N",
+      "AggregateFieldName1": "Value11",
+      "AggregateFieldName1": "Value12",
+       ...,
+      "AggregateFieldNameM": "Value1M"
+    },
+    ...,
+    {
+      "GroupFieldName1": "ValueK1",
+      "GroupFieldName2": "ValueK2",
+       ...,
+      "GroupFieldNameN": "ValueKN",
+      "AggregateFieldName1": "ValueK1",
+      "AggregateFieldName1": "ValueK2",
+       ...,
+      "AggregateFieldNameM": "ValueKM"
+    }
+  ],
+  "summary": [
+   [
+      {
+         
+      },
+      {
+        "AggregateFieldName1": "TotalValue1",
+        "AggregateFieldName2": "TotalValue2",
+        ...,
+        "AggregateFieldNameM": "TotalValueM"
+      }
+    ],
+    [
+      {
+        "GroupFieldName1": "Value11"
+      },
+      {
+        "AggregateFieldName1": "TotalValue11",
+        "AggregateFieldName2": "TotalValue12",
+        ...,
+        "AggregateFieldNameM": "TotalValue1M"
+      }
+    ],
+    ...,
+   [
+      {
+        "GroupFieldName1": "Value1",
+        ...
+        "GroupFieldNameN": "ValueN",
+      },
+      {
+        "AggregateFieldName1": "TotalValue11",
+        "AggregateFieldName2": "TotalValue12",
+        ...,
+        "AggregateFieldNameM": "TotalValue1M"
+      }
+   ],
+   ...
+  ]
+}
+
+                     Название                                    Значение                                   Описание                
+	         data       	         Данные отчета       	         Линейные данные отчета (построчно), одна запись внутри блока соответствует одной строке в гриде iikoOffice       
+	         summary       	         Промежуточные и общие итоги по отчету       	
+           Список блоков, состоящих из двух структур.         
+             В первой структуре - список полей, по которым собраны промежуточные итоги, в качестве элементов этой структуры представлены поля, которые используются для группировки. Количество элементов в структуре отличается и может быть:             
+пустым - это значит, что во втором блоке представлены общие итоги по отчету
+список полей группировки, по которым собраны промежуточные итоги. Список имеет длину от 1 до числа полей группировки. Поля добавляются к списку в порядке их следования в запросе. 
+             Во второй - собственно промежуточные итоги. В качестве элементов данной структуры представлены поля, которые используются для агрегации. Количество элементов этой структуры фиксировано и равно количеству полей для агрегации.
+При параметре запроса summary = false (olap, olap_presetId). "summary": [ ]  будет пустой. C Version (iiko) 5.3

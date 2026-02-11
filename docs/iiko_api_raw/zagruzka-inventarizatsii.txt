@@ -1,0 +1,373 @@
+Загрузка инвентаризации
+
+  
+
+    
+
+  
+Тело запроса
+Что в ответе
+Пример запроса и результат 
+
+  
+  
+
+  
+
+Версия iiko: 5.1
+  
+    
+
+      	
+        
+      
+      	
+        
+        
+        
+        
+        
+https://host:port/resto/api/documents/import/incomingInventory
+      
+      
+      
+      
+    
+    
+
+                    Content-Type: application/xml               
+Тело запроса
+
+Структура incomingInventoryDto
+
+  
+
+    [+]
+    
+      XSD Инвентаризация
+    
+  
+  
+
+    [-]
+    
+      XSD Инвентаризация
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="document" type="incomingInventoryDto"/>
+ 
+    <!--
+    Инвентаризация.
+    @since 5.1
+     -->
+    <xs:complexType name="incomingInventoryDto">
+        <xs:sequence>
+            <xs:element name="documentNumber" type="xs:string" minOccurs="0"/>
+            <!--
+            Учетная дата-время документа.
+            Если не заполнено, используется дата-время сервера.
+            Поддерживаемые форматы:
+            yyyy-MM-ddTHH:mm:ss, yyyy-MM-dd (dd.MM.yyyy не рекомендуется).
+            -->
+            <xs:element name="dateIncoming" type="xs:dateTime" minOccurs="0"/>
+            <!--
+            false (по умолчанию): использовать переданные дату-время dateIncoming как есть.
+            true: использовать настройки проведения документов, заданные в подразделении:
+             * В режиме "текущее время" - дату и время из dateIncoming;
+             * "фиксированное время" или "время закрытия кассовой смены" - дату из dateIncoming, а время из настроек.
+            -->
+            <xs:element name="useDefaultDocumentTime" type="xs:boolean" minOccurs="0" default="false"/>
+            <!-- NEW, PROCESSED, DELETED -->
+            <xs:element name="status" type="documentStatus" minOccurs="0"/>
+            <!-- Счет, на который записываются излишки. По умолчанию "5.10" ("Излишки инвентаризации"). -->
+            <xs:element name="accountSurplusCode" type="xs:string" minOccurs="0"/>
+            <!-- Счет, на который записывается недостача. По умолчанию "5.09" ("Недостача инвентаризации"). -->
+            <xs:element name="accountShortageCode" type="xs:string" minOccurs="0"/>
+            <!-- Склад (id или код). Обязателен для заполнения. -->
+            <xs:element name="storeId" type="xs:string" minOccurs="0"/>
+            <xs:element name="storeCode" type="xs:string" minOccurs="0"/>
+            <!-- Концепция -->
+            <xs:element name="conceptionId" type="xs:string" minOccurs="0"/>
+            <xs:element name="conceptionCode" type="xs:string" minOccurs="0"/>
+            <!-- Комментарий к документу -->
+            <xs:element name="comment" type="xs:string" minOccurs="0"/>
+            <!--
+            Новые строки документа.
+            Для одного элемента номенклатуры можно передавать несколько строк, но статус у них должен быть одинаковым.
+            -->
+            <xs:element name="items">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="item" type="incomingInventoryItemDto" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+ 
+    <xs:complexType name="incomingInventoryItemDto">
+        <xs:sequence>
+            <!--
+            Статус строки.
+            При импорте должен быть одинаков у всех строк с одинаковым элементом номенклатуры.
+            -->
+            <xs:element name="status" type="inventoryItemStatus" minOccurs="0"/>
+            <!--
+            Порядковый номер пересчета остатков по элементу номенклатуры.
+            Нумерация с нуля. При импорте игнорируется.
+            -->
+            <xs:element name="recalculationNumber" type="xs:integer" minOccurs="0"/>
+            <!-- Элемент номенклатуры (id или код (артикул)) -->
+            <xs:element name="productId" type="xs:string" minOccurs="0"/>
+            <xs:element name="productArticle" type="xs:string" minOccurs="0"/>
+            <!-- Фасовка (id или код(артикул)). -->
+            <xs:element name="containerId" type="xs:string" minOccurs="0"/>
+            <xs:element name="containerCode" type="xs:string" minOccurs="0"/>
+            <!-- Количество в фасовках (containerId/containerCode).  -->
+            <xs:element name="amountContainer" type="xs:decimal" minOccurs="0"/>
+            <!-- Вес с тарой. Информационное поле, используется только для отображения в бекофисе. -->
+            <xs:element name="amountGross" type="xs:decimal" minOccurs="0"/>
+            <!--
+            Производитель или импортер товара.
+            Используется в российской алкогольной декларации.
+            -->
+            <xs:element name="producerId" type="xs:string" minOccurs="0"/>
+            <!-- Произвольный комментарий к строке документа -->
+            <xs:element name="comment" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+ 
+    <xs:simpleType name="documentStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NEW"/>
+            <xs:enumeration value="PROCESSED"/>
+            <xs:enumeration value="DELETED"/>
+        </xs:restriction>
+    </xs:simpleType>
+ 
+    <!--
+    Статус строки инвентаризации.
+    При импорте все строки, относящиеся к одному продукту, должны иметь одинаковый статус.
+    Старые строки передавать со статусом RECALC не требуется.
+    -->
+    <xs:simpleType name="inventoryItemStatus">
+        <xs:restriction base="xs:string">
+            <!-- Строка не сохранена: проводки не создаются. -->
+            <xs:enumeration value="NEW"/>
+            <!-- Строка сохранена: проводки создаются. -->
+            <xs:enumeration value="SAVE"/>
+            <!-- Строка удалена (является результатом предыдущего подсчета). -->
+            <xs:enumeration value="RECALC"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
+  
+
+Что в ответе
+
+Структура incomingInventoryValidationResult
+
+  
+
+    [+]
+    
+      XSD Результат валидации документа инвентаризации
+    
+  
+  
+
+    [-]
+    
+      XSD Результат валидации документа инвентаризации
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="document" type="incomingInventoryValidationResultDto"/>
+ 
+    <!--
+    Результат валидации документа инвентаризации.
+    Для остальных документов смотрите "documentValidationResult.xsd".
+    -->
+    <xs:complexType name="incomingInventoryValidationResultDto">
+        <xs:sequence>
+            <!-- Общие поля результата валидации. -->
+            <!-- Результат валидации. -->
+            <xs:element name="valid" type="xs:boolean" minOccurs="1"/>
+            <xs:element name="warning" type="xs:boolean" minOccurs="0" default="false"/>
+            <!-- Номер документа. -->
+            <xs:element name="documentNumber" type="xs:string" minOccurs="1"/>
+            <!-- Предлагаемый номер документа при ошибке валидации номера. -->
+            <xs:element name="otherSuggestedNumber" type="xs:string" minOccurs="1"/>
+            <!--
+            Текст ошибки (или только заголовок, если задано additionalInfo).
+            Предназначен для показа пользователю, но не всегда локализован.
+            -->
+            <xs:element name="errorMessage" type="xs:string" minOccurs="0"/>
+            <!-- Текст ошибки (подробное описание). Как правило, отсутствует. -->
+            <xs:element name="additionalInfo" type="xs:string" minOccurs="0"/>
+ 
+            <!--
+            Свойства, специфичные для инвентаризации.
+            Заполняются только при запросе результата инвентаризации.
+            -->
+            <!-- Склад. -->
+            <xs:element name="store" type="idCodeNameDto" minOccurs="0"/>
+            <!-- Учетная дата-время инвентаризации. -->
+            <xs:element name="date" type="xs:dateTime" minOccurs="0"/>
+            <!-- Строки. -->
+            <xs:element name="items">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="item" type="incomingInventoryValidationResultItemDto"
+                                    minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+ 
+    <xs:complexType name="incomingInventoryValidationResultItemDto">
+        <xs:sequence>
+            <xs:element name="product" type="idCodeNameDto" minOccurs="1"/>
+            <!--
+            Расчетное количество товара.
+            Может иметь точность выше, чем допустима в документах (9 вместо 3 знаков после запятой).
+            -->
+            <xs:element name="expectedAmount" type="xs:decimal" minOccurs="1"/>
+            <!--
+            Расчетная сумма товара.
+            Строго два знака после запятой (в будущих версиях может настраиваться).
+            -->
+            <xs:element name="expectedSum" type="xs:decimal" minOccurs="1"/>
+            <!--
+            Фактическое количество в базовой единице измерения товара.
+            Сумма всех проведенных (SAVE) строк инвентаризации по данному товару с учетом фасовок
+            и правил округления строк документов iiko.
+            -->
+            <xs:element name="actualAmount" type="xs:decimal" minOccurs="1"/>
+            <!--
+            Количество излишка (+) или недостатка (-) в базовой единице измерения товара.
+            Заполнено только для проведенной инвентаризации, для непроведенных документов 0.
+            -->
+            <xs:element name="differenceAmount" type="xs:decimal" minOccurs="1"/>
+            <!--
+            Сумма излишка или недостатка проведенной инвентаризации (для непроведенных документов 0).
+            Знак может не совпадать со знаком количества в случае отрицательной себестоимости
+            из-за возвратных накладных по цене покупки.
+            -->
+            <xs:element name="differenceSum" type="xs:decimal" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+ 
+    <xs:complexType name="idCodeNameDto">
+        <xs:sequence>
+            <!-- Внутренний UUID объекта. Не меняется, уникален в рамках сервера. -->
+            <xs:element name="id" type="xs:string" minOccurs="1"/>
+            <!--
+            Код, артикул, табельный номер.
+            Редактируется пользователем. Как правило, уникален среди неудаленных.
+            -->
+            <xs:element name="code" type="xs:string" minOccurs="0"/>
+            <!-- Название объекта. Редактируется пользователем. Не уникально.-->
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+  
+
+Пример запроса и результат
+
+Запрос
+   
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <documentNumber>Imv20160703j</documentNumber>
+  <dateIncoming>2016-07-03T00:24:00</dateIncoming>
+  <status>PROCESSED</status>
+  <storeId>1239d270-1bbe-f64f-b7ea-5f00518ef508</storeId>
+  <comment>Ничего не изменилось</comment>
+  <items>
+    <item>
+      <productId>F464E4D4-CF9C-49A2-9E18-1227B41A3801</productId>
+      <amountContainer>5.0</amountContainer>
+    </item>
+    <item>
+      <productId>C6D6C2F2-7E48-4AC9-84CA-1F566C3A941E</productId>
+      <containerId>551E0382-64CA-49F1-B74F-733EBC6902C4</containerId>
+      <amountContainer>18.0</amountContainer>
+      <comment>Их же было 19?</comment>
+    </item>
+    <item>
+      <productId>C6D6C2F2-7E48-4AC9-84CA-1F566C3A941E</productId>
+      <containerId>4D32F56F-89D4-4E2D-8912-3D3593A8284D</containerId>
+      <amountContainer>28.0</amountContainer>
+    </item>
+    <item>
+      <productId>C6D6C2F2-7E48-4AC9-84CA-1F566C3A941E</productId>
+      <amountContainer>1.0</amountContainer>
+    </item>
+  </items>
+</document> 
+
+   Результат 
+
+   
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<incomingInventoryValidationResult>
+    <valid>true</valid>
+    <warning>false</warning>
+    <documentNumber>Imv20160703k</documentNumber>
+    <store>
+        <id>1239d270-1bbe-f64f-b7ea-5f00518ef508</id>
+        <code>1</code>
+        <name>Main storage</name>
+    </store>
+    <date>2016-07-03T00:26:00+03:00</date>
+    <items>
+        <item>
+            <product>
+                <id>c6d6c2f2-7e48-4ac9-84ca-1f566c3a941e</id>
+                <code>00001</code>
+                <name>Товар с разными фасовками</name>
+            </product>
+            <expectedAmount>13.600000000</expectedAmount>
+            <expectedSum>535.370000000</expectedSum>
+            <actualAmount>29.450</actualAmount>
+            <differenceAmount>15.850000000</differenceAmount>
+            <differenceSum>623.930000000</differenceSum>
+        </item>
+        <item>
+            <product>
+                <id>f464e4d4-cf9c-49a2-9e18-1227b41a3801</id>
+                <code>00002</code>
+                <name>Другой товар</name>
+            </product>
+            <expectedAmount>5.000000000</expectedAmount>
+            <expectedSum>0</expectedSum>
+            <actualAmount>4.000</actualAmount>
+            <differenceAmount>1.000000000</differenceAmount>
+            <differenceSum>0</differenceSum>
+        </item>
+    </items>
+</incomingInventoryValidationResult>

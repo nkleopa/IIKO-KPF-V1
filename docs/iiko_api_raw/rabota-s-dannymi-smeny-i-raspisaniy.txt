@@ -1,0 +1,327 @@
+Работа с данными смены и расписаний
+
+  
+
+    
+
+  
+Получение типов смен
+Получение смен
+Параметры запроса
+Что в ответе
+Пример запроса
+Создание или обновление смены
+Тело запроса
+Пример запроса
+Удаление смены
+Что в ответе
+Описание сущностей для представления в формате XML (XSD-схема) 
+
+  
+  
+
+  
+
+Получение типов смен
+
+Версия API: 1.0
+Версия iiko: 2.5
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/employees/schedule/types
+      
+    
+  
+
+Что в ответе
+Возвращаются все не удаленные типы смен.
+includeDeleted — не реализовано.
+Пример запроса
+https://localhost:8080/resto/api/employees/schedule/types
+Получение смен
+
+Версия API: 1.0
+Версия iiko: 2.5        
+	                	         https://host:port/resto/api/employees/schedule/?from={YYYY-MM-DD}&to={YYYY-MM-DD}&withPaymentDetails={true/false}&revisionFrom=-1                        
+	                	         https://host:port/resto/api/employees/schedule/byEmployee/{employeeUUID}/?from={YYYY-MM-DD}&to={YYYY-MM-DD}&withPaymentDetails={true/false}&revisionFrom=-1                        
+	                	         https://host:port/resto/api/employees/schedule/byDepartment/{departmentCode}/?from={YYYY-MM-DD}&to={YYYY-MM-DD}&withPaymentDetails={true/false}&revisionFrom=-1                        
+	                	         https://host:port/resto/api/employees/schedule/byDepartment/{departmentCode}/byEmployee/{employeeUUID}/?from={YYYY-MM-DD}&to={YYYY-MM-DD}&withPaymentDetails={true/false}&revisionFrom=-1                        
+	                	         https://host:port/resto/api/employees/schedule/department/{departmentId}/?from={YYYY-MM-DD}&to={YYYY-MM-DD}&withPaymentDetails={true/false}&revisionFrom=-1                        
+	                	         https://host:port/resto/api/employees/schedule/department/{departmentId}/byEmployee/{employeeUUID}/?from={YYYY-MM-DD}&to={YYYY-MM-DD}&withPaymentDetails={true/false}&revisionFrom=-1                
+Параметры запроса
+
+Параметр
+Описание
+
+	from
+	дата начала отчета в формате YYYY-MM-DD
+
+	to
+	дата окончания отчета (включающая) в формате YYYY-MM-DD
+
+	employeeUUID
+	ID сотрудника
+
+	departmentCode
+	код подразделения (тот, который используется при регистрации iikoRMS в iikoChain)
+
+	departmentId
+	UUID идентификатор подразделения
+
+	withPaymentDetails
+	(начиная с 5.0) если true, ко сменам добавляется информация об отработанном времени и начисленной по явкам заработной плате.
+
+	revisionFrom
+	
+номер ревизии, начиная с которой необходимо отфильтровать сущности.  Не включающий саму ревизию, т.е. ревизия объекта > revisionFrom.
+По умолчанию (неревизионный запрос) revisionFrom = -1
+У сотрудников, работающих по свободному графику, смен может не быть; если есть, то paymentDetails у них будет пуст. Если у сотрудника, есть незакрытые явки, начавшиеся раньше, при значении true будет ошибка.
+Что в ответе
+
+Возвращаются все смены, пересекающие интервал отчета.
+При этом, в отличие от других методов API, здесь дата окончания выборки включающая: &to=2016-03-21 вернет явки, пересекающие 2016-03-22 00:00:00.
+Пример запроса
+
+https://localhost:8080/resto/api/employees/schedule/?from=2017-03-21&to=2017-03-22&withPaymentDetails=true
+
+Создание или обновление смены
+
+Версия API: 1.0
+Версия iiko: 5.0
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/employees/schedule/create
+      
+    
+  
+
+        
+	                	         https://host:port/resto/api/employees/schedule/update                
+Тело запроса
+
+Переменная
+Описание
+
+	
+employeeId	id сотрудника
+
+	
+roleId	id роли сотрудника
+
+	
+dateFrom	время начала смены
+
+	
+dateTo	время окончания смены
+
+	
+scheduleTypeCode	код типа смены
+
+	
+nonPaidMinutes
+departmentId	неоплачиваемые минуты
+
+	
+departmentId	id подразделения
+
+	
+departmentName	наименование подразделения
+Что в ответе
+
+Структура schedule. При создании поле id может быть не заполнено. Даты округляются с точностью до минуты.
+Структура schedule после сохранения, с округленными датами, сгенерированным новым id.
+Внимание! При обновлении (update) смены ее id может измениться.
+Пример запроса
+
+https://localhost:8080/resto/api/employees/schedule/create
+
+	
+Copy Code
+Код
+	<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<schedule>
+<employeeId>0a508f8c-4cdb-4126-bd0d-243c4718c22f</employeeId>
+    <roleId>6e3fa11d-3617-c735-bd29-aeac662741ed</roleId>
+    <dateFrom>2017-10-06T16:00:00+03:00</dateFrom>
+    <dateTo>2017-10-06T22:00:00+03:00</dateTo>
+    <scheduleTypeCode>DSH</scheduleTypeCode>
+    <nonPaidMinutes>0</nonPaidMinutes>
+    <departmentId>2b602c10-2045-4f52-b5f9-d00be812d6aa</departmentId>
+    <departmentName>ТП1</departmentName>
+</schedule>
+Пример результата вызова API
+
+	
+Copy Code
+Код
+	<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<schedule>
+    <id>d9d8aa67-9e10-97ee-015e-f1879f9c0589</id>
+    <employeeId>0a508f8c-4cdb-4126-bd0d-243c4718c22f</employeeId>
+    <roleId>6e3fa11d-3617-c735-bd29-aeac662741ed</roleId>
+    <dateFrom>2017-10-06T16:00:00+03:00</dateFrom>
+    <dateTo>2017-10-06T22:00:00+03:00</dateTo>
+    <scheduleTypeCode>DSH</scheduleTypeCode>
+    <nonPaidMinutes>0</nonPaidMinutes>
+    <departmentId>2b602c10-2045-4f52-b5f9-d00be812d6aa</departmentId>
+    <departmentName>ТП1</departmentName>
+</schedule>
+
+Удаление смены
+
+Версия API: 1.0
+Версия iiko: 5.0
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/employees/schedule/byId/{scheduleUUID}
+      
+    
+  
+
+Что в ответе
+
+Удаленная смена schedule.
+Описание сущностей для представления в формате XML (XSD-схема)
+
+  
+
+    [+]
+    
+      Тип смены
+    
+  
+  
+
+    [-]
+    
+      Тип смены
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="scheduleType" type="scheduleType"/>
+
+  <xs:complexType name="scheduleType">
+    <xs:sequence>
+      <xs:element name="code" type="xs:string"/>
+      <xs:element name="comment" type="xs:decimal" minOccurs="0"/>
+      <xs:element name="id" type="xs:string"/>
+      <xs:element name="lengthMinutes" type="xs:int"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element name="overtime" type="xs:boolean"/>
+      <xs:element name="startTime" type="xs:string"/>
+      <xs:element name="tariff" type="xs:decimal" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  
+
+  
+
+    [+]
+    
+      Смена в расписании
+    
+  
+  
+
+    [-]
+    
+      Смена в расписании
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+ 
+    <xs:element name="schedule" type="schedule"/>
+ 
+    <xs:complexType name="schedule">
+        <xs:sequence>
+            <!--
+            При создании смены id можно не указывать.
+            since 5.0
+            -->
+            <xs:element name="id" type="xs:string"/>
+            <xs:element name="employeeId" type="xs:string"/>
+            <!--
+            Должность, на которую назначена смена сотруднику.
+            При импорте обязательна.
+            since 5.0
+            -->
+            <xs:element name="roleId" type="xs:string" minOccurs="0"/>
+            <!--
+            Неоплачиваемое время смены. Например, время на обеденный перерыв.
+            -->
+            <xs:element name="nonPaidMinutes" type="xs:int" default="0"/>
+            <xs:element name="scheduleTypeId" type="xs:string" minOccurs="0"/>
+            <xs:element name="scheduleTypeCode" type="xs:string" minOccurs="0"/>
+            <xs:element name="dateFrom" type="xs:dateTime" minOccurs="0"/>
+            <xs:element name="dateTo" type="xs:dateTime" minOccurs="0"/>
+            <!-- since 4.4 -->
+            <xs:element name="departmentId" type="xs:string"/>
+            <!-- since 4.4 -->
+            <xs:element name="departmentName" type="xs:string"/>
+            <!--
+            Данные о начислениях заработной платы, связанных с данной сменой.
+            Доступны только на чтение и только при указании withPaymentDetails=true.
+            Заполняется только для смен по должностям со сменным графиком и окладных.
+            since 5.0
+            -->
+            <xs:element name="paymentDetails" type="paymentDetails" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+ 
+    <!--
+    Зачтенное отработанное время в минутах и начисленная за смену или явку заработная плата.
+    При работе по свободному графику заполняется только у явок.
+    При работе по сменному или окладному графику заполняется только у смен.
+    У смен делится на основную (regular) и переработку (overtime) по флагу overtime типа смены (ScheduleType).
+    У явок в текущей реализации все попадает в regular, но это может измениться в следующих версиях.
+    -->
+    <xs:complexType name="paymentDetails">
+        <xs:sequence>
+            <!--
+            Id и название подразделения, в котором начислена заработная плата.
+            Может отличаться от подразделения, где была назначена смена и произошла явка.
+            -->
+            <xs:element name="salaryDepartmentId" type="xs:string" minOccurs="1"/>
+            <xs:element name="salaryDepartmentName" type="xs:string" minOccurs="1"/>
+            <!-- Зачтенное отработанное время в минутах. -->
+            <xs:element name="regularPayedMinutes" type="xs:int" minOccurs="1"/>
+            <!-- Начисленная за смену или явку заработная плата. -->
+            <xs:element name="regularPaymentSum" type="xs:decimal" minOccurs="1"/>
+            <!-- Зачтенное время переработки. -->
+            <xs:element name="overtimePayedMinutes" type="xs:int" minOccurs="1"/>
+            <!-- Начисленная за переработку заработная плата. -->
+            <xs:element name="overtimePaymentSum" type="xs:decimal" minOccurs="1"/>
+            <!--
+            Общая сумма начисленных и не отмененных автоматических штрафов за нарушение расписания
+            (пропуск смены, ранний уход, опоздание, и т.п.).
+            В текущей реализации отрицательна или равна нулю, и заполнена только у смены.
+            -->
+            <xs:element name="otherPaymentsSum" type="xs:decimal" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

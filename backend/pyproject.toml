@@ -1,0 +1,15 @@
+[project]
+name = "iiko-kpf-backend"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.34",
+    "sqlalchemy[asyncio]>=2.0",
+    "asyncpg>=0.30",
+    "alembic>=1.14",
+    "apscheduler>=3.10,<4",
+    "httpx>=0.28",
+    "pydantic-settings>=2.7",
+    "lxml>=5.3",
+]

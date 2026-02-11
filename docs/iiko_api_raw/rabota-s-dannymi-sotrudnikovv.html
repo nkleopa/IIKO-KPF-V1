@@ -1,0 +1,405 @@
+<!DOCTYPE html><html lang="ru-RU" dir="ltr"><head><style type="text/css">.ArticleViewer_searchKeywords{background-color: yellow !important;}body{overflow:hidden;}</style>
+<link rel="canonical" href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv"/>
+<title>Работа с данными сотрудников</title><script type="text/javascript">//<!--
+var imgPopupTexts={openInNewWindowText: 'Открыть в новом окне', closeText: 'Закрыть'};var isArticlesNavViaMessage=true;var articleTitleText='Работа с данными сотрудников';
+//--></script><link rel="stylesheet" type="text/css" href="/resources/Styles/api-documentations/NewStyle.css"/><link rel="stylesheet" type="text/css" href="/resources/Styles/api-documentations/Projects2.css"/><link rel="stylesheet" type="text/css" href="/resources/Styles/api-documentations/NewStyle1.css"/><link rel="stylesheet" type="text/css" href="/style-bundles/article-published.css?v=1.0.9482.29209"/><script src="/resources/Scripts/api-documentations/Script2.js" type="text/javascript"></script><script src="/resources/Scripts/api-documentations/highlight.pack2.js" type="text/javascript"></script><script src="/script-bundles/article-published.js?v=1.0.9482.29209" type="text/javascript"></script><meta charset="utf-8"><meta http-equiv="Content-Type" content="text/html;charset=utf-8"></head><body><span id="__clhTop"></span><!-- используется для Sidebar -->
+
+  <div class="sidebar">
+    <p>
+  <ul class="CHMiniToc"><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__2109393174" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__2109393174&#39;,this);">Список активных</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__998506674" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__998506674&#39;,this);">Параметры запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_501454233" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_501454233&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1387997121" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1387997121&#39;,this);">Пример запроса</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__1547518874" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__1547518874&#39;,this);">Список по подразделению</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1553313209" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1553313209&#39;,this);">Параметры запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_105637038" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_105637038&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__2094082183" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__2094082183&#39;,this);">Сотрудник по ID</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_2138875455" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_2138875455&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__984807956" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__984807956&#39;,this);">Пример запроса</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__243212989" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__243212989&#39;,this);">Сотрудник по коду</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_226895131" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_226895131&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__1886227089" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__1886227089&#39;,this);">Пример запроса</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2_623154327" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2_623154327&#39;,this);">Поиск сотрудника</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1270857196" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1270857196&#39;,this);">Параметры запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__1577761397" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__1577761397&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__237152841" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__237152841&#39;,this);">Пример запроса</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2_653670241" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2_653670241&#39;,this);">Добавить или заменить сотрудника (по Id)</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_945285395" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_945285395&#39;,this);">Параметры запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_687002477" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_687002477&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__820067579" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__820067579&#39;,this);">Пример запроса</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__1324771003" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__1324771003&#39;,this);">Добавить сотрудника (по коду)</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__436508111" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__436508111&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_384736109" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_384736109&#39;,this);">Пример запроса</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2_439774833" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2_439774833&#39;,this);">Изменить/добавить сотрудника (по id)</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_179396395" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_179396395&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1880996741" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1880996741&#39;,this);">Пример запроса</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2_1893260727" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2_1893260727&#39;,this);">Удалить сотрудника</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_600101026" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_600101026&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1310189372" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1310189372&#39;,this);">Пример запроса</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/v1.APIсотрудников-ОписаниясущностейдляпредставлениявформатеXML(XSD-схема)" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/v1.APIсотрудников-ОписаниясущностейдляпредставлениявформатеXML(XSD-схема)&#39;,this);">Описание сущностей для представления в формате XML (XSD-схема)</a></li></ul>&nbsp;
+</p>
+<p>
+  
+  <br/>
+</p>
+  </div>
+<h2 id="h2__2109393174" style="text-align: center;" data-has-heading-anchor="true">Список активных<a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__2109393174" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__2109393174&#39;,this);"></a></h2><p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-weight: normal;">
+  <span style="">Версия API: 1.0</span>
+</span></span></p><p><font face="Open Sans, Arial, Helvetica, sans-serif">Версия iiko: 4.0</font></p><table class="CHHttpRequest CHHttpRequest_get">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_get.png" alt="GET Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">
+        https://host:port/resto/api/employees</td></tr>
+    
+  </tbody>
+</table><h3 id="h3__998506674" data-has-heading-anchor="true"><font face="Open Sans, Arial, Helvetica, sans-serif">Параметры запроса</font><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__998506674" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__998506674&#39;,this);"></a></h3><h3 id="h3__182806324"><font face="Open Sans, Arial, Helvetica, sans-serif"></font></h3><div><p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span></span>
+          </span></p>
+        </div>
+<h4 id="v1.APIсотрудников-Параметры"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style=""></span>
+</span></h4>
+<div>
+  <table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;">
+    <colgroup>
+      <col/>
+      <col/>
+      <col/>
+      <col/>
+    </colgroup>
+  </table>
+</div>
+<table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;">
+  <tbody aria-live="polite" aria-relevant="all">
+    <tr>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style=""><b>Название</b></span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td><b><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">Значение</span>
+        </span></b><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style=""><b>Версия</b></span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style=""><b>Описание</b></span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+    </tr>
+    <tr>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">includeDeleted&nbsp;</span>
+      </span></td>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">true/false</span>
+      </span></td>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">с 5.0</span>
+      </span></td>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">Возвращать и действующих, и удаленных сотрудников</span>
+      </span></td>
+    </tr>
+    <tr>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">revisionFrom</span>
+      </span></td>
+      <td>
+        <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+          <span style="">число,&nbsp;номер ревизии</span>
+        </span></p>
+        <br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">         </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">с 6.4</span>
+      </span></td>
+      <td>
+        <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+          <span style="">Номер  ревизии, начиная с которой необходимо отфильтровать сущности. Не  включающий саму ревизию, т.е. ревизия объекта &gt; revisionFrom.</span>
+        </span></p>
+        <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+          <span style="">По умолчанию (неревизионный запрос) revisionFrom = -1</span>
+        </span></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="h3_501454233" data-has-heading-anchor="true"><font face="Open Sans, Arial, Helvetica, sans-serif">Что в ответе</font><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_501454233" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_501454233&#39;,this);"></a></h3><div>
+          <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>Список сотрудников.&nbsp;</span>
+          </span><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">Все сотрудники (включая встроенные системные аккаунты), которые активны (не удалены)</span></p>
+          </div>
+<h3 id="h3_1387997121" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style=""><b>Пример запроса</b></span>
+</span><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1387997121" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1387997121&#39;,this);"></a></h3><p class="code"><span style="font-family: Courier;">
+  <span style="">https://localhost:8080/resto/api/employees?key=284c5690-2b56-b1d6-0c81-e94b5034243d</span>
+</span></p>
+<p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">   </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"> </span></p>
+<h2 id="h2__1547518874" style="text-align: center;" data-has-heading-anchor="true">Список по подразделению<a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__1547518874" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__1547518874&#39;,this);"></a></h2><p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span>Версия API: 1.0</span>
+</span></p><p><font face="Open Sans, Arial, Helvetica, sans-serif">Версия iiko: 4.0</font></p><table class="CHHttpRequest CHHttpRequest_get">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg ">
+        <img src="/resources/Storage/api-documentations/http_request_get.png" alt="GET Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText "><span style="font-weight: normal;"><b>
+        </b></span>https://host:port/resto/api/employees/byDepartment/{departmentCode}<span style="font-weight: normal;">
+      </span></td></tr>
+    
+  </tbody>
+</table><h3 id="h3_1553313209" data-has-heading-anchor="true"><font face="Open Sans, Arial, Helvetica, sans-serif">Параметры запроса</font><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1553313209" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1553313209&#39;,this);"></a></h3><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;">
+  <tbody aria-live="polite" aria-relevant="all">
+    <tr>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span><b>Параметр</b></span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span><b>Описание</b></span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+    </tr>
+    <tr>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span><strong>includeDeleted</strong> (с 5.0)</span>
+      </span></td>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span>Возвращать и действующих, и удаленных сотрудников</span>
+      </span></td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="h3_105637038" data-has-heading-anchor="true"><font face="Open Sans, Arial, Helvetica, sans-serif">Что в ответе</font><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_105637038" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_105637038&#39;,this);"></a></h3>
+          <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>Список сотрудников указанного подразделения.&nbsp;</span>
+          </span><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">Все сотрудники (включая встроенные системные аккаунты), которые активны (не удалены).&nbsp;</span></p>
+          <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>Для RMS идентично обычному списку, для Chain - только список сотрудников указанного подразделения.</span>
+          </span></p>
+        <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style=""><b>Пример запроса</b></span>
+</span></p>
+<p class="code"><span style="font-family: Courier;">
+  <span style="">https://localhost:8080/resto/api/employees/byDepartment/1?key=284c5690-2b56-b1d6-0c81-e94b5034243d</span>
+</span></p>
+<p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">   </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"> </span></p>
+<h2 id="h2__2094082183" style="text-align: center;" data-has-heading-anchor="true">Сотрудник по ID<a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__2094082183" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__2094082183&#39;,this);"></a></h2><p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span>Версия API: 1.0</span>
+</span></p><p><font face="Open Sans, Arial, Helvetica, sans-serif">Версия iiko: 4.0</font></p><table class="CHHttpRequest CHHttpRequest_get">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">         <img src="/resources/Storage/api-documentations/http_request_get.png" alt="GET Request" style="max-width: 100%; height: auto;" loading="lazy"/>       </td><td class="CHHttpRequest_headerText"><span style="font-weight: normal;"><b>         </b></span>https://host:port/resto/api/employees/byId/{employeeUUID}<span id="ebm"></span><span style="font-weight: normal;">       </span></td></tr>
+    
+  </tbody>
+</table><h3 id="h3_667944237"><font face="Open Sans, Arial, Helvetica, sans-serif"></font></h3><h3 id="h3_2138875455" data-has-heading-anchor="true"><font face="Open Sans, Arial, Helvetica, sans-serif">Что в ответе</font><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_2138875455" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_2138875455&#39;,this);"></a></h3><p><font face="Open Sans, Arial, Helvetica, sans-serif">
+          <span>Сотрудник с указанным GUID.</span>
+        <br/></font></p><h3 id="h3__984807956" data-has-heading-anchor="true">Пример запроса<a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__984807956" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__984807956&#39;,this);"></a></h3><p class="code"><span style="font-family: Courier;">
+  <span style="">https://localhost:8080/resto/api/employees/byId/61b97cfb-6b4e-4668-9a38-c30190f7a109?key=180c8a55-efae-8183-0d6d-015a685f84f1</span>
+</span></p>
+<h3 id="h3_917891096"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">   </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"> </span></h3>
+<h2 id="h2__243212989" style="text-align: center;" data-has-heading-anchor="true">Сотрудник по коду<a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__243212989" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__243212989&#39;,this);"></a></h2><p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span>Версия API: 1.0</span>
+</span></p><p><font face="Open Sans, Arial, Helvetica, sans-serif">Версия iiko: 4.0</font></p><table class="CHHttpRequest CHHttpRequest_get">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">         <img src="/resources/Storage/api-documentations/http_request_get.png" alt="GET Request" style="max-width: 100%; height: auto;" loading="lazy"/>       </td><td class="CHHttpRequest_headerText"><span style="font-weight: normal;">         </span><span style="font-weight: normal;"><b>https://host:port/resto/api/employees/byCode/{employeeCode}</b></span><span id="ebm"></span><span id="ebm"></span><span style="font-weight: normal;">       </span></td></tr>
+    
+  </tbody>
+</table><h3 id="h3_226895131" data-has-heading-anchor="true"><font face="Open Sans, Arial, Helvetica, sans-serif">Что в ответе</font><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_226895131" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_226895131&#39;,this);"></a></h3><p><font face="Open Sans, Arial, Helvetica, sans-serif">
+          <span>Сотрудник с указанным кодом.</span>
+        <br/></font></p><h3 id="h3__1886227089" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style=""><b>Пример запроса</b></span>
+</span><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__1886227089" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__1886227089&#39;,this);"></a></h3><p class="code"><span style="font-family: Courier;">
+  <span style="">https://localhost:8080/resto/api/employees/byCode/2?key=a10b7fdc-9ae5-449f-c6fb-cb5a67e5b2e6</span>
+</span></p>
+<h2 id="h2_623154327" style="text-align: center;" data-has-heading-anchor="true">Поиск сотрудника<a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2_623154327" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2_623154327&#39;,this);"></a></h2><p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span>Версия API: 1.0</span>
+</span></p><p><font face="Open Sans, Arial, Helvetica, sans-serif">Версия iiko: 4.0</font></p><table class="CHHttpRequest CHHttpRequest_get">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">         <img src="/resources/Storage/api-documentations/http_request_get.png" alt="GET Request" style="max-width: 100%; height: auto;" loading="lazy"/>       </td><td class="CHHttpRequest_headerText">         https://host:port/resto/api/<strong>employees/<strong>search?firstName={regexp}&amp;middleName={regexp}</strong></strong>       </td></tr>
+    
+  </tbody>
+</table><h3 id="h3_1270857196" data-has-heading-anchor="true"><font face="Open Sans, Arial, Helvetica, sans-serif">Параметры запроса</font><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1270857196" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1270857196&#39;,this);"></a></h3><div>
+  <table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;">
+    <tbody aria-live="polite" aria-relevant="all">
+      <tr>
+        <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+          <span><b>Параметры</b></span>
+          </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">         </span></td>
+        <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+          <span><b>Описание</b></span>
+          </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">         </span></td>
+      </tr>
+      <tr>
+        <td>
+          <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>address</span>
+            </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>cardNumber</span>
+            </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>cellPhone</span>
+            </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>client</span>
+            </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>code</span>
+            </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>email</span>
+            </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>employee</span>
+            </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>firstName</span>
+            </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>lastName</span>
+            </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>login</span>
+            </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>mainRoleCode</span>
+            </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>middleName</span>
+            </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>name</span>
+            </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>note</span>
+            </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>phone</span>
+            </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>supplier</span>
+          </span></p>
+        </td>
+        <td>
+          <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>Регулярное выражение&nbsp;</span>
+          </span></p>
+          <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>По любому из текстовых или булевых полей в dto (см. список в 1 столбце)</span>
+          </span></p>
+          <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>Параметры необязательные. Если отсутствуют, вернет всех активных</span>
+          </span></p>
+        </td>
+      </tr>
+      <tr>
+        <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+          <span><strong>includeDeleted </strong>(с 5.0)</span>
+        </span></td>
+        <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+          <span>Возвращать и действующих, и удаленных сотрудников</span>
+        </span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h3 id="h3__1577761397" data-has-heading-anchor="true"><font face="Open Sans, Arial, Helvetica, sans-serif">Что в ответе</font><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__1577761397" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__1577761397&#39;,this);"></a></h3><p><font face="Open Sans, Arial, Helvetica, sans-serif">
+          <span>Сотрудник с указанными именем и/или отчеством.</span>
+        <br/></font></p><h3 id="h3__237152841" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style=""><b>Пример запроса</b></span>
+</span><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__237152841" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__237152841&#39;,this);"></a></h3><p class="code"><span style="font-family: Courier;">
+  <span style="">https://localhost:8080/resto/api/employees/search?key=de7c43fc-b4d7-cf45-51b4-c40cba21265f&amp;firstName=n&amp;middleName=m</span>
+</span></p>
+<p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">   </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"> </span></p>
+<h2 style="text-align: center;" id="h2_653670241" data-has-heading-anchor="true">Добавить или заменить сотрудника (по Id)<a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2_653670241" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2_653670241&#39;,this);"></a></h2><div><p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span>Версия API: 1.0</span>
+</span></p><p><font face="Open Sans, Arial, Helvetica, sans-serif">Версия iiko: 4.0</font></p><table class="CHHttpRequest CHHttpRequest_get">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">         <img src="/resources/Storage/api-documentations/http_request_get.png" alt="GET Request" style="max-width: 100%; height: auto;" loading="lazy"/>       </td><td class="CHHttpRequest_headerText"><span style="font-weight: normal;">         </span><span style="font-weight: normal;"><b>https://host:port/resto/<span id="sbm"></span><span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">api</span></b></span><span style="font-weight: normal;"><span style="font-weight: normal;"><b><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;"><span>/employees/byId/{UUID}</span></span><span id="ebm"></span>
+        </span>       </b></span></span></td></tr>
+    
+  </tbody>
+</table><h3 id="h3_945285395" data-has-heading-anchor="true"><font face="Open Sans, Arial, Helvetica, sans-serif">Параметры запроса</font><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_945285395" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_945285395&#39;,this);"></a></h3><h3 id="h3_687002477" data-has-heading-anchor="true"><font face="Open Sans, Arial, Helvetica, sans-serif">Что в ответе</font><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_687002477" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_687002477&#39;,this);"></a></h3>
+  
+          <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>Если передан новый id, то будет создан новый сотрудник (код возврата 201 Created).</span>
+          </span></p>
+          <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>Если  передан id существующего сотрудника, то произойдет полное замещение  всех полей сотрудника (код возврата 200 OK). При этом если не указать  какое-либо из необязательных полей, то значение этого поля сбросится.</span>
+          </span></p>
+          <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>Для обновления частичного набора полей используйте метод POST <strong>/employees/byId/{employeeUUID}</strong></span>
+          </span></p>
+        </div>
+<h3 id="h3__820067579" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style=""><b>Пример запроса</b></span>
+</span><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__820067579" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__820067579&#39;,this);"></a></h3><p class="code"><span style="font-family: Courier;">
+  <span style="">https://localhost:8080/resto/api/employees/byId/4f390698-241d-6ab9-015e-a3d90baa0370</span>
+</span></p>
+<p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">   </span><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes" ?&gt;<br/>&lt;employee&gt;<br/>    &lt;code&gt;6&lt;/code&gt;<br/>    &lt;name&gt;АPIbyId&lt;/name&gt;<br/>    &lt;login/&gt;<br/>    &lt;mainRoleCode&gt;CS1&lt;/mainRoleCode&gt;<br/>    &lt;roleCodes&gt;CS1&lt;/roleCodes&gt;<br/>    &lt;phone&gt;7979&lt;/phone&gt;<br/>    &lt;cellPhone&gt;00000&lt;/cellPhone&gt;<br/>    &lt;firstName&gt;Name&lt;/firstName&gt;<br/>    &lt;lastName&gt;Name&lt;/lastName&gt;<br/>    &lt;birthday&gt;2017-09-14T00:00:00+03:00&lt;/birthday&gt;<br/>    &lt;email&gt;email2@mail.ru&lt;/email&gt;<br/>    &lt;address&gt;address&lt;/address&gt;<br/>    &lt;hireDate&gt;2017-09-04T00:00:00+03:00&lt;/hireDate&gt;<br/>    &lt;fireDate&gt;2017-09-21T00:00:00+03:00&lt;/fireDate&gt;<br/>    &lt;cardNumber/&gt;<br/>    &lt;taxpayerIdNumber&gt;111111111111111111&lt;/taxpayerIdNumber&gt;<br/>    &lt;snils&gt;455555555555555555&lt;/snils&gt;<br/>    &lt;preferredDepartmentCode&gt;1&lt;/preferredDepartmentCode&gt;<br/>    &lt;departmentCodes&gt;1&lt;/departmentCodes&gt;<br/>    &lt;responsibilityDepartmentCodes&gt;1&lt;/responsibilityDepartmentCodes&gt;<br/>    &lt;deleted&gt;false&lt;/deleted&gt;<br/>    &lt;supplier&gt;false&lt;/supplier&gt;<br/>    &lt;employee&gt;true&lt;/employee&gt;<br/>    &lt;client&gt;false&lt;/client&gt;<br/>    &lt;publicExternalData&gt;<br/>        &lt;entry&gt;<br/>            &lt;key&gt;keyPUT&lt;/key&gt;<br/>            &lt;value&gt;valuePUT&lt;/value&gt;<br/>        &lt;/entry&gt;<br/>    &lt;/publicExternalData&gt;<br/>&lt;/employee&gt;</pre></td></tr></table><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"> </span></p>
+<p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style=""><b>Пример результата вызова API</b></span>
+</span></p>
+<p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">   </span><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes" ?&gt;<br/>&lt;employee&gt;<br/>    &lt;id&gt;4f390698-241d-6ab9-015e-a3d90baa0370&lt;/id&gt;<br/>    &lt;code&gt;6&lt;/code&gt;<br/>    &lt;name&gt;АPIbyId&lt;/name&gt;<br/>    &lt;login/&gt;<br/>    &lt;mainRoleCode&gt;CS1&lt;/mainRoleCode&gt;<br/>    &lt;roleCodes&gt;CS1&lt;/roleCodes&gt;<br/>    &lt;phone&gt;7979&lt;/phone&gt;<br/>    &lt;cellPhone&gt;00000&lt;/cellPhone&gt;<br/>    &lt;firstName&gt;Name&lt;/firstName&gt;<br/>    &lt;lastName&gt;Name&lt;/lastName&gt;<br/>    &lt;birthday&gt;2017-09-14T00:00:00+03:00&lt;/birthday&gt;<br/>    &lt;email&gt;email2@mail.ru&lt;/email&gt;<br/>    &lt;address&gt;address&lt;/address&gt;<br/>    &lt;hireDate&gt;2017-09-04T00:00:00+03:00&lt;/hireDate&gt;<br/>    &lt;fireDate&gt;2017-09-21T00:00:00+03:00&lt;/fireDate&gt;<br/>    &lt;cardNumber/&gt;<br/>    &lt;taxpayerIdNumber&gt;111111111111111111&lt;/taxpayerIdNumber&gt;<br/>    &lt;snils&gt;455555555555555555&lt;/snils&gt;<br/>    &lt;preferredDepartmentCode&gt;1&lt;/preferredDepartmentCode&gt;<br/>    &lt;departmentCodes&gt;1&lt;/departmentCodes&gt;<br/>    &lt;responsibilityDepartmentCodes&gt;1&lt;/responsibilityDepartmentCodes&gt;<br/>    &lt;deleted&gt;false&lt;/deleted&gt;<br/>    &lt;supplier&gt;false&lt;/supplier&gt;<br/>    &lt;employee&gt;true&lt;/employee&gt;<br/>    &lt;client&gt;false&lt;/client&gt;<br/>    &lt;publicExternalData&gt;<br/>        &lt;entry&gt;<br/>            &lt;key&gt;keyPUT&lt;/key&gt;<br/>            &lt;value&gt;valuePUT&lt;/value&gt;<br/>        &lt;/entry&gt;<br/>    &lt;/publicExternalData&gt;<br/>&lt;/employee&gt;</pre></td></tr></table><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"> </span></p>
+<p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">   </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"> </span></p>
+<h2 id="h2__1324771003" style="text-align: center;" data-has-heading-anchor="true">Добавить сотрудника (по коду)<a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__1324771003" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2__1324771003&#39;,this);"></a></h2><table class="CHHttpRequest CHHttpRequest_put">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_put.png" alt="PUT Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText"><span style="font-weight: normal;">
+        </span><span style="font-weight: normal;"><b>https://host:port/resto/api/</b></span><span style="font-weight: normal;"><span style="font-weight: normal;"><b><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+          <span>employees/byCode/{employeeCode}</span>
+        </span>
+      </b></span></span></td></tr>
+    
+  </tbody>
+</table><h3 id="h3__436508111" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="">Что в ответе</span>
+</span><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__436508111" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3__436508111&#39;,this);"></a></h3><p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"></span><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">Новый сотрудник (код возврата 201 Created).</span></p><p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style=""><u>Примечание:</u> учитывается только код, переданный в теле PUT-запроса.</span>
+</span></p>
+<div data-hasbody="true" data-macro-name="code"><h3 id="h3_384736109" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+    <span style="">   <b>Пример запроса</b></span>
+  </span><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_384736109" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_384736109&#39;,this);"></a></h3><div class="code"><span style="font-family: Courier;">
+    <span style="">https://localhost:8080/resto/api/employees/byCode/5</span>
+  </span></div>
+  <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">     </span><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">   </span></p>
+  <span id="sbm"></span><p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+    <span style="">employeeCode - введенное значение будет отображаться в поле Табельный номер</span>
+  </span></p>
+  <span id="ebm"></span><p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+    <span style=""><b>Пример результата вызова API</b></span>
+  </span></p>
+  <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">     </span><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes" ?&gt;<br/>&lt;employee&gt;<br/>    &lt;id&gt;4f390698-241d-6ab9-015e-a3d90baa0371&lt;/id&gt;<br/>    &lt;code&gt;5&lt;/code&gt;<br/>    &lt;name&gt;АPI&lt;/name&gt; //имя в системе<br/>    &lt;login/&gt;<br/>    &lt;mainRoleCode&gt;CS1&lt;/mainRoleCode&gt;<br/>    &lt;roleCodes&gt;CS1&lt;/roleCodes&gt;<br/>    &lt;phone&gt;78787878&lt;/phone&gt;<br/>    &lt;cellPhone&gt;56565&lt;/cellPhone&gt;<br/>    &lt;firstName&gt;firstName&lt;/firstName&gt;<br/>    &lt;lastName&gt;lastName&lt;/lastName&gt;<br/>    &lt;birthday&gt;2017-09-14T00:00:00+03:00&lt;/birthday&gt;<br/>    &lt;email&gt;email@mail.ru&lt;/email&gt;<br/>    &lt;address&gt;address&lt;/address&gt;<br/>    &lt;hireDate&gt;2017-09-04T00:00:00+03:00&lt;/hireDate&gt;<br/>    &lt;fireDate&gt;2017-09-21T00:00:00+03:00&lt;/fireDate&gt;<br/>    &lt;cardNumber/&gt;<br/>    &lt;taxpayerIdNumber&gt;111111111111111111&lt;/taxpayerIdNumber&gt;<br/>    &lt;snils&gt;455555555555555555&lt;/snils&gt;<br/>    &lt;preferredDepartmentCode&gt;1&lt;/preferredDepartmentCode&gt;<br/>    &lt;departmentCodes&gt;1&lt;/departmentCodes&gt;<br/>    &lt;responsibilityDepartmentCodes&gt;1&lt;/responsibilityDepartmentCodes&gt;<br/>    &lt;deleted&gt;false&lt;/deleted&gt;<br/>    &lt;supplier&gt;false&lt;/supplier&gt;<br/>    &lt;employee&gt;true&lt;/employee&gt;<br/>    &lt;client&gt;false&lt;/client&gt;<br/>&lt;/employee&gt;</pre></td></tr></table><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">   </span></p>
+  <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">     </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">   </span></p>
+  <h2 style="text-align: center;" id="h2_439774833" data-has-heading-anchor="true">Изменить/добавить сотрудника (по id)<a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2_439774833" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2_439774833&#39;,this);"></a></h2><p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+    <span style="">Версия API: 1.0</span>
+  </span></p><p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+    <span style="">Версия iiko: 4.0</span>
+  </span></p><table class="CHHttpRequest CHHttpRequest_post">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">https://host:port/resto/api/employees/byId/{employeeUUID}</td></tr>
+    
+  </tbody>
+</table><h3 id="h3_179396395" data-has-heading-anchor="true"><font face="Open Sans, Arial, Helvetica, sans-serif">Что в ответе</font><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_179396395" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_179396395&#39;,this);"></a></h3>
+            <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+              <span>Если передан новый id, то будет создан новый сотрудник (код возврата 201 Created).</span>
+            </span></p>
+            <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+              <span>Если  передан id существующего сотрудника, то произойдет изменение указанных  полей (код возврата 200 OK). Поля не указанные в запросе останутся без  изменений.</span>
+            </span></p>
+            <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+              <span>Для полного замещения всех полей используйте метод PUT <strong>/employees/byId/{employeeUUID}.</strong></span>
+            </span></p>
+          <p style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">Список пар ключ-значение в поле publicExternalData задается через XML следующим образом:&nbsp;   </span></p>
+  <p style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">     &lt;r&gt;&lt;entry&gt;&lt;key&gt;key_POST1&lt;/key&gt;&lt;value&gt;value_POST1&lt;/value&gt;&lt;/entry&gt;&lt;entry&gt;&lt;key&gt;key_POST2&lt;/key&gt;&lt;value&gt;value_POST2&lt;/value&gt;&lt;/entry&gt;&lt;/r&gt;.    </span></p>
+  <p style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">     Корневой тег может быть любым, можно задавать &lt;r&gt; для краткости,  главное чтобы содержимое соответствовало указанному формату. Сервер  "знает", что нужно распарсить это поле в виде XML и положить в виде  списка пар ключ-значение в справочник User.    </span></p>
+  <p style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">     Внутри &lt;entry&gt; ключ  &lt;key&gt; задавать обязательно, т.е. ключ не может быть null, а вот  значение &lt;value&gt; можно не задавать, поскольку оно может быть null,  см. employee.xsd ниже.   </span></p>
+  <div data-hasbody="true" data-macro-name="code"><h3 id="h3_1880996741" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+      <span style="">   <b>Пример запроса</b></span>
+    </span><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1880996741" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1880996741&#39;,this);"></a></h3><div><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+      <span style=""><b> </b><span class="code">https://localhost:8080/resto/api/employees/byId/4f390698-241d-6ab9-015e-a3d90baa0370</span></span>
+    </span></div>
+    <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>&lt;!--Content-Type: application/x-www-form-urlencoded--&gt;<br/>code=10&amp;name=name&amp;taxpayerIdNumber=000000000000&amp;externalData=&lt;r&gt;&lt;entry&gt;&lt;key&gt;key_POST1&lt;/key&gt;&lt;value&gt;value_POST1&lt;/value&gt;&lt;/entry&gt;&lt;entry&gt;&lt;key&gt;key_POST2&lt;/key&gt;&lt;value&gt;value_POST2&lt;/value&gt;&lt;/entry&gt;&lt;/r&gt;</pre></td></tr></table><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">     </span></p>
+    <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+      <span style=""><b>Пример результата вызова API</b></span>
+    </span></p>
+    <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes" ?&gt;<br/>&lt;employee&gt;<br/>    &lt;id&gt;4f390698-241d-6ab9-015e-a3d90baa0370&lt;/id&gt;<br/>    &lt;code&gt;10&lt;/code&gt;<br/>    &lt;name&gt;name&lt;/name&gt;<br/>    &lt;login/&gt;<br/>    &lt;mainRoleCode&gt;CS1&lt;/mainRoleCode&gt;<br/>    &lt;roleCodes&gt;CS1&lt;/roleCodes&gt;<br/>    &lt;phone&gt;7979&lt;/phone&gt;<br/>    &lt;cellPhone&gt;00000&lt;/cellPhone&gt;<br/>    &lt;firstName&gt;Name&lt;/firstName&gt;<br/>    &lt;lastName&gt;Name&lt;/lastName&gt;<br/>    &lt;birthday&gt;2017-09-14T00:00:00+03:00&lt;/birthday&gt;<br/>    &lt;email&gt;email2@mail.ru&lt;/email&gt;<br/>    &lt;address&gt;address&lt;/address&gt;<br/>    &lt;hireDate&gt;2017-09-04T00:00:00+03:00&lt;/hireDate&gt;<br/>    &lt;fireDate&gt;2017-09-21T00:00:00+03:00&lt;/fireDate&gt;<br/>    &lt;cardNumber/&gt;<br/>    &lt;taxpayerIdNumber&gt;000000000000&lt;/taxpayerIdNumber&gt;<br/>    &lt;snils&gt;455555555555555555&lt;/snils&gt;<br/>    &lt;preferredDepartmentCode&gt;1&lt;/preferredDepartmentCode&gt;<br/>    &lt;departmentCodes&gt;1&lt;/departmentCodes&gt;<br/>    &lt;responsibilityDepartmentCodes&gt;1&lt;/responsibilityDepartmentCodes&gt;<br/>    &lt;deleted&gt;false&lt;/deleted&gt;<br/>    &lt;supplier&gt;false&lt;/supplier&gt;<br/>    &lt;employee&gt;true&lt;/employee&gt;<br/>    &lt;client&gt;false&lt;/client&gt;<br/>    &lt;publicExternalData&gt;<br/>        &lt;entry&gt;<br/>            &lt;key&gt;key_POST1&lt;/key&gt;<br/>            &lt;value&gt;value_POST1&lt;/value&gt;<br/>        &lt;/entry&gt;<br/>        &lt;entry&gt;<br/>            &lt;key&gt;key_POST2&lt;/key&gt;<br/>            &lt;value&gt;value_POST2&lt;/value&gt;<br/>        &lt;/entry&gt;<br/>    &lt;/publicExternalData&gt;<br/>&lt;/employee&gt;</pre></td></tr></table><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">     </span></p>
+  </div>
+</div>
+<h2 id="h2_1893260727" style="text-align: center;" data-has-heading-anchor="true">Удалить сотрудника<a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2_1893260727" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h2_1893260727&#39;,this);"></a></h2><p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+    <span>Версия API: 1.0</span>
+  </span></p><p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+    <span>Версия iiko: 4.0</span>
+  </span></p><table class="CHHttpRequest CHHttpRequest_delete">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_delete.png" alt="DELETE Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">
+        <p>https://host:port/resto/api/employees/byId/{employeeUUID}</p>
+      </td></tr>
+    
+  </tbody>
+</table><h3 id="h3_600101026" data-has-heading-anchor="true">Что в ответе<a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_600101026" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_600101026&#39;,this);"></a></h3>
+          <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>Пустой ответ если сотрудник удален (или уже был удален).</span>
+          </span></p>
+          <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+            <span>Entity of class User not found by id (employeeUUID), если передан несуществующий guid.</span>
+          </span></p>
+        <h3 id="h3_1310189372" data-has-heading-anchor="true"><b style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">Пример запроса</b><a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1310189372" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/h3_1310189372&#39;,this);"></a></h3><p class="code"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="">https://localhost:8080/resto/api/employees/byId/4f390698-241d-6ab9-015e-a3d90baa0370</span>
+</span></p>
+<p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">   </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"> </span></p>
+<h2 id="v1.APIсотрудников-ОписаниясущностейдляпредставлениявформатеXML(XSD-схема)" style="text-align: center;" data-has-heading-anchor="true">Описание сущностей для представления в формате XML (XSD-схема)<a href="/articles/api-documentations/rabota-s-dannymi-sotrudnikovv/a/v1.APIсотрудников-ОписаниясущностейдляпредставлениявформатеXML(XSD-схема)" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-s-dannymi-sotrudnikovv/a/v1.APIсотрудников-ОписаниясущностейдляпредставлениявформатеXML(XSD-схема)&#39;,this);"></a></h2><div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Сотрудник
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+      Сотрудник
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">XML</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre><span class="cm-meta">&lt;?xml</span> <span class="cm-meta">version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span><br/><span class="cm-tag">&lt;xs:schema</span> <span class="cm-attribute">version</span>=<span class="cm-string">"1.0"</span> <span class="cm-attribute">xmlns:xs</span>=<span class="cm-string">"http://www.w3.org/2001/XMLSchema"</span><span class="cm-tag">&gt;</span><br/> <br/>    <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"employee"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"employee"</span><span class="cm-tag">/&gt;</span><br/> <br/>    <span class="cm-tag">&lt;xs:complexType</span> <span class="cm-attribute">name</span>=<span class="cm-string">"employee"</span><span class="cm-tag">&gt;</span><br/>        <span class="cm-tag">&lt;xs:sequence</span><span class="cm-tag">&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"id"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"1"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-comment">&lt;!-- Табельный номер сотрудника. Пуст у системных учетных записей. --&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"code"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"1"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"name"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"1"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-comment">&lt;!-- Логин для входа в бекофис --&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"login"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-comment">&lt;!-- Пароль для входа в бекофис. Доступен только на изменение, не отображается. --&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"password"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/> <br/>           <span class="cm-comment">&lt;!--</span><br/>            <span class="cm-comment">Основная должность сотрудника. Входит в rolesIds.</span><br/>            <span class="cm-comment">--&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"mainRoleId"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"rolesIds"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">nillable</span>=<span class="cm-string">"true"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span> <span class="cm-attribute">maxOccurs</span>=<span class="cm-string">"unbounded"</span><span class="cm-tag">/&gt;</span><br/> <br/>            <span class="cm-comment">&lt;!--</span><br/>            <span class="cm-comment">Основная должность сотрудника.</span><br/>            <span class="cm-comment">Входит в roleCodes (кроме системных учетных записей, у них не заполнено roleCodes).</span><br/>            <span class="cm-comment">--&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"mainRoleCode"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"roleCodes"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">nillable</span>=<span class="cm-string">"true"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span> <span class="cm-attribute">maxOccurs</span>=<span class="cm-string">"unbounded"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-comment">&lt;!-- Справочная информация --&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"phone"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"cellPhone"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"firstName"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"middleName"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"lastName"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"birthday"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:dateTime"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"email"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"address"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"hireDate"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"hireDocumentNumber"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-comment">&lt;!--</span><br/>            <span class="cm-comment">Дата увольнения.</span><br/>            <span class="cm-comment">@since 5.4</span><br/>            <span class="cm-comment">--&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"fireDate"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:date"</span> <span class="cm-attribute">nillable</span>=<span class="cm-string">"true"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"note"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-comment">&lt;!-- Slip карты сотрудника --&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"cardNumber"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-comment">&lt;!-- Pin-код для входа в iikoFront. Доступен только на изменение, не отображается. --&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"pinCode"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-comment">&lt;!-- ИНН --&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"taxpayerIdNumber"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-comment">&lt;!--</span><br/>            <span class="cm-comment">СНИЛС.</span><br/>            <span class="cm-comment">@since 5.4</span><br/>            <span class="cm-comment">--&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"snils"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">nillable</span>=<span class="cm-string">"true"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-comment">&lt;!--</span><br/>            <span class="cm-comment">Global Location Number для поставщиков</span><br/>            <span class="cm-comment">@since 6.0</span><br/>            <span class="cm-comment">--&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"gln"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"activationDate"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:dateTime"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"deactivationDate"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:dateTime"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-comment">&lt;!--</span><br/>            <span class="cm-comment">Подразделение (одно из departmentCodes), в котором сотруднику назначаются смены в первую очередь.</span><br/>            <span class="cm-comment">@since 5.0</span><br/>            <span class="cm-comment">--&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"preferredDepartmentCode"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-comment">&lt;!--</span><br/>            <span class="cm-comment">Назначенные подразделения.</span><br/>            <span class="cm-comment">Если null - сотруднику назначены все подразделения (существующие и будущие).</span><br/>            <span class="cm-comment">--&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"departmentCodes"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span><br/>                        <span class="cm-attribute">nillable</span>=<span class="cm-string">"true"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span> <span class="cm-attribute">maxOccurs</span>=<span class="cm-string">"unbounded"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-comment">&lt;!--</span><br/>            <span class="cm-comment">Подразделения, в которых сотрудник является ответственным.</span><br/>            <span class="cm-comment">Если null - сотруднику является ответственным во всех существующих и будущих подразделениях.</span><br/>            <span class="cm-comment">--&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"responsibilityDepartmentCodes"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span><br/>                        <span class="cm-attribute">nillable</span>=<span class="cm-string">"true"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span> <span class="cm-attribute">maxOccurs</span>=<span class="cm-string">"unbounded"</span><span class="cm-tag">/&gt;</span><br/> <br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"deleted"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"supplier"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"employee"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"client"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>  <br/>            <span class="cm-comment">&lt;!--</span><br/>            <span class="cm-comment">Произвольные данные в формате строковый ключ -&gt; строковое значение,</span><br/>            <span class="cm-comment">семантика которых определяется внешней системой.</span><br/>            <span class="cm-comment">Сервер никак не интерпретирует эти данные.</span><br/>            <span class="cm-comment">--&gt;</span><br/>            <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"publicExternalData"</span><span class="cm-tag">&gt;</span><br/>                <span class="cm-tag">&lt;xs:complexType</span><span class="cm-tag">&gt;</span><br/>                    <span class="cm-tag">&lt;xs:sequence</span><span class="cm-tag">&gt;</span><br/>                        <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"entry"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span> <span class="cm-attribute">maxOccurs</span>=<span class="cm-string">"unbounded"</span><span class="cm-tag">&gt;</span><br/>                            <span class="cm-tag">&lt;xs:complexType</span><span class="cm-tag">&gt;</span><br/>                                <span class="cm-tag">&lt;xs:sequence</span><span class="cm-tag">&gt;</span><br/>                                    <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"key"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span><span class="cm-tag">/&gt;</span><br/>                                    <span class="cm-tag">&lt;xs:element</span> <span class="cm-attribute">name</span>=<span class="cm-string">"value"</span> <span class="cm-attribute">type</span>=<span class="cm-string">"xs:string"</span> <span class="cm-attribute">minOccurs</span>=<span class="cm-string">"0"</span><span class="cm-tag">/&gt;</span><br/>                                <span class="cm-tag">&lt;/xs:sequence</span><span class="cm-tag">&gt;</span><br/>                            <span class="cm-tag">&lt;/xs:complexType</span><span class="cm-tag">&gt;</span><br/>                        <span class="cm-tag">&lt;/xs:element</span><span class="cm-tag">&gt;</span><br/>                    <span class="cm-tag">&lt;/xs:sequence</span><span class="cm-tag">&gt;</span><br/>                <span class="cm-tag">&lt;/xs:complexType</span><span class="cm-tag">&gt;</span><br/>            <span class="cm-tag">&lt;/xs:element</span><span class="cm-tag">&gt;</span><br/>        <span class="cm-tag">&lt;/xs:sequence</span><span class="cm-tag">&gt;</span><br/>    <span class="cm-tag">&lt;/xs:complexType</span><span class="cm-tag">&gt;</span><br/><span class="cm-tag">&lt;/xs:schema</span><span class="cm-tag">&gt;</span></pre></td></tr></table></pre>
+  </div>
+</div>
+<p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">   </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"> </span></p><p>
+</p><script src="/resources/Scripts/Lightbox/lightbox-plus-jquery.min.js"></script> <!-- скрипт используется для галереи картинок-->
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script> <!-- скрипт используется для подсветки примеров кода --></body></html>

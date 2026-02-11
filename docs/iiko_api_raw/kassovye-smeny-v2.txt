@@ -1,0 +1,902 @@
+Работа со сменами
+
+  
+
+    
+
+  
+Список смен
+Параметры запроса
+Что в ответе
+Пример запроса и результат
+Выгрузка платежей, внесений, изъятий за смену
+Параметры запроса
+Что в ответе
+Выгрузка кассовой смены по id
+Что в ответе
+Пример запроса и результат
+Выгрузка документы принятия кассовой смены по id смены
+Что в ответе
+Пример запроса и результата
+Принятие кассовой смены
+Примерный алгоритм принятия кассовой смены
+Тело запроса
+Что в ответе
+Ошибка
+Пример запроса и результат 
+
+  
+  
+
+  
+
+Список смен
+
+  
+    
+	                	         https://host:port/resto/api/v2/cashshifts/list       
+    
+  
+
+Параметры запроса
+
+Название
+Значение
+Описание
+	openDateFrom	YYYY-MM-DD	Период открытия смены ''с'' (входит в интервал).
+	openDateTo	YYYY-MM-DD	Период открытия смены ''по'' (входит в интервал).
+	departmentId	UUID	Список ТП, если пуст, то фильтра нет.
+	groupId	UUID	Список групп секций, если пуст, то фильтра нет.
+	status	
+String
+
+Значение
+Описание
+	ANY	Любая.
+	OPEN	Открытая.
+	CLOSED	Закрытая.
+	ACCEPTED	Принята.
+	UNACCEPTED	Не принята.
+	HASWARNINGS	Подозрительная.	Фильтр по статусу. Не может быть пустым.
+	revisionFrom
+	число, -1
+	
+Номер ревизии, начиная с которой необходимо отфильтровать сущности.  Не включающий саму ревизию, т.е. ревизия объекта > revisionFrom.
+По умолчанию (неревизионный запрос) revisionFrom = -1 (с версии iiko 6.4)
+
+Что в ответе
+
+Json структура. Возвращает списки смен
+
+Поле
+Значение
+	id	Id смены
+	sessionNumber	Номер кассовый смены (в нумерации фронта).
+	fiscalNumber	Фискальный номер смены (с ФРа).
+	cashRegNumber	Номер ФРа (в нумерации iiko).
+	cashRegSerial	Серийный номер ФРа.
+	openDate	Дата открытия смены.
+	closeDate	Дата закрытия смены.
+	acceptDate	
+Дата принятия смены. null --- смена не принята.
+	managerId	Ответственный менеджер.
+	responsibleUser	Ответственный кассир.
+	sessionStartCash	Остаток в кассе на начало дня.
+	payOrders	Сумма всех заказов с учётом скидки
+	sumWriteoffOrders	Сумма заказов, закрытых за счет заведения.
+	salesCash	
+Сумма продаж за наличные.  
+	salesCerdit	Сумма продаж в кредит.
+	salesCard	Сумма продаж по картам.
+	payIn	Сумма всех внесений.
+	payOut	Сумма всех изъятий, без учета изъятий в конце смены.
+	payIncome	Сумма изъятия в конце смены.
+	cashRemain	Остаток в кассе после закрытия смены.
+	cashDiff	Общее расхождение сумм книжных и фактических.
+	sessionStaus	Статус смены.
+	conception	Концепция, которой принадлежит данная кассовая смена.
+	pointOfSale	Точка продаж данной кассовой смены.
+ Пример запроса и результат
+
+	
+Copy Code
+JSON
+	[ 
+   { 
+      "id":"1c81b65a-1b8a-428f-8a74-2c994a928a86",
+      "sessionNumber":583,
+      "fiscalNumber":1003,
+      "cashRegNumber":1,
+      "cashRegSerial":"115744 ",
+      "openDate":"2017-02-21T09:56:32.937",
+      "closeDate":"2017-02-21T22:28:18.63",
+      "acceptDate":null,
+      "managerId":"173f155b-48e5-4da0-a9e7-3caa58cfa9d0",
+      "responsibleUser":"173f155b-48e5-4da0-a9e7-3caa58cfa9d0",
+      "sessionStartCash":0,
+      "payOrders":21351,
+      "sumWriteoffOrders":0,
+      "salesCash":9787,
+      "salesCredit":0,
+      "salesCard":11564,
+      "payIn":2000,
+      "payOut":0,
+      "payIncome":-11787,
+      "cashRemain":0,
+      "cashDiff":-11787,
+      "sessionStatus":"UNACCEPTED",
+      "conception":"bd6daa35-12ce-4117-af8f-816d99720eeb",
+      "pointOfSale":"1b17ee6b-c499-4916-9347-fe854d3067b4"
+   },
+   { 
+      "id":"43aab17c-ab23-4d5a-91f0-9fa39fac8612",
+      "sessionNumber":145,
+      "fiscalNumber":306,
+      "cashRegNumber":3,
+      "cashRegSerial":"115731 ",
+      "openDate":"2017-02-21T10:00:51.733",
+      "closeDate":"2017-02-21T23:16:59.13",
+      "acceptDate":null,
+      "managerId":"173f155b-48e5-4da0-a9e7-3caa58cfa9d0",
+      "responsibleUser":"173f155b-48e5-4da0-a9e7-3caa58cfa9d0",
+      "sessionStartCash":0,
+      "payOrders":34885,
+      "sumWriteoffOrders":0,
+      "salesCash":0,
+      "salesCredit":0,
+      "salesCard":34885,
+      "payIn":0,
+      "payOut":0,
+      "payIncome":0,
+      "cashRemain":0,
+      "cashDiff":0,
+      "sessionStatus":"UNACCEPTED",
+      "conception":"bd6daa35-12ce-4117-af8f-816d99720eeb",
+      "pointOfSale":"e49cda0d-f3b1-4a8a-901e-7c44ee09c5a2"
+   },
+   { 
+      "id":"f67fea0a-90d4-427c-ac3d-b82c1582f7f9",
+      "sessionNumber":1,
+      "fiscalNumber":null,
+      "cashRegNumber":998,
+      "cashRegSerial":null,
+      "openDate":"2017-05-03T14:07:44.11",
+      "closeDate":"2017-05-03T14:08:57.307",
+      "acceptDate":"2017-05-24T11:55:13.907",
+      "managerId":"2c6f7e76-2fee-473e-879e-4c4c2faaa032",
+      "responsibleUser":"2c6f7e76-2fee-473e-879e-4c4c2faaa032",
+      "sessionStartCash":0,
+      "payOrders":2660,
+      "sumWriteoffOrders":0,
+      "salesCash":2660,
+      "salesCredit":0,
+      "salesCard":0,
+      "payIn":0,
+      "payOut":0,
+      "payIncome":-2660,
+      "cashRemain":0,
+      "cashDiff":-2660,
+      "sessionStatus":"HASWARNINGS",
+      "conception":null,
+      "pointOfSale":"4138237d-c4db-4bfb-b52e-18e1bb4f12e5"
+   }
+]
+
+Выгрузка платежей, внесений, изъятий за смену
+
+Версия iiko: 5.4
+  
+    
+
+      	
+        
+      
+      	
+https://host:port/resto/api/v2/cashshifts/payments/list/{sessionId}
+    
+    
+
+Параметры запроса
+
+	Название	Значение	Описание
+	hideAccepted	true, false	скрыть принятые
+Что в ответе
+
+Json структура. Возвращает списки внесений, изъятий, безналичных платежей за смену
+
+Поле
+Описание
+	sessionId	UUID запрошенной смены
+	cashlessRecords	
+Список записей, относящихся к безналичным платежам.
+	payInRecords	Список записей, относящихся к внесениям. 
+	payOutRecords	Список записей, относящихся к  изъятиям. 
+
+	
+Запись в документе
+
+Поле
+Описание
+	info	Описание проводки
+
+ 
+
+Поле
+Описание
+	id	UUID проводки.
+	date	
+Дата создания в формате "yyyy-MM-dd'T'HH:MM:SS"
+Проводки оплат заказов содержат в этом поле учетный день, округленный до суток.
+	creationDate	
+Дата создания в формате "yyyy-MM-dd'T'HH:MM:SS"с привязкой ко времени, может быть меньше, чем date,
+если используется настройка "конец учетного дня" <> 00:00.
+	group	
+группа проводок:
+CARD (безнал)
+CREDIT (кредит)
+PAYOUT (изъятия)
+PAYIN (внесения)
+	accountId	Редактируемый счет. Чаще принимается конечный счет проводки.
+	counteragentId	Контрагент.
+	paymentTypeId	Тип оплаты.
+	type	Тип проводки.
+	sum	Сумма.
+	comment	Комментарий.
+	auth	
+Авторизационные данные транзакции
+
+Поле
+Описание
+	user	UUID пользователя.
+	card	Номер карты.
+	causeEvenId	UUID события оплаты заказа.
+	cashierId	UUID кассира, совершившего проводку.
+	departmentId	UUID торгового предприятия.
+	cashFlowCategory	
+Статья движения денежных средств (ДДС).
+
+Поле
+Описание
+	code	Код.
+	parentCategory	
+Родительская статья ДДС.
+	type	
+ 
+Тип деятельности:
+OPERATIONAL (операционная)
+INVESTMENT (инвестиционная)
+FINANCE (финансовая)
+ 
+	actualSum	
+Сумма из элемента документа закрытия кассовой смены соответствующего данным проводки
+или сумма из проводки, если такового не нашлось.
+	originalSum	Сумма проводки.
+	editedPayAccountId 	
+Счет из элемента документа закрытия кассовой смены соответствующего данным проводки
+или сумма из проводки, если такового не нашлось. Редактируемый счет.
+	originalPayAccountId	Счет, значение которого совпадает с editedPayAccountId.
+	payAgentId	
+Контрагент из элемента документа закрытия смены соответствующего данным проводки или
+из транзакции, если такого элемента не нашлось.
+	paymentTypeId	Тип оплаты.
+	editableComment	Комментарий.
+Пример запроса и результата
+Запрос
+https://localhost:8080/resto/api/v2/cashshifts/payments/list/f67fea0a-90d4-427c-ac3d-b82c1582f7f9?hideAccepted=false
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{ 
+   "sessionId":"f67fea0a-90d4-427c-ac3d-b82c1582f7f9",
+   "operationDay": "2017-05-03",
+   "cashlessRecords":[ 
+ 
+   ],
+   "payInRecords":[ 
+ 
+   ],
+   "payOutsRecords":[ 
+      { 
+         "info":{ 
+            "id":"e08a16b6-931c-4068-9aa5-b740d5ce726b",
+            "date":"2017-05-03T00:00:00",
+            "creationDate":"2017-05-03T14:08:56.027",
+            "group":"PAYOUT",
+            "accountId":"ad3cc1aa-a60e-c85c-e66d-3904490de4b9",
+            "counteragentId":"2c6f7e76-2fee-473e-879e-4c4c2faaa032",
+            "paymentTypeId":null,
+            "type":"PAYCOL",
+            "sum":2660,
+            "comment":"Закрытие кассовой смены №1",
+            "auth":{ 
+               "user":"2c6f7e76-2fee-473e-879e-4c4c2faaa032",
+               "card":"8888"
+            },
+            "causeEventId":"4fc18ec8-8442-4128-858f-0896550d09a8",
+            "cashierId":"2c6f7e76-2fee-473e-879e-4c4c2faaa032",
+            "departmentId":"cb90393a-8299-4af1-9fab-5ec308726266",
+            "cashFlowCategory":{ 
+               "id":"14c0fe4b-76ec-2681-846e-81d1ec32db08",
+               "code":"1",
+               "parentCategoryId":null,
+               "type":"OPERATIONAL"
+            }
+         },
+         "actualSum":2660,
+         "originalSum":2660,
+         "editedPayAccountId":"ad3cc1aa-a60e-c85c-e66d-3904490de4b9",
+         "originalPayAccountId":"ad3cc1aa-a60e-c85c-e66d-3904490de4b9",
+         "payAgentId":"ad3cc1aa-a60e-c85c-e66d-3904490de4b9",
+         "paymentTypeId":null,
+         "editableComment":"test",
+         "status":"ACCEPTED"
+      }
+   ]
+}    
+  
+
+Выгрузка кассовой смены по id
+
+Версия iiko: 5.4
+  
+    
+	
+        
+      	         https://host:port/resto/api/v2/cashshifts/byId/{sessionId}
+
+    
+  
+
+Что в ответе
+
+Json структура кассовой смены.
+
+Поле
+Значение
+	id	Id смены
+	sessionNumber	Номер кассовый смены (в нумерации фронта).
+	fiscalNumber	Фискальный номер смены (с ФРа).
+	cashRegNumber	Номер ФРа (в нумерации iiko).
+	cashRegSerial	Серийный номер ФРа.
+	openDate	Дата открытия смены.
+	closeDate	Дата закрытия смены.
+	acceptDate	
+Дата принятия смены. null --- смена не принята.
+	managerId	Ответственный менеджер.
+	responsibleUser	Ответственный кассир.
+	sessionStartCash	Остаток в кассе на начало дня.
+	payOrders	Сумма всех заказов с учётом скидки
+	sumWriteoffOrders	Сумма заказов, закрытых за счет заведения.
+	salesCash	
+Сумма продаж за наличные.  
+	salesCerdit	Сумма продаж в кредит.
+	salesCard	Сумма продаж по картам.
+	payIn	Сумма всех внесений.
+	payOut	Сумма всех изъятий, без учета изъятий в конце смены.
+	payIncome	Сумма изъятия в конце смены.
+	cashRemain	Остаток в кассе после закрытия смены.
+	cashDiff	Общее расхождение сумм книжных и фактических.
+	sessionStaus	Статус смены.
+	conception	Концепция, которой принадлежит данная кассовая смена.
+	pointOfSale	Точка продаж данной кассовой смены.
+Пример запроса и результат
+
+Запрос
+https://localhost:8080/resto/api/v2/cashshifts/byId/1c81b65a-1b8a-428f-8a74-2c994a928a86
+
+  
+[+] Результат
+  
+[-] Результат
+
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{ 
+   "id":"1c81b65a-1b8a-428f-8a74-2c994a928a86",
+   "sessionNumber":583,
+   "fiscalNumber":1003,
+   "cashRegNumber":1,
+   "cashRegSerial":"115744 ",
+   "openDate":"2017-02-21T09:56:32.937",
+   "closeDate":"2017-02-21T22:28:18.63",
+   "acceptDate":null,
+   "manager":"173f155b-48e5-4da0-a9e7-3caa58cfa9d0",
+   "responsibleUser":"173f155b-48e5-4da0-a9e7-3caa58cfa9d0",
+   "sessionStartCash":0,
+   "payOrders":21351,
+   "sumWriteoffOrders":0,
+   "salesCash":9787,
+   "salesCredit":0,
+   "salesCard":11564,
+   "payIn":2000,
+   "payOut":0,
+   "payIncome":-11787,
+   "cashRemain":0,
+   "cashDiff":-11787,
+   "sessionStatus":"UNACCEPTED",
+   "conception":"bd6daa35-12ce-4117-af8f-816d99720eeb",
+   "pointOfSale":"1b17ee6b-c499-4916-9347-fe854d3067b4"
+}
+  
+
+Выгрузка документы принятия кассовой смены по id смены
+
+Версия iiko: 5.4 
+  
+    
+	
+        
+      	
+https://host:port/resto/api/v2/cashshifts/closedSessionDocument/{id}
+    
+  
+
+Что в ответе
+
+Json структура документа принятия кассовой смены. Возвращает существующий документ, либо создает новый.
+
+Поле
+Значение
+	id	id документа.
+	session	
+Кассовая смена
+
+Поле
+Значение
+	sessionId	id смены.
+	groupId	id группы секций работающих в одной кассовой смене.
+	number	Номер смены.
+	accountShortageId	Счет, на который записывается недостача.
+	counteragentShortageId	Контрагент, на которого записывается недостача.
+	accountSurplusId	Счет, на который записывается излишек.
+	counteragentSurplusId	Контрагент, на которого записывается излишек.
+	departmentId	Торговое предприятие кассовой смены.
+	items	
+Элементы/строки документа
+
+Поле
+Значение
+	num	Номер элемента.
+	transactionId	UUID проводки.
+	sumReal	Отредактированная сумма.
+	accountOverrideId	Отредактированный счет.
+	counteragentOverrideId	Отредактированный контрагент.
+	status	
+Статус.
+
+Значение
+Описание
+	ACCEPTED	принята
+	UNACCEPTED	не принята
+	HASWARNINGS	подозрительная
+	comment	Комментарий.
+Пример запроса и результата
+
+https://localhost:8080/resto/api/v2/cashshifts/closedSessionDocument/f67fea0a-90d4-427c-ac3d-b82c1582f7f9
+
+	
+Copy Code
+JSON
+	{ 
+   "id":"1a94e9e8-56cf-3a14-015b-ce1629e5006b",
+   "session":{ 
+      "sessionId":"f67fea0a-90d4-427c-ac3d-b82c1582f7f9",
+      "groupId":"94a6f400-2f9b-4a5a-be7f-19b7b62c55a7",
+      "number":1
+   },
+   "accountShortageId":null,
+   "counteragentShortageId":null,
+   "accountSurplusId":null,
+   "counteragentSurplusId":"2c6f7e76-2fee-473e-879e-4c4c2faaa032",
+   "departmentId":"cb90393a-8299-4af1-9fab-5ec308726266",
+   "items":[ 
+      { 
+         "num":0,
+         "transactionId":"e08a16b6-931c-4068-9aa5-b740d5ce726b",
+         "sumReal":2660,
+         "accountOverrideId":"ad3cc1aa-a60e-c85c-e66d-3904490de4b9",
+         "counteragentOverrideId":"2c6f7e76-2fee-473e-879e-4c4c2faaa032",
+         "status":"ACCEPTED",
+         "comment":"test"
+      }
+   ]
+}
+
+Принятие кассовой смены
+
+Примерный алгоритм принятия кассовой смены
+
+Получить список кассовых смен. Выбрать id смены, которую нужно принять.
+Получить документ принятия кассовой смены по id смены.
+Получить список безналичных платежей, внесений, изъятий по выбранной из п.1 кассовой смене.
+Дополнить список элементов документа недостающими.
+Список из п.3 содержит все проводки смены. Документ принятия смены из п.2 состоит из элементов, редактирующих
+такие проводок. Если есть проводки, для которых нет элементов в документе (например, когда смена закрывается впервые),
+то нужно добавить новые элементы. Другими словами документ принятия смены должен содержать все проводки из п.3.
+Добавление нового элемента происходит на основании записи из списка, полученного в п.3., следующим образом:
+В поле num устанавливается следующий порядковый номер.
+В поле transactionId устанавливается UUID добавляемой проводки.
+В поле sumReal указывается результат редактирования суммы проводки: поле sum. sumReal заполняется только для
+изъятий. т.е. для записей из payOutRecords. Для других записей сумма не редактируется.
+В поле accountOverride устанавливаете результат редактирования счета из поля accountId. В counteragentOverride
+результат редактирования counteragentId с некоторыми правилами.
+Указывается нужный статус и комментарий.
+       5. Отредактировать документ.
+       6. Отправить на сервер.
+
+Версия iiko: 5.4
+  
+    
+	
+        
+      	
+        
+https://host:port/resto/api/v2/cashshifts/save
+      
+    
+  
+
+Content-Type: application/json
+Тело запроса
+
+Поле
+Значение
+	id	id документа.
+	session	
+Кассовая смена
+
+Поле
+Значение
+	sessionId	id смены.
+	group	id группы секций работающих в одной кассовой смене.
+	number	Номер смены.
+	accountShortageId	Счет, на который записывается недостача.
+	counteragentShortageId	Контрагент, на которого записывается недостача.
+	accountSurplusId	Счет, на который записывается излишек.
+	counteragentSurplusId	Контрагент, на которого записывается излишек.[1]
+	departmentId	Торговое предприятие кассовой смены.
+	items	
+Элементы/строки документа.
+Элемент - продажа за безнал, внесение, изъятие.
+
+Поле
+Значение
+	num	Номер элемента.
+	transactionId	UUID проводки кассовой смены.
+	sumReal	Отредактированная сумма.
+	accountOverrideId	Отредактированный счет.
+	counteragentOverrideId	
+Отредактированный контрагент.[2]
+	status	
+Статус.
+
+Значение
+Описание
+	ACCEPTED	принята
+	UNACCEPTED	непринята
+	HASWARNINGS	подозрительная
+	comment	Комментарий.
+[1].Счета/контрагенты  для недостачи/излишка должны быть заполнены независимо от выбранного счета.
+Так сделано для обратной совместимости.
+[2]. Контрагент в элементе документа должен быть указан только для счетов :
+
+Тип счета
+Название
+	ACCOUNTS_RECEIVABLE	Задолженность покупателей
+	DEBTS_OF_EMPLOYEES	Задолженность сотрудников
+	EMPLOYEES_LIABILITY	Расчеты с сотрудниками
+	ACCOUNTS_PAYABLE	Расчеты с поставщиками
+	CLIENTS_LIABILITY	Расчеты с гостями
+Список доступных счетов можно получить через API счетов.
+
+	
+Copy Code
+JSON
+	{ 
+   "id":"1a94e9e8-56cf-3a14-015b-ce1629e5006b",
+   "session":{ 
+      "sessionId":"f67fea0a-90d4-427c-ac3d-b82c1582f7f9",
+      "groupId":"94a6f400-2f9b-4a5a-be7f-19b7b62c55a7",
+      "number":1
+   },
+   "accountShortageId":"ad3cc1aa-a60e-c85c-e66d-3904490de4b9",
+   "counteragentShortageId":"2c6f7e76-2fee-473e-879e-4c4c2faaa032",
+   "accountSurplusId":"ad3cc1aa-a60e-c85c-e66d-3904490de4b9",
+   "counteragentSurplusId":"2c6f7e76-2fee-473e-879e-4c4c2faaa032",
+   "departmentId":"cb90393a-8299-4af1-9fab-5ec308726266",
+   "items":[ 
+      { 
+         "num":0,
+         "transactionId":"e08a16b6-931c-4068-9aa5-b740d5ce726b",
+         "sumReal":2650,
+         "accountOverrideId":"ad3cc1aa-a60e-c85c-e66d-3904490de4b9",
+         "counteragentOverrideId":"2c6f7e76-2fee-473e-879e-4c4c2faaa032",
+         "status":"ACCEPTED",
+         "comment":"test"
+      }
+   ]
+}
+
+Что в ответе
+
+Содержит результат импорта, который состоит из результата валидации импортируемого документа и самого документа. Результат валидации состоит из ошибок, общих для всего документа, и ошибок по каждому отдельному элементу  документа. Ошибка состоит из кода ошибки и текста ошибки.
+
+Поле
+Значение
+	importResult	
+Статус результата принятия смены
+SUCCESS, ERROR
+	status	
+Статус принятой смены. Вычисляется из совокупности статусов элементов документа.
+Статус элемента задает пользователь. Если хотя бы один элемент имеет статус HASWARNINGS,
+то весь документ будет в статусе HASWARNINGS, если хотя бы один элемент в статусе UNACCEPTED,
+то весь документ будет в таком же статусе, ACCEPTED - все элементы приняты.
+У HASWARNINGS самый высокий приоритет.
+
+Значение
+Описание
+	UNACCEPTED	не принята
+	ACCEPTED	принята
+	HASWARNINGS	подозрительна
+	errors	
+Список ошибок, не позволивших сделать успешный импорт документа.
+
+Поле
+Значение
+	documentError	Ошибки в полях документа.
+	itemError	
+Ошибки в полях документа.
+
+Поле
+Значение
+	identifier	UUID элемента.
+	error	Ошибка.
+	document	Импортируемый документ.
+Ошибка
+
+Поле
+Значение
+	value	Неверное значение, либо название пустого поля.
+	code	Код ошибки.
+
+  
+
+    [+]
+    
+      Коды ошибок
+    
+  
+  
+
+    [-]
+    
+      Коды ошибок
+    
+  
+  
+
+Код
+Описание
+	ACCOUNT_DELETED	Указанный счет удален.
+	COUNTERAGENT_DELETED	Указанный контрагент удален.
+	INVENTORY_ASSETS_TYPE_NOT_ALLOWED	Счета категории "складские запасы" не допускаются.
+	COUNTERAGENT_MISSED_FOR_ACCOUNT	Для указанного счета должен быть указан контрагент.
+	COUNTERAGENT_NOT_ALLOWED_FOR_ACCOUNT	Для указанного счета контрагент не указывается.
+	ACCOUNT_NOT_SPECIFIED	Счет не указан.
+	COUNTERAGENT_NOT_SPECIFIED	Контрагент не указан.
+	COUNTERAGENT_NOT_ALLOWED	Контрагент НЕ указывается.
+	COUNTERAGENT_TYPE_WRONG	Указан неверный тип для выбранного контрагента.
+	CONCEPTION_NOT_SPECIFIED	Концепция не указана.
+	CONCEPTION_DELETED	Концепция удалена.
+	PAYROLL_MISSED_FOR_ACCOUNT	Для указанного счета должен быть указана платежная ведомость.
+	PAYROLL_DELETED	Платежная ведомость удалена.
+	ONLY_POSITIVE_VALUES_ALLOWED	Допускаются только положительные значения.
+	DEPARTMENT_DELETED	ТП удалено.
+	RESTAURANT_SECTION_DELETED	Отделение удалено.
+	MEASURE_UNIT_DELETED	Единица измерения удалена.
+	COOKING_PLACE_DELETED	Место приготовления удалено.
+	TAX_CATEGORY_DELETED	Налоговая категория удалена.
+	PRODUCT_CATEGORY_DELETED	Пользовательская категория удалена.
+	PRODUCT_GROUP_DELETED	Номенклатурная группа удалена.
+	PRODUCT_DELETED	Товар удален.
+	PRODUCT_MISSED	Товар не указан.
+	COOKING_PLACE_EMPTY_FOR_SALE_DISH	Товар продается. Тип места приготовления не может быть пустым.
+	WRONG_NOMENCLATURE_TYPE	Указан недопустимый тип номенклатуры.
+	NOT_INCLUDED_IN_MENU_WITH_EXCLUDED_SECTIONS	У блюда указаны отделения, в которых его нельзя продавать, в то время, как 
+само блюдо не включено в меню по умолчанию.
+	CHILD_MODIFIERS_NOT_ALLOWED	Вложенные модификаторы не допускаются.
+	MODIFIER_NOT_BELONGS_TO_GROUP	Модификатор не принадлежит группе.
+	NOT_MODIFIER	Не является модификатором.
+	WRONG_MIN_MAX_AMOUNT	Не правильно указаны минимальное, максимальное значение.
+	HAS_RESTRICTION_AND_DEFAULT_AMOUNT_OUT_OF_RANGE	
+У родительского модификатора ВКЛЮЧЕНО "Ограничение на минимум и максимум у дочерних модификаторов",
+но дефолтное значение у дочернего модификатора выходит за рамки мин. макс. значений.
+	DEFAULT_AMOUNT_OUT_OF_RANGE	Дефолтное значение выходит за рамки мин. макс. значений.
+	NO_RESTRICTION_AND_MIN_MAX_NOT_ZERO	
+У родительского модификатора ВЫКЛЮЧЕНО "Ограничение на минимум и максимум у дочерних модификаторов",
+у дочернего мин. макс. количество не равно 0 (а должно).
+	REQUIRED_AND_WRONG_MIN_AMOUNT	
+Модификатор является обязательным, но мин. количество = 0, 
+либо НЕ является обязательным и мин. количество != 0.
+Начиная с версии iiko 6.2.3 ошибка с таким кодом прилететь не может, т.к. поле required было убрано из ChoiceBindingDto
+
+	FREE_OF_CHARGE_AMOUNT_MORE_THAN_MAX	У группового или одиночного модификатора количество бесплатных больше чем максимальное.
+	HAS_RESTRICTION_AND_FREE_OF_CHARGE_MORE_THAN_MAX	
+У родительского модификатора ВКЛЮЧЕНО "Ограничение на минимум и максимум у дочерних модификаторов", но 
+бесплатное количество у дочернего модификатора больше максимального.
+	HAS_RESTRICTION_AND_FREE_OF_CHARGE_MORE_THAN_PARENT	
+У родительского модификатора ВКЛЮЧЕНО "Ограничение на минимум и максимум у дочерних модификаторов", но 
+бесплатное количество у дочернего модификатора больше чем у родительского.
+	NO_RESTRICTION_AND_FREE_OF_CHARGE_AMOUNT_NOT_EQUAL_VALUE_IN_PARENT	
+У родительского модификатора ВЫКЛЮЧЕНО "Ограничение на минимум и максимум у дочерних модификаторов", но
+бесплатное количество у дочернего модификатора не равно бесплатному количеству в родительском.
+	NO_RESTRICTION_AND_REQUIRED_SHOULD_BE_FALSE	
+У родительского модификатора ВЫКЛЮЧЕНО "Ограничение на минимум и максимум у дочерних модификаторов",
+но дочерний модификатор является обязательным.
+	NOT_GROUP_MODIFIER_HAS_CHILD_RESTRICTION	У НЕ группового (одиночного, дочернего) модификатора ВКЛЮЧЕНО "Ограничение на минимум и максимум у дочерних модификаторов".
+	SINGLE_MODIFIER_HIDE_DEFAULT_AMOUNT	
+У одиночного модификатора 
+
+"Скрывать, если кол-во по умолчанию".
+	PARENT_AMOUNT_BY_DEFAULT_NOT_EQUAL_SUM_OF_CHILDREN	
+У родительского модификатора кол-во по умолчанию не равно сумме дефолтный значений дочерних элементов.
+	IMAGE_NOT_FOUND	Изображение не найдено.
+    
+
+  
+
+Пример запроса и результат
+
+Запрос
+https://localhost:8080/resto/api/v2/cashshifts/save 
+
+Результат
+
+	
+Copy Code
+JSON
+	{ 
+   "id":"1a94e9e8-56cf-3a14-015b-ce1629e5006b",
+   "session":{ 
+      "sessionId":"f67fea0a-90d4-427c-ac3d-b82c1582f7f9",
+      "groupId":"94a6f400-2f9b-4a5a-be7f-19b7b62c55a7",
+      "number":1
+   },
+   "accountShortageId":"ad3cc1aa-a60e-c85c-e66d-3904490de4b9",
+   "counteragentShortageId":"2c6f7e76-2fee-473e-879e-4c4c2faaa032",
+   "accountSurplusId":"ad3cc1aa-a60e-c85c-e66d-3904490de4b9",
+   "counteragentSurplusId":"2c6f7e76-2fee-473e-879e-4c4c2faaa032",
+   "departmentId":"cb90393a-8299-4af1-9fab-5ec308726266",
+   "items":[ 
+      { 
+         "num":0,
+         "transactionId":"e08a16b6-931c-4068-9aa5-b740d5ce726b",
+         "sumReal":2650,
+         "accountOverrideId":"ad3cc1aa-a60e-c85c-e66d-3904490de4b9",
+         "counteragentOverrideId":"2c6f7e76-2fee-473e-879e-4c4c2faaa032",
+         "status":"ACCEPTED",
+         "comment":"test"
+      }
+   ]
+}
+​
+
+Пример успешного импорта - SUCCESS
+
+	
+Copy Code
+JSON
+	{ 
+   "importResult":"SUCCESS",
+   "status":"ACCEPTED",
+   "errors":null,
+   "document":{ 
+      "id":"1a94e9e8-56cf-3a14-015b-ce1629e5006b",
+      "session":{ 
+         "sessionId":"f67fea0a-90d4-427c-ac3d-b82c1582f7f9",
+         "groupId":"94a6f400-2f9b-4a5a-be7f-19b7b62c55a7",
+         "number":1
+      },
+      "accountShortageId":"ad3cc1aa-a60e-c85c-e66d-3904490de4b9",
+      "counteragentShortageId":"2c6f7e76-2fee-473e-879e-4c4c2faaa032",
+      "accountSurplusId":"ad3cc1aa-a60e-c85c-e66d-3904490de4b9",
+      "counteragentSurplusId":"2c6f7e76-2fee-473e-879e-4c4c2faaa032",
+      "departmentId":"cb90393a-8299-4af1-9fab-5ec308726266",
+      "items":[ 
+         { 
+            "num":0,
+            "transactionId":"e08a16b6-931c-4068-9aa5-b740d5ce726b",
+            "sumReal":2650,
+            "accountOverrideId":"ad3cc1aa-a60e-c85c-e66d-3904490de4b9",
+            "counteragentOverrideId":"2c6f7e76-2fee-473e-879e-4c4c2faaa032",
+            "status":"ACCEPTED",
+            "comment":"test"
+         }
+      ]
+   }
+}
+
+Пример не успешного импорта - ERROR
+
+	
+Copy Code
+JSON
+	{ 
+   "importResult":"ERROR",
+   "status":null,
+   "errors":{ 
+      "documentError":[ 
+         { 
+            "value":"ad3cc1aa-a60c-c85c-e66d-3904490de4b9",
+            "code":"ACCOUNT_SHORTAGE_NOT_FOUND"
+         },
+         { 
+            "value":"counteragentShortage",
+            "code":"EMPTY_FIELD"
+         }
+      ],
+      "itemError":[ 
+         { 
+            "identifier":0,
+            "error":[ 
+               { 
+                  "value":"bd3cc1aa-a60e-c85c-e66d-3904490de4b9",
+                  "code":"INVENTORY_ASSETS_TYPE_NOT_ALLOWED"
+               },
+               { 
+                  "value":"6c6f7e76-2fee-473e-879e-4c4c2faaa032",
+                  "code":"COUNTERAGENT_DELETED"
+               }
+            ]
+         }
+      ]
+   },
+   "document":{ 
+      "id":"1a94e9e8-56cf-3a14-015b-ce1629e5006b",
+      "session":{ 
+         "sessionId":"f67fea0a-90d4-427c-ac3d-b82c1582f7f9",
+         "group":"94a6f400-2f9b-4a5a-be7f-19b7b62c55a7",
+         "number":1
+      },
+      "accountShortageId":"ad3cc1aa-a60c-c85c-e66d-3904490de4b9",
+      "counteragentShortageId":null,
+      "accountSurplusId":"ad3cc1aa-a60e-c85c-e66d-3904490de4b9",
+      "counteragentSurplusId":"2c6f7e76-2fee-473e-879e-4c4c2faaa032",
+      "departmentId":"cb90393a-8299-4af1-9fab-5ec308726266",
+      "items":[ 
+         { 
+            "num":0,
+            "transactionId":"e08a16b6-931c-4068-9aa5-b740d5ce726b",
+            "sumReal":2650,
+            "accountOverrideId":"bd3cc1aa-a60e-c85c-e66d-3904490de4b9",
+            "counteragentOverrideId":"6c6f7e76-2fee-473e-879e-4c4c2faaa032",
+            "status":"HASWARNINGS",
+            "comment":"test"
+         }
+      ]
+   }
+}
+​

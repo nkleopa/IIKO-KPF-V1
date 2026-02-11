@@ -1,0 +1,138 @@
+Работа с данными должностей
+
+  
+
+    
+
+  
+Список должностей
+Параметры запроса
+Что в ответе
+Пример запроса
+Описание сущностей для представления в формате XML (XSD-схема) 
+
+  
+  
+
+  
+
+Список должностей
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/employees/roles
+      
+    
+  
+
+Параметры запроса
+
+	Название
+	Параметр
+	Версия
+	Описание
+
+	revisionFrom	
+число, номер ревизии
+
+	с 6.4	
+Номер  ревизии, начиная с которой необходимо отфильтровать сущности. Не  включающий саму ревизию, т.е. ревизия объекта > revisionFrom.
+По умолчанию (неревизионный запрос) revisionFrom = -1
+Что в ответе
+
+Список должностей (см. описание XSD).
+
+Пример запроса
+
+https://localhost:8080/resto/api/employees/roles
+Результат:
+
+	
+Copy Code
+Код
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<employeeRoles>
+  <role>
+    <id>d9753f67-6e87-4564-9b74-4018c37306d7</id>
+    <code>BAR1</code>
+    <name>Barista</name>
+    <paymentPerHour>2.500000000</paymentPerHour>
+    <steadySalary>1860.000000000</steadySalary>
+    <scheduleType>SESSION</scheduleType>
+    <deleted>false</deleted>
+  </role>
+  <role>
+    <id>01a014eb-6609-c206-dbed-3102179f80be</id>
+    <code>SMB</code>
+    <name>Somebody</name>
+    <paymentPerHour>2.000000000</paymentPerHour>
+    <steadySalary>340.000000000</steadySalary>
+    <scheduleType>HOURS</scheduleType>
+    <deleted>false</deleted>
+  </role>
+</employeeRoles>
+Описание сущностей для представления в формате XML (XSD-схема)
+
+  
+
+    [+]
+    
+      Должность
+    
+  
+  
+
+    [-]
+    
+      Должность
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+ 
+  <xs:element name="role" type="role"/>
+ 
+  <xs:complexType name="role">
+    <xs:sequence>
+      <xs:element name="id" type="xs:string"/>
+      <!--
+      Код должности.
+      -->
+      <xs:element name="code" type="xs:string"/>
+      <!--
+      Название должности.
+      -->
+      <xs:element name="name" type="xs:string"/>
+      <!--
+      Зарплата в час.
+      -->
+      <xs:element name="paymentPerHour" type="xs:decimal" minOccurs="0"/>
+      <!--
+      Зарплата в месяц.
+      since 6.2.2, только чтение
+      -->
+      <xs:element name="steadySalary" type="xs:decimal" minOccurs="0"/>
+      <!--
+      Стратегия вычисления заработной платы.
+      -->
+      <xs:element name="scheduleType" type="paymentScheme" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+ 
+  <xs:simpleType name="paymentScheme">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SESSION"/>
+      <xs:enumeration value="HOURS"/>
+      <xs:enumeration value="FIXED"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

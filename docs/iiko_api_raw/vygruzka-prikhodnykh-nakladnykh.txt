@@ -1,0 +1,601 @@
+Выгрузка приходных накладных
+
+  
+
+    
+
+  
+Параметры запроса
+Что в ответе
+Пример запроса и результат 
+
+  
+  
+
+  
+
+Версия iiko: 5.4
+  
+    
+	
+        
+      	
+        
+        
+        
+https://host:port/resto/api/documents/export/incomingInvoice
+
+      
+      
+    
+  
+
+Параметры запроса
+
+  
+    
+
+               Название       
+               Значение       
+               Описание       
+    
+  
+  
+    
+
+      	
+        from
+      
+      	         YYYY-MM-DD       
+      	         начальная дата (входит в интервал)       
+    
+    
+
+      	
+        to
+      
+      	         YYYY-MM-DD       
+      	         конечная  дата (входит в интервал, время не учитывается)       
+    
+    
+
+      	
+        supplierId
+      
+      	         GUID       
+      	         Id поставщика       
+    
+  
+	revisionFrom
+	число, по умолчанию -1
+	
+с версии 6.4
+Номер ревизии, начиная с которой необходимо отфильтровать сущности.  Не включающий саму ревизию, т.е. ревизия объекта > revisionFrom.
+По умолчанию (неревизионный запрос) revisionFrom = -1
+  
+
+   При запросе без поставщиков возвращает все приходные накладные, попавшие в интервал.
+
+Что в ответе
+
+  
+
+    [+]
+    
+      XSD Приходная накладная
+    
+  
+  
+
+    [-]
+    
+      XSD Приходная накладная
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="document" type="incomingInvoiceDto"/>
+ 
+    <xs:complexType name="incomingInvoiceDto">
+        <xs:sequence>
+            <!--Позиции документа-->
+            <xs:element name="items" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="item" type="incomingInvoiceItemDto" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!--
+            Id документа (только чтение)
+            @since 5.4
+            -->
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <!--Концепция (guid)-->
+            <xs:element name="conception" type="xs:string" minOccurs="0"/>
+            <!--
+            Код концепции.
+            @since 7.8
+            -->
+            <xs:element name="conceptionCode" type="xs:string" minOccurs="0"/>
+            <!--Комментарий-->
+            <xs:element name="comment" type="xs:string" minOccurs="0"/>
+            <!--Учетный номер документа-->
+            <xs:element name="documentNumber" type="xs:string" minOccurs="0"/>
+            <!--
+            Дата документа.
+            Поддерживаемые форматы:
+            yyyy-MM-ddTHH:mm:ss, yyyy-MM-dd (dd.MM.yyyy не рекомендуется).
+            -->
+            <xs:element name="dateIncoming" type="xs:string" minOccurs="0"/>
+            <!--Номер счет-фактуры.-->
+            <xs:element name="invoice" type="xs:string" minOccurs="0"/>
+            <!--Склад. Если указан, то в каждой позиции накладной нужно указать этот же склад.-->
+            <xs:element name="defaultStore" type="xs:string" minOccurs="0"/>
+            <!--Поставщик-->
+            <xs:element name="supplier" type="xs:string" minOccurs="0"/>
+            <!--
+            Срок оплаты.
+            Поддерживаемые форматы:
+            yyyy-MM-ddTHH:mm:ss (dd.MM.yyyy не рекомендуется)
+            -->
+            <xs:element name="dueDate" type="xs:string" minOccurs="0"/>
+            <!--
+            Входящая дата внешнего документа в формате yyyy-MM-dd.
+            Если при импорте не указана, то берется из dateIncoming.
+            @since 7.6.1
+            -->
+            <xs:element name="incomingDate" type="xs:string" minOccurs="0"/>
+            <!--
+            false (по умолчанию): использовать переданные дату-время dateIncoming как есть.
+            true: использовать настройки проведения документов, заданные в подразделении:
+             * В режиме "текущее время" - дату и время из dateIncoming;
+             * "фиксированное время" или "время закрытия кассовой смены" - дату из dateIncoming, а время из настроек.
+            @since 5.2
+            -->
+            <xs:element name="useDefaultDocumentTime" type="xs:boolean" minOccurs="0" default="false"/>
+            <xs:element name="status" type="documentStatus" minOccurs="0"/>
+            <!--Входящий номер внешнего документа-->
+            <xs:element name="incomingDocumentNumber" type="xs:string" minOccurs="0"/>
+            <!--Сотрудник (поле "зачесть сотруднику" на форме накладной)-->
+            <xs:element name="employeePassToAccount" type="xs:string" minOccurs="0"/>
+            <!--Номер товарно-транспортной накладной-->
+            <xs:element name="transportInvoiceNumber" type="xs:string" minOccurs="0"/>
+            <!--
+            UUID связанной расходной накладной
+            (только чтение)
+            @since 5.4
+            -->
+            <xs:element name="linkedOutgoingInvoiceId" type="xs:string" minOccurs="0"/>
+             
+            <!--
+            Алгоритм распределения дополнительных расходов.
+            (только чтение)
+            @since 6.0
+            -->
+            <xs:element name="distributionAlgorithm" type="distributionAlgorithmType" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+ 
+    <!--Позиция документа-->
+    <xs:complexType name="incomingInvoiceItemDto">
+        <xs:sequence>
+            <!--
+            Является дополнительным расходом
+            (только чтение)
+            @since 6.0
+            -->
+            <xs:element name="isAdditionalExpense" type="xs:boolean" minOccurs="0" default="false"/>
+             <!--Количество товара в его основных единицах измерения-->
+            <xs:element name="amount" type="xs:decimal" minOccurs="0"/>
+            <!--Товар у поставщика (guid)-->
+            <xs:element name="supplierProduct" type="xs:string" minOccurs="0"/>
+            <!--Товар у поставщика (артикул). Можно задать вместо guid начиная с 5.0.-->
+            <xs:element name="supplierProductArticle" type="xs:string" minOccurs="0"/>
+            <!--Товар (guid). Хотя бы одно из полей должно быть заполнено: product или productArticle.-->
+            <xs:element name="product" type="xs:string" minOccurs="0"/>
+            <!--Товар (артикул). Можно задать вместо guid товара начиная с 5.0, guid имеет приоритет.-->
+            <xs:element name="productArticle" type="xs:string" minOccurs="0"/>
+            <!--Производитель/импортер. Должен содержаться в списке производителей/импортеров в карточке товара:
+            Товар - Дополнительная информация - Акогольная декларация - Производитель/Импортер-->
+            <xs:element name="producer" type="xs:string" minOccurs="0"/>
+            <!--Номер позиции в документе. Обязательное поле.-->
+            <xs:element name="num" type="xs:int" minOccurs="1"/>
+            <!--Фасовка (guid)-->
+            <xs:element name="containerId" type="xs:string" minOccurs="0"/>
+            <!--Базовая единица измерения (guid)-->
+            <xs:element name="amountUnit" type="xs:string" minOccurs="0"/>
+            <!--Вес единицы измерения-->
+            <!--!!! Не реализовано !!!-->
+            <xs:element name="actualUnitWeight" type="xs:decimal" minOccurs="0"/>
+            <!--
+            Cумма строки без учета скидки.
+            Как правило sum == amount * price / container + discountSum + vatSum
+             -->
+            <xs:element name="sum" type="xs:decimal" minOccurs="1"/>
+            <!--Cумма скидки-->
+            <!--!!! Не реализовано !!!-->
+            <xs:element name="discountSum" type="xs:decimal" minOccurs="0"/>
+            <!--
+            Величина процента НДС и сумма НДС для строки документа.
+            Если не задана сумма, она вычисляется по проценту.
+            Если не задан процент, он берется из карточки товара.
+            Нельзя задать только сумму, не задавая процент.
+            @since 5.0
+            -->
+            <xs:element name="vatPercent" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="vatSum" type="xs:decimal" minOccurs="0"/>
+            <!--Цена единицы измерения-->
+            <xs:element name="priceUnit" type="xs:string" minOccurs="0"/>
+            <!--Цена за ед.-->
+            <xs:element name="price" type="xs:decimal" minOccurs="0"/>
+            <!--
+            Цена без НДС за фасовку с учетом скидки
+            @since 6.2
+            -->
+            <xs:element name="priceWithoutVat" type="xs:decimal" minOccurs="0"/>
+            <!--Код-->
+            <!--!!! Не реализовано !!!-->
+            <xs:element name="code" type="xs:string" minOccurs="0"/>
+            <!--Склад-->
+            <xs:element name="store" type="xs:string" minOccurs="0"/>
+            <!--Номер государственной таможенной декларации-->
+            <xs:element name="customsDeclarationNumber" type="xs:string" minOccurs="0"/>
+            <!--Фактическое (подтвержденное) количество основных единиц товара-->
+            <xs:element name="actualAmount" type="xs:decimal" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+ 
+    <xs:simpleType name="documentStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NEW"/>
+            <xs:enumeration value="PROCESSED"/>
+            <xs:enumeration value="DELETED"/>
+        </xs:restriction>  
+    </xs:simpleType>
+     
+    <xs:simpleType name="distributionAlgorithmType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="DISTRIBUTION_BY_SUM"/>
+            <xs:enumeration value="DISTRIBUTION_BY_AMOUNT"/>
+            <xs:enumeration value="DISTRIBUTION_NOT_SPECIFIED"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
+  
+
+  Пример запроса и результат
+
+  Запрос
+
+  https://localhost:9080/resto/api/documents/export/incomingInvoice?key=491eca76-beed-845e-878c-9b05c97be0e2&from=2012-07-01&to=2012-07-02&supplierId=22A2A9D7-9D9C-48AD-BF99-83BF8CDE1938&supplierId=C5C6F00D-E1E5-4E3C-A4B8-BB677F470572
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<incomingInvoiceDtoes>
+    <document>
+        <id>575a43c7-85e0-4210-9c57-7a90efe37336</id>
+        <incomingDocumentNumber>16594</incomingDocumentNumber>
+        <incomingDate>2012-07-01T08:00:00</incomingDate>
+        <useDefaultDocumentTime>false</useDefaultDocumentTime>
+        <dueDate>2012-07-02T00:00:00</dueDate>
+        <supplier>c5c6f00d-e1e5-4e3c-a4b8-bb677f470572</supplier>
+        <defaultStore>1239d270-1bbe-f64f-b7ea-5f00518ef508</defaultStore>
+        <invoice/>
+        <documentNumber>1568</documentNumber>
+        <comment>Н</comment>
+        <status>PROCESSED</status>
+        <items>
+            <item>
+                <actualAmount>0.090000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00628</code>
+                <price>420.440000000</price>
+                <sum>37.840000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc</amountUnit>
+                <num>9</num>
+                <product>ddc8bb89-0892-45e5-b5d0-ce9cb3b25ff4</product>
+                <productArticle>00628</productArticle>
+                <amount>0.090000000</amount>
+            </item>
+            <item>
+                <actualAmount>24.000000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00361</code>
+                <price>50.700000000</price>
+                <sum>1216.800000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc</amountUnit>
+                <num>6</num>
+                <product>c1ebbf72-0a69-4919-bfe1-2fe30058b0b0</product>
+                <productArticle>00361</productArticle>
+                <amount>24.000000000</amount>
+            </item>
+            <item>
+                <actualAmount>3.200000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00632</code>
+                <price>118.500000000</price>
+                <sum>379.200000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc</amountUnit>
+                <num>12</num>
+                <product>0916900b-80d6-4a3b-8523-df020c5092d4</product>
+                <productArticle>00632</productArticle>
+                <amount>3.200000000</amount>
+            </item>
+            <item>
+                <actualAmount>4.300000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00620</code>
+                <price>43.900000000</price>
+                <sum>188.770000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc</amountUnit>
+                <num>14</num>
+                <product>93d42251-0225-4f15-890e-91f24b0ea80e</product>
+                <productArticle>00620</productArticle>
+                <amount>4.300000000</amount>
+            </item>
+            <item>
+                <actualAmount>1.180000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00225</code>
+                <price>53.400000000</price>
+                <sum>63.010000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc</amountUnit>
+                <num>1</num>
+                <product>cca71197-13ab-4a94-be43-84733ed988be</product>
+                <productArticle>00225</productArticle>
+                <amount>1.180000000</amount>
+            </item>
+            <item>
+                <actualAmount>18.000000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00365</code>
+                <price>34.900000000</price>
+                <sum>628.200000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc</amountUnit>
+                <num>7</num>
+                <product>3e5df84d-4087-4a0e-9e11-2500d27c4c32</product>
+                <productArticle>00365</productArticle>
+                <amount>18.000000000</amount>
+            </item>
+            <item>
+                <actualAmount>2.600000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00235</code>
+                <price>141.300000000</price>
+                <sum>367.380000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc</amountUnit>
+                <num>2</num>
+                <product>01eb23f7-0e23-4725-9cd9-563475202456</product>
+                <productArticle>00235</productArticle>
+                <amount>2.600000000</amount>
+            </item>
+            <item>
+                <actualAmount>3.550000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00243</code>
+                <price>70.000000000</price>
+                <sum>248.500000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc</amountUnit>
+                <num>8</num>
+                <product>c6156fcb-f39e-4ab5-b5e3-76f4d9d72e87</product>
+                <productArticle>00243</productArticle>
+                <amount>3.550000000</amount>
+            </item>
+            <item>
+                <actualAmount>1.590000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00629</code>
+                <price>94.200000000</price>
+                <sum>149.780000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc</amountUnit>
+                <num>13</num>
+                <product>f081b49b-4677-4a46-b650-2179d914f624</product>
+                <productArticle>00629</productArticle>
+                <amount>1.590000000</amount>
+            </item>
+            <item>
+                <actualAmount>6.000000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00360</code>
+                <price>49.700000000</price>
+                <sum>298.200000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc</amountUnit>
+                <num>5</num>
+                <product>f170eec2-8bc1-42a1-b719-d9d22580f65b</product>
+                <productArticle>00360</productArticle>
+                <amount>6.000000000</amount>
+            </item>
+            <item>
+                <actualAmount>1.850000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00233</code>
+                <price>113.000000000</price>
+                <sum>209.050000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc</amountUnit>
+                <num>4</num>
+                <product>178ff44a-29e0-41bc-896f-3caeeec9ca2d</product>
+                <productArticle>00233</productArticle>
+                <amount>1.850000000</amount>
+            </item>
+            <item>
+                <actualAmount>0.400000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00236</code>
+                <price>214.480000000</price>
+                <sum>85.790000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc</amountUnit>
+                <num>3</num>
+                <product>ff8cfc27-bae1-40bf-8281-1d0c9ff0b0f5</product>
+                <productArticle>00236</productArticle>
+                <amount>0.400000000</amount>
+            </item>
+            <item>
+                <actualAmount>0.440000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00625</code>
+                <price>76.590000000</price>
+                <sum>33.700000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc</amountUnit>
+                <num>11</num>
+                <product>4aefc3a1-7e99-480b-bfc5-7efd208d4fb6</product>
+                <productArticle>00625</productArticle>
+                <amount>0.440000000</amount>
+            </item>
+            <item>
+                <actualAmount>0.850000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00242</code>
+                <price>150.710000000</price>
+                <sum>128.100000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc</amountUnit>
+                <num>16</num>
+                <product>780dc3b7-49d9-4d39-b227-a1a4c86e6cbd</product>
+                <productArticle>00242</productArticle>
+                <amount>0.850000000</amount>
+            </item>
+            <item>
+                <actualAmount>0.680000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00251</code>
+                <price>113.000000000</price>
+                <sum>76.840000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc</amountUnit>
+                <num>10</num>
+                <product>887d28ba-02dd-4bcc-ae57-8102ff4e24e8</product>
+                <productArticle>00251</productArticle>
+                <amount>0.680000000</amount>
+            </item>
+            <item>
+                <actualAmount>7.300000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00640</code>
+                <price>48.600000000</price>
+                <sum>354.780000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc</amountUnit>
+                <num>15</num>
+                <product>cb28aa64-6a21-44ec-8260-99505dbab2d1</product>
+                <productArticle>00640</productArticle>
+                <amount>7.300000000</amount>
+            </item>
+            <item>
+                <actualAmount>15.000000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00280</code>
+                <price>54.200000000</price>
+                <sum>813.000000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>69859c74-db72-b006-cba5-326cf6f4fc6e</amountUnit>
+                <num>17</num>
+                <product>11a930a8-e281-4b65-959c-e93d89f5f9e9</product>
+                <productArticle>00280</productArticle>
+                <amount>15.000000000</amount>
+            </item>
+        </items>
+    </document>
+    <document>
+        <id>df700f01-410b-4713-9b52-875f6c17faf5</id>
+        <incomingDocumentNumber>56648</incomingDocumentNumber>
+        <incomingDate>2012-07-01T08:00:00</incomingDate>
+        <useDefaultDocumentTime>false</useDefaultDocumentTime>
+        <dueDate>2012-07-02T00:00:00</dueDate>
+        <supplier>22a2a9d7-9d9c-48ad-bf99-83bf8cde1938</supplier>
+        <defaultStore>1239d270-1bbe-f64f-b7ea-5f00518ef508</defaultStore>
+        <invoice/>
+        <documentNumber>1567</documentNumber>
+        <comment>Н</comment>
+        <status>PROCESSED</status>
+        <items>
+            <item>
+                <actualAmount>152.000000000</actualAmount>
+                <store>1239d270-1bbe-f64f-b7ea-5f00518ef508</store>
+                <code>00136</code>
+                <price>180.000000000</price>
+                <sum>1440.000000000</sum>
+                <vatPercent>0.000000000</vatPercent>
+                <vatSum>0.000000000</vatSum>
+                <discountSum>0.000000000</discountSum>
+                <amountUnit>69859c74-db72-b006-cba5-326cf6f4fc6e</amountUnit>
+                <containerId>49882ad2-5db3-4a03-a096-96bc47238c5a</containerId>
+                <num>1</num>
+                <product>305936f8-a7ea-447c-b2f9-64e0eb3d3867</product>
+                <productArticle>00136</productArticle>
+                <amount>152.000000000</amount>
+            </item>
+        </items>
+    </document>
+</incomingInvoiceDtoes>

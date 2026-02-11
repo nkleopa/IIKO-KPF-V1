@@ -1,0 +1,1457 @@
+Номенклатурные группы
+
+  
+
+    
+
+  
+Получение номенклатурных групп
+Параметры запроса
+Что в ответе
+Результат (Список ProductGroupDto)
+Пример запроса и результата
+Получение номенклатурных групп
+Тело запроса
+Что в ответе
+Импорт номенклатурной группы
+Параметры запроса
+Тело запроса
+Что в ответе
+Пример запроса и результата
+Редактирование номенклатурной группы
+Тело запроса
+Что в ответе
+Пример запроса и результата
+Удаление номенклатурной группы
+Тело запроса
+Что в ответе
+Результат
+Пример запроса и результата
+Восстановление номенклатурной группы
+Параметры запроса
+Тело запроса
+Что в ответе 
+
+  
+  
+
+  
+
+   Получение номенклатурных групп
+
+Версия iiko: 6.2
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/products/group/list
+      
+    
+  
+
+Параметры запроса
+
+  
+    
+
+                          Параметр                
+      Версия iiko
+                    Тип, формат                
+                          Описание                
+    
+  
+  
+    
+
+      	         includeDeleted       
+      	6.2
+	         Boolean       
+      	         Включать ли в результат удаленные элементы. По умолчанию false.       
+    
+    
+
+      	         ids       
+      	6.2
+	         List<UUID>       
+      	         Возвращаемые элементы должны иметь id из этого списка.       
+    
+    
+
+      	         parentIds       
+      	6.2
+	         List<UUID>       
+      	         Возвращаемые элементы должны иметь родительскую группу с id из этого списка.       
+    
+  
+	revisionFrom
+	6.4
+	-1, число
+	
+Номер ревизии, начиная с которой  необходимо отфильтровать сущности. Не включающий саму ревизию, т.е.  ревизия объекта > revisionFrom.
+По умолчанию (неревизионный запрос) revisionFrom = -1
+  
+	nums
+	6.2.3
+	List<String>
+	Возвращаемые элементы должны иметь артикул из этого списка.
+
+  
+	codes
+	6.2.3
+	List<String>
+	Возвращаемые элементы должны иметь код из этого списка.
+
+  
+
+Что в ответе
+
+         Список номенклатурных групп      
+
+  
+
+   Результат (Список ProductGroupDto) 
+
+  
+    
+
+                          Параметр                
+                          Тип, формат                
+                          Описание                
+    
+  
+  
+    
+
+      	         id       
+      	         UUID       
+      	         UUID номенклатурной группы.       
+    
+    
+
+      	         deleted       
+      	         Boolean       
+      	         Удален.       
+    
+    
+
+      	         name       
+      	         String       
+      	         Имя.       
+    
+    
+
+      	         description       
+      	         String       
+      	         Описание.       
+    
+    
+
+      	         num       
+      	         String       
+      	
+        
+           Артикул, используется при печати документов (тех. карт и т.д.).           
+         
+      
+    
+    
+
+      	         code       
+      	         String       
+      	
+        
+           Код продукта. Используется для быстрого поиска продукта           
+           в экране редактирования заказа.         
+      
+    
+    
+
+      	         parent       
+      	         UUID       
+      	
+        
+           UUID родительской группы.            
+           Если группа принадлежит корневой группе, то parent == null.         
+      
+    
+    
+
+      	         modifiers       
+      	         List<ChoiceBindingDto>       
+      	         Moдификаторы. (у групп всегда отсутствуют).       
+    
+    
+
+      	         taxCategory       
+      	         UUID       
+      	         UUID налоговой категории.       
+    
+    
+
+      	         category       
+      	         UUID       
+      	         UUID пользовательской категории.       
+    
+    
+
+      	         accountingCategory       
+      	         UUID       
+      	         UUID бухгалтерской категории.       
+    
+    
+
+      	         color       
+      	         RGBColorDto       
+      	         Цвет фона оформления кнопки в iikoFront.       
+    
+    
+
+      	         fontColor       
+      	         RGBColorDto       
+      	         Цвет шрифта кнопки в iikoFront.       
+    
+    
+
+      	         frontImageId       
+      	         UUID       
+      	         UUID изображения для отображения в iikoFront.API изображений.       
+    
+    
+
+      	         position       
+      	         Integer       
+      	         Позиция в меню.       
+    
+    
+
+      	         visibilityFilter 
+        
+      
+      	         DepartmentFilterDto       
+      	
+        
+          
+            
+
+              
+                
+                   Параметр                 
+              
+              
+                
+                   Тип, формат                 
+              
+              
+                
+                   Описание                 
+              
+            
+          
+          
+            
+
+              	                 departments               
+              	                 List<UUID>               
+              	                 Список UUID подразделений               
+            
+            
+
+              	                 excluding               
+              	                 Boolean               
+              	                 Включающий или исключающий фильтр               
+            
+          
+        
+      
+    
+  
+
+   Пример запроса и результата
+
+Запрос
+
+   https://localhost:8080/resto/api/v2/entities/products/group/list?includeDeleted=false 
+
+    
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	[ 
+   { 
+      "id":"b48f8846-2395-44bb-938d-1e208b753e6d",
+      "deleted":false,
+      "name":"Группа модификаторов с карт",
+      "description":"",
+      "num":"00093",
+      "code":"98",
+      "parent":null,
+      "modifiers":[],
+      "taxCategory":null,
+      "category":"29ea3800-550b-9b01-015d-46c07c208cdf",
+      "accountingCategory":"8bc08505-c81d-075d-8572-af7b636d049b",
+      "color":{ 
+         "red":119,
+         "green":119,
+         "blue":119
+      },
+      "fontColor":{ 
+         "red":0,
+         "green":0,
+         "blue":0
+      },
+      "frontImageId":"67ae50d5-d1b1-4afb-9d04-469aa49a2e05",
+      "position":null,
+      "visibilityFilter":{
+        "departments":[
+          "a90efd2e-eb0c-4588-8ab1-a56248f129ef"
+        ],
+        "excluding": false
+      }
+    },
+   { 
+      "id":"9a57844b-cb39-4366-8fd8-423c18e1fef2",
+      "deleted":false,
+      "name":"Удалить",
+      "description":"",
+      "num":"0094",
+      "code":"100",
+      "parent":"cc455ea0-ad9a-4c28-a350-4d383fb4b71b",
+      "modifiers":[ 
+ 
+      ],
+      "taxCategory":null,
+      "category":null,
+      "accountingCategory":"8bc08505-c81d-075d-8572-af7b636d049b",
+      "color":{ 
+         "red":119,
+         "green":119,
+         "blue":119
+      },
+      "fontColor":{ 
+         "red":255,
+         "green":255,
+         "blue":255
+      },
+      "frontImageId":null,
+      "position":null,
+      "visibilityFilter":null
+   },
+   { 
+      "id":"cc455ea0-ad9a-4c28-a350-4d383fb4b71b",
+      "deleted":false,
+      "name":"Модификаторы",
+      "description":"",
+      "num":"0004",
+      "code":"26",
+      "parent":null,
+      "modifiers":[],
+      "taxCategory":null,
+      "category":null,
+      "accountingCategory":"8bc08505-c81d-075d-8572-af7b636d049b",
+      "color":{ 
+         "red":119,
+         "green":119,
+         "blue":119
+      },
+      "fontColor":{ 
+         "red":255,
+         "green":255,
+         "blue":255
+      },
+      "frontImageId":null,
+      "position":null,
+      "visibilityFilter":null
+   },
+   { 
+      "id":"1f77c821-f206-407e-abdf-5469c11d5061",
+      "deleted":false,
+      "name":"Цикл",
+      "description":"",
+      "num":"0003",
+      "code":"25",
+      "parent":null,
+      "modifiers":[],
+      "taxCategory":null,
+      "category":null,
+      "accountingCategory":"8bc08505-c81d-075d-8572-af7b636d049b",
+      "color":{ 
+         "red":119,
+         "green":119,
+         "blue":119
+      },
+      "fontColor":{ 
+         "red":255,
+         "green":255,
+         "blue":255
+      },
+      "frontImageId":null,
+      "position":null,
+      "visibilityFilter":null
+    }
+]
+  
+
+Получение номенклатурных групп 
+
+Версия iiko: 6.4
+  
+    
+	
+        
+      	https://host:port/resto/api/v2/entities/products/group/list
+    
+  
+
+Тело запроса
+                                             
+                                                               Поле                                                                                                       Версия iiko                                                                                                       Тип данных                                                                                                       Значение                                                                                                        
+                   	                     includeDeleted                   	                     6.4                   	                     Boolean                                      	                     Включать ли в результат удаленные элементы. По умолчанию false..                                                     
+                   	                     revisionFrom                                      	                                          6.4                   	                     -1, число                                      	                     
+Номер ревизии, начиная с которой  необходимо отфильтровать сущности. Не включающий саму ревизию, т.е.  ревизия объекта > revisionFrom.
+По умолчанию (неревизионный запрос) revisionFrom = -1.                                                     
+                   	                     ids                                      	                     6.4
+                   	                     List<UUID>                                      	                     Возвращаемые элементы должны иметь id из этого списка.                                  
+                   	                     nums                                      	                                          6.4                                      	                     List<String>                                      	                     Возвращаемые элементы должны иметь артикул из этого списка.                                                     
+                   	                     codes                                      	                                          6.4                                      	                     List<String>                   	                     Возвращаемые элементы должны иметь код из этого списка.                                  
+                   	                     parentIds                                      	                                          6.4                                      	                     List<UUID>                                      	                     Возвращаемые элементы должны иметь родительскую группу с id из этого списка.                                                        
+Что в ответе
+
+  
+
+Список номенклатурных групп
+Импорт номенклатурной группы
+
+  
+Версия iiko: 6.2
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/products/group/save
+    
+  
+
+Параметры запроса
+
+Параметр                                                       Тип, формат                                                       Описание                                             
+         	           generateNomenclatureCode                  	           Boolean         	           
+Надо ли генерировать артикул номенклатурной группы.
+Необязательный. По умолчанию true.              
+         	           generateFastCode                  	           Boolean         	           
+Надо ли генерировать код быстрого поиска номенклатурной группы.
+Необязательный. По умолчанию true.              
+Тело запроса
+
+            
+              
+                
+
+                                                              Поле                                        
+                                                              Версия iiko                                        
+                                                              Тип данных                                        
+                                                              Значение                                        
+                
+              
+              
+                
+
+                  	                     deleted                   
+                  	                     6.2                   
+                  	                     Boolean                   
+                  	                     Удален.                   
+                
+                
+
+                  	                     name                   
+                  	                     6.2                   
+                  	                     String                   
+                  	                     Имя.                   
+                
+                
+
+                  	                     description                   
+                  	                     6.2                   
+                  	                     String                   
+                  	                     Описание.                   
+                
+                
+
+                  	                     parent                   
+                  	                     6.2                   
+                  	                     UUID                   
+                  	                     UUID родительской группы продукта.                      
+                     Если продукт принадлежит корневой группе, то parent == null.                   
+                
+                
+
+                  	                     taxCategory                   
+                  	                     6.2                   
+                  	                     UUID                   
+                  	                     UUID налоговой категории.                   
+                
+                
+
+                  	                     category                   
+                  	                     6.2                   
+                  	                     UUID                   
+                  	                     UUID пользовательской категории.                   
+                
+                
+
+                  	                     color                   
+                  	                     6.2                   
+                  	                     RGBColorDto                   
+                  	                     Цвет фона оформления кнопки в iikoFront.                   
+                
+                
+
+                  	                     fontColor                   
+                  	                     6.2                   
+                  	                     RGBColorDto                   
+                  	                     Цвет шрифта кнопки в iikoFront.                   
+                
+                
+
+                  	                     frontImageId                   
+                  	                     6.2                   
+                  	                     UUID                   
+                  	                     UUID изображения для отображения в iikoFront.                   
+                
+                
+
+                  	                     position                   
+                  	                     6.2                   
+                  	                     Integer                   
+                  	                     Позиция в меню.
+                
+              
+            
+        
+Что в ответе
+
+  
+Содержит Json структуру результата импорта, которая состоит из результата валидации импортируемой группы             
+             и самой группы. Результат валидации состоит из ошибок. Ошибка состоит из кода ошибки и текста ошибки. 
+
+  
+
+ 
+
+  
+    
+      
+
+        
+          
+             Поле           
+        
+        
+          
+             Тип данных           
+        
+        
+          
+             Значение           
+        
+      
+    
+    
+      
+
+        	           result         
+        	           Enum:           
+           "SUCCESS",           
+           "ERROR"         
+        	           Результата операции.         
+      
+      
+
+        	           errors         
+        	           List<ErrorDto>         
+        	
+          
+             Список ошибок, не позволивших сделать успешный импорт документа.           
+        
+      
+      
+
+        	           response         
+        	           ProducGrouptDto         
+        	           В случае успешного импорта - сохраненный объект,           
+           в противном случае импортируемый объект.         
+      
+    
+  
+   Пример запроса и результата
+
+Запрос
+
+   https://localhost:8080/resto/api/v2/entities/products/save 
+
+Результат
+
+	
+Copy Code
+JSON
+	{ 
+   "name":"Группа 1",
+   "description":"тест",
+   "parent":"b48f8846-2395-44bb-938d-1e208b753e6d",
+   "taxCategory":null,
+   "category":null,
+   "color":{ 
+      "red":170,
+      "green":170,
+      "blue":170
+   },
+   "fontColor":{ 
+      "red":0,
+      "green":0,
+      "blue":0
+   },
+   "frontImageId":"67ae50d5-d1b1-4afb-9d04-469aa49a2e05",
+   "position":null
+}
+
+  
+
+    [+]
+    
+      Пример успешного результата вызова API: entities/products/group/save
+    
+  
+  
+
+    [-]
+    
+      Пример успешного результата вызова API: entities/products/group/save
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{ 
+   "result":"SUCCESS",
+   "errors":null,
+   "response":{ 
+      "id":"68569fd5-17bc-382b-0165-0a151ab6011e",
+      "deleted":false,
+      "name":"Группа 1",
+      "description":"тест",
+      "num":"0095",
+      "code":"104",
+      "parent":"b48f8846-2395-44bb-938d-1e208b753e6d",
+      "modifiers":[ 
+ 
+      ],
+      "taxCategory":null,
+      "category":null,
+      "accountingCategory":"8bc08505-c81d-075d-8572-af7b636d049b",
+      "color":{ 
+         "red":170,
+         "green":170,
+         "blue":170
+      },
+      "fontColor":{ 
+         "red":0,
+         "green":0,
+         "blue":0
+      },
+      "frontImageId":"67ae50d5-d1b1-4afb-9d04-469aa49a2e05",
+      "position":null
+   }
+}
+  
+
+  
+
+    [+]
+    
+      Пример НЕ успешного результата вызова API: entities/products/group/save
+    
+  
+  
+
+    [-]
+    
+      Пример НЕ успешного результата вызова API: entities/products/group/save
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{ 
+   "result":"ERROR",
+   "errors":[ 
+      { 
+         "value":"182f2d4c-d31b-4c29-99e9-a02eb5bdbc50",
+         "code":"PRODUCT_GROUP_DELETED"
+      }
+   ],
+   "response":{ 
+      "id":null,
+      "deleted":false,
+      "name":"Группа 2",
+      "description":"withError",
+      "num":null,
+      "code":"",
+      "parent":"182f2d4c-d31b-4c29-99e9-a02eb5bdbc50",
+      "modifiers":[],
+      "taxCategory":null,
+      "category":null,
+      "accountingCategory":null,
+      "color":{ 
+         "red":170,
+         "green":170,
+         "blue":170
+      },
+      "fontColor":{ 
+         "red":0,
+         "green":0,
+         "blue":0
+      },
+      "frontImageId":"67ae50d5-d1b1-4afb-9d04-469aa49a2e05",
+      "position":null
+   }
+}
+  
+
+   Редактирование номенклатурной группы
+
+Версия iiko: 6.2
+  
+    
+	
+        
+      	
+                 https://host:port/resto/api/v2/entities/products/group/update
+      
+    
+  
+
+Параметры запроса
+Параметр                                                       Тип, формат                                                       Описание                                             
+         	           overrideFastCode         	           Boolean         	           
+Перегенерировать ли код быстрого поиска номенклатурной группы.
+Необязательный. По умолчанию false              
+         	           overrideNomenclatureCode                  	           Boolean                  	           
+Перегенерировать ли артикул номенклатурной группы.
+Необязательный. По умолчанию false.              
+Тело запроса
+
+        
+Аналогично импорту только с id редактируемого элемента:
+         
+        
+          
+            
+
+              
+                
+                   Поле                 
+              
+              
+                
+                   Тип данных                 
+              
+              
+                
+                   Значение                 
+              
+            
+          
+          
+            
+
+              	                 id               
+              	                 UUID               
+              	                 UUID редактируемой номенклатурной группы
+            
+          
+        
+      
+   
+	
+Copy Code
+JSON
+	{ 
+   "id":"68569fd5-17bc-382b-0165-0a151ab6011e",
+   "name":"Группа 1",
+   "description":"тестРедактировали",
+   "parent":"b48f8846-2395-44bb-938d-1e208b753e6d",
+   "taxCategory":null,
+   "category":null,
+   "color":{ 
+      "red":170,
+      "green":170,
+      "blue":170
+   },
+   "fontColor":{ 
+      "red":100,
+      "green":0,
+      "blue":0
+   },
+   "frontImageId":"67ae50d5-d1b1-4afb-9d04-469aa49a2e05",
+   "position":null
+}   
+ 
+
+   Что в ответе
+
+  
+
+Содержит Json структуру результата изменений, которая состоит из результата валидации измененной группы             
+             и самой группы. Результат валидации состоит из ошибок. Ошибка состоит из кода ошибки и текста ошибки. 
+Пример запроса и результата
+
+Запрос
+
+https://localhost:8080/resto/api/v2/entities/products/update?overrideFastCode=false&overrideNomenclatureCode=false 
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{ 
+   "id":"68569fd5-17bc-382b-0165-0a151ab6011e",
+   "name":"Группа 1",
+   "description":"тестРедактировали",
+   "parent":"b48f8846-2395-44bb-938d-1e208b753e6d",
+   "taxCategory":null,
+   "category":null,
+   "color":{ 
+      "red":170,
+      "green":170,
+      "blue":170
+   },
+   "fontColor":{ 
+      "red":100,
+      "green":0,
+      "blue":0
+   },
+   "frontImageId":"67ae50d5-d1b1-4afb-9d04-469aa49a2e05",
+   "position":null
+}
+  
+
+  
+
+    [+]
+    
+      Пример успешного результата вызова API: entities/products/update
+    
+  
+  
+
+    [-]
+    
+      Пример успешного результата вызова API: entities/products/update
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{ 
+   "result":"SUCCESS",
+   "errors":null,
+   "response":{ 
+      "id":"68569fd5-17bc-382b-0165-0a151ab6011e",
+      "deleted":false,
+      "name":"Группа 1",
+      "description":"тестРедактировали",
+      "num":"0095",
+      "code":"104",
+      "parent":"b48f8846-2395-44bb-938d-1e208b753e6d",
+      "modifiers":[ 
+ 
+      ],
+      "taxCategory":null,
+      "category":null,
+      "accountingCategory":"8bc08505-c81d-075d-8572-af7b636d049b",
+      "color":{ 
+         "red":170,
+         "green":170,
+         "blue":170
+      },
+      "fontColor":{ 
+         "red":100,
+         "green":0,
+         "blue":0
+      },
+      "frontImageId":"67ae50d5-d1b1-4afb-9d04-469aa49a2e05",
+      "position":null
+   }
+}
+  
+
+  
+
+    [+]
+    
+      Пример НЕ успешного результата вызова API: entities/products/update
+    
+  
+  
+
+    [-]
+    
+      Пример НЕ успешного результата вызова API: entities/products/update
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{ 
+   "result":"ERROR",
+   "errors":[ 
+      { 
+         "value":"182f2d4c-d31b-4c29-99e9-a02eb5bdbc50",
+         "code":"PRODUCT_GROUP_DELETED"
+      }
+   ],
+   "response":{ 
+      "id":"68569fd5-17bc-382b-0165-0a151ab6011e",
+      "deleted":false,
+      "name":"Группа 1",
+      "description":"тестРедактировали",
+      "num":null,
+      "code":"",
+      "parent":"182f2d4c-d31b-4c29-99e9-a02eb5bdbc50",
+      "modifiers":[ 
+ 
+      ],
+      "taxCategory":null,
+      "category":null,
+      "accountingCategory":null,
+      "color":{ 
+         "red":170,
+         "green":170,
+         "blue":170
+      },
+      "fontColor":{ 
+         "red":100,
+         "green":0,
+         "blue":0
+      },
+      "frontImageId":"67ae50d5-d1b1-4afb-9d04-469aa49a2e05",
+      "position":null
+   }
+}
+  
+
+   Удаление номенклатурной группы
+
+  
+Версия iiko: 6.2
+  
+    
+	
+        
+      	
+                          https://host:port/resto/api/v2/entities/products/group/delete      
+      
+    
+  
+
+Тело запроса
+
+          
+ProductsAndGroupsDto<IdListDto IdListDto>           
+            
+              
+                
+
+                                                              Поле                                        
+                                                              Тип данных                                        
+                                                              Значение                                        
+                
+              
+              
+                
+
+                  	                     products                   
+                  	                     IdListDto                   
+                  	                     Список UUID продуктов, которые нужно удалить.                   
+                
+                
+
+                  	                     productGroups                   
+                  	                     IdListDto                   
+                  	                     Список UUID групп, которые нужно удалить.
+                
+              
+            
+        
+
+	
+Copy Code
+JSON
+	{ 
+   "products":{ 
+      "items":[ 
+         { 
+            "id":"883CB6A8-621D-4BFB-8595-403E41BE62E8"
+         },
+         { 
+            "id":"6E1ECAD4-E6A8-4887-B835-9639DACB7387"
+         }
+      ]
+   },
+   "productGroups":{ 
+      "items":[ 
+         { 
+            "id":"e10037a7-7e1f-4296-9e2c-a2c9ac551711"
+         },
+         { 
+            "id":"cc455ea0-ad9a-4c28-a350-4d383fb4b71b"
+         }
+      ]
+   }
+}
+
+   Что в ответе
+
+Содержит Json структуру результата удаления. Нельзя удалить уже удаленные объекты. Так же нельзя удалить группу без удаления дочерних элементов. 
+Результат 
+
+  
+    
+      
+
+                                Поле                    
+                                Тип данных                    
+                                Значение                    
+      
+    
+    
+      
+
+        	           result         
+        	
+          
+             Enum: "SUCCESS", "ERROR"           
+        
+        	           Результат операции.         
+      
+      
+
+        	           errors         
+        	           List<ErrorDto>         
+        	           Список ошибок, не позволивших сделать успешный импорт.         
+      
+      
+
+        	           response         
+        	           ProductsAndGroupsDto<Collection<ProductDto>, Collection<ProductGroupDto>>         
+        	
+          
+             В случае успешного удаления - списки удаленных объектов :           
+            
+              
+                
+
+                                                              Поле                                        
+                                                              Тип данных                                        
+                                                              Значение                                        
+                
+              
+              
+                
+
+                  	                     products                   
+                  	                     Collection<ProductDto>                   
+                  	                     Список продуктов, которые удалили.                   
+                
+                
+
+                  	                     productGroups                   
+                  	                    Collection<ProductGroupDto>                   
+                  	                     Список групп, которые удалили.                   
+                
+              
+            
+          
+             в противном случае ошибка с описанием причины.           
+        
+      
+    
+  
+   Пример запроса и результата
+
+Запрос
+
+    https://localhost:8080/resto/api/v2/entities/products/group/delete 
+
+Результат
+
+	
+Copy Code
+JSON
+	{ 
+   "products":{ 
+      "items":[ 
+         { 
+            "id":"883CB6A8-621D-4BFB-8595-403E41BE62E8"
+         },
+         { 
+            "id":"6E1ECAD4-E6A8-4887-B835-9639DACB7387"
+         }
+      ]
+   },
+   "productGroups":{ 
+      "items":[ 
+         { 
+            "id":"e10037a7-7e1f-4296-9e2c-a2c9ac551711"
+         },
+         { 
+            "id":"cc455ea0-ad9a-4c28-a350-4d383fb4b71b"
+         }
+      ]
+   }
+}
+
+  
+
+    [+]
+    
+      Пример успешного результата вызова API: entities/products/group/delete 
+    
+  
+  
+
+    [-]
+    
+      Пример успешного результата вызова API: entities/products/group/delete 
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{ 
+   "result":"SUCCESS",
+   "errors":null,
+   "response":{ 
+      "products":[ 
+         { 
+            "id":"883cb6a8-621d-4bfb-8595-403e41be62e8",
+            "deleted":true,
+            "name":"banana_1",
+            "description":"tovar_1",
+            "num":"00057",
+            "code":"62",
+            "parent":"e10037a7-7e1f-4296-9e2c-a2c9ac551711",
+            "modifiers":[ 
+               { 
+                  "modifier":"cc455ea0-ad9a-4c28-a350-4d383fb4b71b",
+                  "defaultAmount":0,
+                  "freeOfChargeAmount":12,
+                  "minimumAmount":12,
+                  "maximumAmount":24,
+                  "hideIfDefaultAmount":false,
+                  "required":true,
+                  "childModifiersHaveMinMaxRestrictions":true,
+                  "splittable":false,
+                  "childModifiers":[ 
+                     { 
+                        "modifier":"70936cd4-474d-4b5f-b9bc-ac2799bfc137",
+                        "defaultAmount":7,
+                        "freeOfChargeAmount":12,
+                        "minimumAmount":12,
+                        "maximumAmount":24,
+                        "hideIfDefaultAmount":true,
+                        "required":false,
+                        "childModifiersHaveMinMaxRestrictions":false,
+                        "splittable":false,
+                        "childModifiers":null
+                     },
+                     { 
+                        "modifier":"69ef9bd4-540d-4e0b-a65d-c4c6b7a6eb49",
+                        "defaultAmount":1,
+                        "freeOfChargeAmount":12,
+                        "minimumAmount":12,
+                        "maximumAmount":24,
+                        "hideIfDefaultAmount":true,
+                        "required":false,
+                        "childModifiersHaveMinMaxRestrictions":false,
+                        "splittable":false,
+                        "childModifiers":null
+                     },
+                     { 
+                        "modifier":"f5e3a639-abfe-4d91-ab28-143339b9a2c6",
+                        "defaultAmount":0,
+                        "freeOfChargeAmount":12,
+                        "minimumAmount":12,
+                        "maximumAmount":24,
+                        "hideIfDefaultAmount":false,
+                        "required":false,
+                        "childModifiersHaveMinMaxRestrictions":false,
+                        "splittable":false,
+                        "childModifiers":null
+                     }
+                  ]
+               },
+               { 
+                  "modifier":"b48f8846-2395-44bb-938d-1e208b753e6d",
+                  "defaultAmount":0,
+                  "freeOfChargeAmount":0,
+                  "minimumAmount":0,
+                  "maximumAmount":1,
+                  "hideIfDefaultAmount":false,
+                  "required":true,
+                  "childModifiersHaveMinMaxRestrictions":true,
+                  "splittable":false,
+                  "childModifiers":[ 
+                     { 
+                        "modifier":"9a153953-b025-4723-8130-00ce2ef0d2df",
+                        "defaultAmount":0,
+                        "freeOfChargeAmount":0,
+                        "minimumAmount":0,
+                        "maximumAmount":1,
+                        "hideIfDefaultAmount":false,
+                        "required":false,
+                        "childModifiersHaveMinMaxRestrictions":false,
+                        "splittable":false,
+                        "childModifiers":null
+                     }
+                  ]
+               },
+               { 
+                  "modifier":"cbaa0430-0599-4499-b766-5bbddf7826aa",
+                  "defaultAmount":0,
+                  "freeOfChargeAmount":2,
+                  "minimumAmount":2,
+                  "maximumAmount":2,
+                  "hideIfDefaultAmount":false,
+                  "required":false,
+                  "childModifiersHaveMinMaxRestrictions":false,
+                  "splittable":false,
+                  "childModifiers":null
+               }
+            ],
+            "taxCategory":null,
+            "category":"c9778ce3-77e9-a304-0164-f5981c0d1d9b",
+            "accountingCategory":"8bc08505-c81d-075d-8572-af7b636d049b",
+            "color":{ 
+               "red":170,
+               "green":170,
+               "blue":170
+            },
+            "fontColor":{ 
+               "red":0,
+               "green":0,
+               "blue":0
+            },
+            "frontImageId":"ffc342a9-eac7-4e22-978c-6ebe8fd7d749",
+            "position":null,
+            "mainUnit":"cd19b5ea-1b32-a6e5-1df7-5d2784a0549a",
+            "excludedSections":null,
+            "defaultSalePrice":1,
+            "placeType":"0f43ad20-b533-408a-a287-d49df4908ed6",
+            "defaultIncludedInMenu":true,
+            "type":"GOODS",
+            "unitWeight":0,
+            "unitCapacity":0,
+            "notInStoreMovement":false
+         },
+         { 
+            "id":"6e1ecad4-e6a8-4887-b835-9639dacb7387",
+            "deleted":true,
+            "name":"Модификатор1",
+            "description":"",
+            "num":"00087",
+            "code":"93",
+            "parent":"21ce6d98-8229-4cdd-a0ac-9f0c99a6347f",
+            "modifiers":[ 
+ 
+            ],
+            "taxCategory":null,
+            "category":null,
+            "accountingCategory":"8bc08505-c81d-075d-8572-af7b636d049b",
+            "color":{ 
+               "red":170,
+               "green":170,
+               "blue":170
+            },
+            "fontColor":{ 
+               "red":0,
+               "green":0,
+               "blue":0
+            },
+            "frontImageId":"828038fd-26e4-4566-8bee-c994d6f8d309",
+            "position":null,
+            "mainUnit":"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc",
+            "excludedSections":null,
+            "defaultSalePrice":0,
+            "placeType":null,
+            "defaultIncludedInMenu":false,
+            "type":"MODIFIER",
+            "unitWeight":1,
+            "unitCapacity":0,
+            "notInStoreMovement":false
+         }
+      ],
+      "productGroups":[ 
+         { 
+            "id":"e10037a7-7e1f-4296-9e2c-a2c9ac551711",
+            "deleted":true,
+            "name":"ВнутрМодификаторы",
+            "description":"",
+            "num":"0008",
+            "code":"97",
+            "parent":"cc455ea0-ad9a-4c28-a350-4d383fb4b71b",
+            "modifiers":[ 
+ 
+            ],
+            "taxCategory":null,
+            "category":null,
+            "accountingCategory":"8bc08505-c81d-075d-8572-af7b636d049b",
+            "color":{ 
+               "red":119,
+               "green":119,
+               "blue":119
+            },
+            "fontColor":{ 
+               "red":255,
+               "green":255,
+               "blue":255
+            },
+            "frontImageId":null,
+            "position":null
+         }
+      ]
+   }
+}
+  
+
+  
+
+    [+]
+    
+      Пример НЕ успешного результата вызова API: entities/products/delete
+    
+  
+  
+
+    [-]
+    
+      Пример НЕ успешного результата вызова API: entities/products/delete
+    
+  
+  
+
+     
+   Could not delete ProductGroup without deleting child groups and child products.   
+   ProductGroups should be deleted too: [Удалить (PRODUCTS)].   
+   Products should be deleted too: [Соус грибной (MODIFIER), Соус барбекю (GOODS), М_Соус барбекю (MODIFIER), Соус сырный (MODIFIER)]. 
+
+  
+
+  
+   Восстановление номенклатурной группы
+
+  
+Версия iiko: 6.2
+  
+    
+	
+        
+      	
+                                   https://host:port/resto/api/v2/entities/products/group/restore            
+      
+    
+  
+
+Параметры запроса
+
+Параметр                              Версия iiko
+                         Тип, формат                                                       Описание                                             
+         	           overrideNomenclatureCode                  	6.4
+	           Boolean         	           
+Если у восстанавливаемого группы артикул совпадает с одним из текущих  и параметр указан равным true, то у восстанавливаемого группы будет  сгенерирован новый артикул.
+Необязательный. По умолчанию false.
+Тело запроса
+
+          
+ProductsAndGroupsDto<IdListDto IdListDto>           
+            
+              
+                
+
+                                                              Поле                                        
+                                                              Тип данных                                        
+                                                              Значение                                        
+                
+              
+              
+                
+
+                  	                     products                   
+                  	                     IdListDto                   
+                  	                     Список UUID продуктов, которые нужно удалить.                   
+                
+                
+
+                  	                     productGroups                   
+                  	                     IdListDto                   
+                  	                     Список UUID групп, которые нужно удалить.
+                
+              
+            
+        
+Что в ответе
+
+  
+
+Содержит Json структуру результата восстановления. Нельзя восстановить НЕ удаленные объекты.           
+           Так же нельзя восстановить группу без восстановления родительской группы, если та удалена.

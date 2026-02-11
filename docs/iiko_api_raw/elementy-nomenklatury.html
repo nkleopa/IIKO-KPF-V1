@@ -1,0 +1,921 @@
+<!DOCTYPE html><html lang="ru-RU" dir="ltr"><head><style type="text/css">.ArticleViewer_searchKeywords{background-color: yellow !important;}body{overflow:hidden;}</style>
+<link rel="canonical" href="/articles/api-documentations/elementy-nomenklatury"/>
+<title>Элементы номенклатуры</title><script type="text/javascript">//<!--
+var imgPopupTexts={openInNewWindowText: 'Открыть в новом окне', closeText: 'Закрыть'};var isArticlesNavViaMessage=true;var articleTitleText='Элементы номенклатуры';
+//--></script><link rel="stylesheet" type="text/css" href="/resources/Styles/api-documentations/NewStyle.css"/><link rel="stylesheet" type="text/css" href="/resources/Styles/api-documentations/Projects2.css"/><link rel="stylesheet" type="text/css" href="/resources/Styles/api-documentations/NewStyle1.css"/><link rel="stylesheet" type="text/css" href="/style-bundles/article-published.css?v=1.0.9482.29209"/><script src="/resources/Scripts/api-documentations/Script2.js" type="text/javascript"></script><script src="/resources/Scripts/api-documentations/highlight.pack2.js" type="text/javascript"></script><script src="/script-bundles/article-published.js?v=1.0.9482.29209" type="text/javascript"></script><meta charset="utf-8"><meta http-equiv="Content-Type" content="text/html;charset=utf-8"></head><body><span id="__clhTop"></span><!-- используется для Sidebar -->
+
+  <div class="sidebar">
+    <p>
+  <ul class="CHMiniToc"><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/elementy-nomenklatury/a/h2__2122965202" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h2__2122965202&#39;,this);">Получение элементов номенклатуры</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3__998506674" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__998506674&#39;,this);">Параметры запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3_501454233" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3_501454233&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3_1561844723" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3_1561844723&#39;,this);">Пример запроса и результата</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/elementy-nomenklatury/a/v2.APIимпортаноменклатуры-Получениеэлементовноменклатуры(POST)" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/v2.APIимпортаноменклатуры-Получениеэлементовноменклатуры(POST)&#39;,this);">Получение элементов номенклатуры</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3_1150399349" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3_1150399349&#39;,this);">Тело запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3__910896685" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__910896685&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/elementy-nomenklatury/a/h2_26989340" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h2_26989340&#39;,this);">Импорт элемента номенклатуры</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3__1704918338" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__1704918338&#39;,this);">Параметры запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3__1933026233" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__1933026233&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3__1647466043" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__1647466043&#39;,this);">Пример запроса и результата</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/elementy-nomenklatury/a/h2__1144036084" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h2__1144036084&#39;,this);">Редактирование элемента номенклатуры</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3__1491948775" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__1491948775&#39;,this);">Параметры запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3__87828366" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__87828366&#39;,this);">Тело запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3_871739065" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3_871739065&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3_710210636" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3_710210636&#39;,this);">Примеры запроса и результата</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/elementy-nomenklatury/a/h2_1831563864" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h2_1831563864&#39;,this);">Удаление элементов номенклатуры</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3__1673974090" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__1673974090&#39;,this);">Тело запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3__1181879789" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__1181879789&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3__185610488" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__185610488&#39;,this);">Примеры запроса и результат</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/elementy-nomenklatury/a/h2_317365814" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h2_317365814&#39;,this);">Восстановление элементов номенклатуры</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3__313606736" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__313606736&#39;,this);">Параметры запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3_268758673" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3_268758673&#39;,this);">Тело запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3__801210531" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__801210531&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/elementy-nomenklatury/a/h3_1226685010" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3_1226685010&#39;,this);">Пример запроса и результата</a></li></ul>&nbsp;
+</p>
+<p>
+  
+  <br/>
+</p>
+  </div>
+<h2 id="h2__2122965202" data-has-heading-anchor="true">Получение элементов номенклатуры<a href="/articles/api-documentations/elementy-nomenklatury/a/h2__2122965202" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h2__2122965202&#39;,this);"></a></h2>
+<p>Чтобы пользоваться API экспорта и импорта номенклатуры:</p><ul><li>У пользователя, под чьим именем осуществляется вход, должно быть право B_EN "Редактирование номенклатурных справочников".</li></ul><p>Версия iiko: 6.1</p><table class="CHHttpRequest CHHttpRequest_get">
+  <tbody>
+    <tr>
+      <td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_get.png" alt="GET Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td>
+      <td><b>
+        https://host:port/resto/api/v2/entities/products/list</b></td></tr>
+    </tbody>
+</table><h3 id="h3__998506674" data-has-heading-anchor="true">Параметры запроса<a href="/articles/api-documentations/elementy-nomenklatury/a/h3__998506674" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__998506674&#39;,this);"></a></h3><table class="infoBox" cellpadding="0" cellspacing="0">
+  <tbody>
+    <tr>
+      <td class="infoBoxImageCell">         <img alt="Information" src="/resources/Storage/api-documentations/info.png" style="max-width: 100%; height: auto;" loading="lazy"/>       </td>
+      <td class="infoBoxText">         Если  надо отфильтровать по полю, значение которого null, то соответствующее  значение параметра не задаём: "parentId=". На сервере это будет список с  одним нулевым элементом [null].<br/><br/>Если надо отфильтровать сразу по  нескольким параметрам одного типа, например parentId, параметры передаём  в следующим виде: "parentId=111&amp;parentId=222&amp;parentId=333". На  сервере это преобразуется в список [111, 222, 333].<br/><br/><p style="text-align: justify;">Следующий список параметров "parentId=111&amp;parentId=222&amp;parentId=" на сервере преобразуется&nbsp; в [111, 222, null].</p></td>
+    </tr>
+  </tbody>
+</table><p><br/></p><table class="CHTable" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th data-column="0">
+        <div>           Параметр         </div>
+      </th>
+      <th colspan="1" data-column="1">
+        <div>           Версия iiko         </div>
+      </th>
+      <th data-column="2">
+        <div>           Тип, формат         </div>
+      </th>
+      <th data-column="3">
+        <div>           Описание         </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>         includeDeleted       </td>
+      <td>         6.1       </td>
+      <td>         Boolean       </td>
+      <td>         Включать ли в результат удаленные элементы. По умолчанию false.       </td>
+    </tr>
+    <tr>
+      <td colspan="1">         ids       </td>
+      <td colspan="1">         6.2       </td>
+      <td colspan="1">         List&lt;UUID&gt;       </td>
+      <td colspan="1">         Возвращаемые элементы номенклатуры должны иметь id из этого списка.       </td>
+    </tr>
+    <tr>
+      <td colspan="1">         nums       </td>
+      <td colspan="1">         6.2       </td>
+      <td colspan="1">         List&lt;String&gt;       </td>
+      <td colspan="1">         Возвращаемые элементы номенклатуры должны иметь артикул из этого списка.       </td>
+    </tr>
+    <tr>
+      <td colspan="1">         types       </td>
+      <td colspan="1">         6.2       </td>
+      <td colspan="1">         List&lt;ProductType&gt;       </td>
+      <td colspan="1">         Возвращаемые элементы номенклатуры должны иметь тип из этого списка.       </td>
+    </tr>
+    <tr>
+      <td colspan="1">         categoryIds       </td>
+      <td colspan="1">         6.2       </td>
+      <td colspan="1">         List&lt;UUID&gt;       </td>
+      <td colspan="1">         Возвращаемые элементы номенклатуры должны иметь категорию продукта с id из этого списка.       </td>
+    </tr>
+    <tr>
+      <td colspan="1">         parentIds       </td>
+      <td colspan="1">         6.2       </td>
+      <td colspan="1">         List&lt;UUID&gt;       </td>
+      <td colspan="1">         Возвращаемые элементы номенклатуры должны иметь родительскую группу с id из этого списка.       </td>
+    </tr>
+  </tbody>
+</table><h3 id="h3__1077352940">   </h3>
+<h3 id="h3_501454233" data-has-heading-anchor="true">Что в ответе<a href="/articles/api-documentations/elementy-nomenklatury/a/h3_501454233" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3_501454233&#39;,this);"></a></h3><p>   </p><p> </p><p>         Список элементов номенклатуры.</p><h3 id="h3__1077352940">  </h3>
+
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Список ProductDto
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+      Список ProductDto
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code></pre>
+  <table class="CHTable" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th data-column="0">
+        <div>           Параметр         </div>
+      </th>
+      <th data-column="1">
+        <div>           Версия iiko         </div>
+      </th>
+      <th data-column="2">
+        <div>           Тип, формат         </div>
+      </th>
+      <th data-column="3">
+        <div>           Описание         </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>         id       </td>
+      <td>         6.1       </td>
+      <td>         UUID       </td>
+      <td>         UUID элемента номенклатуры.       </td>
+    </tr>
+    <tr>
+      <td>         deleted       </td>
+      <td>         6.1       </td>
+      <td>         Boolean       </td>
+      <td>         Удален.       </td>
+    </tr>
+    <tr>
+      <td>         name       </td>
+      <td>         6.1       </td>
+      <td>         String       </td>
+      <td>         Имя.       </td>
+    </tr>
+    <tr>
+      <td>         description       </td>
+      <td>         6.1       </td>
+      <td>         String       </td>
+      <td>         Описание.       </td>
+    </tr>
+    <tr>
+      <td>         num       </td>
+      <td>         6.1       </td>
+      <td>         String       </td>
+      <td>
+        <p>           Артикул, используется при печати документов (тех. карт и т.д.).           <br/>         </p>
+      </td>
+    </tr>
+    <tr>
+      <td>         code       </td>
+      <td>         6.1       </td>
+      <td>         String       </td>
+      <td>
+        <p>           Код продукта. Используется для быстрого поиска продукта           <br/>           в экране редактирования заказа.         </p>
+      </td>
+    </tr>
+    <tr>
+      <td>         parent       </td>
+      <td>         6.1       </td>
+      <td>         UUID       </td>
+      <td>
+        <p>           UUID родительской группы продукта.&nbsp;           <br/>           Если продукт принадлежит корневой группе, то parent == null.         </p>
+      </td>
+    </tr>
+    <tr>
+      <td>         modifiers       </td>
+      <td>         6.2       </td>
+      <td>         List&lt;ChoiceBindingDto&gt;       </td>
+      <td>
+        <p>           Модификаторы. Поле&nbsp;<strong>не учитывает&nbsp;</strong>модификаторы из схемы модификаторов.         </p>
+        <table class="CHTable" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th data-column="0" style="width: 205px;">
+                <div>                   Параметр                 </div>
+              </th>
+              <th data-column="1" style="width: 130px;">
+                <div>                   Тип, формат                 </div>
+              </th>
+              <th data-column="2" style="width: 99px;">
+                <div>                   Описание                 </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 205px;">                 modifier               </td>
+              <td style="width: 130px;">                 UUID               </td>
+              <td style="width: 99px;">                 UUID модификатора либо номенклатурной группы, если это групповой модификатор.               </td>
+            </tr>
+            <tr>
+              <td style="width: 205px;">                 defaultAmount               </td>
+              <td style="width: 130px;">                 Integer               </td>
+              <td style="width: 99px;">                 Количество по умолчанию.               Для группового модификатора всегда равен 0.</td>
+            </tr>
+            <tr>
+              <td style="width: 205px;">                 freeOfChargeAmount               </td>
+              <td style="width: 130px;">                 Integer               </td>
+              <td style="width: 99px;">                 Количество бесплатных модификаторов.               </td>
+            </tr>
+            <tr>
+              <td style="width: 205px;">                 minimumAmount               </td>
+              <td style="width: 130px;">                 Integer               </td>
+              <td style="width: 99px;">                 Минимальное количество.               </td>
+            </tr>
+            <tr>
+              <td style="width: 205px;">                 maximumAmount               </td>
+              <td style="width: 130px;">                 Integer               </td>
+              <td style="width: 99px;">                 Максимальное количество.               </td>
+            </tr>
+            <tr>
+              <td style="width: 205px;">                 hideIfDefaultAmount               </td>
+              <td style="width: 130px;">                 Boolean               </td>
+              <td style="width: 99px;">                 Скрывать, если количество по умолчанию.               </td>
+            </tr>
+            <tr>
+              <td colspan="1" style="width: 205px;">                 required               </td>
+              <td colspan="1" style="width: 130px;">                 Boolean               </td>
+              <td colspan="1" style="width: 99px;"><p>                 Является ли модификатор обязательным.               </p><p>Начиная с версии iiko 6.2.3 <strong>данный параметр не используется.</strong><br/></p></td>
+            </tr>
+            <tr>
+              <td colspan="1" style="width: 205px;">                 childModifiersHaveMinMaxRestrictions               </td>
+              <td colspan="1" style="width: 130px;">                 Boolean               </td>
+              <td colspan="1" style="width: 99px;">                 Ограничения на мин. макс. количество у дочерних модификаторов.               </td>
+            </tr>
+            <tr>
+              <td colspan="1" style="width: 205px;">                 splittable               </td>
+              <td colspan="1" style="width: 130px;">                 Boolean               </td>
+              <td colspan="1" style="width: 99px;">                 Признак делимости модификатора. Используется только в схемах модификаторов.               </td>
+            </tr>
+            <tr>
+              <td colspan="1" style="width: 205px;">                 childModifiers               </td>
+              <td colspan="1" style="width: 130px;">                 List&lt;ChoiceBindingDto&gt;               </td>
+              <td colspan="1" style="width: 99px;">                 Дочерние модификаторы.               </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>         taxCategory       </td>
+      <td>         6.1       </td>
+      <td>         UUID       </td>
+      <td>         UUID налоговой категории.       </td>
+    </tr>
+    <tr>
+      <td>         category       </td>
+      <td>         6.1       </td>
+      <td>         UUID       </td>
+      <td>         UUID пользовательской категории.       </td>
+    </tr>
+    <tr>
+      <td>         accountingCategory       </td>
+      <td>         6.1       </td>
+      <td>         UUID       </td>
+      <td>         UUID бухгалтерской категории.       </td>
+    </tr>
+    <tr>
+      <td>         color       </td>
+      <td>         6.2       </td>
+      <td>         RGBColorDto       </td>
+      <td>
+        <p>           Цвет фона оформления кнопки в iikoFront.         </p>
+        <table class="CHTable" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th data-column="0">
+                <div>                   Параметр                 </div>
+              </th>
+              <th data-column="1">
+                <div>                   Тип, формат                 </div>
+              </th>
+              <th data-column="2">
+                <div>                   Описание                 </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>                 red               </td>
+              <td>                 Integer               </td>
+              <td>                 Значение для красного.               </td>
+            </tr>
+            <tr>
+              <td>                 green               </td>
+              <td>                 Integer               </td>
+              <td>                 Значение для зеленого.               </td>
+            </tr>
+            <tr>
+              <td>                 blue               </td>
+              <td>                 Integer               </td>
+              <td>                 Значение для синего.               </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>         fontColor       </td>
+      <td>         6.2       </td>
+      <td>         RGBColorDto       </td>
+      <td>         Цвет шрифта кнопки в iikoFront.       </td>
+    </tr>
+    <tr>
+      <td>         frontImageId       </td>
+      <td>         6.2       </td>
+      <td>         UUID       </td>
+      <td>         UUID изображения для отображения в iikoFront.       </td>
+    </tr>
+    <tr>
+      <td>         position       </td>
+      <td>         6.2       </td>
+      <td>         Integer       </td>
+      <td>         Позиция в меню.       </td>
+    </tr>
+    <tr>
+      <td>         mainUnit       </td>
+      <td>         6.1       </td>
+      <td>         UUID       </td>
+      <td>         UUID основной единицы измерения продукта.       </td>
+    </tr>
+    <tr>
+      <td>         excludedSections       </td>
+      <td>         6.1       </td>
+      <td>         Set&lt;UUID&gt;       </td>
+      <td>         Множество UUID отделений ресторана, в которых нельзя продавать данный продукт         <br/>         (поле имеет смысл только для блюд).       </td>
+    </tr>
+    <tr>
+      <td>         defaultSalePrice       </td>
+      <td>         6.1       </td>
+      <td>         BigDecimal       </td>
+      <td>         Цена, по которой по умолчанию продаётся продукт (если для него нет приказов о меню).       </td>
+    </tr>
+    <tr>
+      <td>         placeType       </td>
+      <td>         6.1       </td>
+      <td>         UUID       </td>
+      <td>         UUID места приготовления блюда (поле имеет смысл только для блюд).       </td>
+    </tr>
+    <tr>
+      <td>         defaultIncludeInMenu       </td>
+      <td>         6.1       </td>
+      <td>         Boolean       </td>
+      <td>         Включать ли по умолчанию (если нет приказов о меню) позицию в меню.       </td>
+    </tr>
+    <tr>
+      <td>         type       </td>
+      <td>         6.1       </td>
+      <td>         Enum       </td>
+      <td>
+        <p>           Тип элемента номенклатуры.         </p>
+        <table class="CHTable" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th data-column="0">
+                <div>                   Название                 </div>
+              </th>
+              <th data-column="1">
+                <div>                   Значение                 </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>                 GOODS               </td>
+              <td>                 Товар.               </td>
+            </tr>
+            <tr>
+              <td>                 DISH               </td>
+              <td>                 Блюдо.               </td>
+            </tr>
+            <tr>
+              <td>                 PREPARED               </td>
+              <td>                 Заготовка (полуфабрикат).               </td>
+            </tr>
+            <tr>
+              <td>                 SERVICE               </td>
+              <td>                 Услуга.               </td>
+            </tr>
+            <tr>
+              <td>                 MODIFIER               </td>
+              <td>                 Модификатор.               </td>
+            </tr>
+            <tr>
+              <td>                 OUTER               </td>
+              <td>                 Товары поставщиков, не являющиеся товарами систем iiko.               </td>
+            </tr>
+            <tr>
+              <td colspan="1">                 RATE               </td>
+              <td colspan="1">                 Тариф (дочерний элемента для услуги).               </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+    <tr>
+      <td>         unitWeight       </td>
+      <td>         6.1       </td>
+      <td>         BigDecimal       </td>
+      <td>         Вес одной единицы в килограммах.       </td>
+    </tr>
+    <tr>
+      <td>         unitCapacity       </td>
+      <td>         6.1       </td>
+      <td>         BigDecimal       </td>
+      <td>         Объем одной единицы в литрах.       </td>
+    </tr>
+    <tr>
+      <td>         notInStoreMovement       </td>
+      <td>         6.1       </td>
+      <td>         Boolean       </td>
+      <td>
+        <p>           Участвует ли в перемещениях по складу.           <br/>           Услуга с такой настройкой, если указана в ПН, на склад никогда не приходуется ни количеством, ни суммой.           <br/>           Она влияет только на расчет итоговых сумм документа. Относительно стоимости услуг с такой настройкой в ПН           <br/>           рассчитываются суммы дополнительных расходов для других позиций документа.           <br/>           Для услуги с такой настройкой в ПН не рассчитывается сумма дополнительных расходов.         </p>
+      </td>
+    </tr>
+  <tr><td>containers&nbsp;</td><td>6.2.4</td><td>List&lt;ContainerDto&gt;</td><td><p>Фасовки.<br/></p><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;"><thead><tr><th data-column="0" style="width: 176px;"><div>Параметр</div></th><th data-column="1" style="width: 88px;"><div>Тип, формат</div></th><th data-column="2" style="width: 180px;"><div>Описание</div></th></tr></thead><tbody><tr><td style="width: 176px;">id</td><td style="width: 88px;">UUID</td><td style="width: 180px;">UUID фасовки.</td></tr><tr><td style="width: 176px;">num</td><td style="width: 88px;">String</td><td style="width: 180px;">Артикул.</td></tr><tr><td style="width: 176px;">name</td><td style="width: 88px;">String</td><td style="width: 180px;">Название.</td></tr><tr><td style="width: 176px;">count&nbsp;</td><td style="width: 88px;">BigDecimal</td><td style="width: 180px;">Количество продукта в единицах измерения продукта.</td></tr><tr><td style="width: 176px;">minContainerWeight</td><td style="width: 88px;">BigDecimal</td><td style="width: 180px;">Минимальный вес элемента номенклатуры.</td></tr><tr><td style="width: 176px;">maxContainerWeight</td><td style="width: 88px;">BigDecimal</td><td style="width: 180px;">Максимальный вес элемента номенклатуры.</td></tr><tr><td style="width: 176px;">containerWeight</td><td style="width: 88px;">BigDecimal</td><td style="width: 180px;">Вес тары.</td></tr><tr><td style="width: 176px;">fullContainerWeight&nbsp;</td><td style="width: 88px;">BigDecimal</td><td style="width: 180px;">Вес элемента номенклатуры вместе с тарой.</td></tr><tr><td style="width: 176px;">backwardRecalculation&nbsp;</td><td style="width: 88px;">Boolean</td><td style="width: 180px;">Всегда false</td></tr><tr><td style="width: 176px;">useInFront&nbsp;</td><td style="width: 88px;">Boolean&nbsp;</td><td style="width: 180px;">Использовать на фронте.</td></tr><tr><td style="width: 176px;">deleted<br/></td><td style="width: 88px;">Boolean<br/></td><td style="width: 180px;">Удалена или нет.<br/></td></tr></tbody></table></td></tr>
+  <tr><td>modifierSchemaId<br/></td><td>6.4<br/></td><td>UUID<br/></td><td>UUID схемы модификаторов.<br/></td></tr>
+  <tr><td>productScaleId<br/></td><td>6.4<br/></td><td>UUID<br/></td><td>UUID шкалы размеров. Если задана схема модификаторов, то шкала размеров берется из нее, а эта не учитывается.<br/></td></tr>
+  <tr><td>coldLossPercent<br/></td><td>7.1.2<br/></td><td>BigDecimal<br/></td><td>Потери при холодной обработке (%).<br/></td></tr>
+  <tr><td>hotLossPercent<br/></td><td>7.1.2<br/></td><td>BigDecimal<br/></td><td>Потери при горячей обработке обработке (%).<br/></td></tr>
+  <tr><td>allergenGroups<br/></td><td>7.1.5<br/></td><td>BigDecimal<br/></td><td>Набор идентификаторов групп аллергенов, которые присутствуют в данном элементе номенклатуры.<br/></td></tr>
+  <tr><td>canSetOpenPrice<br/></td><td>7.4.4<br/></td><td>Boolean<br/></td><td>Свободная цена.<br/></td></tr>
+  <tr><td><pre><span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">barcodes</span></pre>&nbsp;</td><td>8.7.1&nbsp;</td><td><pre><span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">List&lt;ContainerDto&gt;</span></pre>&nbsp;</td><td><p>Штрихкоды.</p><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;"><thead><tr><th data-column="0" style="width: 189px;"><div>Параметр</div></th><th data-column="1" style="width: 106px;"><div>Тип, формат</div></th><th data-column="2" style="width: 150px;"><div>Описание</div></th></tr></thead><tbody><tr><td style="width: 189px;">barcode&nbsp;</td><td style="width: 106px;">String</td><td style="width: 150px;">Штрихкод.</td></tr><tr><td style="width: 189px;">containerId&nbsp;</td><td style="width: 106px;">UUID&nbsp;</td><td style="width: 150px;">UUID фасовки.</td></tr></tbody></table></td></tr>
+  </tbody>
+</table><h3 id="h3_1250036116">    </h3>
+</div>
+</div>
+
+
+<h3 id="h3_1561844723" data-has-heading-anchor="true">   Пример запроса и результата<a href="/articles/api-documentations/elementy-nomenklatury/a/h3_1561844723" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3_1561844723&#39;,this);"></a></h3>
+<h4 id="h4_1966919031" data-has-heading-anchor="true">Запрос<a href="/articles/api-documentations/elementy-nomenklatury/a/h4_1966919031" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h4_1966919031&#39;,this);"></a></h4><p class="code">   https://localhost:8080/resto/api/v2/entities/products/list?includeDeleted=false</p>
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Результат
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+     Результат
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">JSON</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>[<br/>   {<br/>      <span class="cm-string">"id"</span>:<span class="cm-string">"567791bd-7881-4bcf-8f84-138ca9d0f53c"</span>,<br/>      <span class="cm-string">"deleted"</span>:<span class="cm-atom">false</span>,<br/>      <span class="cm-string">"name"</span>:<span class="cm-string">"товар1"</span>,<br/>      <span class="cm-string">"description"</span>:<span class="cm-string">""</span>,<br/>      <span class="cm-string">"num"</span>:<span class="cm-string">"00089"</span>,<br/>      <span class="cm-string">"code"</span>:<span class="cm-string">"95"</span>,<br/>      <span class="cm-string">"parent"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"modifiers"</span>:[<br/>         {<br/>            <span class="cm-string">"modifier"</span>:<span class="cm-string">"21ce6d98-8229-4cdd-a0ac-9f0c99a6347f"</span>,<br/>            <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">1</span>,<br/>            <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"childModifiers"</span>:[<br/>               {<br/>                  <span class="cm-string">"modifier"</span>:<span class="cm-string">"6e1ecad4-e6a8-4887-b835-9639dacb7387"</span>,<br/>                  <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>               },<br/>               {<br/>                  <span class="cm-string">"modifier"</span>:<span class="cm-string">"f0272448-5527-4dcf-be1d-ea47db29c55b"</span>,<br/>                  <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>               }<br/>            ]<br/>         },<br/>         {<br/>            <span class="cm-string">"modifier"</span>:<span class="cm-string">"cbaa0430-0599-4499-b766-5bbddf7826aa"</span>,<br/>            <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">1</span>,<br/>            <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>         }<br/>      ],<br/>      <span class="cm-string">"taxCategory"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"category"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"accountingCategory"</span>:<span class="cm-string">"8bc08505-c81d-075d-8572-af7b636d049b"</span>,<br/>      <span class="cm-string">"color"</span>:{<br/>         <span class="cm-string">"red"</span>:<span class="cm-number">170</span>,<br/>         <span class="cm-string">"green"</span>:<span class="cm-number">170</span>,<br/>         <span class="cm-string">"blue"</span>:<span class="cm-number">170</span><br/>      },<br/>      <span class="cm-string">"fontColor"</span>:{<br/>         <span class="cm-string">"red"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"green"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"blue"</span>:<span class="cm-number">0</span><br/>      },<br/>      <span class="cm-string">"frontImageId"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"position"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"mainUnit"</span>:<span class="cm-string">"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc"</span>,<br/>      <span class="cm-string">"excludedSections"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"defaultSalePrice"</span>:<span class="cm-number">0</span>,<br/>      <span class="cm-string">"placeType"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"defaultIncludedInMenu"</span>:<span class="cm-atom">false</span>,<br/>      <span class="cm-string">"type"</span>:<span class="cm-string">"GOODS"</span>,<br/>      <span class="cm-string">"unitWeight"</span>:<span class="cm-number">1</span>,<br/>      <span class="cm-string">"unitCapacity"</span>:<span class="cm-number">0</span>,<br/>      <span class="cm-string">"notInStoreMovement"</span>:<span class="cm-atom">false</span><br/>   },<br/>   {<br/>      <span class="cm-string">"id"</span>:<span class="cm-string">"b2f105b2-a9bd-4055-ab7b-13cb3662015a"</span>,<br/>      <span class="cm-string">"deleted"</span>:<span class="cm-atom">false</span>,<br/>      <span class="cm-string">"name"</span>:<span class="cm-string">"Блюдо со ШР+ОтдТК+НеактРазмер(создано из Блюдо с заготовкой)"</span>,<br/>      <span class="cm-string">"description"</span>:<span class="cm-string">""</span>,<br/>      <span class="cm-string">"num"</span>:<span class="cm-string">"00051"</span>,<br/>      <span class="cm-string">"code"</span>:<span class="cm-string">"56"</span>,<br/>      <span class="cm-string">"parent"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"modifiers"</span>:[<br/> <br/>      ],<br/>      <span class="cm-string">"taxCategory"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"category"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"accountingCategory"</span>:<span class="cm-string">"8bc08505-c81d-075d-8572-af7b636d049b"</span>,<br/>      <span class="cm-string">"color"</span>:{<br/>         <span class="cm-string">"red"</span>:<span class="cm-number">170</span>,<br/>         <span class="cm-string">"green"</span>:<span class="cm-number">170</span>,<br/>         <span class="cm-string">"blue"</span>:<span class="cm-number">170</span><br/>      },<br/>      <span class="cm-string">"fontColor"</span>:{<br/>         <span class="cm-string">"red"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"green"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"blue"</span>:<span class="cm-number">0</span><br/>      },<br/>      <span class="cm-string">"frontImageId"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"position"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"mainUnit"</span>:<span class="cm-string">"6040d92d-e286-f4f9-a613-ed0e6fd241e1"</span>,<br/>      <span class="cm-string">"excludedSections"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"defaultSalePrice"</span>:<span class="cm-number">0</span>,<br/>      <span class="cm-string">"placeType"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"defaultIncludedInMenu"</span>:<span class="cm-atom">false</span>,<br/>      <span class="cm-string">"type"</span>:<span class="cm-string">"DISH"</span>,<br/>      <span class="cm-string">"unitWeight"</span>:<span class="cm-number">3.71444</span>,<br/>      <span class="cm-string">"unitCapacity"</span>:<span class="cm-number">0</span>,<br/>      <span class="cm-string">"notInStoreMovement"</span>:<span class="cm-atom">false</span><br/>   }<br/>]</pre></td></tr></table></pre>
+  </div>
+</div>
+
+
+<p>   </p>
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Список ProductGroupDto
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+      Список ProductGroupDto
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px"><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;"><thead><tr><th data-column="0"><div>Параметр</div></th><th data-column="1"><div>Версия iiko</div></th><th data-column="2"><div>Тип, формат</div></th><th data-column="3"><div>Описание</div></th></tr></thead><tbody><tr><td>id</td><td>6.1</td><td>UUID</td><td>UUID элемента номенклатуры.</td></tr><tr><td>deleted</td><td>6.1</td><td>Boolean</td><td>Удален.</td></tr><tr><td>name</td><td>6.1</td><td>String</td><td>Имя.</td></tr><tr><td>description</td><td>6.1</td><td>String</td><td>Описание.</td></tr><tr><td>num</td><td>6.1</td><td>String</td><td><p>Артикул, используется при печати документов (тех. карт и т.д.).<br/></p></td></tr><tr><td>code</td><td>6.1</td><td>String</td><td><p>Код продукта. Используется для быстрого поиска продукта<br/>в экране редактирования заказа.</p></td></tr><tr><td>parent</td><td>6.1</td><td>UUID</td><td><p>UUID родительской группы продукта.&nbsp;<br/>Если продукт принадлежит корневой группе, то parent == null.</p></td></tr><tr><td>modifiers</td><td>6.2</td><td>List&lt;ChoiceBindingDto&gt;</td><td><p>Модификаторы. Поле&nbsp;<strong>не учитывает&nbsp;</strong>модификаторы из схемы модификаторов.</p><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;"><thead><tr><th data-column="0" style="width: 231px;"><div>Параметр</div></th><th data-column="1" style="width: 146px;"><div>Тип, формат</div></th><th data-column="2" style="width: 118px;"><div>Описание</div></th></tr></thead><tbody><tr><td style="width: 231px;">modifier</td><td style="width: 146px;">UUID</td><td style="width: 118px;">UUID модификатора либо номенклатурной группы, если это групповой модификатор.</td></tr><tr><td style="width: 231px;">defaultAmount</td><td style="width: 146px;">Integer</td><td style="width: 118px;">Количество по умолчанию. Для группового модификатора всегда равен 0.</td></tr><tr><td style="width: 231px;">freeOfChargeAmount</td><td style="width: 146px;">Integer</td><td style="width: 118px;">Количество бесплатных модификаторов.</td></tr><tr><td style="width: 231px;">minimumAmount</td><td style="width: 146px;">Integer</td><td style="width: 118px;">Минимальное количество.</td></tr><tr><td style="width: 231px;">maximumAmount</td><td style="width: 146px;">Integer</td><td style="width: 118px;">Максимальное количество.</td></tr><tr><td style="width: 231px;">hideIfDefaultAmount</td><td style="width: 146px;">Boolean</td><td style="width: 118px;">Скрывать, если количество по умолчанию.</td></tr><tr><td colspan="1" style="width: 231px;">required</td><td colspan="1" style="width: 146px;">Boolean</td><td colspan="1" style="width: 118px;"><p>Является ли модификатор обязательным.</p><p>Начиная с версии iiko 6.2.3&nbsp;<strong>данный параметр не используется.</strong><br/></p></td></tr><tr><td colspan="1" style="width: 231px;">childModifiersHaveMinMaxRestrictions</td><td colspan="1" style="width: 146px;">Boolean</td><td colspan="1" style="width: 118px;">Ограничения на мин. макс. количество у дочерних модификаторов.</td></tr><tr><td colspan="1" style="width: 231px;">splittable</td><td colspan="1" style="width: 146px;">Boolean</td><td colspan="1" style="width: 118px;">Признак делимости модификатора. Используется только в схемах модификаторов.</td></tr><tr><td colspan="1" style="width: 231px;">childModifiers</td><td colspan="1" style="width: 146px;">List&lt;ChoiceBindingDto&gt;</td><td colspan="1" style="width: 118px;">Дочерние модификаторы.</td></tr></tbody></table></td></tr><tr><td>taxCategory</td><td>6.1</td><td>UUID</td><td>UUID налоговой категории.</td></tr><tr><td>category</td><td>6.1</td><td>UUID</td><td>UUID пользовательской категории.</td></tr><tr><td>accountingCategory</td><td>6.1</td><td>UUID</td><td>UUID бухгалтерской категории.</td></tr><tr><td>color</td><td>6.2</td><td>RGBColorDto</td><td><p>Цвет фона оформления кнопки в iikoFront.</p><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;"><thead><tr><th data-column="0"><div>Параметр</div></th><th data-column="1"><div>Тип, формат</div></th><th data-column="2"><div>Описание</div></th></tr></thead><tbody><tr><td>red</td><td>Integer</td><td>Значение для красного.</td></tr><tr><td>green</td><td>Integer</td><td>Значение для зеленого.</td></tr><tr><td>blue</td><td>Integer</td><td>Значение для синего.</td></tr></tbody></table></td></tr><tr><td>fontColor</td><td>6.2</td><td>RGBColorDto</td><td>Цвет шрифта кнопки в iikoFront.</td></tr><tr><td>frontImageId</td><td>6.2</td><td>UUID</td><td>UUID изображения для отображения в iikoFront.</td></tr><tr><td>position</td><td>6.2</td><td>Integer</td><td>Позиция в меню.</td></tr><tr><td>mainUnit</td><td>6.1</td><td>UUID</td><td>UUID основной единицы измерения продукта.</td></tr><tr><td>excludedSections</td><td>6.1</td><td>Set&lt;UUID&gt;</td><td>Множество UUID отделений ресторана, в которых нельзя продавать данный продукт<br/>(поле имеет смысл только для блюд).</td></tr><tr><td>defaultSalePrice</td><td>6.1</td><td>BigDecimal</td><td>Цена, по которой по умолчанию продаётся продукт (если для него нет приказов о меню).</td></tr><tr><td>placeType</td><td>6.1</td><td>UUID</td><td>UUID места приготовления блюда (поле имеет смысл только для блюд).</td></tr><tr><td>defaultIncludeInMenu</td><td>6.1</td><td>Boolean</td><td>Включать ли по умолчанию (если нет приказов о меню) позицию в меню.</td></tr><tr><td>type</td><td>6.1</td><td>Enum</td><td><p>Тип элемента номенклатуры.</p><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;"><thead><tr><th data-column="0"><div>Название</div></th><th data-column="1"><div>Значение</div></th></tr></thead><tbody><tr><td>GOODS</td><td>Товар.</td></tr><tr><td>DISH</td><td>Блюдо.</td></tr><tr><td>PREPARED</td><td>Заготовка (полуфабрикат).</td></tr><tr><td>SERVICE</td><td>Услуга.</td></tr><tr><td>MODIFIER</td><td>Модификатор.</td></tr><tr><td>OUTER</td><td>Товары поставщиков, не являющиеся товарами систем iiko.</td></tr><tr><td colspan="1">RATE</td><td colspan="1">Тариф (дочерний элемента для услуги).</td></tr></tbody></table></td></tr><tr><td>unitWeight</td><td>6.1</td><td>BigDecimal</td><td>Вес одной единицы в килограммах.</td></tr><tr><td>unitCapacity</td><td>6.1</td><td>BigDecimal</td><td>Объем одной единицы в литрах.</td></tr><tr><td>notInStoreMovement</td><td>6.1</td><td>Boolean</td><td><p>Участвует ли в перемещениях по складу.<br/>Услуга с такой настройкой, если указана в ПН, на склад никогда не приходуется ни количеством, ни суммой.<br/>Она влияет только на расчет итоговых сумм документа. Относительно стоимости услуг с такой настройкой в ПН<br/>рассчитываются суммы дополнительных расходов для других позиций документа.<br/>Для услуги с такой настройкой в ПН не рассчитывается сумма дополнительных расходов.</p></td></tr><tr><td>containers&nbsp;</td><td>6.2.4</td><td>List&lt;ContainerDto&gt;</td><td><p>Фасовки.<br/></p><table style="width: 548.031px;" class="CHTable" cellspacing="0" cellpadding="0"><thead><tr><th data-column="0" style="width: 179px;"><div>Параметр</div></th><th data-column="1" style="width: 95px;"><div>Тип, формат</div></th><th data-column="2" style="width: 220px;"><div>Описание</div></th></tr></thead><tbody><tr><td style="width: 179px;">id</td><td style="width: 95px;">UUID</td><td style="width: 220px;">UUID фасовки.</td></tr><tr><td style="width: 179px;">num</td><td style="width: 95px;">String</td><td style="width: 220px;">Артикул.</td></tr><tr><td style="width: 179px;">name</td><td style="width: 95px;">String</td><td style="width: 220px;">Название.</td></tr><tr><td style="width: 179px;">count&nbsp;</td><td style="width: 95px;">BigDecimal</td><td style="width: 220px;">Количество продукта в единицах измерения продукта.</td></tr><tr><td style="width: 179px;">minContainerWeight</td><td style="width: 95px;">BigDecimal</td><td style="width: 220px;">Минимальный вес элемента номенклатуры.</td></tr><tr><td style="width: 179px;">maxContainerWeight</td><td style="width: 95px;">BigDecimal</td><td style="width: 220px;">Максимальный вес элемента номенклатуры.</td></tr><tr><td style="width: 179px;">containerWeight</td><td style="width: 95px;">BigDecimal</td><td style="width: 220px;">Вес тары.</td></tr><tr><td style="width: 179px;">fullContainerWeight&nbsp;</td><td style="width: 95px;">BigDecimal</td><td style="width: 220px;">Вес элемента номенклатуры вместе с тарой.</td></tr><tr><td style="width: 179px;">backwardRecalculation&nbsp;</td><td style="width: 95px;">Boolean</td><td style="width: 220px;">Всегда false</td></tr><tr><td style="width: 179px;">useInFront&nbsp;</td><td style="width: 95px;">Boolean&nbsp;</td><td style="width: 220px;">Использовать на фронте.</td></tr><tr><td style="width: 179px;">deleted<br/></td><td style="width: 95px;">Boolean<br/></td><td style="width: 220px;">Удалена или нет.<br/></td></tr></tbody></table></td></tr><tr><td>modifierSchemaId<br/></td><td>6.4<br/></td><td>UUID<br/></td><td>UUID схемы модификаторов.<br/></td></tr><tr><td>productScaleId<br/></td><td>6.4<br/></td><td>UUID<br/></td><td>UUID шкалы размеров. Если задана схема модификаторов, то шкала размеров берется из нее, а эта не учитывается.<br/></td></tr><tr><td>coldLossPercent<br/></td><td>7.1.2<br/></td><td>BigDecimal<br/></td><td>Потери при холодной обработке (%).<br/></td></tr><tr><td>hotLossPercent<br/></td><td>7.1.2<br/></td><td>BigDecimal<br/></td><td>Потери при горячей обработке обработке (%).<br/></td></tr><tr><td>allergenGroups<br/></td><td>7.1.5<br/></td><td>BigDecimal<br/></td><td>Оценочная себестоимость. Поле используется для расчёта себестоимости в случае, если по данному товару не было приходов.<br/></td></tr><tr><td>canSetOpenPrice<br/></td><td>7.4.4<br/></td><td>Boolean<br/></td><td>Свободная цена.<br/></td></tr><tr><td><pre>barcodes</pre>&nbsp;</td><td>8.7.1&nbsp;</td><td><pre>List&lt;ContainerDto&gt;</pre>&nbsp;</td><td><p>Штрихкоды.</p><table style="width: 548.031px;" class="CHTable" cellspacing="0" cellpadding="0"><thead><tr><th data-column="0" style="width: 229px;"><div>Параметр</div></th><th data-column="1" style="width: 111px;"><div>Тип, формат</div></th><th data-column="2" style="width: 154px;"><div>Описание</div></th></tr></thead><tbody><tr><td style="width: 229px;">barcode&nbsp;</td><td style="width: 111px;">String</td><td style="width: 154px;">Штрихкод.</td></tr><tr><td style="width: 229px;">containerId&nbsp;</td><td style="width: 111px;">UUID&nbsp;</td><td style="width: 154px;">UUID фасовки.</td></tr></tbody></table></td></tr></tbody></table></div>
+</div>
+
+
+<p></p><h2 id="v2.APIимпортаноменклатуры-Получениеэлементовноменклатуры(POST)" data-has-heading-anchor="true">Получение элементов номенклатуры <a href="/articles/api-documentations/elementy-nomenklatury/a/v2.APIимпортаноменклатуры-Получениеэлементовноменклатуры(POST)" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/v2.APIимпортаноменклатуры-Получениеэлементовноменклатуры(POST)&#39;,this);"></a></h2><p>Версия iiko: 6.4</p><table class="CHHttpRequest CHHttpRequest_post">
+  
+<tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">https://host:port/resto/api/v2/entities/products/list</td></tr>
+    
+  </tbody>
+</table><h3 id="h3_1150399349" data-has-heading-anchor="true">Тело запроса<a href="/articles/api-documentations/elementy-nomenklatury/a/h3_1150399349" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3_1150399349&#39;,this);"></a></h3>         <p><strong>Content-Type: application/x-www-form-urlencoded</strong>                      <br/>         </p>         <table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;">           <thead>             <tr>               <th data-column="0">                 <div>                   Параметр</div>               </th>               <th data-column="1">                 <div>Версия iiko</div>               </th>               <th>Тип, формат<br/></th><th data-column="2">                 <div>Описание</div>               </th>             </tr>           </thead>           <tbody>             <tr>               <td>                 includeDeleted</td>               <td>                 6.4               </td>               <td>Boolean<br/></td><td>                 Включать ли в результат удаленные элементы. По умолчанию false.</td></tr>             <tr><td>revisionFrom<br/></td><td>6.4<br/></td><td>-1, число<br/></td><td><p>Номер ревизии, начиная с которой  необходимо отфильтровать сущности. Не включающий саму ревизию, т.е.  ревизия объекта &gt; revisionFrom.</p><p>По умолчанию (неревизионный запрос) revisionFrom = -1</p></td></tr>             <tr><td>ids<br/></td><td>6.4<br/></td><td>List&lt;UUID&gt;<br/></td><td>Возвращаемые элементы номенклатуры должны иметь id из этого списка.<br/></td></tr>             <tr><td>nums<br/></td><td>6.4<br/></td><td>List&lt;String&gt;<br/></td><td>Возвращаемые элементы номенклатуры должны иметь артикул из этого списка.<br/></td></tr>             <tr><td>codes<br/></td><td>6.4<br/></td><td>List&lt;String&gt;<br/></td><td>Возвращаемые элементы номенклатуры должны иметь код из этого списка.<br/></td></tr>             <tr style="height: 33px;"><td>types<br/></td><td>6.4</td><td>List&lt;ProductType&gt;<br/></td><td>Возвращаемые элементы номенклатуры должны иметь тип из этого списка.<br/></td></tr>             <tr style="height: 33px;"><td>categoryIds<br/></td><td>6.4<br/></td><td>List&lt;UUID&gt;<br/></td><td>Возвращаемые элементы номенклатуры должны иметь категорию продукта с id из этого списка.<br/></td></tr>             <tr style="height: 33px;"><td>parentIds<br/></td><td>6.4<br/></td><td>List&lt;UUID&gt;<br/></td><td>&nbsp;</td></tr></tbody></table><h3 id="h3__910896685" data-has-heading-anchor="true">Что в ответе<a href="/articles/api-documentations/elementy-nomenklatury/a/h3__910896685" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__910896685&#39;,this);"></a></h3><p>
+  </p><p>
+</p><p>Список элементов номенклатуры.<br/></p><h2 id="h2_26989340" data-has-heading-anchor="true"><span style="color: #000000; font-family: &quot;Segoe UI&quot;, Tahoma, Geneva, Verdana, sans-serif; font-size: 30px;">Импорт элемента номенклатуры</span><a href="/articles/api-documentations/elementy-nomenklatury/a/h2_26989340" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h2_26989340&#39;,this);"></a></h2><p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="color: #000000;">Версия iiko: 6.1</span></span></p><table class="CHHttpRequest CHHttpRequest_post">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">https://host:port/resto/api/v2/entities/products/save</td></tr>
+    
+  </tbody>
+</table><h3 id="h3__1704918338" data-has-heading-anchor="true">Параметры запроса<a href="/articles/api-documentations/elementy-nomenklatury/a/h3__1704918338" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__1704918338&#39;,this);"></a></h3>
+        <table class="CHTable" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th scope="col">Название               </th>
+              <th scope="col">                 Тип               </th>
+              <th scope="col">                 Описание               </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>                 generateNomenclatureCode                 <br/>               </td>
+              <td>                 Boolean                 <br/>               </td>
+              <td>
+                <div>                   Надо ли генерировать артикул элемента номенклатуры.                 </div>
+                <div>                   <br/>                 </div>
+                <div>                   Необязательный. По умолчанию true                 </div>
+              </td>
+            </tr>
+            <tr>
+              <td>                 generateFastCode                 <br/>               </td>
+              <td>                 Boolean                 <br/>               </td>
+              <td>
+                <div>                   Надо ли генерировать код быстрого поиска элемента номенклатуры.                 </div>
+                <div>                   <br/>                 </div>
+                <div>                   Необязательный. По умолчанию true.                 </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        
+    <div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Тело запроса
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+      Тело запроса
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px"><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;"><thead><tr><th data-column="0" style="width: 125px;">Поле</th><th data-column="1" style="width: 49px;">Версия iiko</th><th data-column="2" style="width: 130px;">Тип данных</th><th style="width: 150px;">Обязательное<br/></th><th data-column="3" style="width: 699px;">Значение</th></tr></thead><tbody><tr><td style="width: 125px;">name</td><td style="width: 49px;">6.1</td><td style="width: 130px;">String</td><td style="width: 150px;">да<br/></td><td style="width: 699px;">Имя.</td></tr><tr><td style="width: 125px;">description</td><td style="width: 49px;">6.1</td><td style="width: 130px;">String</td><td style="width: 150px;">нет<br/></td><td style="width: 699px;">Описание.</td></tr><tr><td style="width: 125px;">num&nbsp;</td><td style="width: 49px;">6.2.4<br/></td><td style="width: 130px;">String<br/></td><td style="width: 150px;">да, если generateNomenclatureCode == false<br/></td><td style="width: 699px;">Артикул, используется при печати документов (тех. карт и т.д.). Обязателен, если generateNomenclatureCode == false.<br/></td></tr><tr><td style="width: 125px;">code&nbsp;</td><td style="width: 49px;">6.2.4<br/></td><td style="width: 130px;">String<br/></td><td style="width: 150px;">нет<br/></td><td style="width: 699px;">Код продукта. Используется для быстрого поиска продукта на экране редактирования заказа. Если generateFastCode == false и поле не задано, то создастся пустым.<br/></td></tr><tr><td style="width: 125px;">parent</td><td style="width: 49px;">6.1</td><td style="width: 130px;">UUID</td><td style="width: 150px;">нет<br/></td><td style="width: 699px;">UUID родительской группы продукта.&nbsp;<br/>Если продукт принадлежит корневой группе, то parent == null.</td></tr><tr><td style="width: 125px;">modifiers</td><td style="width: 49px;">6.2</td><td style="width: 130px;">List&lt;ChoiceBindingDto&gt;</td><td style="width: 150px;">нет<br/></td><td style="width: 699px;"><p>Модификаторы.</p><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;"><thead><tr><th data-column="0">Параметр</th><th data-column="1">Тип, формат</th><th data-column="2">Описание</th></tr></thead><tbody><tr><td>modifier</td><td>UUID</td><td>UUID модификатора либо номенклатурной группы, если это групповой модификатор.</td></tr><tr><td>defaultAmount</td><td>Integer</td><td>Количество по умолчанию. Должно лежать в пределах мин. и макс. значений.<br/>У группового модификатора равно сумме значений по умолчанию дочерних элементов.</td></tr><tr><td>freeOfChargeAmount</td><td>Integer</td><td>Количество бесплатных модификаторов. Не более макс. количества.</td></tr><tr><td>minimumAmount</td><td>Integer</td><td>Минимальное количество. Если модификатор обязательный, то минимальное количество<br/>должно быть больше 0.</td></tr><tr><td>maximumAmount</td><td>Integer</td><td>Максимальное количество.</td></tr><tr><td>hideIfDefaultAmount</td><td>Integer</td><td>Скрывать, если количество по умолчанию.</td></tr><tr><td>required</td><td>Boolean</td><td>Является ли модификатор обязательным.</td></tr><tr><td><p>childModifiersHaveMinMaxRestrictions</p></td><td>Boolean</td><td>Ограничения на мин. макс. количество у дочерних модификаторов. Значение флага&nbsp;<br/>в дочерних и одиночных модификаторов должно быть&nbsp;<strong>false</strong>.</td></tr><tr><td>splittable</td><td>Boolean</td><td>Признак делимости модификатора. Используется только в схемах модификаторов.</td></tr><tr><td>childModifiers</td><td>List&lt;ChoiceBindingDto&gt;</td><td>Дочерние модификаторы. Если у группового модификатора выключены ограничения на мин.<br/>макс. количество у дочерних модификаторов (<strong>childModifiersHaveMinMaxRestrictions = false</strong>), то<br/>значение<strong>&nbsp;freeOfChargeAmount&nbsp;</strong>у дочерних модификаторов должны быть такими же как у группового,<strong><br/>required&nbsp;</strong>должен быть false, а мин. макс. кол-во должны быть равны нулю<strong>(minimumAmount = 0,&nbsp;</strong><strong>maximumAmount = 0</strong>).</td></tr></tbody></table></td></tr><tr><td style="width: 125px;">taxCategory</td><td style="width: 49px;">6.1</td><td style="width: 130px;">UUID</td><td style="width: 150px;">нет<br/></td><td style="width: 699px;">UUID налоговой категории.</td></tr><tr><td style="width: 125px;">category</td><td style="width: 49px;">6.1</td><td style="width: 130px;">UUID</td><td style="width: 150px;">нет<br/></td><td style="width: 699px;">UUID пользовательской категории.</td></tr><tr style="height: 33px;"><td style="width: 125px;">accountingCategory<br/></td><td style="width: 49px;">6.2.3<br/></td><td style="width: 130px;">UUID<br/></td><td style="width: 150px;">нет, по умолчанию "товар"<br/></td><td style="width: 699px;">UUID бухгалтерской категории.<br/></td></tr><tr style="height: 33px;"><td style="width: 125px;">color</td><td style="width: 49px;">6.2</td><td style="width: 130px;">RGBColorDto</td><td style="width: 150px;">нет<br/></td><td style="width: 699px;">Цвет фона оформления кнопки в iikoFront.</td></tr><tr><td style="width: 125px;">fontColor</td><td style="width: 49px;">6.2</td><td style="width: 130px;">RGBColorDto</td><td style="width: 150px;">нет<br/></td><td style="width: 699px;">Цвет шрифта кнопки в iikoFront.</td></tr><tr><td style="width: 125px;">frontImageId</td><td style="width: 49px;">6.2</td><td style="width: 130px;">UUID</td><td style="width: 150px;">нет<br/></td><td style="width: 699px;">UUID изображения для отображения в iikoFront.&nbsp;API изображений.</td></tr><tr><td style="width: 125px;">position</td><td style="width: 49px;">6.2</td><td style="width: 130px;">Integer</td><td style="width: 150px;">нет<br/></td><td style="width: 699px;">Позиция в меню.</td></tr><tr><td style="width: 125px;">mainUnit</td><td style="width: 49px;">6.1</td><td style="width: 130px;">UUID</td><td style="width: 150px;">да<br/></td><td style="width: 699px;">UUID основной единицы измерения продукта.</td></tr><tr><td style="width: 125px;">excludedSections</td><td style="width: 49px;">6.1</td><td style="width: 130px;">Set&lt;UUID&gt;</td><td style="width: 150px;">нет<br/></td><td style="width: 699px;">Множество UUID отделений ресторана, в которых нельзя продавать данный продукт<br/>(поле имеет смысл только для блюд).</td></tr><tr><td style="width: 125px;">defaultSalePrice</td><td style="width: 49px;">6.1</td><td style="width: 130px;">BigDecimal</td><td style="width: 150px;">нет, по умолчанию 0<br/></td><td style="width: 699px;">Цена, по которой по умолчанию продаётся продукт (если для него нет приказов о меню). По умолчанию 0.</td></tr><tr><td style="width: 125px;">placeType</td><td style="width: 49px;">6.1</td><td style="width: 130px;">UUID</td><td style="width: 150px;"><p>обязательное, если defaultIncludeInMenu == true</p></td><td style="width: 699px;">UUID места приготовления блюда (поле имеет смысл только для блюд).</td></tr><tr><td style="width: 125px;">defaultIncludeInMenu</td><td style="width: 49px;">6.1</td><td style="width: 130px;">Boolean</td><td style="width: 150px;">нет, по умолчанию false<br/></td><td style="width: 699px;">Включать ли по умолчанию (если нет приказов о меню) позицию в меню.[1]</td></tr><tr><td style="width: 125px;">type</td><td style="width: 49px;">6.1</td><td style="width: 130px;">Enum</td><td style="width: 150px;">да<br/></td><td style="width: 699px;"><p>Тип элемента номенклатуры.</p><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;"><thead><tr><th data-column="0"><div>Название</div></th><th data-column="1"><div>Значение</div></th></tr></thead><tbody><tr><td>GOODS</td><td>Товар.</td></tr><tr><td>DISH</td><td>Блюдо.</td></tr><tr><td>PREPARED</td><td>Заготовка (полуфабрикат).</td></tr><tr><td>MODIFIER</td><td>Модификатор.</td></tr><tr><td>SERVICE</td><td>Услуга.</td></tr><tr><td>RATE</td><td>Тариф (дочерний элемента для услуги).[2]</td></tr></tbody></table></td></tr><tr><td style="width: 125px;">unitWeight<br/></td><td style="width: 49px;">6.2.4<br/></td><td style="width: 130px;">BigDecimal<br/></td><td style="width: 150px;">нет, по умолчанию 1<br/></td><td style="width: 699px;">Вес одной единицы в килограммах.<br/></td></tr><tr><td style="width: 125px;">unitCapacity</td><td style="width: 49px;">6.1</td><td style="width: 130px;">BigDecimal</td><td style="width: 150px;">нет, по умолчанию 0<br/></td><td style="width: 699px;">Объем одной единицы в литрах. По умолчанию 0.</td></tr><tr><td style="width: 125px;">notInStoreMovement</td><td style="width: 49px;">6.1</td><td style="width: 130px;">Boolean</td><td style="width: 150px;">нет, по умолчанию false<br/></td><td style="width: 699px;"><p>Участвует ли в перемещениях по складу.<br/>Услуга с такой настройкой, если указана в ПН, на склад никогда не приходуется ни количеством, ни суммой.<br/>Она влияет только на расчет итоговых сумм документа. Относительно стоимости услуг с такой настройкой в ПН<br/>рассчитываются суммы дополнительных расходов для других позиций документа.<br/>Для услуги с такой настройкой в ПН не рассчитывается сумма дополнительных расходов.</p></td></tr><tr><td style="width: 125px;">containers</td><td style="width: 49px;">6.2.4</td><td style="width: 130px;">List&lt;ContainerDto&gt;</td><td style="width: 150px;">нет<br/></td><td style="width: 699px;"><p>Фасовки.</p><table style="width: 699.367px; height: 388px;" class="CHTable" cellspacing="0" cellpadding="0"><thead><tr><th data-column="0" style="width: 150px;"><div>Параметр</div></th><th data-column="1" style="width: 77px;"><div>Тип</div></th><th>Обязательный<br/></th><th data-column="2"><div>Описание</div></th></tr></thead><tbody><tr><td style="width: 150px;">name</td><td style="width: 77px;">String</td><td>да<br/></td><td>Название.</td></tr><tr><td style="width: 150px;">num</td><td style="width: 77px;">String</td><td>да<br/></td><td>Артикул.</td></tr><tr><td style="width: 150px;">count</td><td style="width: 77px;">Integer</td><td>да<br/></td><td>Количество продукта в единицах измерения продукта.</td></tr><tr style="height: 33px;"><td style="width: 150px;">minContainerWeight<br/></td><td style="width: 77px;">BigDecimal<br/></td><td>нет, по умолчанию 0<br/></td><td>Минимальный вес элемента номенклатуры.<br/></td></tr><tr style="height: 33px;"><td style="width: 150px;">containerWeight<br/></td><td style="width: 77px;">BigDecimal<br/></td><td>да<br/></td><td>Вес тары.<br/></td></tr><tr style="height: 33px;"><td style="width: 150px;">fullContainerWeight<br/></td><td style="width: 77px;">BigDecimal<br/></td><td>да<br/></td><td>Вес элемента номенклатуры вместе с тарой.<br/></td></tr><tr><td style="width: 150px;">backwardRecalculation<br/></td><td style="width: 77px;">Boolean<br/></td><td>нет<br/></td><td>Параметр не используется, значение будет проигнорировано<br/></td></tr><tr><td style="width: 150px;">useInFront<br/></td><td style="width: 77px;">Boolean<br/></td><td>нет, по умолчанию true<br/></td><td>Использовать на фронте.<br/></td></tr></tbody></table></td></tr><tr><td style="width: 125px;">coldLossPercent<br/></td><td style="width: 49px;">7.1.2<br/></td><td style="width: 130px;">BigDecimal<br/></td><td style="width: 150px;">нет, по умолчанию 0<br/></td><td style="width: 699px;">Потери при холодной обработке (%).<br/></td></tr><tr><td style="width: 125px;">hotLossPercent<br/></td><td style="width: 49px;">7.1.2<br/></td><td style="width: 130px;">BigDecimal<br/></td><td style="width: 150px;">нет, по умолчанию 0<br/></td><td style="width: 699px;">Потери при горячей обработке обработке (%).<br/></td></tr><tr><td style="width: 125px;">allergenGroups<br/></td><td style="width: 49px;">7.1.2<br/></td><td style="width: 130px;">Set&lt;UUID&gt;<br/></td><td style="width: 150px;">нет</td><td style="width: 699px;">Набор идентификаторов групп аллергенов, которые присутствуют в данном элементе номенклатуры.<br/></td></tr><tr><td style="width: 125px;">estimatedPurchasePrice<br/></td><td style="width: 49px;">7.1.5<br/></td><td style="width: 130px;">BigDecimal<br/></td><td style="width: 150px;">нет, по умолчанию 0<br/></td><td style="width: 699px;"><br/></td></tr></tbody></table><p>[1].&nbsp;&nbsp;При&nbsp;<strong>defaultIncludeInMenu=true</strong>&nbsp;обязательно указывается&nbsp;<strong>placeType</strong>, независимо от типа элемента номенклатуры(блюдо, товар и т.д.)<br/>При<strong>&nbsp;defaultIncludeInMenu=false</strong>&nbsp;поле&nbsp;<strong>excludedSections</strong>&nbsp;должно быть&nbsp;<strong>null</strong>.<br/>[2]. Менять тип номенклатуры можно только на тип той же категории, что и исходный. Категории разбиты по цветам.</p>
+    <pre><code class="xml hljs"> </code></pre>
+  </div>
+</div>
+
+    
+    
+        <div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Пример тела запроса
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+      Пример тела запроса
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">JSON</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{  <br/>   <span class="cm-string">"name"</span>:<span class="cm-string">"товар созданный через апи"</span>,<br/>   <span class="cm-string">"description"</span>:<span class="cm-string">"тест"</span>,<br/>   <span class="cm-string">"parent"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"modifiers"</span>:[  <br/>      {  <br/>         <span class="cm-string">"modifier"</span>:<span class="cm-string">"21ce6d98-8229-4cdd-a0ac-9f0c99a6347f"</span>,<br/>         <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">1</span>,<br/>         <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"childModifiers"</span>:[  <br/>            {  <br/>               <span class="cm-string">"modifier"</span>:<span class="cm-string">"6e1ecad4-e6a8-4887-b835-9639dacb7387"</span>,<br/>               <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>            },<br/>            {  <br/>               <span class="cm-string">"modifier"</span>:<span class="cm-string">"f0272448-5527-4dcf-be1d-ea47db29c55b"</span>,<br/>               <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>            }<br/>         ]<br/>      },<br/>      {  <br/>         <span class="cm-string">"modifier"</span>:<span class="cm-string">"cbaa0430-0599-4499-b766-5bbddf7826aa"</span>,<br/>         <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">1</span>,<br/>         <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>      }<br/>   ],<br/>   <span class="cm-string">"taxCategory"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"category"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"color"</span>:{  <br/>      <span class="cm-string">"red"</span>:<span class="cm-number">170</span>,<br/>      <span class="cm-string">"green"</span>:<span class="cm-number">170</span>,<br/>      <span class="cm-string">"blue"</span>:<span class="cm-number">170</span><br/>   },<br/>   <span class="cm-string">"fontColor"</span>:{  <br/>      <span class="cm-string">"red"</span>:<span class="cm-number">0</span>,<br/>      <span class="cm-string">"green"</span>:<span class="cm-number">0</span>,<br/>      <span class="cm-string">"blue"</span>:<span class="cm-number">0</span><br/>   },<br/>   <span class="cm-string">"frontImageId"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"position"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"mainUnit"</span>:<span class="cm-string">"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc"</span>,<br/>   <span class="cm-string">"excludedSections"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"defaultSalePrice"</span>:<span class="cm-number">0</span>,<br/>   <span class="cm-string">"placeType"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"defaultIncludedInMenu"</span>:<span class="cm-atom">false</span>,<br/>   <span class="cm-string">"type"</span>:<span class="cm-string">"GOODS"</span>,<br/>   <span class="cm-string">"unitWeight"</span>:<span class="cm-number">1</span>,<br/>   <span class="cm-string">"unitCapacity"</span>:<span class="cm-number">0</span>,<br/>   <span class="cm-string">"notInStoreMovement"</span>:<span class="cm-atom">false</span><br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+
+
+<h3 id="h3__1933026233" data-has-heading-anchor="true"><b>Что в ответе</b><a href="/articles/api-documentations/elementy-nomenklatury/a/h3__1933026233" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__1933026233&#39;,this);"></a></h3><p>
+           Содержит результат импорта (Json структура), который состоит из результата валидации импортируемого элемента и самого элемента. Результат валидации состоит из ошибок. Ошибка состоит из кода ошибки и текста ошибки.</p><p>
+</p><p><b>Результат</b> </p>
+<table class="CHTable" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th colspan="1" data-column="0" scope="row">                    Поле                </th>
+      <th data-column="1" style="width: 101px;">                    Тип данных                </th>
+      <th data-column="2" style="width: 404px;">                    Значение                </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="1">         result       </td>
+      <td colspan="1" style="width: 101px;">         Enum:         <br/>         "SUCCESS",         <br/>         "ERROR"       </td>
+      <td colspan="1" style="width: 404px;">         Результата операции.       </td>
+    </tr>
+    <tr>
+      <td colspan="1">         errors       </td>
+      <td colspan="1" style="width: 101px;">         List&lt;ErrorDto&gt;       </td>
+      <td colspan="1" style="width: 404px;">
+        <p>           Список&nbsp;ошибок, не позволивших сделать успешный импорт документа.         </p>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="1">         response       </td>
+      <td colspan="1" style="width: 101px;">         ProductDto       </td>
+      <td colspan="1" style="width: 404px;">         В случае успешного импорта - сохраненный&nbsp;объект,         <br/>         в противном случае импортируемый&nbsp;объект.       </td>
+    </tr>
+  </tbody>
+</table><h3 id="h3__1647466043" data-has-heading-anchor="true">   Пример запроса и результата<a href="/articles/api-documentations/elementy-nomenklatury/a/h3__1647466043" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__1647466043&#39;,this);"></a></h3>
+<h4 id="h4_562091098" data-has-heading-anchor="true">Запрос<a href="/articles/api-documentations/elementy-nomenklatury/a/h4_562091098" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h4_562091098&#39;,this);"></a></h4><p>   <span class="code">https://localhost:8080/resto/api/v2/entities/products/save</span>
+</p>
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Результат
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+     Результат
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">JSON</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{  <br/>   <span class="cm-string">"name"</span>:<span class="cm-string">"товар созданный через апи"</span>,<br/>   <span class="cm-string">"description"</span>:<span class="cm-string">"тест"</span>,<br/>   <span class="cm-string">"parent"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"modifiers"</span>:[  <br/>      {  <br/>         <span class="cm-string">"modifier"</span>:<span class="cm-string">"21ce6d98-8229-4cdd-a0ac-9f0c99a6347f"</span>,<br/>         <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">1</span>,<br/>         <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"childModifiers"</span>:[  <br/>            {  <br/>               <span class="cm-string">"modifier"</span>:<span class="cm-string">"6e1ecad4-e6a8-4887-b835-9639dacb7387"</span>,<br/>               <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>            },<br/>            {  <br/>               <span class="cm-string">"modifier"</span>:<span class="cm-string">"f0272448-5527-4dcf-be1d-ea47db29c55b"</span>,<br/>               <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>            }<br/>         ]<br/>      },<br/>      {  <br/>         <span class="cm-string">"modifier"</span>:<span class="cm-string">"cbaa0430-0599-4499-b766-5bbddf7826aa"</span>,<br/>         <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">1</span>,<br/>         <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>      }<br/>   ],<br/>   <span class="cm-string">"taxCategory"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"category"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"color"</span>:{  <br/>      <span class="cm-string">"red"</span>:<span class="cm-number">170</span>,<br/>      <span class="cm-string">"green"</span>:<span class="cm-number">170</span>,<br/>      <span class="cm-string">"blue"</span>:<span class="cm-number">170</span><br/>   },<br/>   <span class="cm-string">"fontColor"</span>:{  <br/>      <span class="cm-string">"red"</span>:<span class="cm-number">0</span>,<br/>      <span class="cm-string">"green"</span>:<span class="cm-number">0</span>,<br/>      <span class="cm-string">"blue"</span>:<span class="cm-number">0</span><br/>   },<br/>   <span class="cm-string">"frontImageId"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"position"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"mainUnit"</span>:<span class="cm-string">"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc"</span>,<br/>   <span class="cm-string">"excludedSections"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"defaultSalePrice"</span>:<span class="cm-number">0</span>,<br/>   <span class="cm-string">"placeType"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"defaultIncludedInMenu"</span>:<span class="cm-atom">false</span>,<br/>   <span class="cm-string">"type"</span>:<span class="cm-string">"GOODS"</span>,<br/>   <span class="cm-string">"unitWeight"</span>:<span class="cm-number">1</span>,<br/>   <span class="cm-string">"unitCapacity"</span>:<span class="cm-number">0</span>,<br/>   <span class="cm-string">"notInStoreMovement"</span>:<span class="cm-atom">false</span><br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Пример <u>успешного</u> результата вызова API: entities/products/save
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+      Пример <u>успешного</u> результата вызова API: entities/products/save
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">JSON</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{<br/>   <span class="cm-string">"result"</span>:<span class="cm-string">"SUCCESS"</span>,<br/>   <span class="cm-string">"errors"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"response"</span>:{<br/>      <span class="cm-string">"id"</span>:<span class="cm-string">"523b1595-b284-3fb4-0164-ffa807c60113"</span>,<br/>      <span class="cm-string">"deleted"</span>:<span class="cm-atom">false</span>,<br/>      <span class="cm-string">"name"</span>:<span class="cm-string">"товар созданный через апи"</span>,<br/>      <span class="cm-string">"description"</span>:<span class="cm-string">"тест"</span>,<br/>      <span class="cm-string">"num"</span>:<span class="cm-string">"00093"</span>,<br/>      <span class="cm-string">"code"</span>:<span class="cm-string">"102"</span>,<br/>      <span class="cm-string">"parent"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"modifiers"</span>:[<br/>         {<br/>            <span class="cm-string">"modifier"</span>:<span class="cm-string">"21ce6d98-8229-4cdd-a0ac-9f0c99a6347f"</span>,<br/>            <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">1</span>,<br/>            <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"childModifiers"</span>:[<br/>               {<br/>                  <span class="cm-string">"modifier"</span>:<span class="cm-string">"6e1ecad4-e6a8-4887-b835-9639dacb7387"</span>,<br/>                  <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>               },<br/>               {<br/>                  <span class="cm-string">"modifier"</span>:<span class="cm-string">"f0272448-5527-4dcf-be1d-ea47db29c55b"</span>,<br/>                  <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>               }<br/>            ]<br/>         },<br/>         {<br/>            <span class="cm-string">"modifier"</span>:<span class="cm-string">"cbaa0430-0599-4499-b766-5bbddf7826aa"</span>,<br/>            <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">1</span>,<br/>            <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>         }<br/>      ],<br/>      <span class="cm-string">"taxCategory"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"category"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"accountingCategory"</span>:<span class="cm-string">"8bc08505-c81d-075d-8572-af7b636d049b"</span>,<br/>      <span class="cm-string">"color"</span>:{<br/>         <span class="cm-string">"red"</span>:<span class="cm-number">170</span>,<br/>         <span class="cm-string">"green"</span>:<span class="cm-number">170</span>,<br/>         <span class="cm-string">"blue"</span>:<span class="cm-number">170</span><br/>      },<br/>      <span class="cm-string">"fontColor"</span>:{<br/>         <span class="cm-string">"red"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"green"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"blue"</span>:<span class="cm-number">0</span><br/>      },<br/>      <span class="cm-string">"frontImageId"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"position"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"mainUnit"</span>:<span class="cm-string">"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc"</span>,<br/>      <span class="cm-string">"excludedSections"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"defaultSalePrice"</span>:<span class="cm-number">0</span>,<br/>      <span class="cm-string">"placeType"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"defaultIncludedInMenu"</span>:<span class="cm-atom">false</span>,<br/>      <span class="cm-string">"type"</span>:<span class="cm-string">"GOODS"</span>,<br/>      <span class="cm-string">"unitWeight"</span>:<span class="cm-number">1</span>,<br/>      <span class="cm-string">"unitCapacity"</span>:<span class="cm-number">0</span>,<br/>      <span class="cm-string">"notInStoreMovement"</span>:<span class="cm-atom">false</span><br/>   }<br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Пример <u>НЕ успешного</u> результата вызова API: entities/products/save
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+      Пример <u>НЕ успешного</u> результата вызова API: entities/products/save
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">JSON</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{<br/>   <span class="cm-string">"result"</span>:<span class="cm-string">"ERROR"</span>,<br/>   <span class="cm-string">"errors"</span>:[<br/>      {<br/>         <span class="cm-string">"value"</span>:<span class="cm-string">"f0272448-5527-4dcf-be1d-ea47db29c55b"</span>,<br/>         <span class="cm-string">"code"</span>:<span class="cm-string">"NO_RESTRICTION_AND_MIN_MAX_NOT_ZERO"</span><br/>      },<br/>      {<br/>         <span class="cm-string">"value"</span>:<span class="cm-string">"21ce6d98-8229-4cdd-a0ac-9f0c99a6347f"</span>,<br/>         <span class="cm-string">"code"</span>:<span class="cm-string">"PARENT_AMOUNT_BY_DEFAULT_NOT_EQUAL_SUM_OF_CHILDREN"</span><br/>      },<br/>      {<br/>         <span class="cm-string">"value"</span>:<span class="cm-string">"cbaa0430-0599-4499-b766-5bbddf7826aa"</span>,<br/>         <span class="cm-string">"code"</span>:<span class="cm-string">"SINGLE_MODIFIER_HAS_CHILD_RESTRICTION"</span><br/>      }<br/>   ],<br/>   <span class="cm-string">"response"</span>:{<br/>      <span class="cm-string">"id"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"deleted"</span>:<span class="cm-atom">false</span>,<br/>      <span class="cm-string">"name"</span>:<span class="cm-string">"Блюдо"</span>,<br/>      <span class="cm-string">"description"</span>:<span class="cm-string">"тест"</span>,<br/>      <span class="cm-string">"num"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"code"</span>:<span class="cm-string">""</span>,<br/>      <span class="cm-string">"parent"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"modifiers"</span>:[<br/>         {<br/>            <span class="cm-string">"modifier"</span>:<span class="cm-string">"21ce6d98-8229-4cdd-a0ac-9f0c99a6347f"</span>,<br/>            <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">1</span>,<br/>            <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"childModifiers"</span>:[<br/>               {<br/>                  <span class="cm-string">"modifier"</span>:<span class="cm-string">"6e1ecad4-e6a8-4887-b835-9639dacb7387"</span>,<br/>                  <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">1</span>,<br/>                  <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>               },<br/>               {<br/>                  <span class="cm-string">"modifier"</span>:<span class="cm-string">"f0272448-5527-4dcf-be1d-ea47db29c55b"</span>,<br/>                  <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>                  <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">1</span>,<br/>                  <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>                  <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>               }<br/>            ]<br/>         },<br/>         {<br/>            <span class="cm-string">"modifier"</span>:<span class="cm-string">"cbaa0430-0599-4499-b766-5bbddf7826aa"</span>,<br/>            <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">1</span>,<br/>            <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">true</span>,<br/>            <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>            <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>         }<br/>      ],<br/>      <span class="cm-string">"taxCategory"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"category"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"accountingCategory"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"color"</span>:{<br/>         <span class="cm-string">"red"</span>:<span class="cm-number">170</span>,<br/>         <span class="cm-string">"green"</span>:<span class="cm-number">170</span>,<br/>         <span class="cm-string">"blue"</span>:<span class="cm-number">170</span><br/>      },<br/>      <span class="cm-string">"fontColor"</span>:{<br/>         <span class="cm-string">"red"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"green"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"blue"</span>:<span class="cm-number">0</span><br/>      },<br/>      <span class="cm-string">"frontImageId"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"position"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"mainUnit"</span>:<span class="cm-string">"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc"</span>,<br/>      <span class="cm-string">"excludedSections"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"defaultSalePrice"</span>:<span class="cm-number">0</span>,<br/>      <span class="cm-string">"placeType"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"defaultIncludedInMenu"</span>:<span class="cm-atom">false</span>,<br/>      <span class="cm-string">"type"</span>:<span class="cm-string">"GOODS"</span>,<br/>      <span class="cm-string">"unitWeight"</span>:<span class="cm-number">1</span>,<br/>      <span class="cm-string">"unitCapacity"</span>:<span class="cm-number">0</span>,<br/>      <span class="cm-string">"notInStoreMovement"</span>:<span class="cm-atom">false</span><br/>   }<br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+
+
+<h2 id="h2__1144036084" data-has-heading-anchor="true">   Редактирование элемента номенклатуры<a href="/articles/api-documentations/elementy-nomenklatury/a/h2__1144036084" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h2__1144036084&#39;,this);"></a></h2>
+<p id="h2__902581408">Версия iiko: 6.1</p>
+<table class="CHHttpRequest CHHttpRequest_post">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">https://host:port/resto/api/v2/entities/products/update</td></tr>
+    
+  </tbody>
+</table><h3 id="h3__1491948775" data-has-heading-anchor="true">Параметры запроса<a href="/articles/api-documentations/elementy-nomenklatury/a/h3__1491948775" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__1491948775&#39;,this);"></a></h3><table class="CHTable" cellspacing="0" cellpadding="0">
+  <thead>
+    <tr>
+      <th data-column="0">         Название       </th>
+      <th data-column="1">         Тип, формат       </th>
+      <th data-column="2">         Описание       </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="1">         overrideFastCode       </td>
+      <td colspan="1">         Boolean       </td>
+      <td colspan="1">         Перегенерировать ли код быстрого поиска элемента номенклатуры.         <br/>         По умолчанию false.       </td>
+    </tr>
+    <tr>
+      <td>         overrideNomenclatureCode       </td>
+      <td>         Boolean       </td>
+      <td>         Перегенерировать ли артикул элемента номенклатуры.         <br/>         По умолчанию false.</td>
+    </tr>
+  </tbody>
+</table>
+    
+<div class="CHBoxShowMore"><h3 id="h3__87828366" data-has-heading-anchor="true">Тело запроса<a href="/articles/api-documentations/elementy-nomenklatury/a/h3__87828366" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__87828366&#39;,this);"></a></h3>
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">Аналогично&nbsp;импорту&nbsp;только с id редактируемого элемента</span></div>
+  <table class="CHTable" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th data-column="0">
+                <div>Поле                 </div>
+              </th>
+              <th data-column="1">
+                <div>                   Тип данных                 </div>
+              </th>
+              <th data-column="2">
+                <div>                   Значение                 </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>                 id               </td>
+              <td>                 UUID               </td>
+              <td>                 UUID редактируемого элемента номенклатуры</td>
+            </tr>
+          </tbody>
+        </table>
+      
+   </div>
+    
+  <div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Тело запроса</a></div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+     Тело запроса</a></div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">JSON</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{<br/>   <span class="cm-string">"id"</span>:<span class="cm-string">"fcdf4324-4a2f-f250-0162-d3887cf1005d"</span>,<br/>   <span class="cm-string">"name"</span>:<span class="cm-string">"товар созданный через апи"</span>,<br/>   <span class="cm-string">"description"</span>:<span class="cm-string">"тест"</span>,<br/>   <span class="cm-string">"parent"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"modifiers"</span>:[ <br/>      { <br/>         <span class="cm-string">"modifier"</span>:<span class="cm-string">"21ce6d98-8229-4cdd-a0ac-9f0c99a6347f"</span>,<br/>         <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">1</span>,<br/>         <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"childModifiers"</span>:[ <br/>            { <br/>               <span class="cm-string">"modifier"</span>:<span class="cm-string">"6e1ecad4-e6a8-4887-b835-9639dacb7387"</span>,<br/>               <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>            },<br/>            { <br/>               <span class="cm-string">"modifier"</span>:<span class="cm-string">"f0272448-5527-4dcf-be1d-ea47db29c55b"</span>,<br/>               <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">0</span>,<br/>               <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>               <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>            }<br/>         ]<br/>      },<br/>      { <br/>         <span class="cm-string">"modifier"</span>:<span class="cm-string">"cbaa0430-0599-4499-b766-5bbddf7826aa"</span>,<br/>         <span class="cm-string">"defaultAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"freeOfChargeAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"minimumAmount"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"maximumAmount"</span>:<span class="cm-number">1</span>,<br/>         <span class="cm-string">"hideIfDefaultAmount"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"required"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"childModifiersHaveMinMaxRestrictions"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"splittable"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"childModifiers"</span>:<span class="cm-atom">null</span><br/>      }<br/>   ],<br/>   <span class="cm-string">"taxCategory"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"category"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"color"</span>:{ <br/>      <span class="cm-string">"red"</span>:<span class="cm-number">170</span>,<br/>      <span class="cm-string">"green"</span>:<span class="cm-number">170</span>,<br/>      <span class="cm-string">"blue"</span>:<span class="cm-number">170</span><br/>   },<br/>   <span class="cm-string">"fontColor"</span>:{ <br/>      <span class="cm-string">"red"</span>:<span class="cm-number">0</span>,<br/>      <span class="cm-string">"green"</span>:<span class="cm-number">0</span>,<br/>      <span class="cm-string">"blue"</span>:<span class="cm-number">0</span><br/>   },<br/>   <span class="cm-string">"frontImageId"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"position"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"mainUnit"</span>:<span class="cm-string">"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc"</span>,<br/>   <span class="cm-string">"excludedSections"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"defaultSalePrice"</span>:<span class="cm-number">0</span>,<br/>   <span class="cm-string">"placeType"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"defaultIncludedInMenu"</span>:<span class="cm-atom">false</span>,<br/>   <span class="cm-string">"type"</span>:<span class="cm-string">"GOODS"</span>,<br/>   <span class="cm-string">"unitWeight"</span>:<span class="cm-number">1</span>,<br/>   <span class="cm-string">"unitCapacity"</span>:<span class="cm-number">0</span>,<br/>   <span class="cm-string">"notInStoreMovement"</span>:<span class="cm-atom">false</span><br/>}</pre></td></tr></table></pre></div></div>
+    
+        
+    
+    <h3 id="h3_871739065" data-has-heading-anchor="true">Что в ответе<a href="/articles/api-documentations/elementy-nomenklatury/a/h3_871739065" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3_871739065&#39;,this);"></a></h3><p>
+  Содержит Json структуру результата изменения, которая состоит из результата валидации измененного элемента           <br/>           и самого элемента. Результат валидации состоит из ошибок. Ошибка состоит из кода ошибки и текста ошибки.</p><p>
+</p><h4 id="h4_1827755295"></h4>
+<h3 id="h3_710210636" data-has-heading-anchor="true">Примеры запроса и результата<a href="/articles/api-documentations/elementy-nomenklatury/a/h3_710210636" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3_710210636&#39;,this);"></a></h3><h4 id="h4_415585161" data-has-heading-anchor="true">Запрос<a href="/articles/api-documentations/elementy-nomenklatury/a/h4_415585161" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h4_415585161&#39;,this);"></a></h4><p class="code">   <span style="font-family: Courier;">https://localhost:8080/resto/api/v2/entities/products/update?overrideFastCode=false&amp;overrideNomenclatureCode=false</span> </p>
+
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Результат
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+     Результат
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{<br/>   <span class="cm-string">"id"</span>:<span class="cm-string">"fcdf4324-4a2f-f250-0162-d3887cf1005d"</span>,<br/>   <span class="cm-string">"deleted"</span>:<span class="cm-atom">false</span>,<br/>   <span class="cm-string">"name"</span>:<span class="cm-string">"Хлеб"</span>,<br/>   <span class="cm-string">"description"</span>:<span class="cm-string">"обычный"</span>,<br/>   <span class="cm-string">"modifiers"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"taxCategory"</span>:<span class="cm-string">"ccf8be1e-4b39-478a-8c79-940af8c6cd02"</span>,<br/>   <span class="cm-string">"color"</span>:{ <br/>      <span class="cm-string">"red"</span>:<span class="cm-number">170</span>,<br/>      <span class="cm-string">"green"</span>:<span class="cm-number">170</span>,<br/>      <span class="cm-string">"blue"</span>:<span class="cm-number">170</span><br/>   },<br/>   <span class="cm-string">"fontColor"</span>:{ <br/>      <span class="cm-string">"red"</span>:<span class="cm-number">0</span>,<br/>      <span class="cm-string">"green"</span>:<span class="cm-number">0</span>,<br/>      <span class="cm-string">"blue"</span>:<span class="cm-number">0</span><br/>   },<br/>   <span class="cm-string">"frontImageId"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"position"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"mainUnit"</span>:<span class="cm-string">"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc"</span>,<br/>   <span class="cm-string">"excludedSections"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"defaultSalePrice"</span>:<span class="cm-number">80</span>,<br/>   <span class="cm-string">"placeType"</span>:<span class="cm-string">"7bce50f2-c5d0-1bb7-5194-8d2e55752764"</span>,<br/>   <span class="cm-string">"defaultIncludedInMenu"</span>:<span class="cm-atom">true</span>,<br/>   <span class="cm-string">"type"</span>:<span class="cm-string">"GOODS"</span>,<br/>   <span class="cm-string">"unitCapacity"</span>:<span class="cm-number">0</span>,<br/>   <span class="cm-string">"notInStoreMovement"</span>:<span class="cm-atom">false</span><br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Пример <u>успешного</u> результата вызова API: entities/products/update
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+      Пример <u>успешного</u> результата вызова API: entities/products/update
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{ <br/>   "result":"SUCCESS",<br/>   "errors":null,<br/>   "response":{ <br/>      "id":"fcdf4324-4a2f-f250-0162-d3887cf1005d",<br/>      "deleted":false,<br/>      "name":"Хлеб",<br/>      "description":"обычный",<br/>      "num":"00022",<br/>      "parent":null,<br/>      "modifiers":[],<br/>      "code":"24",<br/>      "taxCategory":"ccf8be1e-4b39-478a-8c79-940af8c6cd02",<br/>      "color":{ <br/>         "red":170,<br/>         "green":170,<br/>         "blue":170<br/>      },<br/>      "fontColor":{ <br/>         "red":0,<br/>         "green":0,<br/>         "blue":0<br/>     },<br/>     "frontImageId":null,<br/>     "position":null,<br/>     "mainUnit":"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc",<br/>     "excludedSections":null,<br/>     "defaultSalePrice":80,<br/>     "placeType":"7bce50f2-c5d0-1bb7-5194-8d2e55752764",<br/>     "defaultIncludedInMenu":true,<br/>     "type":"GOODS",<br/>     "unitCapacity":0,<br/>     "notInStoreMovement":false<br/>   }<br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Пример <u>НЕ успешного</u> результата вызова API: entities/products/update
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+      Пример <u>НЕ успешного</u> результата вызова API: entities/products/update
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{ <br/>   <span class="cm-string">"result"</span>:<span class="cm-string">"ERROR"</span>,<br/>   <span class="cm-string">"errors"</span>:[ <br/>      { <br/>         <span class="cm-string">"value"</span>:<span class="cm-string">"placeType"</span>,<br/>         <span class="cm-string">"code"</span>:<span class="cm-string">"COOKING_PLACE_EMPTY_FOR_SALE_DISH"</span><br/>      }<br/>   ],<br/>   <span class="cm-string">"response"</span>:{ <br/>      <span class="cm-string">"id"</span>:<span class="cm-string">"fcdf4324-4a2f-f250-0162-d3887cf1005d"</span>,<br/>      <span class="cm-string">"deleted"</span>:<span class="cm-atom">false</span>,<br/>      <span class="cm-string">"name"</span>:<span class="cm-string">"Хлеб"</span>,<br/>      <span class="cm-string">"description"</span>:<span class="cm-string">"обычный"</span>,<br/>      <span class="cm-string">"num"</span>:<span class="cm-string">"00022"</span>,<br/>      <span class="cm-string">"code"</span>:<span class="cm-string">"24"</span>,<br/>      <span class="cm-string">"parent"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"modifiers"</span>:[],          <br/>      <span class="cm-string">"taxCategory"</span>:<span class="cm-string">"ccf8be1e-4b39-478a-8c79-940af8c6cd02"</span>,<br/>      <span class="cm-string">"color"</span>:{ <br/>         <span class="cm-string">"red"</span>:<span class="cm-number">170</span>,<br/>         <span class="cm-string">"green"</span>:<span class="cm-number">170</span>,<br/>         <span class="cm-string">"blue"</span>:<span class="cm-number">170</span><br/>      },<br/>      <span class="cm-string">"fontColor"</span>:{ <br/>         <span class="cm-string">"red"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"green"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"blue"</span>:<span class="cm-number">0</span><br/>     },<br/>     <span class="cm-string">"frontImageId"</span>:<span class="cm-atom">null</span>,<br/>     <span class="cm-string">"position"</span>:<span class="cm-atom">null</span>,<br/>     <span class="cm-string">"mainUnit"</span>:<span class="cm-string">"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc"</span>,<br/>     <span class="cm-string">"excludedSections"</span>:<span class="cm-atom">null</span>,<br/>     <span class="cm-string">"defaultSalePrice"</span>:<span class="cm-number">80</span>,<br/>     <span class="cm-string">"placeType"</span>:<span class="cm-string">"7bce50f2-c5d0-1bb7-5194-8d2e55752764"</span>,<br/>     <span class="cm-string">"defaultIncludedInMenu"</span>:<span class="cm-atom">true</span>,<br/>     <span class="cm-string">"type"</span>:<span class="cm-string">"GOODS"</span>,<br/>     <span class="cm-string">"unitCapacity"</span>:<span class="cm-number">0</span>,<br/>     <span class="cm-string">"notInStoreMovement"</span>:<span class="cm-atom">false</span><br/>   }<br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+
+
+<p>   <br/> </p>
+<h2 id="h2_1831563864" data-has-heading-anchor="true">   Удаление элементов номенклатуры<a href="/articles/api-documentations/elementy-nomenklatury/a/h2_1831563864" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h2_1831563864&#39;,this);"></a></h2>
+
+<p> Версия iiko: 6.1</p><table class="CHHttpRequest CHHttpRequest_post">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">
+        https://host:port/resto/api/v2/entities/products/delete
+      </td></tr>
+    
+  </tbody>
+</table><h3 id="h3__1673974090" data-has-heading-anchor="true">Тело запроса<a href="/articles/api-documentations/elementy-nomenklatury/a/h3__1673974090" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__1673974090&#39;,this);"></a></h3><table class="CHTable" cellspacing="0" cellpadding="0">
+          <thead>
+            <tr>
+              <th data-column="0">
+                <div>Поле                 </div>
+              </th>
+              <th data-column="1" style="width: 120px;">
+                <div>                   Тип данных                 </div>
+              </th>
+              <th data-column="2" style="width: 315px;">
+                <div>                   Значение                 </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>                                  items                             </td>
+              <td style="width: 120px;">                                  List&lt;IdCodetDto&gt;                             </td>
+              <td style="width: 315px;"><p>                 Список UUID элементов, которые нужно удалить</p><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%; border-collapse: collapse;"><thead><tr><th style="width: 33.3333%;" scope="col">Поле<br/></th><th style="width: 33.3333%;" scope="col">Тип данных<br/></th><th style="width: 33.3333%;" scope="col">Значение<br/></th></tr></thead><tbody><tr><td style="width: 33.3333%;">id<br/></td><td style="width: 33.3333%;">UUID<br/></td><td style="width: 33.3333%;">UUID элемента</td></tr></tbody></table></td>
+            </tr>
+          </tbody>
+        </table>
+      <h3 id="h3_699228701"></h3><p><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{ <br/>   "items":[ <br/>      { <br/>         "id":"fcdf4324-4a2f-f250-0162-d3887cf1005d"<br/>      }<br/>   ]<br/>}</pre></td></tr></table></p><h3 id="h3_699228701"></h3><h3 id="h3__1181879789" data-has-heading-anchor="true">Что в ответе<a href="/articles/api-documentations/elementy-nomenklatury/a/h3__1181879789" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__1181879789&#39;,this);"></a></h3>Содержит Json структуру результата удаления.<p>
+</p><h3 id="h3__185610488" data-has-heading-anchor="true">Примеры запроса и результат<a href="/articles/api-documentations/elementy-nomenklatury/a/h3__185610488" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__185610488&#39;,this);"></a></h3>
+<h4 id="h4__1439350920" data-has-heading-anchor="true">Запрос<a href="/articles/api-documentations/elementy-nomenklatury/a/h4__1439350920" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h4__1439350920&#39;,this);"></a></h4><p class="code">   <span style="font-family: Courier;">https://localhost:8080/resto/api/v2/entities/products/delete</span> </p>
+<h4 id="h4_631086644" data-has-heading-anchor="true">Результат<a href="/articles/api-documentations/elementy-nomenklatury/a/h4_631086644" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h4_631086644&#39;,this);"></a></h4><p><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">XML</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{ <br/>   <span class="cm-string">"items"</span>:[ <br/>      { <br/>         <span class="cm-string">"id"</span>:<span class="cm-string">"fcdf4324-4a2f-f250-0162-d3887cf1005d"</span><br/>      }<br/>   ]<br/>}</pre></td></tr></table><br/></p>
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Пример <u>успешного</u> результата вызова API: entities/products/delete
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+      Пример <u>успешного</u> результата вызова API: entities/products/delete
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">XML</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{ <br/>   "result":"SUCCESS",<br/>   "errors":null,<br/>   "response":[ <br/>      { <br/>         "id":"fcdf4324-4a2f-f250-0162-d3887cf1005d",<br/>         "deleted":true,<br/>         "name":"test API-6",<br/>         "description":"description",<br/>         "num":"00022",<br/>         "parent":null,<br/>         "modifiers":[],   <br/>         "code":"24",<br/>         "category":null,<br/>         "accountingCategory":null,<br/>         "color":{<br/>            "red":170,<br/>            "green":170,<br/>            "blue":170<br/>         },<br/>         "fontColor":{<br/>            "red":0,<br/>            "green":0,<br/>            "blue":0<br/>         },<br/>         "frontImageId":null,<br/>         "position":null,<br/>         "taxCategory":"ccf8be1e-4b39-478a-8c79-940af8c6cd02",<br/>         "mainUnit":"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc",<br/>         "excludedSections":null,<br/>         "defaultSalePrice":80,<br/>         "placeType":null,<br/>         "defaultIncludedInMenu":false,<br/>         "type":"DISH",<br/>         "unitWeight":1,<br/>         "unitCapacity":0,<br/>         "notInStoreMovement":false<br/>      }<br/>   ]<br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+
+    <div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Пример <u>НЕ успешного</u> результата вызова API: entities/products/delete
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+      Пример <u>НЕ успешного</u> результата вызова API: entities/products/delete
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><p>
+  <span class="code">Could not delete already deleted products: [fcdf4324-4a2f-f250-0162-d3887cf1005d]​.</span>
+</p></pre>
+  </div>
+</div>
+
+
+<h2 id="h2_317365814" data-has-heading-anchor="true">   Восстановление элементов номенклатуры<a href="/articles/api-documentations/elementy-nomenklatury/a/h2_317365814" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h2_317365814&#39;,this);"></a></h2>
+<p>Версия iiko: 6.1</p><table class="CHHttpRequest CHHttpRequest_post">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">
+                 https://host:port/resto/api/v2/entities/products/restore      
+      </td></tr>
+    
+  </tbody>
+</table><h3 id="h3__313606736" data-has-heading-anchor="true"><b>Параметры запроса</b><a href="/articles/api-documentations/elementy-nomenklatury/a/h3__313606736" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__313606736&#39;,this);"></a></h3><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;"><thead><tr><th data-column="0">Параметр</th><th>Версия<br/></th><th data-column="1">Тип, формат</th><th data-column="2">Описание</th></tr></thead><tbody><tr><td>overrideNomenclatureCode</td><td>6.4<br/></td><td>Boolean</td><td><p>Если у восстанавливаемого продукта артикул совпадает с одним из  текущих и параметр указан равным true, то у восстанавливаемого продукта  будет сгенерирован новый артикул.</p><p>Необязательный. По умолчанию false.</p></td></tr></tbody></table><h3 id="h3_268758673" data-has-heading-anchor="true"><b>Тело запроса</b><a href="/articles/api-documentations/elementy-nomenklatury/a/h3_268758673" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3_268758673&#39;,this);"></a></h3><p>                    </p><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;"><tbody><tr><td><b>Поле</b><br/></td><td><b>Тип данных</b><br/></td><td><b>Значение</b><br/></td></tr><tr><td>items</td><td>List&lt;IdCodetDto&gt;<br/></td><td><p>Список UUID элементов, которые нужно восстановить</p><div><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;"><thead><tr><th data-column="0"><div>Поле</div></th><th>Тип данных<br/></th><th data-column="1"><div>Описание</div></th></tr></thead><tbody><tr><td>id</td><td>UUID<br/></td><td>UUID элемента.</td></tr></tbody></table></div></td></tr></tbody></table><h3 id="h3__801210531" data-has-heading-anchor="true">Что в ответе<a href="/articles/api-documentations/elementy-nomenklatury/a/h3__801210531" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3__801210531&#39;,this);"></a></h3><p>
+  </p><p>Содержит Json структуру результата восстановления.</p><h3 id="h3_1226685010" data-has-heading-anchor="true">Пример запроса и результата<a href="/articles/api-documentations/elementy-nomenklatury/a/h3_1226685010" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h3_1226685010&#39;,this);"></a></h3>
+<h4 id="h4__27202370" data-has-heading-anchor="true">Запрос<a href="/articles/api-documentations/elementy-nomenklatury/a/h4__27202370" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h4__27202370&#39;,this);"></a></h4><p class="code"><span style="font-family: Courier;">https://localhost:8080/resto/api/v2/entities/products/restore</span> </p>
+<h4 id="h4_829867508" data-has-heading-anchor="true">Результат<a href="/articles/api-documentations/elementy-nomenklatury/a/h4_829867508" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/elementy-nomenklatury/a/h4_829867508&#39;,this);"></a></h4><p><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{ <br/>   "items":[ <br/>      { <br/>         "id":"fcdf4324-4a2f-f250-0162-d3887cf1005d"<br/>      }<br/>   ]<br/>}</pre></td></tr></table><br/></p>
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Пример <u>успешного</u> результата вызова API: entities/products/restore
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+      Пример <u>успешного</u> результата вызова API: entities/products/restore
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{ <br/>   <span class="cm-string">"result"</span>:<span class="cm-string">"SUCCESS"</span>,<br/>   <span class="cm-string">"errors"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"response"</span>:[ <br/>      { <br/>         <span class="cm-string">"id"</span>:<span class="cm-string">"fcdf4324-4a2f-f250-0162-d3887cf1005d"</span>,<br/>         <span class="cm-string">"deleted"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"name"</span>:<span class="cm-string">"test API-6"</span>,<br/>         <span class="cm-string">"description"</span>:<span class="cm-string">"description"</span>,<br/>         <span class="cm-string">"num"</span>:<span class="cm-string">"00022"</span>,<br/>         <span class="cm-string">"parent"</span>:<span class="cm-atom">null</span>,<br/>         <span class="cm-string">"modifiers"</span>:[],   <br/>         <span class="cm-string">"code"</span>:<span class="cm-string">"24"</span>,<br/>         <span class="cm-string">"category"</span>:<span class="cm-atom">null</span>,<br/>         <span class="cm-string">"accountingCategory"</span>:<span class="cm-atom">null</span>,<br/>         <span class="cm-string">"color"</span>:{<br/>            <span class="cm-string">"red"</span>:<span class="cm-number">170</span>,<br/>            <span class="cm-string">"green"</span>:<span class="cm-number">170</span>,<br/>            <span class="cm-string">"blue"</span>:<span class="cm-number">170</span><br/>         },<br/>         <span class="cm-string">"fontColor"</span>:{<br/>            <span class="cm-string">"red"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"green"</span>:<span class="cm-number">0</span>,<br/>            <span class="cm-string">"blue"</span>:<span class="cm-number">0</span><br/>         },<br/>         <span class="cm-string">"frontImageId"</span>:<span class="cm-atom">null</span>,<br/>         <span class="cm-string">"position"</span>:<span class="cm-atom">null</span>,<br/>         <span class="cm-string">"taxCategory"</span>:<span class="cm-string">"ccf8be1e-4b39-478a-8c79-940af8c6cd02"</span>,<br/>         <span class="cm-string">"mainUnit"</span>:<span class="cm-string">"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc"</span>,<br/>         <span class="cm-string">"excludedSections"</span>:<span class="cm-atom">null</span>,<br/>         <span class="cm-string">"defaultSalePrice"</span>:<span class="cm-number">80</span>,<br/>         <span class="cm-string">"placeType"</span>:<span class="cm-atom">null</span>,<br/>         <span class="cm-string">"defaultIncludedInMenu"</span>:<span class="cm-atom">false</span>,<br/>         <span class="cm-string">"type"</span>:<span class="cm-string">"DISH"</span>,<br/>         <span class="cm-string">"unitWeight"</span>:<span class="cm-number">1</span>,<br/>         <span class="cm-string">"unitCapacity"</span>:<span class="cm-number">0</span>,<br/>         <span class="cm-string">"notInStoreMovement"</span>:<span class="cm-atom">false</span><br/>      }<br/>   ]<br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Пример <u>НЕ успешного</u> результата вызова API: entities/products/restore
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+      Пример <u>НЕ успешного</u> результата вызова API: entities/products/restore
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre class="code"><code class="xml hljs"> </code>Could not restore not deleted products: [fcdf4324-4a2f-f250-0162-d3887cf1005d].</pre>
+  </div>
+</div>
+
+
+<script src="/resources/Scripts/Lightbox/lightbox-plus-jquery.min.js"></script> <!-- скрипт используется для галереи картинок-->
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script> <!-- скрипт используется для подсветки примеров кода --></body></html>

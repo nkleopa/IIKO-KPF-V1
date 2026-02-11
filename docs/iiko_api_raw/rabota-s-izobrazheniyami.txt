@@ -1,0 +1,276 @@
+Работа с изображениями
+
+  
+
+    
+
+  
+Выгрузка изображения
+Параметры запроса
+Что в ответе
+Пример запроса и результата
+Импорт изображений
+Тело запроса
+Что в ответе
+Пример запроса и результата
+Удаление изображений
+Тело запроса
+Результат
+Пример запроса и результата 
+
+  
+  
+
+  
+
+Выгрузка изображения
+
+Версия iiko: 6.2
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/images/load?imageId={imageId}
+      
+    
+  
+
+Параметры запроса
+
+           Параметр                                
+           Тип, формат                                
+           Описание                                
+       	         imageId              	         UUID       	         UUID запрашиваемого изображения. 
+Что в ответе
+
+Выгружено изображение.
+
+           Поле                       
+           Версия iiko                                
+           Тип данных                       
+           Описание                                
+       	         id              	         6.2       	         UUID              	         UUID изображения.          
+       	         data              	         6.2              	         byte[]       	         
+Изображение в Base64.
+Пример запроса и результата
+
+Запрос
+
+https://localhost:8080/resto/api/v2/images/load?imageId=567791bd-7881-4bcf-8f84-138ca9d0f53c
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{ 
+  "id":"567791bd-7881-4bcf-8f84-138ca9d0f53c",
+  "data":"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"
+}
+  
+
+Импорт изображений
+
+Версия iiko: 6.2
+  
+    
+	
+        
+      	
+                 https://host:port/resto/api/v2/images/save      
+      
+    
+  
+
+Тело запроса
+                        
+                                
+Поле                                               Версия iiko
+                 
+                   Тип данных                                                                
+                   Значение                                                                                
+               	                 id                              	6.2
+	                 byte[]                              	                 Изображение в Base64.
+Размер изображения не должен превышать
+максимальный размер установленный в настройках сервера.
+Настройка "saved-image-max-size-mb". По умолчанию 512Мб. 
+Что в ответе
+
+  Json структура результата импорта. 
+
+Результат
+
+Поле                                           Тип данных                                           Значение                                
+       	         result              	         Enum:         
+         "SUCCESS",         
+         "ERROR"              	         Результата операции.                 
+       	         errors              	         List<ErrorDto>              	         
+           Список ошибок, не позволивших сделать успешный импорт документа.                          
+       	         response              	         ImageDto              	Cохраненное изображение.
+Пример запроса и результата
+
+Запрос
+
+https://localhost:8080/resto/api/v2/images/save
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{ 
+   "result":"SUCCESS",
+   "errors":null,
+   "response":{ 
+      "id":"828038fd-26e4-4566-8bee-c994d6f8d309",
+      "data":"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"
+    }
+}
+  
+
+Удаление изображений
+
+Версия iiko: 6.2
+  
+    
+	
+        
+      	
+                 https://host:port/resto/api/v2/images/delete      
+      
+    
+  
+
+Тело запроса
+                                                   
+               Поле                                                                                   Тип данных                                                                                   Значение                                                                                
+               	                 items                              	                 List<IdCodetDto>               	                 
+                                                     
+Список UUID изображений, которые нужно удалить.                                        
+                                                                           Поле                                                                                                                           Тип данных                                                                                                                           Значение                                                                                                                                
+                       	                         id                                              	                         UUID                                              	                         UUID элемента                       
+
+	
+Copy Code
+Код
+	{ 
+   "items":[ 
+      { 
+         "id":"fcdf4324-4a2f-f250-0162-d3887cf1005d"
+      }
+   ]
+}
+Результат
+
+ПолеТип данных
+
+Описание
+	result	Enum:
+"SUCCESS",
+"ERROR"
+	Результат операции.
+	errors	List<ErrorDto>	
+Список ошибок, не позволивших сделать успешный импорт документа.
+
+	response
+	IdListDto
+	Список UUID изображений, которые удалили.
+
+Пример запроса и результата
+
+Запрос
+
+https://localhost:8080/resto/api/v2/images/delete
+Результат
+
+	
+Copy Code
+JSON
+	Formatted JSON Data{ 
+   "result":"SUCCESS",
+   "errors":null,
+   "response":{ 
+      "items":[ 
+         { 
+            "id":"48ba540a-d767-f95a-0164-f56e1e50007f"
+         }
+      ]
+   }
+}

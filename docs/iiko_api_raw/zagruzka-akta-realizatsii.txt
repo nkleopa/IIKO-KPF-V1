@@ -1,0 +1,253 @@
+Загрузка акта реализации
+
+  
+
+    
+
+  
+Тело запроса
+Что в ответе
+Пример вызова и результата 
+
+  
+  
+
+  
+
+Версия iiko: 3.9
+  
+    
+
+      	
+        
+      
+      	
+        
+        
+        
+        
+https://host:port/resto/api/documents/import/salesDocument
+      
+      
+      
+    
+    
+
+                    Content-Type: application/xml               
+Тело запроса
+
+Структура salesDocumentDto
+
+  
+
+    [+]
+    
+      XSD Акт реализации
+    
+  
+  
+
+    [-]
+    
+      XSD Акт реализации
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="document" type="salesDocumentDto"/>
+ 
+    <xs:complexType name="salesDocumentDto">
+        <xs:sequence>
+            <!--Статус документа-->
+            <xs:element name="status" type="documentStatus" minOccurs="0"/>
+            <!--Счет для списания товаров (расходный счет). По умолчанию "Расход продуктов"-->
+            <xs:element name="accountToCode" type="xs:string" minOccurs="0"/>
+            <!--Счет выручки. По умолчанию используется "Торговая выручка без учета скидок"-->
+            <xs:element name="revenueAccountCode" type="xs:string" minOccurs="0"/>
+            <!--Номер документа-->
+            <xs:element name="documentNumber" type="xs:string" minOccurs="0"/>
+            <!--
+            Дата документа.
+            Поддерживаемые форматы:
+            yyyy-MM-ddTHH:mm:ss, yyyy-MM-dd (dd.MM.yyyy не рекомендуется).
+            -->
+            <xs:element name="dateIncoming" type="xs:string" minOccurs="0"/>
+            <!--Позиции документа-->
+            <xs:element name="items" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="item" type="salesDocumentItemDto" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+ 
+    <!--Позиция документа-->
+    <xs:complexType name="salesDocumentItemDto">
+        <xs:sequence>
+            <!--Количество товара в его основных единицах измерения-->
+            <xs:element name="amount" type="xs:decimal" minOccurs="0"/>
+            <!--ИД склада/Код склада-->
+            <xs:element name="storeCode" type="xs:string" minOccurs="0"/>
+            <xs:element name="storeId" type="xs:string" minOccurs="0"/>
+            <!--ИД товара/Артикул товара. ИД товара имеет приоритет-->
+            <xs:element name="productId" type="xs:string" minOccurs="0"/>
+            <xs:element name="productArticle" type="xs:string" minOccurs="0"/>
+            <!--
+            Cумма строки без учета скидки.
+            Как правило sum == amount * price / container + discountSum + vatSum
+             -->
+            <xs:element name="sum" type="xs:decimal" minOccurs="1"/>
+            <!-- Cумма скидки -->
+            <xs:element name="discountSum" type="xs:decimal" minOccurs="0"/>
+            <!--
+            Величина процента НДС и сумма НДС для строки документа.
+            Если не задана сумма, она вычисляется по проценту.
+            Если не задан процент, он берется из карточки товара.
+            Нельзя задать только сумму, не задавая процент.
+            @since 5.0
+             -->
+            <xs:element name="vatPercent" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="vatSum" type="xs:decimal" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+ 
+    <xs:simpleType name="documentStatus">
+        <xs:restriction base="xs:string">
+            <!--Новый, не проведен-->
+            <xs:enumeration value="NEW"/>
+            <!--Проведен-->
+            <xs:enumeration value="PROCESSED"/>
+            <!--Удален-->
+            <xs:enumeration value="DELETED"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
+  
+
+Что в ответе
+
+Структура documentValidationResult
+
+  
+
+    [+]
+    
+      XSD Результат валидации документа
+    
+  
+  
+
+    [-]
+    
+      XSD Результат валидации документа
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="documentValidationResult" type="documentValidationResult"/>
+ 
+    <!--
+    Результат валидации документа.
+    Некоторые документы возвращают более подробную информацию, смотрите:
+     * incomingInventoryValidationResult.xsd
+    -->
+    <xs:complexType name="documentValidationResult">
+        <xs:sequence>
+            <!-- Результат валидации. -->
+            <xs:element name="valid" type="xs:boolean"/>
+            <!-- Указывает на то, что ошибка не критичная и служит в качестве предупреждения. -->
+            <xs:element name="warning" type="xs:boolean"/>
+            <!-- Номер валидируемого документа. -->
+            <xs:element name="documentNumber" type="xs:string" minOccurs="0"/>
+            <!--
+            Новый номер для документа.
+            Отличен от null, если старый нарушает уникальность или не изменились влияющие на номер поля.
+            -->
+            <xs:element name="otherSuggestedNumber" type="xs:string" minOccurs="0"/>
+            <!--
+            Текст ошибки (или только заголовок, если задано additionalInfo).
+            Предназначен для показа пользователю, но в REST API не всегда локализован.
+            -->
+            <xs:element name="errorMessage" type="xs:string" minOccurs="0"/>
+            <!--
+            Для невалидного результата может быть указана дополнительная информация, содержащая детали ошибки.
+            Например, для случая списания в минус это поле содержит детальную информацию по каждой позиции документа,
+            приводящей к отрицательным остаткам.
+            -->
+            <xs:element name="additionalInfo" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+  
+
+Пример вызова и результата
+
+   Запрос 
+
+   https://localhost:8080/resto/api/documents/import/salesDocument?key=d5e3186a-b5a9-edf7-5164-ca55e29fe5e1  
+
+   
+	
+Copy Code
+XML
+	<document>
+  <items>
+    <!--Zero or more repetitions:-->
+      <item>
+              <discountSum>11.00</discountSum>
+              <sum>110.00</sum>
+              <amount>3.00</amount>
+              <productId>0f22aa60-e8ae-4c8e-80cd-f1e00b88fec6</productId>
+              <productArticle>25753</productArticle>
+              <storeId>1239D270-1BBE-F64F-B7EA-5F00518EF508</storeId>
+      </item>
+      <item>
+              <discountSum>22.00</discountSum>
+              <sum>220.00</sum>
+              <amount>5.00</amount>
+              <productId>b2d954ce-fc7a-44ff-9987-35af59f16966</productId>
+              <productArticle>25752</productArticle>
+              <storeId>153212ad-21af-4eeb-85c0-245822db3a70</storeId>
+      </item>
+  </items>
+  <status>NEW</status>
+  <accountToCode>5.01</accountToCode>
+  <revenueAccountCode>4.01</revenueAccountCode>
+  <documentNumber>api-015</documentNumber>
+  <dateIncoming>17.12.2014</dateIncoming>
+</document>
+ 
+
+   Результат 
+
+   
+	
+Copy Code
+XML
+	HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Vary: Accept-Encoding
+Content-Type: application/xml
+Content-Length: 191
+Date: Wed, 17 Dec 2014 09:16:36 GMT
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<documentValidationResult>
+  <documentNumber>api-015</documentNumber>
+  <valid>true</valid>
+  <warning>false</warning>
+</documentValidationResult>

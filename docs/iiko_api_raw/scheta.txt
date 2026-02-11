@@ -1,0 +1,163 @@
+Счета 
+
+  
+
+    
+
+  
+Получение списка счетов
+Параметры запроса
+Что в ответе
+Пример вызова 
+
+  
+  
+
+  
+
+Получение списка счетов
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/entities/accounts/list
+      
+    
+  
+
+Параметры запроса
+
+	Название 	Значение	Версия	Описание
+	includeDeleted	true, false	5.4	Включать ли удаленные счета, по умолчанию - нет
+	revisionFrom	-1	6.4	
+Номер  ревизии, начиная с которой необходимо отфильтровать сущности. Не  включающий саму ревизию, т.е. ревизия объекта > revisionFrom.
+По умолчанию (неревизионный запрос) revisionFrom = -1
+Что в ответе
+
+Json структура с данными счетов.
+Возвращает общую справочную информацию без привязки к балансам и материально ответственным лицам.
+	Поле
+	Версия
+	Описание
+
+	id	 	UUID счета
+	accountParentId	 	UUID родительского счета, у складов это поле null
+	parentCorporateId	 	UUID объекта структуры корпорации, которой принадлежит склад
+	code	 	Код счета
+	deleted	 	Удален ли
+	name	 	Название. Для предустановленных (системных) счетов название может/будет отображаться на разных языках,
+в зависимости от Accept-Language запроса.
+	type
+	 	         
+           Аналогично импорту только с id редактируемого элемента:                                          
+                                
+                   Значение                                               
+Описание                                                                 
+               	                 CASH                              	                 Денежные средства                                           
+	ACCOUNTS_RECEIVABLE	Задолженность покупателей
+             
+	DEBTS_OF_EMPLOYEES	Задолженность сотрудников
+             
+	CURRENT_ASSET	Текущие активы
+             
+	OTHER_CURRENT_ASSET	Основные средства
+             
+	INVENTORY_ASSETS	Складские запасы
+             
+	EMPLOYEES_LIABILITY	Расчеты с сотрудниками
+             
+	ACCOUNTS_PAYABLE	Расчеты с поставщиками
+             
+	CLIENTS_LIABILITY	Расчеты с гостями
+             
+	OTHER_CURRENT_LIABILITY	Прочие текущие обязательства
+             
+	LONG_TERM_LIABILITY	Долгосрочные обязательства
+             
+	EQUITY	Капитал
+             
+	COST_OF_GOODS_SOLD	Прямые издержки
+             
+	INCOME	Доходы
+             
+	EXPENSES	Расходы
+             
+	OTHER_INCOME	Прочие доходы
+             
+	OTHER_EXPENSES	Прочие расходы
+
+	system
+	
+	
+true, если это предустановленный склад на standalone RMS.
+	customTransactionsAllowed
+	
+	Можно ли делать ручные проводки
+
+	rootType
+	6.2.2
+	Account
+
+Пример вызова
+https://localhost:8080/resto/api/v2/entities/accounts/list
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	[
+ {
+ "rootType": "Account",
+ "id":"994ecca3-9b98-46d2-8620-846521ee0c68",
+ "accountParentId":null,
+ "parentCorporateId":null,
+ "code":"",
+ "deleted":false,
+ "name":"Маркетинг",
+ "type":"EXPENSES",
+ "system":false,
+ "customTransactionsAllowed":true
+ },
+ {
+ "rootType": "Account",
+ "id":"828ad83d-5ba5-d5d6-b675-7b35f0789d02",
+ "accountParentId":null,
+ "parentCorporateId":null,
+ "code":"5.07",
+ "deleted":false,
+ "name":"Delete dish with write-off",
+ "type":"COST_OF_GOODS_SOLD",
+ "system":false,
+ "customTransactionsAllowed":true
+ },
+ {
+ "rootType": "Account",
+ "id":"3a007f93-282c-4139-a371-e4217c77277c",
+ "accountParentId":null,
+ "parentCorporateId":null,
+ "code":"",
+ "deleted":false,
+ "name":"Порча",
+ "type":"COST_OF_GOODS_SOLD",
+ "system":false,
+ "customTransactionsAllowed":true
+ }
+]

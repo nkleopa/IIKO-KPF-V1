@@ -1,0 +1,542 @@
+[
+  {
+    "slug": "iikoserver-api",
+    "internalId": 215317,
+    "title": "iikoServer API",
+    "project": "api-documentations",
+    "timeToRead": 50,
+    "htmlLength": 15962,
+    "textLength": 2356,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/iikoserver-api"
+  },
+  {
+    "slug": "ogranicheniya-i-rekomendatsii",
+    "internalId": 215338,
+    "title": "Ограничения и рекомендации",
+    "project": "api-documentations",
+    "timeToRead": 25,
+    "htmlLength": 3107,
+    "textLength": 861,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/ogranicheniya-i-rekomendatsii"
+  },
+  {
+    "slug": "printsipy-raboty",
+    "internalId": 215343,
+    "title": "Принципы работы",
+    "project": "api-documentations",
+    "timeToRead": 30,
+    "htmlLength": 3095,
+    "textLength": 1202,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/printsipy-raboty"
+  },
+  {
+    "slug": "avtorizatsiya",
+    "internalId": 215344,
+    "title": "Авторизация",
+    "project": "api-documentations",
+    "timeToRead": 73,
+    "htmlLength": 7456,
+    "textLength": 1565,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/avtorizatsiya"
+  },
+  {
+    "slug": "opisanie-oshibok",
+    "internalId": 215348,
+    "title": "Описание ошибок",
+    "project": "api-documentations",
+    "timeToRead": 114,
+    "htmlLength": 17161,
+    "textLength": 3690,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/opisanie-oshibok"
+  },
+  {
+    "slug": "elementy-nomenklatury",
+    "internalId": 215376,
+    "title": "Элементы номенклатуры",
+    "project": "api-documentations",
+    "timeToRead": 1034,
+    "htmlLength": 150216,
+    "textLength": 56016,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/elementy-nomenklatury"
+  },
+  {
+    "slug": "nomenklaturnye-gruppy",
+    "internalId": 215389,
+    "title": "Номенклатурные группы",
+    "project": "api-documentations",
+    "timeToRead": 551,
+    "htmlLength": 98495,
+    "textLength": 38167,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/nomenklaturnye-gruppy"
+  },
+  {
+    "slug": "polzovatelskie-kategorii",
+    "internalId": 215394,
+    "title": "Пользовательские категории",
+    "project": "api-documentations",
+    "timeToRead": 236,
+    "htmlLength": 42603,
+    "textLength": 12855,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/polzovatelskie-kategorii"
+  },
+  {
+    "slug": "tekhnologicheskie-karty",
+    "internalId": 215400,
+    "title": "Технологические карты",
+    "project": "api-documentations",
+    "timeToRead": 1054,
+    "htmlLength": 209061,
+    "textLength": 61722,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/tekhnologicheskie-karty"
+  },
+  {
+    "slug": "rabota-s-izobrazheniyami",
+    "internalId": 215405,
+    "title": "Работа с изображениями",
+    "project": "api-documentations",
+    "timeToRead": 144,
+    "htmlLength": 42383,
+    "textLength": 11124,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/rabota-s-izobrazheniyami"
+  },
+  {
+    "slug": "rabota-so-shkaloy-i-razmerami",
+    "internalId": 215410,
+    "title": "Работа со шкалой и размерами",
+    "project": "api-documentations",
+    "timeToRead": 573,
+    "htmlLength": 162647,
+    "textLength": 43589,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/rabota-so-shkaloy-i-razmerami"
+  },
+  {
+    "slug": "zagruzka-i-redaktirovanie-prikhodnoy-nakladnoy",
+    "internalId": 215423,
+    "title": "Загрузка и редактирование приходной накладной",
+    "project": "api-documentations",
+    "timeToRead": 331,
+    "htmlLength": 51980,
+    "textLength": 14223,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/zagruzka-i-redaktirovanie-prikhodnoy-nakladnoy"
+  },
+  {
+    "slug": "rasprovedenie-prikhodnoy-i-raskhodnoy-nakladnoy",
+    "internalId": 215429,
+    "title": "Распроведение приходной и расходной накладной",
+    "project": "api-documentations",
+    "timeToRead": 403,
+    "htmlLength": 625223,
+    "textLength": 17088,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/rasprovedenie-prikhodnoy-i-raskhodnoy-nakladnoy"
+  },
+  {
+    "slug": "vygruzka-prikhodnykh-nakladnykh",
+    "internalId": 215432,
+    "title": "Выгрузка приходных накладных",
+    "project": "api-documentations",
+    "timeToRead": 490,
+    "htmlLength": 88547,
+    "textLength": 24345,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/vygruzka-prikhodnykh-nakladnykh"
+  },
+  {
+    "slug": "vygruzka-prikhodnoy-nakladnoy-po-ee-nomeru",
+    "internalId": 215435,
+    "title": "Выгрузка приходной накладной по ее номеру",
+    "project": "api-documentations",
+    "timeToRead": 278,
+    "htmlLength": 48574,
+    "textLength": 12966,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/vygruzka-prikhodnoy-nakladnoy-po-ee-nomeru"
+  },
+  {
+    "slug": "zagruzka-i-redaktirovanie-raskhodnoy-nakladnoy",
+    "internalId": 215426,
+    "title": "Загрузка и редактирование расходной накладной",
+    "project": "api-documentations",
+    "timeToRead": 228,
+    "htmlLength": 36637,
+    "textLength": 9940,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/zagruzka-i-redaktirovanie-raskhodnoy-nakladnoy"
+  },
+  {
+    "slug": "vygruzka-raskhodnykh-nakladnykh",
+    "internalId": 215434,
+    "title": "Выгрузка расходных накладных",
+    "project": "api-documentations",
+    "timeToRead": 191,
+    "htmlLength": 30260,
+    "textLength": 8611,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/vygruzka-raskhodnykh-nakladnykh"
+  },
+  {
+    "slug": "vygruzka-raskhodnoy-nakladnoy-po-ee-nomeru",
+    "internalId": 215436,
+    "title": "Выгрузка расходной накладной по ее номеру",
+    "project": "api-documentations",
+    "timeToRead": 197,
+    "htmlLength": 34461,
+    "textLength": 8750,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/vygruzka-raskhodnoy-nakladnoy-po-ee-nomeru"
+  },
+  {
+    "slug": "zagruzka-akta-prigotovleniya",
+    "internalId": 218281,
+    "title": "Загрузка акта приготовления",
+    "project": "api-documentations",
+    "timeToRead": 160,
+    "htmlLength": 26185,
+    "textLength": 6778,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/zagruzka-akta-prigotovleniya"
+  },
+  {
+    "slug": "zagruzka-akta-realizatsii",
+    "internalId": 215402,
+    "title": "Загрузка акта реализации",
+    "project": "api-documentations",
+    "timeToRead": 177,
+    "htmlLength": 28229,
+    "textLength": 7445,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/zagruzka-akta-realizatsii"
+  },
+  {
+    "slug": "zagruzka-vozvratnoy-nakladnoy",
+    "internalId": 215396,
+    "title": "Загрузка возвратной накладной",
+    "project": "api-documentations",
+    "timeToRead": 230,
+    "htmlLength": 35318,
+    "textLength": 9796,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/zagruzka-vozvratnoy-nakladnoy"
+  },
+  {
+    "slug": "zagruzka-inventarizatsii",
+    "internalId": 215409,
+    "title": "Загрузка инвентаризации",
+    "project": "api-documentations",
+    "timeToRead": 290,
+    "htmlLength": 46636,
+    "textLength": 13390,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/zagruzka-inventarizatsii"
+  },
+  {
+    "slug": "akty-spisaniya",
+    "internalId": 215416,
+    "title": "Акты списания",
+    "project": "api-documentations",
+    "timeToRead": 226,
+    "htmlLength": 81611,
+    "textLength": 15473,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/akty-spisaniya"
+  },
+  {
+    "slug": "vnutrennie-peremescheniya",
+    "internalId": 215419,
+    "title": "Внутренние перемещения",
+    "project": "api-documentations",
+    "timeToRead": 262,
+    "htmlLength": 79490,
+    "textLength": 17400,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/vnutrennie-peremescheniya"
+  },
+  {
+    "slug": "kassovye-smeny-v2",
+    "internalId": 215375,
+    "title": "Работа со сменами",
+    "project": "api-documentations",
+    "timeToRead": 693,
+    "htmlLength": 206891,
+    "textLength": 26535,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/kassovye-smeny-v2"
+  },
+  {
+    "slug": "rabota-s-izyatiyami",
+    "internalId": 215381,
+    "title": "Работа с изъятиями",
+    "project": "api-documentations",
+    "timeToRead": 272,
+    "htmlLength": 71757,
+    "textLength": 10590,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/rabota-s-izyatiyami"
+  },
+  {
+    "slug": "korporatsii",
+    "internalId": 215355,
+    "title": "Корпорации",
+    "project": "api-documentations",
+    "timeToRead": 458,
+    "htmlLength": 103837,
+    "textLength": 19270,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/korporatsii"
+  },
+  {
+    "slug": "statusy-replikatsii",
+    "internalId": 215365,
+    "title": "Статусы репликации",
+    "project": "api-documentations",
+    "timeToRead": 78,
+    "htmlLength": 10992,
+    "textLength": 1518,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/statusy-replikatsii"
+  },
+  {
+    "slug": "sobytiya",
+    "internalId": 215356,
+    "title": "События",
+    "project": "api-documentations",
+    "timeToRead": 418,
+    "htmlLength": 63704,
+    "textLength": 13901,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/sobytiya"
+  },
+  {
+    "slug": "formirovanie-olap-otcheta-v-api",
+    "internalId": 215377,
+    "title": "Формирование OLAP отчета в API",
+    "project": "api-documentations",
+    "timeToRead": 821,
+    "htmlLength": 207216,
+    "textLength": 46391,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/formirovanie-olap-otcheta-v-api"
+  },
+  {
+    "slug": "olap-otchety-v1",
+    "internalId": 215424,
+    "title": "OLAP-отчет v1",
+    "project": "api-documentations",
+    "timeToRead": 781,
+    "htmlLength": 85923,
+    "textLength": 28633,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/olap-otchety-v1"
+  },
+  {
+    "slug": "otchety-dostavka-v1",
+    "internalId": 215427,
+    "title": "Отчеты по доставке",
+    "project": "api-documentations",
+    "timeToRead": 421,
+    "htmlLength": 82960,
+    "textLength": 9286,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/otchety-dostavka-v1"
+  },
+  {
+    "slug": "otchety-v1",
+    "internalId": 215430,
+    "title": "Отчеты по складским операциям",
+    "project": "api-documentations",
+    "timeToRead": 693,
+    "htmlLength": 131718,
+    "textLength": 27504,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/otchety-v1"
+  },
+  {
+    "slug": "olap-otchety-v2",
+    "internalId": 218011,
+    "title": "OLAP-отчет v2",
+    "project": "api-documentations",
+    "timeToRead": 372,
+    "htmlLength": 94479,
+    "textLength": 16467,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/olap-otchety-v2"
+  },
+  {
+    "slug": "otchety-vv2",
+    "internalId": 215428,
+    "title": "Примеры отчетов",
+    "project": "api-documentations",
+    "timeToRead": 212,
+    "htmlLength": 29469,
+    "textLength": 9928,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/otchety-vv2"
+  },
+  {
+    "slug": "primery-vyzova-olap-otchet-v2",
+    "internalId": 215431,
+    "title": "Примеры вызова OLAP-отчетa по продажам",
+    "project": "api-documentations",
+    "timeToRead": 8814,
+    "htmlLength": 1480728,
+    "textLength": 561716,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/primery-vyzova-olap-otchet-v2"
+  },
+  {
+    "slug": "prednastroennye-olap-otchety-vv2",
+    "internalId": 215433,
+    "title": "Преднастроенные OLAP-отчеты",
+    "project": "api-documentations",
+    "timeToRead": 119,
+    "htmlLength": 13536,
+    "textLength": 3418,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/prednastroennye-olap-otchety-vv2"
+  },
+  {
+    "slug": "rabota-s-postavschikami",
+    "internalId": 215357,
+    "title": "Работа с поставщиками",
+    "project": "api-documentations",
+    "timeToRead": 263,
+    "htmlLength": 44800,
+    "textLength": 9336,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/rabota-s-postavschikami"
+  },
+  {
+    "slug": "rabota-s-dannymi-sotrudnikovv",
+    "internalId": 215374,
+    "title": "Работа с данными сотрудников",
+    "project": "api-documentations",
+    "timeToRead": 496,
+    "htmlLength": 78312,
+    "textLength": 19236,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/rabota-s-dannymi-sotrudnikovv"
+  },
+  {
+    "slug": "rabota-s-dannymi-dolzhnostey",
+    "internalId": 215385,
+    "title": "Работа с данными должностей",
+    "project": "api-documentations",
+    "timeToRead": 78,
+    "htmlLength": 13758,
+    "textLength": 2708,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/rabota-s-dannymi-dolzhnostey"
+  },
+  {
+    "slug": "rabota-s-dannymi-oklada",
+    "internalId": 215393,
+    "title": "Работа с данными оклада",
+    "project": "api-documentations",
+    "timeToRead": 104,
+    "htmlLength": 14990,
+    "textLength": 2268,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/rabota-s-dannymi-oklada"
+  },
+  {
+    "slug": "rabota-s-dannymi-smeny-i-raspisaniy",
+    "internalId": 215397,
+    "title": "Работа с данными смены и расписаний",
+    "project": "api-documentations",
+    "timeToRead": 335,
+    "htmlLength": 37469,
+    "textLength": 10153,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/rabota-s-dannymi-smeny-i-raspisaniy"
+  },
+  {
+    "slug": "rabota-s-dannymi-yavok",
+    "internalId": 215407,
+    "title": "Работа с данными явок",
+    "project": "api-documentations",
+    "timeToRead": 465,
+    "htmlLength": 49841,
+    "textLength": 15422,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/rabota-s-dannymi-yavok"
+  },
+  {
+    "slug": "rabota-s-dannymi-brigad",
+    "internalId": 215411,
+    "title": "Работа с данными бригад",
+    "project": "api-documentations",
+    "timeToRead": 592,
+    "htmlLength": 76695,
+    "textLength": 18922,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/rabota-s-dannymi-brigad"
+  },
+  {
+    "slug": "api-edi-5-0",
+    "internalId": 215358,
+    "title": "API EDI (5.0)",
+    "project": "api-documentations",
+    "timeToRead": 921,
+    "htmlLength": 91442,
+    "textLength": 47141,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/api-edi-5-0"
+  },
+  {
+    "slug": "api-edi-5-1-6-4",
+    "internalId": 215359,
+    "title": "API EDI (5.1, 6.4)",
+    "project": "api-documentations",
+    "timeToRead": 887,
+    "htmlLength": 96147,
+    "textLength": 41445,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/api-edi-5-1-6-4"
+  },
+  {
+    "slug": "kody-bazovykh-tipov",
+    "internalId": 215360,
+    "title": "Коды базовых типов",
+    "project": "api-documentations",
+    "timeToRead": 184,
+    "htmlLength": 27856,
+    "textLength": 8112,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/kody-bazovykh-tipov"
+  },
+  {
+    "slug": "spravochniki",
+    "internalId": 215361,
+    "title": "Справочники",
+    "project": "api-documentations",
+    "timeToRead": 240,
+    "htmlLength": 63400,
+    "textLength": 8903,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/spravochniki"
+  },
+  {
+    "slug": "prikazy",
+    "internalId": 215362,
+    "title": "Работа с приказами",
+    "project": "api-documentations",
+    "timeToRead": 322,
+    "htmlLength": 107274,
+    "textLength": 23184,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/prikazy"
+  },
+  {
+    "slug": "tseny-zadannye-prikazami",
+    "internalId": 215373,
+    "title": "Цены, заданные приказами",
+    "project": "api-documentations",
+    "timeToRead": 234,
+    "htmlLength": 74769,
+    "textLength": 13047,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/tseny-zadannye-prikazami"
+  },
+  {
+    "slug": "tsenovye-kategorii",
+    "internalId": 215363,
+    "title": "Ценовые категории",
+    "project": "api-documentations",
+    "timeToRead": 131,
+    "htmlLength": 43198,
+    "textLength": 4862,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/tsenovye-kategorii"
+  },
+  {
+    "slug": "periody-deystviya",
+    "internalId": 215364,
+    "title": "Периоды действия",
+    "project": "api-documentations",
+    "timeToRead": 105,
+    "htmlLength": 41047,
+    "textLength": 3779,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/periody-deystviya"
+  },
+  {
+    "slug": "scheta",
+    "internalId": 215366,
+    "title": "Счета",
+    "project": "api-documentations",
+    "timeToRead": 85,
+    "htmlLength": 20594,
+    "textLength": 3472,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/scheta"
+  },
+  {
+    "slug": "rabota-s-bystrym-menyu",
+    "internalId": 215367,
+    "title": "Работа с быстрым меню",
+    "project": "api-documentations",
+    "timeToRead": 403,
+    "htmlLength": 53853,
+    "textLength": 16847,
+    "url": "https://ru.iiko.help/articles/#!api-documentations/rabota-s-bystrym-menyu"
+  }
+]

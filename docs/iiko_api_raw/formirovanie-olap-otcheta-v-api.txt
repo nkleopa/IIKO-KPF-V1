@@ -1,0 +1,1494 @@
+Формирование OLAP отчета в API
+
+  
+
+    
+
+  
+Процесс формирования отчета в iikoOffice
+Работа с API iikoServer
+Метод для формирования OLAP отчета в API (с возможностью конфигурации тела запроса) 
+
+  
+  
+
+  
+
+Получить данные в API при помощи OLAP отчета можно следующими путями:  
+- получение данных по преднастроенному отчету в iikoOffice: в классическом приложении iikoOffice выбрать в навигационном меню раздела «Розничные продажи» - "OLAP Отчет по продажам", добавить в него поля и период для получения данных, сохранить данный вариант. Далее выгрузить список преднастроенных отчетов и получить информацию по полям и фильтрам при помощи метода «Получение отчета по сохраненной конфигурации».   
+- самостоятельное формирование отчета OLAP, руководствуясь документацией.  
+   
+В обоих случаях рекомендуется использовать OLAP v2.   
+Тот же механизм доступен для работы с "OLAP Отчет по проводкам" в разделе "Финансы".  
+Описание примеров OLAP-отчетов в iikoOffice можно найти в здесь.   
+Описание примеров OLAP-отчетов в API можно найти здесь.   
+Подробное описание полей можно прочитать в статье по полям OLAP-отчета по продажам и в статье по полям OLAP-отчета по проводкам. 
+  
+Процесс формирования отчета в iikoOffice
+
+В классическом приложении iikoOffice выберите "OLAP Отчет по продажам" в навигационном меню раздела «Розничные продажи»:
+
+После запуска «OLAP Отчет по продажам» укажите период сбора данных, добавьте поля для сбора данных.   
+Далее сохраните сформированный отчет, дайте ему название.  
+
+Готово. Отчет сохранен и готов к выгрузке через API.
+Дополнительно: при нажатии на комбинацию клавиш «CTRL + SHIFT + F3» выведется окно с параметрами OLAP-отчета, на которые можно ориентироваться при построение отчета в API.
+
+Работа с API iikoServer
+
+Статья по авторизации для работы с методами API iikoServer.
+Метод для получения списка преднастроенных отчетов OLAP.
+Ответ метода для рассматриваемого примера:
+
+	
+Copy Code
+JSON
+	....  
+{
+        "id": "e45124ec-6455-4a1f-ba59-9aa3efe05f30",
+        "name": "Отчет по проданным блюдам в смену",
+        "buildSummary": null,
+        "reportType": "SALES",
+        "groupByRowFields": [
+            "OpenDate.Typed",
+            "SessionNum",
+            "OpenTime",
+            "CloseTime",
+            "DishName",
+            "OrderType",
+            "Delivery.CustomerName",
+            "Delivery.CustomerPhone",
+            "PayTypes"
+        ],
+        "groupByColFields": [],
+        "aggregateFields": [
+            "DishSumInt"
+        ],
+        "filters": {
+            "DeletedWithWriteoff": {
+                "filterType": "IncludeValues",
+                "values": [
+                    "NOT_DELETED"
+                ]
+            },
+            "OrderDeleted": {
+                "filterType": "IncludeValues",
+                "values": [
+                    "NOT_DELETED"
+                ]
+            }
+        }
+    }
+...
+
+Метод для получения тела отчета по сохраненной конфигурации (id)
+
+  
+
+    [+]
+    
+      Ответ для рассматриваемого примера
+    
+  
+  
+
+    [-]
+    
+      Ответ для рассматриваемого примера
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{
+    "data": [
+        {
+            "CloseTime": "2025-03-18T12:05:24.618",
+            "Delivery.CustomerName": "Пупкин Василий",
+            "Delivery.CustomerPhone": "+79785160513",
+            "DishName": "Лимонад",
+            "DishSumInt": 176,
+            "OpenDate.Typed": "2025-03-18T00:00:00",
+            "OpenTime": "2025-03-18T11:36:48",
+            "OrderType": null,
+            "PayTypes": "Наличные",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-18T15:34:01.955",
+            "Delivery.CustomerName": "Ермолаев Евгений",
+            "Delivery.CustomerPhone": "+79196129578",
+            "DishName": "Шоколадный батончик",
+            "DishSumInt": 50,
+            "OpenDate.Typed": "2025-03-18T00:00:00",
+            "OpenTime": "2025-03-18T15:33:41",
+            "OrderType": null,
+            "PayTypes": "Наличные",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-18T19:11:06.321",
+            "Delivery.CustomerName": null,
+            "Delivery.CustomerPhone": null,
+            "DishName": "Пицца ",
+            "DishSumInt": 240,
+            "OpenDate.Typed": "2025-03-18T00:00:00",
+            "OpenTime": "2025-03-18T19:10:47",
+            "OrderType": "Доставка самовывоз",
+            "PayTypes": "Банковские карты",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-18T19:14:02.906",
+            "Delivery.CustomerName": "Ермолаев Евгений",
+            "Delivery.CustomerPhone": "+79196129578",
+            "DishName": "Пицца ",
+            "DishSumInt": 240,
+            "OpenDate.Typed": "2025-03-18T00:00:00",
+            "OpenTime": "2025-03-18T19:13:20",
+            "OrderType": "Доставка самовывоз",
+            "PayTypes": "Банковские карты",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-18T19:19:12.99",
+            "Delivery.CustomerName": "Ермолаев Евгений",
+            "Delivery.CustomerPhone": "+79196129578",
+            "DishName": "Пицца ",
+            "DishSumInt": 240,
+            "OpenDate.Typed": "2025-03-18T00:00:00",
+            "OpenTime": "2025-03-18T19:18:35",
+            "OrderType": "Доставка самовывоз",
+            "PayTypes": "Банковские карты",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-18T19:21:43.061",
+            "Delivery.CustomerName": null,
+            "Delivery.CustomerPhone": null,
+            "DishName": "Пицца ",
+            "DishSumInt": 240,
+            "OpenDate.Typed": "2025-03-18T00:00:00",
+            "OpenTime": "2025-03-18T19:21:25",
+            "OrderType": "Доставка самовывоз",
+            "PayTypes": "Банковские карты",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-18T23:14:50.343",
+            "Delivery.CustomerName": "Ермолаев Евгений",
+            "Delivery.CustomerPhone": "+79196129578",
+            "DishName": "Пицца ",
+            "DishSumInt": 240,
+            "OpenDate.Typed": "2025-03-18T00:00:00",
+            "OpenTime": "2025-03-18T20:07:22",
+            "OrderType": "Доставка самовывоз",
+            "PayTypes": "Наличные",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-18T23:15:22.35",
+            "Delivery.CustomerName": "Ермолаев Евгений",
+            "Delivery.CustomerPhone": "+79196129578",
+            "DishName": "Пицца ",
+            "DishSumInt": 240,
+            "OpenDate.Typed": "2025-03-18T00:00:00",
+            "OpenTime": "2025-03-18T20:13:45",
+            "OrderType": "Доставка самовывоз",
+            "PayTypes": "Наличные",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-19T12:58:35.344",
+            "Delivery.CustomerName": "Ермолаев Евгений",
+            "Delivery.CustomerPhone": "+79196129578",
+            "DishName": "Пицца ",
+            "DishSumInt": 240,
+            "OpenDate.Typed": "2025-03-18T00:00:00",
+            "OpenTime": "2025-03-19T12:56:35",
+            "OrderType": "Доставка самовывоз",
+            "PayTypes": "Банковские карты",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-24T10:26:53.437",
+            "Delivery.CustomerName": null,
+            "Delivery.CustomerPhone": null,
+            "DishName": "Шоколадный батончик MARS",
+            "DishSumInt": 50,
+            "OpenDate.Typed": "2025-03-18T00:00:00",
+            "OpenTime": "2025-03-24T10:23:59",
+            "OrderType": null,
+            "PayTypes": "Наличные",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-25T12:44:08.425",
+            "Delivery.CustomerName": null,
+            "Delivery.CustomerPhone": null,
+            "DishName": "Пицца ",
+            "DishSumInt": 240,
+            "OpenDate.Typed": "2025-03-24T00:00:00",
+            "OpenTime": "2025-03-24T13:21:53",
+            "OrderType": "Доставка самовывоз",
+            "PayTypes": "Наличные",
+            "SessionNum": 18
+        }
+    ],
+  //массив summary выведется с подсуммировкой, если в параметрах запроса указано summary = true
+    "summary": [
+        [
+            {},
+            {
+                "DishSumInt": 2196
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:21:43.061",
+                "Delivery.CustomerName": null,
+                "Delivery.CustomerPhone": null,
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:21:25",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:21:43.061",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:21:25",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T15:34:01.955",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "Delivery.CustomerPhone": "+79196129578",
+                "DishName": "Шоколадный батончик",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T15:33:41",
+                "OrderType": null,
+                "PayTypes": "Наличные",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 50
+            }
+        ],
+        [
+            {
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-19T12:56:35",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:14:02.906",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:13:20",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-19T12:58:35.344",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-19T12:56:35",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:21:43.061",
+                "Delivery.CustomerName": null,
+                "Delivery.CustomerPhone": null,
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:21:25",
+                "OrderType": "Доставка самовывоз",
+                "PayTypes": "Банковские карты",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:11:06.321",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:10:47",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T20:13:45",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:18:35",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "OpenDate.Typed": "2025-03-24T00:00:00"
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T15:34:01.955",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T15:33:41",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 50
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T12:05:24.618",
+                "Delivery.CustomerName": "Пупкин Василий",
+                "Delivery.CustomerPhone": "+79785160513",
+                "DishName": "Лимонад",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T11:36:48",
+                "OrderType": null,
+                "PayTypes": "Наличные",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 176
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T23:15:22.35",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T20:13:45",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:14:02.906",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "Delivery.CustomerPhone": "+79196129578",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:13:20",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:14:02.906",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:13:20",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:14:02.906",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:13:20",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-25T12:44:08.425",
+                "Delivery.CustomerName": null,
+                "Delivery.CustomerPhone": null,
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-24T00:00:00",
+                "OpenTime": "2025-03-24T13:21:53",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 18
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "OpenDate.Typed": "2025-03-24T00:00:00",
+                "OpenTime": "2025-03-24T13:21:53",
+                "SessionNum": 18
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-19T12:58:35.344",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-19T12:56:35",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T23:14:50.343",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "Delivery.CustomerPhone": "+79196129578",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T20:07:22",
+                "OrderType": "Доставка самовывоз",
+                "PayTypes": "Наличные",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-24T10:26:53.437",
+                "Delivery.CustomerName": null,
+                "DishName": "Шоколадный батончик MARS",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-24T10:23:59",
+                "OrderType": null,
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 50
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T15:34:01.955",
+                "DishName": "Шоколадный батончик",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T15:33:41",
+                "OrderType": null,
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 50
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:19:12.99",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:18:35",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:21:43.061",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:21:25",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-19T12:58:35.344",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "Delivery.CustomerPhone": "+79196129578",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-19T12:56:35",
+                "OrderType": "Доставка самовывоз",
+                "PayTypes": "Банковские карты",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-19T12:58:35.344",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-19T12:56:35",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-24T10:23:59",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 50
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:14:02.906",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:13:20",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:13:20",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 1956
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:11:06.321",
+                "Delivery.CustomerName": null,
+                "Delivery.CustomerPhone": null,
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:10:47",
+                "OrderType": "Доставка самовывоз",
+                "PayTypes": "Банковские карты",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:19:12.99",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:18:35",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "OpenDate.Typed": "2025-03-18T00:00:00"
+            },
+            {
+                "DishSumInt": 1956
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T23:14:50.343",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T20:07:22",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T12:05:24.618",
+                "DishName": "Лимонад",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T11:36:48",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 176
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:14:02.906",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "Delivery.CustomerPhone": "+79196129578",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:13:20",
+                "OrderType": "Доставка самовывоз",
+                "PayTypes": "Банковские карты",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:11:06.321",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:10:47",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:21:43.061",
+                "Delivery.CustomerName": null,
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:21:25",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:21:25",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-25T12:44:08.425",
+                "Delivery.CustomerName": null,
+                "Delivery.CustomerPhone": null,
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-24T00:00:00",
+                "OpenTime": "2025-03-24T13:21:53",
+                "OrderType": "Доставка самовывоз",
+                "PayTypes": "Наличные",
+                "SessionNum": 18
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:11:06.321",
+                "Delivery.CustomerName": null,
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:10:47",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:11:06.321",
+                "Delivery.CustomerName": null,
+                "Delivery.CustomerPhone": null,
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:10:47",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-24T10:26:53.437",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-24T10:23:59",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 50
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T23:14:50.343",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T20:07:22",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T23:15:22.35",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T20:13:45",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T23:15:22.35",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T20:13:45",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T12:05:24.618",
+                "DishName": "Лимонад",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T11:36:48",
+                "OrderType": null,
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 176
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-24T10:26:53.437",
+                "Delivery.CustomerName": null,
+                "Delivery.CustomerPhone": null,
+                "DishName": "Шоколадный батончик MARS",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-24T10:23:59",
+                "OrderType": null,
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 50
+            }
+        ],
+        [
+            {
+                "OpenDate.Typed": "2025-03-24T00:00:00",
+                "SessionNum": 18
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T12:05:24.618",
+                "Delivery.CustomerName": "Пупкин Василий",
+                "DishName": "Лимонад",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T11:36:48",
+                "OrderType": null,
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 176
+            }
+        ],
+        [
+            {
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T11:36:48",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 176
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T23:14:50.343",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T20:07:22",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:19:12.99",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:18:35",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-24T10:26:53.437",
+                "DishName": "Шоколадный батончик MARS",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-24T10:23:59",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 50
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T15:34:01.955",
+                "DishName": "Шоколадный батончик",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T15:33:41",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 50
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-24T10:26:53.437",
+                "DishName": "Шоколадный батончик MARS",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-24T10:23:59",
+                "OrderType": null,
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 50
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-25T12:44:08.425",
+                "Delivery.CustomerName": null,
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-24T00:00:00",
+                "OpenTime": "2025-03-24T13:21:53",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 18
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-25T12:44:08.425",
+                "OpenDate.Typed": "2025-03-24T00:00:00",
+                "OpenTime": "2025-03-24T13:21:53",
+                "SessionNum": 18
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T15:34:01.955",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "DishName": "Шоколадный батончик",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T15:33:41",
+                "OrderType": null,
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 50
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T23:15:22.35",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T20:13:45",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T23:15:22.35",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "Delivery.CustomerPhone": "+79196129578",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T20:13:45",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T23:14:50.343",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T20:07:22",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T12:05:24.618",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T11:36:48",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 176
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T15:34:01.955",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "Delivery.CustomerPhone": "+79196129578",
+                "DishName": "Шоколадный батончик",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T15:33:41",
+                "OrderType": null,
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 50
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:19:12.99",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "Delivery.CustomerPhone": "+79196129578",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:18:35",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:19:12.99",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "Delivery.CustomerPhone": "+79196129578",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:18:35",
+                "OrderType": "Доставка самовывоз",
+                "PayTypes": "Банковские карты",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:11:06.321",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:10:47",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-19T12:58:35.344",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "Delivery.CustomerPhone": "+79196129578",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-19T12:56:35",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T15:33:41",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 50
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:21:43.061",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:21:25",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-24T10:26:53.437",
+                "Delivery.CustomerName": null,
+                "Delivery.CustomerPhone": null,
+                "DishName": "Шоколадный батончик MARS",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-24T10:23:59",
+                "OrderType": null,
+                "PayTypes": "Наличные",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 50
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-25T12:44:08.425",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-24T00:00:00",
+                "OpenTime": "2025-03-24T13:21:53",
+                "SessionNum": 18
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:10:47",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-19T12:58:35.344",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-19T12:56:35",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T12:05:24.618",
+                "Delivery.CustomerName": "Пупкин Василий",
+                "Delivery.CustomerPhone": "+79785160513",
+                "DishName": "Лимонад",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T11:36:48",
+                "OrderType": null,
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 176
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T19:19:12.99",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T19:18:35",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T23:15:22.35",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "Delivery.CustomerPhone": "+79196129578",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T20:13:45",
+                "OrderType": "Доставка самовывоз",
+                "PayTypes": "Наличные",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-18T23:14:50.343",
+                "Delivery.CustomerName": "Ермолаев Евгений",
+                "Delivery.CustomerPhone": "+79196129578",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T20:07:22",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "OpenDate.Typed": "2025-03-18T00:00:00",
+                "OpenTime": "2025-03-18T20:07:22",
+                "SessionNum": 17
+            },
+            {
+                "DishSumInt": 240
+            }
+        ],
+        [
+            {
+                "CloseTime": "2025-03-25T12:44:08.425",
+                "DishName": "Пицца ",
+                "OpenDate.Typed": "2025-03-24T00:00:00",
+                "OpenTime": "2025-03-24T13:21:53",
+                "OrderType": "Доставка самовывоз",
+                "SessionNum": 18
+            },
+            {
+                "DishSumInt": 240
+            }
+        ]
+    ]
+}
+  
+
+Метод для получения полей OLAP отчета v2 (если необходимость уточнить поля).
+
+Метод для формирования OLAP отчета в API (с возможностью конфигурации тела запроса)
+
+  
+    
+	
+        
+      	
+        https://host:port.iiko.it/resto/api/v2/reports/olap?key=[token]
+    
+  
+
+Параметры запроса
+Параметр
+Описание
+
+	
+        
+         key
+        	Строка-токен, получаемый при авторизации
+Тело запроса
+
+	
+Copy Code
+Код
+	{
+    "reportType": "SALES",
+    "groupByRowFields": [
+            "OpenDate.Typed",
+            "SessionNum",
+            "OpenTime",
+            "CloseTime",
+            "DishName",
+            "OrderType",
+            "Delivery.CustomerName",
+            "Delivery.CustomerPhone",
+            "PayTypes"
+    ],
+    "groupByColFields": [],
+    "aggregateFields": [
+        "DishSumInt"
+    ],
+    "filters": {
+        "OpenDate.Typed": {
+            "filterType": "DateRange",
+            "periodType": "CUSTOM",
+            "from": "2025-03-01T00:00:00.000",
+            "to": "2025-03-31T00:00:00.000"
+            
+        },
+        "DeletedWithWriteoff": {
+            "filterType": "IncludeValues",
+            "values": [
+                "NOT_DELETED"
+            ]
+        },
+        "OrderDeleted": {
+            "filterType": "IncludeValues",
+            "values": [
+                "NOT_DELETED"
+            ]
+        }
+    }
+}
+Что в ответе
+
+	
+Copy Code
+JSON
+	{
+    "data": [
+        {
+            "CloseTime": "2025-03-18T12:05:24.618",
+            "Delivery.CustomerName": "Пупкин Василий",
+            "Delivery.CustomerPhone": "+79785160513",
+            "DishName": "Лимонад",
+            "DishSumInt": 176,
+            "OpenDate.Typed": "2025-03-18",
+            "OpenTime": "2025-03-18T11:36:48",
+            "OrderType": null,
+            "PayTypes": "Наличные",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-18T15:34:01.955",
+            "Delivery.CustomerName": "Ермолаев Евгений",
+            "Delivery.CustomerPhone": "+79196129578",
+            "DishName": "Шоколадный батончик",
+            "DishSumInt": 50,
+            "OpenDate.Typed": "2025-03-18",
+            "OpenTime": "2025-03-18T15:33:41",
+            "OrderType": null,
+            "PayTypes": "Наличные",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-18T19:11:06.321",
+            "Delivery.CustomerName": null,
+            "Delivery.CustomerPhone": null,
+            "DishName": "Пицца ",
+            "DishSumInt": 240,
+            "OpenDate.Typed": "2025-03-18",
+            "OpenTime": "2025-03-18T19:10:47",
+            "OrderType": "Доставка самовывоз",
+            "PayTypes": "Банковские карты",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-18T19:14:02.906",
+            "Delivery.CustomerName": "Ермолаев Евгений",
+            "Delivery.CustomerPhone": "+79196129578",
+            "DishName": "Пицца ",
+            "DishSumInt": 240,
+            "OpenDate.Typed": "2025-03-18",
+            "OpenTime": "2025-03-18T19:13:20",
+            "OrderType": "Доставка самовывоз",
+            "PayTypes": "Банковские карты",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-18T19:19:12.99",
+            "Delivery.CustomerName": "Ермолаев Евгений",
+            "Delivery.CustomerPhone": "+79196129578",
+            "DishName": "Пицца ",
+            "DishSumInt": 240,
+            "OpenDate.Typed": "2025-03-18",
+            "OpenTime": "2025-03-18T19:18:35",
+            "OrderType": "Доставка самовывоз",
+            "PayTypes": "Банковские карты",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-18T19:21:43.061",
+            "Delivery.CustomerName": null,
+            "Delivery.CustomerPhone": null,
+            "DishName": "Пицца ",
+            "DishSumInt": 240,
+            "OpenDate.Typed": "2025-03-18",
+            "OpenTime": "2025-03-18T19:21:25",
+            "OrderType": "Доставка самовывоз",
+            "PayTypes": "Банковские карты",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-18T23:14:50.343",
+            "Delivery.CustomerName": "Ермолаев Евгений",
+            "Delivery.CustomerPhone": "+79196129578",
+            "DishName": "Пицца ",
+            "DishSumInt": 240,
+            "OpenDate.Typed": "2025-03-18",
+            "OpenTime": "2025-03-18T20:07:22",
+            "OrderType": "Доставка самовывоз",
+            "PayTypes": "Наличные",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-18T23:15:22.35",
+            "Delivery.CustomerName": "Ермолаев Евгений",
+            "Delivery.CustomerPhone": "+79196129578",
+            "DishName": "Пицца ",
+            "DishSumInt": 240,
+            "OpenDate.Typed": "2025-03-18",
+            "OpenTime": "2025-03-18T20:13:45",
+            "OrderType": "Доставка самовывоз",
+            "PayTypes": "Наличные",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-19T12:58:35.344",
+            "Delivery.CustomerName": "Ермолаев Евгений",
+            "Delivery.CustomerPhone": "+79196129578",
+            "DishName": "Пицца ",
+            "DishSumInt": 240,
+            "OpenDate.Typed": "2025-03-18",
+            "OpenTime": "2025-03-19T12:56:35",
+            "OrderType": "Доставка самовывоз",
+            "PayTypes": "Банковские карты",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-24T10:26:53.437",
+            "Delivery.CustomerName": null,
+            "Delivery.CustomerPhone": null,
+            "DishName": "Шоколадный батончик MARS",
+            "DishSumInt": 50,
+            "OpenDate.Typed": "2025-03-18",
+            "OpenTime": "2025-03-24T10:23:59",
+            "OrderType": null,
+            "PayTypes": "Наличные",
+            "SessionNum": 17
+        },
+        {
+            "CloseTime": "2025-03-25T12:44:08.425",
+            "Delivery.CustomerName": null,
+            "Delivery.CustomerPhone": null,
+            "DishName": "Пицца ",
+            "DishSumInt": 240,
+            "OpenDate.Typed": "2025-03-24",
+            "OpenTime": "2025-03-24T13:21:53",
+            "OrderType": "Доставка самовывоз",
+            "PayTypes": "Наличные",
+            "SessionNum": 18
+        }
+    ],
+    "summary": []
+}

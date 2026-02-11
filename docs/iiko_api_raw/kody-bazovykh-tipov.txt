@@ -1,0 +1,648 @@
+Коды базовых типов
+
+  
+
+    
+
+  
+Типы транзакций
+Тип Контрагента
+Группа счета
+Тип счета
+Тип элемента номенклатуры
+Тип статьи ДДС
+Участвует ли счет в ДДС
+Склад/счет
+Тип алкогольной продукции
+Дебет/Кредит
+Типы удаления блюд
+Признак доставки
+Признак банкета
+Тип товара
+Тип операции
+Признак удаления заказа
+Группа оплаты
+Признак фискальности оплаты
+Типы подразделений
+Типы групп продукта 
+
+  
+  
+
+  
+
+		
+Типы документов
+
+		
+			
+КодНазваниеСокращение
+			
+	INCOMING_INVOICE	Приходная накладная	п/н
+			
+	INCOMING_INVENTORY	Инвентаризация	инв
+			
+	INCOMING_SERVICE	Акт приема услуг	в/с
+			
+	OUTGOING_SERVICE	Акт оказания услуг	в/с
+			
+	WRITEOFF_DOCUMENT	Акт списания	а/с
+			
+	SALES_DOCUMENT	Акт реализации	а/р
+			
+	SESSION_ACCEPTANCE	Принятие смены	п/с
+			
+	INTERNAL_TRANSFER	Внутреннее перемещение	в/п
+			
+	OUTGOING_INVOICE	Расходная накладная	р/н
+			
+	RETURNED_INVOICE	Возвратная накладная	в/н
+			
+	PRODUCTION_DOCUMENT	Акт приготовления	а/пр
+			
+	TRANSFORMATION_DOCUMENT	Акт переработки	а/пб
+			
+	PRODUCTION_ORDER	Заказ в производство	з/п
+			
+	CONSOLIDATED_ORDER	Консолидированный заказ	к/з
+			
+	PREPARED_REGISTER	Ведомость полуфабрикатов	в/пф
+			
+	MENU_CHANGE	Приказ об изменении прейскуранта	п/м
+			
+	PRODUCT_REPLACEMENT	Замена товаров	з/т
+			
+	SALES_RETURN_DOCUMENT	Акт приема возврата	п/в
+			
+	DISASSEMBLE_DOCUMENT	Акт разбора	а/рб
+			
+			
+			
+	PAYROLL	Платёжная ведомость	з/в
+			
+	INCOMING_CASH_ORDER	Приходный кассовый ордер	п/ко
+			
+	OUTGOING_CASH_ORDER	Расходный кассовый ордер	р/ко
+		
+
+ 			Типы транзакций
+
+		
+			
+
+				КодНазваниеСокращение
+			
+
+					OPENING_BALANCE	Начальный баланс	БАЛНАЧ
+			
+
+					CUSTOM	Ручная проводка	РУЧН
+			
+
+					CASH	Продажа за наличные	ПН
+			
+
+					PREPAY_CLOSED	Продажа с предоплатой	ПН-ПРЕД
+			
+
+					PREPAY	Предоплата	ПРЕДОП
+			
+
+					PREPAY_RETURN	Возврат предоплаты	ВОЗВПРЕД
+			
+
+					PREPAY_CLOSED_RETURN	Возврат продажи с предоплатой	ПН-ВОЗВПРЕД
+			
+
+					DISCOUNT	Скидка	СКИДКА
+			
+
+					CARD	Выручка по картам	CARD
+			
+
+					CREDIT	Выручка в кредит	КРЕД
+			
+
+					PAYIN	Внесенная сумма	ВС
+			
+
+					PAYOUT	Изъятая сумма	ИС
+			
+
+					PAY_COLLECTION	Снятая выручка	СВ
+			
+
+					CASH_CORRECTION	Коррекция по кассе	КОРР
+			
+
+					INVENTORY_CORRECTION	Инвентаризация	ИНВ
+			
+
+					STORE_COST_CORRECTION	Коррекция себестоимости	СЕБЕСТ
+			
+
+					CASH_SURPLUS	Излишек по кассе	ИЗЛИШ
+			
+
+					CASH_SHORTAGE	Недостача по кассе	НЕДОСТ
+			
+
+					PENALTY	Штраф	ШТРФ
+			
+
+					BONUS	Премия	ПРЕМ
+			
+
+					INVOICE	Накладная	НАКЛ
+			
+
+					NDS_INCOMING	НДС входящий	НДСВХ
+			
+
+					NDS_SALES	НДС с продаж	НДСПР
+			
+
+					SALES_REVENUE	Выручка от реализации	ВЫРРЕАЛ
+			
+
+					OUTGOING_INVOICE	Расходная накладная	РАСХНАКЛ
+			
+
+					OUTGOING_INVOICE_REVENUE	Выручка расходной накладной	РАСХНАКЛВ
+			
+
+					RETURNED_INVOICE	Возвратная накладная	ВОЗВРНАКЛ
+			
+
+					RETURNED_INVOICE_REVENUE	Выручка возвратной накладной	ВОЗВРНАКВ
+			
+
+					WRITEOFF	Списание	СПИС
+			
+
+					SESSION_WRITEOFF	Реализация товаров	РЕАЛИЗ
+			
+
+					TRANSFER	Внутреннее перемещение	ВНПЕРЕМ
+			
+
+					TRANSFORMATION	Акт переработки	ПЕРЕРАБ
+			
+
+					TARIFF_HOUR	Почасовая оплата	ПОЧАС
+			
+
+					ON_THE_HOUSE	Оплата заказа за счет заведения	ПЗАВЕД
+			
+
+					ADVANCE	Аванс по зарплате	АВАНС
+			
+
+					INCOMING_SERVICE	Получение услуг	ВХУСЛ
+			
+
+					OUTGOING_SERVICE	Оказание услуг	ИСХУСЛ
+			
+
+					INCOMING_SERVICE_PAYMENT	Оплата получения услуг	ВХУСЛОПЛ
+			
+
+					OUTGOING_SERVICE_PAYMENT	Оплата оказания услуг	ИСХУСЛОПЛ
+			
+
+					IMPORTED_BANK_STATEMENT	Загрузка банковской выписки	ВЫПИСКА
+			
+
+					CLOSE_AT_EMPLOYEE_EXPENSE	Закрытие стола за счет сотрудника	НЕЗАКР
+			
+
+					INCENTIVE_PAYMENT	Мотивация	МОТИВ
+			
+
+					TARIFF_PERCENT	Процент с продаж	ПРОЦ
+			
+
+					SESSION_ACCEPTANCE	Принятие смены	ПРИН
+			
+
+					EMPLOYEE_CASH_PAYMENT	Выдача наличных сотрудникам	НАЛСОТР
+			
+
+					EMPLOYEE_PAYMENT	Начисление оклада	ОКЛ
+			
+
+					INVOICE_PAYMENT	Оплата накладной	НОПЛ
+			
+
+					OUTGOING_DOCUMENT_PAYMENT	Принятие оплаты исходящего документа	ИДОПЛ
+			
+
+					OUTGOING_SALES_DOCUMENT_PAYMENT	Принятие оплаты акта реализации	АРОПЛ
+			
+
+					PRODUCTION	Акт приготовления	ПРГТ
+			
+
+					SALES_RETURN_PAYMENT	Оплата приема возврата	ПРВОЗВР
+			
+
+					SALES_RETURN_WRITEOFF	Возврат товаров	ВОЗВРТОВ
+			
+
+					DISASSEMBLE	Акт разбора	РАЗБОР
+		
+
+ 			Тип Контрагента
+
+		
+			
+
+				КодНазвание
+			
+
+					NONE	Нет
+			
+
+					COUNTERAGENT	Все
+			
+
+					EMPLOYEE	Cотрудник
+			
+
+					SUPPLIER	Поставщик
+			
+
+					CLIENT	Гость
+			
+
+					INTERNAL_SUPPLIER	Внутренний поставщик
+		
+
+ 			Группа счета
+
+		
+			
+
+				КодНазвание
+			
+
+					ASSETS	Активы
+			
+
+					LIABILITIES	Обязательства
+			
+
+					EQUITY	Капитал
+			
+
+					INCOME_EXPENSES	Доходы/Расходы
+		
+
+ 			Тип счета
+
+		
+			
+
+				КодНазвание
+			
+
+					CASH	Денежные средства
+			
+
+					ACCOUNTS_RECEIVABLE	Задолженность покупателей
+			
+
+					DEBTS_OF_EMPLOYEES	Задолженность сотрудников
+			
+
+					CURRENT_ASSET	Текущие активы
+			
+
+					OTHER_CURRENT_ASSET	Основные средства
+			
+
+					INVENTORY_ASSETS	Складские запасы
+			
+
+					EMPLOYEES_LIABILITY	Расчеты с сотрудниками
+			
+
+					ACCOUNTS_PAYABLE	Расчеты с поставщиками
+			
+
+					CLIENTS_LIABILITY	Расчеты с гостями
+			
+
+					OTHER_CURRENT_LIABILITY	Прочие текущие обязательства
+			
+
+					LONG_TERM_LIABILITY	Долгосрочные обязательства
+			
+
+					EQUITY	Капитал
+			
+
+					COST_OF_GOODS_SOLD	Прямые издержки (себестоимость)
+			
+
+					INCOME	Доходы
+			
+
+					EXPENSES	Расходы
+			
+
+					OTHER_INCOME	Прочие доходы
+			
+
+					OTHER_EXPENSES	Прочие расходы
+		
+
+ 			Тип элемента номенклатуры
+
+		
+			
+
+				КодНазвание
+			
+
+					GOODS	Товар
+			
+
+					DISH	Блюдо
+			
+
+					PREPARED	Заготовка
+			
+
+					SERVICE	Услуга
+			
+
+					MODIFIER	Модификатор
+			
+
+					OUTER	Внешние товары
+			
+
+					PETROL	Топливо
+			
+
+					RATE	Тариф
+		
+
+ 			Тип статьи ДДС
+
+		
+			
+
+				КодНазвание
+			
+
+					OPERATIONAL	Операционная деятельность
+			
+
+					INVESTMENT	Инвестиционная деятельность
+			
+
+					FINANCE	Финансовая деятельность
+		
+
+ 			Участвует ли счет в ДДС
+
+		
+			
+
+				КодНазвание
+			
+
+					CASH_FLOW	Участвует в ДДС
+			
+
+					NOT_CASH_FLOW	Не участвует в ДДС
+		
+
+ 			Склад/счет
+
+		
+			
+
+				КодНазвание
+			
+
+					STORE	Склад
+			
+
+					ACCOUNT	Счет
+		
+
+ 			Тип алкогольной продукции
+
+		
+			
+
+				КодНазвание
+			
+
+					STRONG	Крепкие
+			
+
+					BEER	Пиво
+		
+
+ 			Дебет/Кредит
+
+		
+			
+
+				КодНазвание
+			
+
+					DEBIT	Дебет
+			
+
+					CREDIT	Кредит
+		
+
+ 			Типы удаления блюд
+
+		
+			
+
+				КодНазвание
+			
+
+					DELETED_WITHOUT_WRITEOFF	Удалено без списания
+			
+
+					DELETED_WITH_WRITEOFF	Удалено со списанием
+			
+
+					NOT_DELETED	Не удалено
+		
+		
+
+ 			Признак доставки
+
+		
+			
+
+				КодНазвание
+			
+
+					DELIVERY_ORDER	Доставка
+			
+
+					ORDER_WITHOUT_DELIVERY	Не доставка
+		
+
+ 			Признак банкета
+
+		
+			
+
+				КодНазвание
+			
+
+					TRUE	Банкет
+			
+
+					FALSE	Не банкет
+		
+
+ 			Тип товара
+
+		
+			
+
+				КодНазвание
+			
+
+					DISH	dish
+			
+
+					GOOD	good
+			
+
+					MODIFIER	modifier
+		
+
+ 			Тип операции
+
+		
+			
+
+				КодНазвание
+			
+
+					STORNED	Сторнирование
+			
+
+					PREPAY	Предоплата
+			
+
+					PREPAY_RETURN	Возврат предоплаты
+			
+
+					NO_PAYMENT	(без оплаты)
+			
+
+					PAYMENT	Оплата
+		
+
+ 			Признак удаления заказа
+
+		
+			
+
+				КодНазвание
+			
+
+					NOT_DELETED	Заказ не удален
+			
+
+					DELETED	Заказ удален
+		
+
+ 			Группа оплаты
+
+		
+			
+
+				КодНазвание
+			
+
+					CASH	Оплата наличными
+			
+
+					CARD	Банковские карты
+			
+
+					WRITEOFF	Без выручки
+			
+
+					NON_CASH	Безналичный расчет
+		
+
+ 			Признак фискальности оплаты
+
+		
+			
+
+				КодНазвание
+			
+
+					FISCAL	Фискальный
+			
+
+					NOT_FISCAL	Не фискальный
+			
+
+					NO_PAYMENT	(без оплаты)
+		
+
+ 			Типы подразделений
+
+		
+			
+
+				КодНазвание
+			
+
+					CORPORATION	Корпорация
+			
+
+					JURPERSON	Юридическое лицо
+			
+
+					ORGDEVELOPMENT	Структурное подразделение
+			
+
+					DEPARTMENT	Торговое предприятие
+			
+
+					MANUFACTURE	Производство
+			
+
+					CENTRALSTORE	Центральный склад
+			
+
+					CENTRALOFFICE	Центральный офис
+			
+
+					SALEPOINT	Точка продаж
+			
+
+					STORE	Склад
+		
+
+ 			Типы групп продукта
+
+		
+			
+
+				КодНазваниеКомментарий
+			
+
+					PRODUCTS	Продукт
+			
+
+					MODIFIERS	Модификатор	Используется только в номенклатуре, которая загружается и выгружается в/из RKeeper/StoreHouse

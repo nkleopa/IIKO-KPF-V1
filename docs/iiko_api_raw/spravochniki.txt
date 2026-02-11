@@ -1,0 +1,380 @@
+Справочники 
+
+  
+
+    
+
+  
+Получение справочной информации
+Параметры запроса
+Что в ответе
+Дополнительные поля
+Пример запроса и результата
+Получение идентификаторов сущностей
+Параметры запроса
+Что в ответе
+Результат
+Пример запроса и результат 
+
+  
+  
+
+  
+
+Получение справочной информации
+
+Версия iiko: 5.0
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/list
+      
+    
+  
+
+Параметры запроса
+
+Название
+Значение
+Описание
+	rootType	Account	
+
+Название
+Версия iiko
+Описание
+	Account	5.0	Счет (в том числе склады)
+	AccountingCategory	5.0	Бухгалтерская категория номенклатуры
+	AlcoholClass	5.0	Класс алкогольной продукции
+	AllergenGroup	7.1.2	Группа аллергенов
+	AttendanceType	6.4	Тип явки сотрудника
+	Conception	7.8.1	Концепция
+	CookingPlaceType	7.0.2	Тип места приготовления
+	DiscountType	5.0	Тип скидки
+	MeasureUnit	5.0	Единица измерения
+	OrderType	6.4	Тип заказа
+	PaymentType	5.0	Тип оплаты
+	ProductCategory	5.0	Пользовательская категория номенклатуры
+	ProductScale	6.4	Шкала размеров
+	ProductSize	6.4	Размер продукта
+	ScheduleType	6.4	Тип смены
+	TaxCategory	6.2.2	Налоговая категория
+ 
+ 
+	includeDeleted	true, false	Включать ли удаленные элементы справочника. По умолчанию включать.
+	
+format	SHORT	
+Формат вывода. По умолчанию SHORT:
+id
+rootType (переданный тип)
+deleted
+code (код, артикул, номер; присутствует не во всех типах справочников)
+name (название)
+Начиная с версии iiko 6.2.2 данный параметр не используется.
+Формат вывода остался прежним, но в зависимости от rootType могут добавляться новые поля.
+	revisionFrom	Число, номер ревизии	
+Номер ревизии, начиная с которой необходимо отфильтровать сущности. Не включающий саму ревизию, т.е. ревизия объекта > revisionFrom.
+По умолчанию (неревизионный запрос) revisionFrom = -1
+Что в ответе
+
+Json структура с данными справочников.
+Возвращает общую справочную информацию без привязки к подразделениям, срокам действия.
+Результат вызова может содержать записи (например, типы оплат), запрещенные к применению в каких-то подразделениях.
+Данный метод следует использовать только для получения названий объектов в целях отображения отчетов.
+
+Результат
+
+Основной формат вывода:
+
+Поле
+Описание
+	id	UUID объекта
+	rootType	"Основной" тип объекта (тот, что передан как аргумент метода list)
+	deleted	false — объект действующий, true — объект помечен как удаленный
+	code	Код объекта (в том числе артикул, табельный номер, и т.п.). Является строкой: "1234", "3.04". Может быть null.
+	name	
+Название объекта.
+Для локализуемых предустановленных (например, стандартных счетов Account) — название на языке запроса.
+
+Дополнительные поля
+
+Тип объектаДополнительное полеОписание
+	OrderType	orderServiceType	
+Режим обслуживания
+
+	COMMON	Обычный заказ
+	DELIVERY_BY_COURIER	Доставка курьером
+	DELIVERY_PICKUP	Доставка самовывоз
+	defaultForServiceType	У каждого из режимов обслуживания может быть выбран один тип заказа по умолчанию.
+	ProductSize	shortName	Короткое название для размера
+	TaxCategory	vatPercent	Значение ставки НДС
+Пример запроса и результата
+
+Запрос
+https://localhost:8080/resto/api/v2/entities/list?rootType=DiscountType&rootType=PaymentType&includeDeleted=false
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	[
+    {
+    "id": "97ab68db-b987-4402-a8d4-e35802fc1f45",
+    "rootType": "DiscountType",
+    "deleted": false,
+    "code": null,
+    "name": "Скидка 20%"
+}, {
+    "id": "0aa46f41-a6f8-40ab-9e9e-2257c2b377e4",
+    "rootType": "DiscountType",
+    "deleted": false,
+    "code": null,
+    "name": "Накопительная карта"
+}, {
+    "id": "9a3ed1c8-3c34-44a2-800d-8b5699d99fa7",
+    "rootType": "DiscountType",
+    "deleted": false,
+    "code": null,
+    "name": "Скидка 10%"
+}, {
+    "id": "a1abc180-4a63-41b5-ae80-ef61d209f7e1",
+    "rootType": "DiscountType",
+    "deleted": false,
+    "code": null,
+    "name": "День рождения"
+}, {
+    "id": "7ed2f299-c963-451e-a2e9-94a7c070da9e",
+    "rootType": "DiscountType",
+    "deleted": false,
+    "code": null,
+    "name": "Обслуживание 10%"
+}, {
+    "id": "08a93062-2d86-1dbc-5c04-14194da9c903",
+    "rootType": "DiscountType",
+    "deleted": false,
+    "code": null,
+    "name": "iiko.NET"
+}, {
+    "id": "30ee9e91-36d4-a868-e087-15892defe17c",
+    "rootType": "DiscountType",
+    "deleted": false,
+    "code": null,
+    "name": "iikoCard5"
+}, {
+    "id": "09322f46-578a-d210-add7-eec222a08871",
+    "rootType": "PaymentType",
+    "deleted": false,
+    "code": "CASH",
+    "name": "Cash"
+}, {
+    "id": "a4eb5dff-d062-4549-9fdc-b964661eea57",
+    "rootType": "PaymentType",
+    "deleted": false,
+    "code": null,
+    "name": "В кредит гости"
+}, {
+    "id": "baaec06f-2f7f-47bc-96d1-5c2c26956539",
+    "rootType": "PaymentType",
+    "deleted": false,
+    "code": null,
+    "name": "В кредит сотрудники"
+}, {
+    "id": "9e250341-e234-4489-b5e0-cc60cbe55607",
+    "rootType": "PaymentType",
+    "deleted": false,
+    "code": null,
+    "name": "Безналичный расчет (перечисление)"
+}]
+  
+
+  
+  Запрос
+
+  https://localhost:8080/resto/api/v2/entities/list?rootType=TaxCategory
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+      Результат
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	 [
+  {
+    "rootType": "TaxCategory",
+    "id": "64afaf71-5cb1-4673-8bbe-0f7968adf68b",
+    "deleted": false,
+    "code": null,
+    "name": "Neapliekas ar PVN",
+    "vatPercent": 0
+  },
+  {
+    "rootType": "TaxCategory",
+    "id": "a6e358fe-5be3-4ae2-9fc4-4e57a3a10c93",
+    "deleted": false,
+    "code": null,
+    "name": "Bez PVN",
+    "vatPercent": 0
+  },
+  {
+    "rootType": "TaxCategory",
+    "id": "123d7d8e-87fa-4e8a-b7dc-8bd0bb84dd84",
+    "deleted": false,
+    "code": null,
+    "name": "PVN 21%",
+    "vatPercent": 21
+  },
+  {
+    "rootType": "TaxCategory",
+    "id": "694a604e-17c1-4b6d-a973-ee5e053c93be",
+    "deleted": false,
+    "code": null,
+    "name": "PVN 0%",
+    "vatPercent": 0
+  }
+]
+
+  
+    
+
+ 
+
+Получение идентификаторов сущностей
+Версия iiko: 9.1
+  
+    
+	
+        
+      	
+                 https://host:port/resto/api/v2/entities/{entityType}/ids      
+      
+    
+  
+
+Параметры запроса
+
+Название
+Значение
+Описание
+	entityType	Например "Account"	
+Название справочника
+	includeDeleted	true, false	Включать ли удаленные элементы справочника. По умолчанию включать.
+	revisionFrom	Число, номер ревизии	
+Номер ревизии, начиная с которой необходимо отфильтровать сущности. Не включающий саму ревизию, т.е. ревизия объекта > revisionFrom.
+По умолчанию (не ревизионный запрос) revisionFrom = -1
+Что в ответе
+
+Список UUID идентификаторов сущностей заданного типа.
+Возвращает список уникальных идентификаторов (UUID) сущностей указанного типа.
+Метод используется для получения идентификаторов сущностей, которые могут быть обработаны в дальнейших операциях.
+Результат
+
+Основной формат вывода:
+
+Поле
+Описание
+	id	UUID объекта
+Пример запроса и результат
+
+Запрос
+
+ 
+https://localhost:8080/resto/api/v2/entities/Account/ids?entityType=Account&includeDeleted=false&revisionFrom=10
+
+  
+     [+]            Результат        
+  
+     [-]           Результат        
+  
+
+     
+	
+Copy Code
+JSON
+	[
+    "15fb045f-db6a-269d-6473-023f3c936fcf",
+    "6aacad98-dc14-2a85-10fc-0b0261eb8849",
+    "0c033fb4-c629-b867-3c98-11f924dfebbb",
+    "07926ff3-9319-b93e-80ff-1897825fdead",
+    "59f13a63-d259-355e-f81b-18dc52f3aca5",
+    "ed1c9cec-016a-f2f8-f404-1b9f8fbfb52d",
+    "abffc538-c89f-236f-85c3-1f7d00b88c83",
+    "32fb90c9-133d-c2c7-c1cf-219449f330a3",
+    "238cf18d-c5d0-9c6b-0071-2341f1e1ab2f",
+    "ab1e395f-3fdc-4524-9e77-24d4253cdcf0",
+    "e0c6f1d8-4483-a946-0734-2585ed233bc4",
+    "eb272d15-1525-8078-03e7-268dcca6b1dd",
+    "7f640c20-989f-4673-ab0c-27e01d7faf0c",
+    "9ad2ce45-6d8e-f56e-1db3-312c4d3c42c0",
+    "95499c03-4a19-0796-d091-36192bffc980",
+    "67af8bc9-628f-2124-2345-3750bb7db6fa",
+    "ad3cc1aa-a60e-c85c-e66d-3904490de4b9",
+    "5f037083-9e43-8625-d9fa-3d4feeb02744",
+    "c22d5f70-f6f2-ae76-70a4-3f9118293884",
+    "ecbb4fea-2baf-07bc-549a-49f5815e9e14",
+    "e1b8f656-2c58-244c-6921-5650dca017eb",
+    "678f46b4-dcdc-71df-2872-5c3f3d60779d",
+    "f3e1733a-8b67-44f9-941d-5cfa5340970e",
+    "efbaafce-5e9a-8bfb-c40d-6033a7aa47b2",
+    "dde43e9b-3b2f-330a-2ef6-6b92e69f03c7",
+    "13000ead-41f0-d569-d85c-704242cc91f5"
+]
+
+  
+Запрос
+
+https://localhost:8080/resto/api/v2/entities/Account/ids?entityType=Account
+
+  
+     [+]            Результат        
+  
+     [-]           Результат        
+  
+
+     
+	
+Copy Code
+JSON
+	 [
+    "15fb045f-db6a-269d-6473-023f3c936fcf",
+    "6aacad98-dc14-2a85-10fc-0b0261eb8849",
+    "e0c6f1d8-4483-a946-0734-2585ed233bc4",
+    "eb272d15-1525-8078-03e7-268dcca6b1dd",
+    "7f640c20-989f-4673-ab0c-27e01d7faf0c",
+    "9ad2ce45-6d8e-f56e-1db3-312c4d3c42c0",
+    "95499c03-4a19-0796-d091-36192bffc980",
+    "5f037083-9e43-8625-d9fa-3d4feeb02744",
+    "ecbb4fea-2baf-07bc-549a-49f5815e9e14",
+    "678f46b4-dcdc-71df-2872-5c3f3d60779d",
+    "f3e1733a-8b67-44f9-941d-5cfa5340970e",
+]

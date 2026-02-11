@@ -1,0 +1,664 @@
+Работа с данными бригад
+
+  
+
+    
+
+  
+Вывести список всех бригад
+Параметры запроса
+Что в ответе
+Пример запроса
+Вывести список бригад по подразделению
+Параметры запроса
+Что в ответе
+Пример запроса
+Вывести список бригад по коду
+Параметры запроса
+Что в ответе
+Пример запроса
+Вывести бригаду по id
+Что в ответе
+Пример запроса
+Поиск бригад по параметрам
+Параметры запроса
+Что в ответе
+Пример запроса
+Добавить бригаду по коду
+Что в ответе
+Пример запроса
+Добавить или заместить бригаду по id
+Что в ответе
+Пример запроса
+Добавить или заместить бригаду по id
+Что в ответе
+Пример запроса
+Удалить бригаду
+Что в ответе
+Назначение сотрудников в бригады
+Что в ответе
+Пример запроса
+Просмотр назначений сотрудников в бригады во всех подразделениях (запрос выполняется на chain)
+Параметры запроса
+Что в ответе
+Просмотр назначений сотрудников в бригады в подразделении
+Параметры запроса
+Что в ответе
+Пример запроса
+Описание бригады для представления в формате XML (XSD-схема) 
+
+  
+  
+
+  
+
+API  бригад состоит из двух частей:
+Работа со справочником бригад (WaiterTeam см. описание XSD в конце статьи). Через АПИ можно создать/прочитать/изменить/удалить бригады. 
+Бригады являются локальными объектами каждого отдельного РМС. На chain хранятся бригады со всех РМС.
+Создавать/изменять/удалять бригады можно только на РМС. Читать (методы GET) можно как на РМС так и на chain.
+
+Назначение сотрудников в бригады. Назначение сотрудников в бригады храниться в отдельном справочнике (WaiterTeamAssignments см. описание XSD в конце статьи).
+В  элементе этого справочника хранятся все назначения по конкретному РМС,  т.е. РМС хранит не более одного элемента данного справочника.
+Один сотрудник может быть назначен не более чем в одну команду на каждом РМС.
+На chain хранятся  элементы справочника WaiterTeamAssignments со всех РМС.
+Так же как и с бригадами изменять назначения можно только на РМС, а читать можно как на РМС, так и на chain.
+
+Вывести список всех бригад
+
+Версия API: 1.0
+Версия iiko: 8.1
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/employees/waiterTeams
+      
+    
+  
+
+Параметры запроса
+
+	Название
+	Значение
+	Значение по умолчанию
+	Версия
+	Описание
+
+	includeDeleted 	true/false	false	8.1	Возвращать и действующие, и удаленные бригады.
+	revisionFrom	
+число, номер ревизии	-1	8.1	
+Номер  ревизии, начиная с которой необходимо отфильтровать сущности. Не  включающий саму ревизию, т.е. ревизия объекта > revisionFrom.
+Что в ответе
+
+Список всех бригад.
+Пример запроса
+
+https://localhost:8080/resto/api/employees/waiterTeams?includeDeleted=true
+Пример результата вызова API:
+
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<waiterTeams>
+    <waiterTeam>
+        <id>49df70c5-22ef-436f-0181-239f8cc60035</id>
+        <code>5</code>
+        <name>My favourite team</name>
+        <departmentId>873986a7-2e4b-4029-0149-2d0362b4000d</departmentId>
+        <deleted>true</deleted>
+    </waiterTeam>
+    <waiterTeam>
+        <id>49df70c5-22ef-436f-0181-239f8cc60027</id>
+        <code>1</code>
+        <name>New team 1</name>
+        <departmentId>873986a7-2e4b-4029-0149-2d0362b4000d</departmentId>
+        <deleted>false</deleted>
+    </waiterTeam>
+</waiterTeams>
+
+Вывести список бригад по подразделению
+
+Версия API: 1.0
+Версия iiko: 8.1
+
+  
+    
+	                	         https://host:port/resto/api/employees/waiterTeams/byDepartment/{departmentUUID}       
+    
+  
+
+Параметры запроса
+
+	Название
+	Значение
+	Значение по умолчанию
+	Версия
+	Описание
+
+	includeDeleted 	true/false	false	8.1	Возвращать и действующие, и удаленные бригады.
+	revisionFrom	
+число, номер ревизии	-1	8.1	
+Номер  ревизии, начиная с которой необходимо отфильтровать сущности. Не  включающий саму ревизию, т.е. ревизия объекта > revisionFrom.
+Что в ответе
+
+Список всех бригад с указанном подразделении.
+Пример запроса
+
+https://localhost:8080/resto/api/employees/waiterTeams/byDepartment/873986a7-2e4b-4029-0149-2d0362b4000d
+
+Вывести список бригад по коду
+
+Версия API: 1.0
+Версия iiko: 8.1
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/employees/waiterTeams/byCode/{teamCode}
+      
+    
+  
+
+Параметры запроса
+
+	Название
+	Значение
+	Значение по умолчанию
+	Версия
+	Описание
+
+	includeDeleted 	true/false	false	8.1	Возвращать и действующие, и удаленные бригады.
+Что в ответе
+
+Список всех бригад с указанным кодом.
+Так как код должен быть уникальным для всех не удаленных бригад, то если не задан параметр includeDeleted, то возвращается список с одним элементом.
+Пример запроса
+
+https://localhost:8080/resto/api/employees/waiterTeams/byCode/5555?includeDeleted=true
+Вывести бригаду по id
+
+Версия API: 1.0
+Версия iiko: 8.1
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/employees/waiterTeams/byId/{teamUUID} 
+      
+    
+  
+
+Что в ответе
+
+Бригада с указанным UUID
+Пример запроса
+
+https://localhost:8080/resto/api/employees/waiterTeams/byId/49df70c5-22ef-436f-0181-239f8cc60035
+Пример результата вызова API:
+
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<waiterTeam>
+    <id>49df70c5-22ef-436f-0181-239f8cc60035</id>
+    <code>5</code>
+    <name>My favourite team</name>
+    <departmentId>873986a7-2e4b-4029-0149-2d0362b4000d</departmentId>
+    <deleted>true</deleted>
+</waiterTeam>
+
+Поиск бригад по параметрам
+
+Версия API: 1.0
+Версия iiko: 8.1
+
+  
+    
+	                	         https://host:port/resto/api/employees/waiterTeams/search?{param1}={regexp}&{param2}={regexp}&includeDeleted={true/false}       
+    
+  
+
+Параметры запроса
+
+	Параметры
+	Описание
+
+	
+name
+code	
+Регулярное выражение по любому из текстовых полей в dto.
+Параметры необязательные. Если отсутствуют, вернет все активные бригады.
+	includeDeleted	Возвращать и действующие, и удаленные бригады.
+Что в ответе
+
+Выводит все бригады, удовлетворяющую заданным условиям. Можно указывать любое количество из доступных параметров.
+Пример запроса
+
+https://localhost:8080/resto/api/employees/waiterTeams/search?code=555&includeDeleted=true
+Добавить бригаду по коду
+
+Версия API: 1.0
+Версия iiko: 8.1
+  
+    
+	
+        
+      	
+                 https://host:port/resto/api/employees/waiterTeams/byCode/{teamCode}      
+      
+    
+  
+
+Что в ответе
+
+Если бригада с указанным кодом еще не существовала, то создается новая бригада (код возврата 201 Created).
+Если бригада с указанным кодом существовала, то выведется ошибка (код возврата 409 Conflict).
+Пример запроса
+
+https://localhost:8080/resto/api/employees/waiterTeams/byCode/10 
+Пример тела запроса:
+
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<waiterTeam>
+    <name>New team 10</name>
+</waiterTeam>
+Пример результата вызова API:
+
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<waiterTeam>
+    <id>e2c60d0b-756f-3b23-0181-23fd74e6006a</id>
+    <code>10</code>
+    <name>New team 10</name>
+    <departmentId>873986a7-2e4b-4029-0149-2d0362b4000d</departmentId>
+    <deleted>false</deleted>
+</waiterTeam>
+
+Добавить или заместить бригаду по id
+
+Версия API: 1.0
+Версия iiko: 8.1
+  
+    
+	
+        
+      	
+                          https://host:port/resto/api/employees/waiterTeams/byId/{UUID}      
+      
+    
+  
+
+Что в ответе
+
+Если бригада с указанным UUID еще не существовала, то создается новая бригада (код возврата 201 Created).
+Если  бригада с указанным UUID уже существовала, то произойдет замещение всех  полей бригады (код возврата 200 ОК). При этом нужно обязательно указать  все поля dto, иначе неуказанным полям присвоятся значения по умолчанию.  
+Более подробно см. Описание бригады для представления в формате XML (XSD-схема)
+Если требуется изменить только отдельные поля бригады, то лучше использовать метод, описанный ниже.
+Пример запроса
+
+https://localhost:8080/resto/api/employees/waiterTeams/byId/76d2a834-4b0a-d67c-0180-db53849a001e
+Пример тела запроса:
+
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<waiterTeam>
+    <name>The best team</name>
+    <code>569</code>
+</waiterTeam>
+Пример результата вызова API:
+
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<waiterTeam>
+    <id>76d2a834-4b0a-d67c-0180-db53849a001e</id>
+    <code>569</code>
+    <name>The best team</name>
+    <departmentId>873986a7-2e4b-4029-0149-2d0362b4000d</departmentId>
+    <deleted>false</deleted>
+</waiterTeam>
+Добавить или заместить бригаду по id
+
+Версия API: 1.0
+Версия iiko: 8.1
+  
+    
+	
+        
+      	
+                                   https://host:port/resto/api/employees/waiterTeams/byId/{UUID}
+    
+  
+
+Что в ответе
+
+Если бригада с указанным UUID еще не существовала, то создается новая бригада (код возврата 201 Created).
+Если бригада с указанным UUID уже существовала, то произойдет замещение тех полей бригады, которые явно указаны в запросе (код возврата 200 ОК).
+  
+Пример запроса
+
+https://localhost:8080/resto/api/employees/waiterTeams/byId/76d2a834-4b0a-d67c-0180-db53849a001f
+Пример результата вызова API
+
+	
+Copy Code
+JSON
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<waiterTeam>
+    <id>76d2a834-4b0a-d67c-0180-db53849a001f</id>
+    <code>147</code>
+    <name>My favourite team</name>
+    <departmentId>873986a7-2e4b-4029-0149-2d0362b4000d</departmentId>
+    <deleted>false</deleted>
+</waiterTeam>
+
+Удалить бригаду
+
+Версия API: 1.0
+Версия iiko: 8.1
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/employees/waiterTeams/byId/{teamUUID}
+      
+    
+  
+
+Что в ответе
+
+Пустой ответ, если бригада удалена (или уже была удалена).
+Entity of class WaiterTeam not found by id (teamUUID), если передан несуществующий guid.
+Назначение сотрудников в бригады
+
+Версия API: 1.0
+Версия iiko: 8.1
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/employees/waiterTeams/assignments
+      
+    
+  
+
+Что в ответе
+
+Измененная карта назначений сотрудников в бригады.
+Если карты назначений не было, то будет создана новая в соответствии с телом запроса.
+Если назначения уже были, то запрос внесет изменения только по тем сотрудникам, которые участвовали в запросе:
+Если  сотруднику присвоил id другой бригады, то произойдет переназначение  сотрудника в другую бригаду (т.е. нет необходимости сначала удалять из  старой бригады, а затем назначать в новую бригаду).
+Если сотруднику присвоили id той же самой бригады, в которой он был, то по конкретному сотруднику ничего не поменяется.
+Если  сотруднику передать пустой тэг teamId или вообще этот тэг не указывать,  то сотрудник будет удален из ранее назначенной бригады.
+Если  сотрудник уже был в бригаде и в запросе на изменение бригад id этого  сотрудника не было, то после выполнения запроса он останется в той же  самой бригаде.
+Пример запроса
+
+https://localhost:8080/resto/api/employees/waiterTeams/assignments
+Пример тела запроса:
+
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<waiterTeamAssignments>
+    <assignment>
+        <employeeId>b032e07b-b938-442d-83bf-002bd7896a3d</employeeId>
+        <teamId>49df70c5-22ef-436f-0181-239f8cc60027</teamId>
+    </assignment>
+    <assignment>
+        <employeeId>ca7a2238-faa1-4554-9418-009e4adb9ecc</employeeId>
+        <teamId>76d2a834-4b0a-d67c-0180-db53849a001e</teamId>
+    </assignment>
+</waiterTeamAssignments>
+Пример результата вызова API:
+
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<waiterTeamAssignments>
+    <id>496032ff-7142-66bc-0181-23b04b5c00d3</id>
+    <assignment>
+        <employeeId>b032e07b-b938-442d-83bf-002bd7896a3d</employeeId>
+        <teamId>49df70c5-22ef-436f-0181-239f8cc60027</teamId>
+    </assignment>
+    <assignment>
+        <employeeId>ca7a2238-faa1-4554-9418-009e4adb9ecc</employeeId>
+        <teamId>76d2a834-4b0a-d67c-0180-db53849a001e</teamId>
+    </assignment>
+    <departmentId>873986a7-2e4b-4029-0149-2d0362b4000d</departmentId>
+</waiterTeamAssignments>
+
+Просмотр назначений сотрудников в бригады во всех подразделениях (запрос выполняется на chain)
+
+Версия API: 1.0
+Версия iiko: 8.1
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/employees/waiterTeams/assignments
+      
+    
+  
+
+Параметры запроса
+
+	Название
+	Значение
+	Значение по умолчанию
+	Версия
+	Описание
+
+	revisionFrom	
+число, номер ревизии	-1	8.1	
+Номер ревизии, начиная с которой необходимо отфильтровать сущности. Не включающий саму ревизию, т.е. ревизия объекта > revisionFrom.
+Что в ответе
+
+Карта назначений сотрудников в бригады во всех подразделениях.
+Пример запроса
+https://localhost:8080/resto/api/employees/waiterTeams/assignments?revisionFrom=100
+Пример результата вызова API:
+
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<waiterTeamAssignmentsList>
+    <waiterTeamAssignments>
+        <id>496032ff-7142-66bc-0181-23b04b5c00d3</id>
+        <assignment>
+            <employeeId>b032e07b-b938-442d-83bf-002bd7896a3d</employeeId>
+            <teamId>49df70c5-22ef-436f-0181-239f8cc60027</teamId>
+        </assignment>
+        <assignment>
+            <employeeId>ca7a2238-faa1-4554-9418-009e4adb9ecc</employeeId>
+            <teamId>76d2a834-4b0a-d67c-0180-db53849a001e</teamId>
+        </assignment>
+        <departmentId>873986a7-2e4b-4029-0149-2d0362b4000d</departmentId>
+    </waiterTeamAssignments>
+</waiterTeamAssignmentsList>
+Просмотр назначений сотрудников в бригады в подразделении
+
+Версия API: 1.0
+Версия iiko: 8.1
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/employees/waiterTeams/assignments/byDepartment/{departmentId}
+      
+    
+  
+
+Параметры запроса
+
+	Название
+	Значение
+	Значение по умолчанию
+	Версия
+	Описание
+
+	revisionFrom	
+число, номер ревизии	-1	8.1	
+Номер ревизии, начиная с которой необходимо отфильтровать сущности. Не включающий саму ревизию, т.е. ревизия объекта > revisionFrom.
+Что в ответе
+
+Карта назначений сотрудников в бригады в указанном подразделении.
+Пример запроса
+
+https://localhost:8080/resto/api/employees/waiterTeams/assignments/byDepartment/873986a7-2e4b-4029-0149-2d0362b4000d
+Пример результата вызова API:
+
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<waiterTeamAssignments>
+    <id>496032ff-7142-66bc-0181-23b04b5c00d3</id>
+    <assignment>
+        <employeeId>b032e07b-b938-442d-83bf-002bd7896a3d</employeeId>
+        <teamId>49df70c5-22ef-436f-0181-239f8cc60027</teamId>
+    </assignment>
+    <assignment>
+        <employeeId>ca7a2238-faa1-4554-9418-009e4adb9ecc</employeeId>
+        <teamId>76d2a834-4b0a-d67c-0180-db53849a001e</teamId>
+    </assignment>
+    <departmentId>873986a7-2e4b-4029-0149-2d0362b4000d</departmentId>
+</waiterTeamAssignments>
+
+Описание бригады для представления в формате XML (XSD-схема)
+
+  
+
+    [+]
+    
+      WaiterTeam
+    
+  
+  
+
+    [-]
+    
+      WaiterTeam
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="waiterTeam" type="waiterTeam"/>
+    <xs:complexType name="waiterTeam">
+        <xs:sequence>
+            <!-- Если создается новая бригада официантов по коду, то id можно не указывать. -->
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <!--
+            Если не задать, то будет присвоен пустой код.
+            Не пустой код должен быть уникален среди всех бригад одного ресторана.
+            В версии 8.1 данное поле не используется.
+            Добавлено на случай расширения функционала бригад официантов.
+            -->
+            <xs:element name="code" type="xs:string" minOccurs="0"/>
+            <xs:element name="name" type="xs:string"/>
+            <!-- Если не задать, то бригада будет помечена как активная. -->
+            <xs:element name="deleted" type="xs:string" minOccurs="0"/>
+            <!--
+            Можно не указывать, так как на chain редактирование бригад запрещено.
+            А при операциях записи на РМС сервер все равно запишет id текущего РМС.
+            -->
+            <xs:element name="departmentId" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+
+  
+
+  
+
+    [+]
+    
+      WaiterTeamAssignments
+    
+  
+  
+
+    [-]
+    
+      WaiterTeamAssignments
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="waiterTeamAssignments" type="waiterTeamAssignments"/>
+    <xs:complexType name="waiterTeamAssignments">
+        <xs:sequence>
+            <!--
+            Можно не указывать. Сервер данное поле игнорирует.
+            Если карты назначений бригад в текущем подразделении не существовало,
+            то сервер создаст новый элемент справочника и самостоятельно ему назначит уникальный id.
+            -->
+            <xs:element name="id" type="xs:string" minOccurs="0"/>
+            <!--
+            В рамках одного подразделения (одного элемента данного справочника)
+            один сотрудник может быть назначен только в одну бригаду.
+            Установка флага deleted для бригады и/или сотрудника не инициирует никаких
+            автоматических действий сервера по очистке карты назначений.
+            Логика очистки должна быть реализована на стороне пользователей АПИ:
+            1. Если сотрудник ссылается на удаленную бригаду, то нужно оставлять такую запись в карте назначений.
+            Это защитит от затирания привязки сотрудников к бригаде, если бригаду удалили случайно,
+            а потом сразу восстановили, ожидая, что ее состав не потерялся.
+            При последующем назначении сотрудников в другую бригаду привязка к удаленной бригаде затрется новой привязкой.
+            2. Удаленных (уволенных) сотрудников так же нужно оставлять в карте назначений
+            из-за возможности случайного удаления, которое может привести к неявному расширению прав доступа.
+            Так, например, если сотрудник находился в бригаде, то он мог видеть только заказы своей бригады,
+            а если его удалить из бригады, то он будет видеть все заказы ресторана.
+            -->
+            <xs:element name="assignment" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="employeeId" type="xs:string"/>
+                        <!--
+                        Если не передавать тэг с указанием id бригады или передать пустое значение,
+                        то сотрудник будет удален из ранее назначенной бригады.
+                        -->
+                        <xs:element name="teamId" type="xs:string" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!--
+            Можно не указывать, так как на chain редактирование привязок сотрудников к бригадам запрещено.
+            А при операциях записи на РМС сервер все равно запишет id текущего РМС.
+            -->
+            <xs:element name="departmentId" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

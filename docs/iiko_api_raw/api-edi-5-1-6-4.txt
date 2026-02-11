@@ -1,0 +1,1528 @@
+API EDI (5.1, 6.4)
+
+  
+
+    
+
+  
+Список заказов для участника EDI senderId
+Параметры запроса
+Что в ответе
+Пример вызова
+Пример ответа
+Создание нового заказа
+Параметры запроса
+Коды предупреждений
+Что в ответе
+Пример вызова
+Пример тела запроса
+Пример ответа
+Модификация заказа
+Параметры запроса
+Что в ответе
+Пример вызова
+Пример тела запроса
+Пример ответа
+Проведение заказа
+Параметры запроса
+Что в ответе
+Пример вызова
+Пример тела запроса
+Пример ответа
+Распроведение заказа
+Параметры запроса
+Что в ответе
+Пример вызова
+Постановка заказа на отправку
+Параметры запроса
+Что в ответе
+Пример вызова 
+
+  
+  
+
+  
+
+   В версии 5.1 добавлен API «на запись», а также для получения списка заказов. 
+
+   Как залогиниться в API, а также про операции EDI API, доступные начиная с версии 5.0, см. в статье    API EDI (5.0). 
+
+   Список заказов для участника EDI senderId  
+
+   Независимо от статуса за выбранный диапазон дат.
+
+Версия iiko:          5.1, 6.4
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/edi/{ediSystem}/orders/list?from={dateFrom}&to={dateTo}
+      
+    
+  
+
+Параметры запроса
+
+  
+    
+
+               Название       
+               Значение       
+               Описание       
+    
+  
+  
+    
+
+      	
+        ediSystem
+
+      
+      	
+        GUID 
+
+      
+      	
+        
+           Идентификатор участника EDI, подключенной к нашему REST API.         
+        
+           Каждый участник EDI должен получить свой собственный GUID ключ - идентификатор системы EDI (EdiSystem) для подключения к REST API электронного документооборота iiko. См. Обмен данными → Системы EDI в iikoOffice.         
+      
+    
+    
+
+      	
+        from
+
+      
+      	         String       
+      	         Нижняя граница периода (дата в формате yyyy-MM-dd). Может быть не задана.       
+    
+    
+
+      	
+        to
+      
+      	         String       
+      	         Верхняя граница периода (дата в формате yyyy-MM-dd). Может быть не задана.       
+    
+  
+	revisionFrom
+	-1
+	
+(с версии 6.4)
+Номер ревизии, начиная с которой необходимо отфильтровать сущности.  Не включающий саму ревизию, т.е. ревизия объекта > revisionFrom.
+По умолчанию (неревизионный запрос) revisionFrom = -1
+  
+
+Что в ответе
+
+         Cписок заказов (OrderDto). Возвращает список заказов EDI для зарегистрированного в системе iiko участника ediSystem.
+
+Пример вызова 
+
+   https://localhost:9080/resto/api/edi/709f5a71-47b6-f2fc-b5a8-d10176a851d7/orders/list?key=26b4a1e9-4709-2fa5-9fc2-2979dcfa3cd8&from=2016-01-01&to=2017-01-01 
+   Пример ответа 
+
+  
+
+    [+]
+    
+      Список заказов за период
+    
+  
+  
+
+    [-]
+    
+      Список заказов за период
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	<orderDtoes>
+<order number="10004" date="2016-08-15" status="original" processingStatus="readyToSend">
+<seller>
+<gln>1111111111111</gln>
+<name>Поставщик02</name>
+<inn>2222222222222</inn>
+<kpp>888888888888</kpp>
+</seller>
+<buyer>
+<gln>2000000002460</gln>
+<guid>77ee6049-abb2-4459-a9b1-aaf413c9125e</guid>
+<name>ЮЛ1</name>
+<inn/>
+</buyer>
+<deliveryInfo/>
+<lineItems>
+<lineItem>
+<lineNumber>1</lineNumber>
+<internalBuyerCode>0001</internalBuyerCode>
+<name>Апельсин</name>
+<requestedQuantity>
+<measureUnit>KG</measureUnit>
+<quantity>2.500000000</quantity>
+</requestedQuantity>
+<priceWithoutVat>55.08</priceWithoutVat>
+<priceWithVat>55.08</priceWithVat>
+<sumWithoutVat>137.700000000</sumWithoutVat>
+<sumWithVat>137.700000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>2</lineNumber>
+<internalBuyerCode>0001</internalBuyerCode>
+<name>Апельсин</name>
+<requestedQuantity>
+<measureUnit>KG</measureUnit>
+<quantity>20.000000000</quantity>
+<container>
+<internalCode>1</internalCode>
+<name>ящик</name>
+<quantity>10.000000000</quantity>
+</container>
+<containerQuantity>2.000</containerQuantity>
+</requestedQuantity>
+<priceWithoutVat>99.99</priceWithoutVat>
+<priceWithVat>99.99</priceWithVat>
+<sumWithoutVat>199.980000000</sumWithoutVat>
+<sumWithVat>199.980000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>3</lineNumber>
+<internalBuyerCode>0002</internalBuyerCode>
+<name>Jameson</name>
+<requestedQuantity>
+<measureUnit>LT</measureUnit>
+<quantity>1.500000000</quantity>
+</requestedQuantity>
+<priceWithoutVat>1000.01</priceWithoutVat>
+<priceWithVat>1000.01</priceWithVat>
+<sumWithoutVat>1500.015000000</sumWithoutVat>
+<sumWithVat>1500.015000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>4</lineNumber>
+<internalBuyerCode>0002</internalBuyerCode>
+<name>Jameson</name>
+<requestedQuantity>
+<measureUnit>LT</measureUnit>
+<quantity>20.000000000</quantity>
+<container>
+<internalCode>1</internalCode>
+<name>10l</name>
+<quantity>10.000000000</quantity>
+</container>
+<containerQuantity>2.000</containerQuantity>
+</requestedQuantity>
+<priceWithoutVat>9999.99</priceWithoutVat>
+<priceWithVat>9999.99</priceWithVat>
+<sumWithoutVat>19999.980000000</sumWithoutVat>
+<sumWithVat>19999.980000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>5</lineNumber>
+<internalBuyerCode>0004</internalBuyerCode>
+<name>Киви</name>
+<requestedQuantity>
+<measureUnit>PCE</measureUnit>
+<quantity>100.000000000</quantity>
+</requestedQuantity>
+<priceWithoutVat>10.00</priceWithoutVat>
+<priceWithVat>10.00</priceWithVat>
+<sumWithoutVat>1000.000000000</sumWithoutVat>
+<sumWithVat>1000.000000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>6</lineNumber>
+<internalBuyerCode>0004</internalBuyerCode>
+<name>Киви</name>
+<requestedQuantity>
+<measureUnit>PCE</measureUnit>
+<quantity>300.000000000</quantity>
+<container>
+<internalCode>1</internalCode>
+<name>ящик 100шт</name>
+<quantity>100.000000000</quantity>
+</container>
+<containerQuantity>3.000</containerQuantity>
+</requestedQuantity>
+<priceWithoutVat>666.66</priceWithoutVat>
+<priceWithVat>666.66</priceWithVat>
+<sumWithoutVat>1999.980000000</sumWithoutVat>
+<sumWithVat>1999.980000000</sumWithVat>
+</lineItem>
+<totalSumWithVat>24837.655000000</totalSumWithVat>
+</lineItems>
+</order>
+<order number="10001" date="2016-08-15" status="original" processingStatus="readyToSend">
+<seller>
+<gln>1111111111111</gln>
+<name>Поставщик02</name>
+<inn>2222222222222</inn>
+<kpp>888888888888</kpp>
+</seller>
+<buyer>
+<gln>2000000002460</gln>
+<guid>77ee6049-abb2-4459-a9b1-aaf413c9125e</guid>
+<name>Кухня1</name>
+<internalCode>2</internalCode>
+</buyer>
+<deliveryInfo/>
+<lineItems>
+<lineItem>
+<lineNumber>1</lineNumber>
+<internalBuyerCode>0001</internalBuyerCode>
+<name>Апельсин</name>
+<requestedQuantity>
+<measureUnit>KG</measureUnit>
+<quantity>2.000000000</quantity>
+</requestedQuantity>
+<priceWithoutVat>0.00</priceWithoutVat>
+<priceWithVat>0.00</priceWithVat>
+<sumWithoutVat>0.000000000</sumWithoutVat>
+<sumWithVat>0.000000000</sumWithVat>
+</lineItem>
+<totalSumWithVat>0.000000000</totalSumWithVat>
+</lineItems>
+</order>
+<order number="10023" date="2016-08-24" status="original" processingStatus="draft">
+<seller>
+<gln>1111111111111</gln>
+<name>Поставщик02</name>
+<inn>2222222222222</inn>
+<kpp>888888888888</kpp>
+</seller>
+<buyer>
+<gln>2000000002460</gln>
+<guid>77ee6049-abb2-4459-a9b1-aaf413c9125e</guid>
+<name>Кухня1</name>
+<internalCode>2</internalCode>
+</buyer>
+<deliveryInfo>
+<requestedDeliveryDateTime>2016-08-06T00:00:00</requestedDeliveryDateTime>
+</deliveryInfo>
+<lineItems>
+<lineItem>
+<lineNumber>1</lineNumber>
+<internalBuyerCode>0001</internalBuyerCode>
+<name>Апельсин</name>
+<requestedQuantity>
+<measureUnit>KG</measureUnit>
+<quantity>2.500000000</quantity>
+</requestedQuantity>
+<priceWithoutVat>55.08</priceWithoutVat>
+<priceWithVat>55.08</priceWithVat>
+<sumWithoutVat>137.700000000</sumWithoutVat>
+<sumWithVat>137.700000000</sumWithVat>
+</lineItem>
+<totalSumWithVat>137.700000000</totalSumWithVat>
+</lineItems>
+</order>
+<order number="10024" date="2016-08-24" status="original" processingStatus="draft">
+<seller>
+<gln>1111111111111</gln>
+<name>Поставщик02</name>
+<inn>2222222222222</inn>
+<kpp>888888888888</kpp>
+</seller>
+<buyer>
+<gln>2000000002460</gln>
+<name>Кухня1</name>
+<internalCode>2</internalCode>
+</buyer>
+<deliveryInfo>
+<requestedDeliveryDateTime>2016-08-06T00:00:00</requestedDeliveryDateTime>
+</deliveryInfo>
+<lineItems>
+<lineItem>
+<lineNumber>1</lineNumber>
+<internalBuyerCode>0001</internalBuyerCode>
+<name>Апельсин</name>
+<requestedQuantity>
+<measureUnit>KG</measureUnit>
+<quantity>2.500000000</quantity>
+</requestedQuantity>
+<priceWithoutVat>55.08</priceWithoutVat>
+<priceWithVat>55.08</priceWithVat>
+<sumWithoutVat>137.700000000</sumWithoutVat>
+<sumWithVat>137.700000000</sumWithVat>
+</lineItem>
+<totalSumWithVat>137.700000000</totalSumWithVat>
+</lineItems>
+</order>
+<order number="10025" date="2016-08-24" status="original" processingStatus="draft">
+<seller>
+<gln>1111111111111</gln>
+<name>Поставщик02</name>
+<inn>2222222222222</inn>
+<kpp>888888888888</kpp>
+</seller>
+<buyer>
+<gln>2000000002460</gln>
+<guid>77ee6049-abb2-4459-a9b1-aaf413c9125e</guid>
+<name>Кухня1</name>
+<internalCode>2</internalCode>
+</buyer>
+<deliveryInfo>
+<requestedDeliveryDateTime>2016-08-06T00:00:00</requestedDeliveryDateTime>
+</deliveryInfo>
+<lineItems>
+<lineItem>
+<lineNumber>1</lineNumber>
+<internalBuyerCode>0001</internalBuyerCode>
+<internalSupplierCode>15151515</internalSupplierCode>
+<name>Orangeee</name>
+<requestedQuantity>
+<measureUnit>KG</measureUnit>
+<quantity>2.500000000</quantity>
+</requestedQuantity>
+<priceWithoutVat>55.08</priceWithoutVat>
+<priceWithVat>55.08</priceWithVat>
+<sumWithoutVat>137.700000000</sumWithoutVat>
+<sumWithVat>137.700000000</sumWithVat>
+</lineItem>
+<totalSumWithVat>137.700000000</totalSumWithVat>
+</lineItems>
+</order>
+<order number="10026" date="2016-08-24" status="original" processingStatus="draft">
+<seller>
+<gln>1111111111111</gln>
+<name>Поставщик02</name>
+<inn>2222222222222</inn>
+<kpp>888888888888</kpp>
+</seller>
+<buyer>
+<gln>2000000002460</gln>
+<guid>77ee6049-abb2-4459-a9b1-aaf413c9125e</guid>
+<name>Кухня1</name>
+<internalCode>2</internalCode>
+</buyer>
+<deliveryInfo>
+<requestedDeliveryDateTime>2016-08-06T00:00:00</requestedDeliveryDateTime>
+</deliveryInfo>
+<lineItems>
+<lineItem>
+<lineNumber>1</lineNumber>
+<internalBuyerCode>0001</internalBuyerCode>
+<name>Апельсин</name>
+<requestedQuantity>
+<measureUnit>KG</measureUnit>
+<quantity>2.500000000</quantity>
+</requestedQuantity>
+<priceWithoutVat>55.08</priceWithoutVat>
+<priceWithVat>55.08</priceWithVat>
+<sumWithoutVat>137.700000000</sumWithoutVat>
+<sumWithVat>137.700000000</sumWithVat>
+</lineItem>
+<totalSumWithVat>137.700000000</totalSumWithVat>
+</lineItems>
+</order>
+<order number="10020" date="2016-08-24" status="original" processingStatus="draft">
+<seller>
+<gln>1111111111111</gln>
+<name>Поставщик02</name>
+<inn>2222222222222</inn>
+<kpp>888888888888</kpp>
+</seller>
+<buyer>
+<gln>2000000002460</gln>
+<guid>77ee6049-abb2-4459-a9b1-aaf413c9125e</guid>
+<name>Кухня1</name>
+<internalCode>2</internalCode>
+</buyer>
+<deliveryInfo>
+<requestedDeliveryDateTime>2016-08-06T00:00:00</requestedDeliveryDateTime>
+</deliveryInfo>
+<lineItems>
+<lineItem>
+<lineNumber>1</lineNumber>
+<internalBuyerCode>0001</internalBuyerCode>
+<name>Апельсин</name>
+<requestedQuantity>
+<measureUnit>KG</measureUnit>
+<quantity>1.000000000</quantity>
+</requestedQuantity>
+<priceWithoutVat>0.00</priceWithoutVat>
+<priceWithVat>0.00</priceWithVat>
+<sumWithoutVat>0.000000000</sumWithoutVat>
+<sumWithVat>0.000000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>2</lineNumber>
+<internalBuyerCode>0001</internalBuyerCode>
+<name>Апельсин</name>
+<requestedQuantity>
+<measureUnit>KG</measureUnit>
+<quantity>20.000000000</quantity>
+<container>
+<internalCode>1</internalCode>
+<name>ящик</name>
+<quantity>10.000000000</quantity>
+</container>
+<containerQuantity>2.000</containerQuantity>
+</requestedQuantity>
+<priceWithoutVat>99.99</priceWithoutVat>
+<priceWithVat>99.99</priceWithVat>
+<sumWithoutVat>199.980000000</sumWithoutVat>
+<sumWithVat>199.980000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>3</lineNumber>
+<internalBuyerCode>0002</internalBuyerCode>
+<name>Jameson</name>
+<requestedQuantity>
+<measureUnit>LT</measureUnit>
+<quantity>1.500000000</quantity>
+</requestedQuantity>
+<priceWithoutVat>1000.01</priceWithoutVat>
+<priceWithVat>1000.01</priceWithVat>
+<sumWithoutVat>1500.015000000</sumWithoutVat>
+<sumWithVat>1500.015000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>4</lineNumber>
+<internalBuyerCode>0002</internalBuyerCode>
+<name>Jameson</name>
+<requestedQuantity>
+<measureUnit>LT</measureUnit>
+<quantity>20.000000000</quantity>
+<container>
+<internalCode>1</internalCode>
+<name>10l</name>
+<quantity>10.000000000</quantity>
+</container>
+<containerQuantity>2.000</containerQuantity>
+</requestedQuantity>
+<priceWithoutVat>9999.99</priceWithoutVat>
+<priceWithVat>9999.99</priceWithVat>
+<sumWithoutVat>19999.980000000</sumWithoutVat>
+<sumWithVat>19999.980000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>5</lineNumber>
+<internalBuyerCode>0004</internalBuyerCode>
+<name>Киви</name>
+<requestedQuantity>
+<measureUnit>PCE</measureUnit>
+<quantity>100.000000000</quantity>
+</requestedQuantity>
+<priceWithoutVat>10.00</priceWithoutVat>
+<priceWithVat>10.00</priceWithVat>
+<sumWithoutVat>1000.000000000</sumWithoutVat>
+<sumWithVat>1000.000000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>6</lineNumber>
+<internalBuyerCode>0004</internalBuyerCode>
+<name>Киви</name>
+<requestedQuantity>
+<measureUnit>PCE</measureUnit>
+<quantity>300.000000000</quantity>
+<container>
+<internalCode>1</internalCode>
+<name>ящик 100шт</name>
+<quantity>100.000000000</quantity>
+</container>
+<containerQuantity>3.000</containerQuantity>
+</requestedQuantity>
+<priceWithoutVat>666.66</priceWithoutVat>
+<priceWithVat>666.66</priceWithVat>
+<sumWithoutVat>1999.980000000</sumWithoutVat>
+<sumWithVat>1999.980000000</sumWithVat>
+</lineItem>
+<totalSumWithVat>24699.955000000</totalSumWithVat>
+</lineItems>
+</order>
+<order number="10021" date="2016-08-24" status="original" processingStatus="draft">
+<seller>
+<gln>1111111111111</gln>
+<name>Поставщик02</name>
+<inn>2222222222222</inn>
+<kpp>888888888888</kpp>
+</seller>
+<buyer>
+<gln>2000000002460</gln>
+<guid>77ee6049-abb2-4459-a9b1-aaf413c9125e</guid>
+<name>Кухня1</name>
+<internalCode>2</internalCode>
+</buyer>
+<deliveryInfo>
+<requestedDeliveryDateTime>2016-08-06T00:00:00</requestedDeliveryDateTime>
+</deliveryInfo>
+<lineItems>
+<lineItem>
+<lineNumber>1</lineNumber>
+<internalBuyerCode>0001</internalBuyerCode>
+<name>Апельсин</name>
+<requestedQuantity>
+<measureUnit>KG</measureUnit>
+<quantity>2.500000000</quantity>
+</requestedQuantity>
+<priceWithoutVat>55.08</priceWithoutVat>
+<priceWithVat>55.08</priceWithVat>
+<sumWithoutVat>137.700000000</sumWithoutVat>
+<sumWithVat>137.700000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>2</lineNumber>
+<internalBuyerCode>0001</internalBuyerCode>
+<name>Апельсин</name>
+<requestedQuantity>
+<measureUnit>KG</measureUnit>
+<quantity>20.000000000</quantity>
+<container>
+<internalCode>1</internalCode>
+<name>ящик</name>
+<quantity>10.000000000</quantity>
+</container>
+<containerQuantity>2.000</containerQuantity>
+</requestedQuantity>
+<priceWithoutVat>99.99</priceWithoutVat>
+<priceWithVat>99.99</priceWithVat>
+<sumWithoutVat>199.980000000</sumWithoutVat>
+<sumWithVat>199.980000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>3</lineNumber>
+<internalBuyerCode>0002</internalBuyerCode>
+<name>Jameson</name>
+<requestedQuantity>
+<measureUnit>LT</measureUnit>
+<quantity>1.500000000</quantity>
+</requestedQuantity>
+<priceWithoutVat>1000.01</priceWithoutVat>
+<priceWithVat>1000.01</priceWithVat>
+<sumWithoutVat>1500.015000000</sumWithoutVat>
+<sumWithVat>1500.015000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>4</lineNumber>
+<internalBuyerCode>0002</internalBuyerCode>
+<name>Jameson</name>
+<requestedQuantity>
+<measureUnit>LT</measureUnit>
+<quantity>20.000000000</quantity>
+<container>
+<internalCode>1</internalCode>
+<name>10l</name>
+<quantity>10.000000000</quantity>
+</container>
+<containerQuantity>2.000</containerQuantity>
+</requestedQuantity>
+<priceWithoutVat>9999.99</priceWithoutVat>
+<priceWithVat>9999.99</priceWithVat>
+<sumWithoutVat>19999.980000000</sumWithoutVat>
+<sumWithVat>19999.980000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>5</lineNumber>
+<internalBuyerCode>0004</internalBuyerCode>
+<name>Киви</name>
+<requestedQuantity>
+<measureUnit>PCE</measureUnit>
+<quantity>100.000000000</quantity>
+</requestedQuantity>
+<priceWithoutVat>10.00</priceWithoutVat>
+<priceWithVat>10.00</priceWithVat>
+<sumWithoutVat>1000.000000000</sumWithoutVat>
+<sumWithVat>1000.000000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>6</lineNumber>
+<internalBuyerCode>0004</internalBuyerCode>
+<name>Киви</name>
+<requestedQuantity>
+<measureUnit>PCE</measureUnit>
+<quantity>300.000000000</quantity>
+<container>
+<internalCode>1</internalCode>
+<name>ящик 100шт</name>
+<quantity>100.000000000</quantity>
+</container>
+<containerQuantity>3.000</containerQuantity>
+</requestedQuantity>
+<priceWithoutVat>666.66</priceWithoutVat>
+<priceWithVat>666.66</priceWithVat>
+<sumWithoutVat>1999.980000000</sumWithoutVat>
+<sumWithVat>1999.980000000</sumWithVat>
+</lineItem>
+<totalSumWithVat>24837.655000000</totalSumWithVat>
+</lineItems>
+</order>
+<order number="10022" date="2016-08-24" status="original" processingStatus="registered">
+<seller>
+<gln>1111111111111</gln>
+<name>Поставщик02</name>
+<inn>2222222222222</inn>
+<kpp>888888888888</kpp>
+</seller>
+<buyer>
+<gln>2000000002460</gln>
+<guid>77ee6049-abb2-4459-a9b1-aaf413c9125e</guid>
+<name>Кухня1</name>
+<internalCode>2</internalCode>
+</buyer>
+<deliveryInfo>
+<requestedDeliveryDateTime>2016-08-06T00:00:00</requestedDeliveryDateTime>
+</deliveryInfo>
+<lineItems>
+<lineItem>
+<lineNumber>1</lineNumber>
+<internalBuyerCode>0001</internalBuyerCode>
+<name>Апельсин</name>
+<requestedQuantity>
+<measureUnit>KG</measureUnit>
+<quantity>2.500000000</quantity>
+</requestedQuantity>
+<priceWithoutVat>55.08</priceWithoutVat>
+<priceWithVat>55.08</priceWithVat>
+<sumWithoutVat>137.700000000</sumWithoutVat>
+<sumWithVat>137.700000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>2</lineNumber>
+<internalBuyerCode>0001</internalBuyerCode>
+<name>Апельсин</name>
+<requestedQuantity>
+<measureUnit>KG</measureUnit>
+<quantity>20.000000000</quantity>
+<container>
+<internalCode>1</internalCode>
+<name>ящик</name>
+<quantity>10.000000000</quantity>
+</container>
+<containerQuantity>2.000</containerQuantity>
+</requestedQuantity>
+<priceWithoutVat>99.99</priceWithoutVat>
+<priceWithVat>99.99</priceWithVat>
+<sumWithoutVat>199.980000000</sumWithoutVat>
+<sumWithVat>199.980000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>3</lineNumber>
+<internalBuyerCode>0002</internalBuyerCode>
+<name>Jameson</name>
+<requestedQuantity>
+<measureUnit>LT</measureUnit>
+<quantity>1.500000000</quantity>
+</requestedQuantity>
+<priceWithoutVat>1000.01</priceWithoutVat>
+<priceWithVat>1000.01</priceWithVat>
+<sumWithoutVat>1500.015000000</sumWithoutVat>
+<sumWithVat>1500.015000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>4</lineNumber>
+<internalBuyerCode>0002</internalBuyerCode>
+<name>Jameson</name>
+<requestedQuantity>
+<measureUnit>LT</measureUnit>
+<quantity>20.000000000</quantity>
+<container>
+<internalCode>1</internalCode>
+<name>10l</name>
+<quantity>10.000000000</quantity>
+</container>
+<containerQuantity>2.000</containerQuantity>
+</requestedQuantity>
+<priceWithoutVat>9999.99</priceWithoutVat>
+<priceWithVat>9999.99</priceWithVat>
+<sumWithoutVat>19999.980000000</sumWithoutVat>
+<sumWithVat>19999.980000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>5</lineNumber>
+<internalBuyerCode>0004</internalBuyerCode>
+<name>Киви</name>
+<requestedQuantity>
+<measureUnit>PCE</measureUnit>
+<quantity>100.000000000</quantity>
+</requestedQuantity>
+<priceWithoutVat>10.00</priceWithoutVat>
+<priceWithVat>10.00</priceWithVat>
+<sumWithoutVat>1000.000000000</sumWithoutVat>
+<sumWithVat>1000.000000000</sumWithVat>
+</lineItem>
+<lineItem>
+<lineNumber>6</lineNumber>
+<internalBuyerCode>0004</internalBuyerCode>
+<name>Киви</name>
+<requestedQuantity>
+<measureUnit>PCE</measureUnit>
+<quantity>300.000000000</quantity>
+<container>
+<internalCode>1</internalCode>
+<name>ящик 100шт</name>
+<quantity>100.000000000</quantity>
+</container>
+<containerQuantity>3.000</containerQuantity>
+</requestedQuantity>
+<priceWithoutVat>666.66</priceWithoutVat>
+<priceWithVat>666.66</priceWithVat>
+<sumWithoutVat>1999.980000000</sumWithoutVat>
+<sumWithVat>1999.980000000</sumWithVat>
+</lineItem>
+<totalSumWithVat>24837.655000000</totalSumWithVat>
+</lineItems>
+</order>
+</orderDtoes>
+  
+
+   Создание нового заказа
+
+Версия iiko: 5.1
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/edi/{ediSystem}/orders/create
+      
+    
+  
+
+Параметры запроса
+
+  
+    
+
+               Название       
+               Значение       
+               Описание       
+    
+  
+  
+    
+
+      	
+        ediSystem
+
+      
+      	
+        GUID  
+      
+      	
+        
+           Идентификатор участника EDI, подключенной к нашему REST API.         
+        
+           Каждый участник EDI должен получить свой собственный GUID ключ - идентификатор системы EDI (EdiSystem) для подключения к REST API электронного документооборота iiko. См. "Обмен данными/Системы EDI" в iikoOffice.         
+      
+    
+  
+
+Коды предупреждений
+
+  
+    
+
+               Код       
+               Описание       
+    
+  
+  
+    
+
+      	SUPPLIER_PRODUCT_NOT_FOUND
+      	         Нет внешнего продукта с указанным артикулом       
+    
+    
+
+      	SUPPLIER_PRICELIST_NOT_FOUND
+      	         Нет прайс-листа поставщика на указанную дату       
+    
+    
+
+      	PRODUCT_AND_SUPPLIER_PRODUCT_DO_NOT_MATCH
+      	         Есть внешний продукт с заданным артикулом. И есть прайс-лист поставщика на дату заказа. Но в этом прайс-листе нет указанной в строке заказа связки "внутренний продукт" + "внешний продукт" + "фасовка".       
+    
+    
+
+      	ORDER_ITEM_IS_POSSIBLY_INCORRECT
+      	         Строка заказа возможно (вероятно) некорректна. Например, если цена * количество не равно сумме.       
+    
+  
+
+Что в ответе
+
+         Созданный заказ вместе с дополнительной информацией (возможные предупреждения при создании) в контейнере OrderCreationOrUpdateResultDto.
+        
+Создает новый заказ для зарегистрированного в системе iiko участника ediSystem. DTO заказа передается в теле HTTP-запроса.         
+        
+           В теле запроса рекомендуется не указывать номер документа. В этом случае номер ему будет присвоен автоматически, а в возвращенном DTO он будет указан.         
+                  Если же указать номер документа, то система попытается
+ использовать его. Но при совпадении номера документа с уже существующим документ не сохранится, и будет сгенерирована ошибка. 
+Пример вызова 
+
+   https://localhost:9080/resto/api/edi/709f5a71-47b6-f2fc-b5a8-d10176a851d7/orders/create?key=59226cd3-b7d7-943f-6b35-6803bc6ccda5 
+
+   Пример тела запроса 
+
+ 
+
+  
+     [+]     Создание нового заказа       
+  
+     [-]     Создание нового заказа   
+  
+  
+
+    
+    
+	
+Copy Code
+Код
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<order date="2016-08-24" status="original">
+        <seller>
+            <gln>1111111111111</gln>
+            <name>Поставщик02</name>
+            <inn>2222222222222</inn>
+            <kpp>888888888888</kpp>
+        </seller>
+        <buyer>
+            <gln>2000000002460</gln>
+            <guid>77ee6049-abb2-4459-a9b1-aaf413c9125e</guid>
+            <name>Кухня1</name>
+            <inn></inn>
+        </buyer>
+<deliveryInfo>
+        <requestedDeliveryDateTime>2016-08-06T00:00:00</requestedDeliveryDateTime>
+</deliveryInfo>
+        <lineItems>
+            <lineItem>
+                <lineNumber>1</lineNumber>
+                <internalBuyerCode>0001</internalBuyerCode>
+                <internalSupplierCode>15151515</internalSupplierCode>
+                <name>Апельсин</name>
+                <requestedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>2.500000000</quantity>
+                </requestedQuantity>
+                <sumWithVat>137.700000000</sumWithVat>
+                <sumWithoutVat>137.700000000</sumWithoutVat>
+                <priceWithVat>55.08</priceWithVat>
+                <priceWithoutVat>55.08</priceWithoutVat>
+            </lineItem>
+            <totalSumWithVat>137.700000000</totalSumWithVat>
+        </lineItems>
+</order>
+  
+
+   Пример ответа 
+
+ 
+
+  
+     [+]     Ответ «все в порядке»       
+  
+     [-]     Ответ «все в порядке»   
+  
+  
+
+    
+    
+	
+Copy Code
+Код
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<orderCreationOrUpdateResultDto>
+    <warnings/>
+    <order number="10025" date="2016-08-24" status="original" processingStatus="draft">
+        <seller>
+            <gln>1111111111111</gln>
+            <name>Поставщик02</name>
+            <inn>2222222222222</inn>
+            <kpp>888888888888</kpp>
+        </seller>
+        <buyer>
+            <gln>2000000002460</gln>
+            <guid>77ee6049-abb2-4459-a9b1-aaf413c9125e</guid>
+            <name>Кухня1</name>
+            <internalCode>2</internalCode>
+        </buyer>
+        <deliveryInfo>
+            <requestedDeliveryDateTime>2016-08-06T00:00:00</requestedDeliveryDateTime>
+        </deliveryInfo>
+        <lineItems>
+            <lineItem>
+                <lineNumber>1</lineNumber>
+                <internalBuyerCode>0001</internalBuyerCode>
+                <internalSupplierCode>15151515</internalSupplierCode>
+                <name>Orangeee</name>
+                <requestedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>2.500000000</quantity>
+                </requestedQuantity>
+                <priceWithoutVat>55.08</priceWithoutVat>
+                <priceWithVat>55.08</priceWithVat>
+                <sumWithoutVat>137.700000000</sumWithoutVat>
+                <sumWithVat>137.700000000</sumWithVat>
+            </lineItem>
+            <totalSumWithVat>137.700000000</totalSumWithVat>
+        </lineItems>
+    </order>
+</orderCreationOrUpdateResultDto> 
+
+[+]     Ответ с предупреждением (warning)       
+  
+     [-]     Ответ с предупреждением (warning)   
+  
+  
+
+    
+    
+	
+Copy Code
+Код
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<orderCreationOrUpdateResultDto>
+    <warnings>
+        <warning code="SUPPLIER_PRODUCT_NOT_FOUND">Supplier product with code 1515151511 not found</warning>
+    </warnings>
+    <order number="10026" date="2016-08-24" status="original" processingStatus="draft">
+        <seller>
+            <gln>1111111111111</gln>
+            <name>Поставщик02</name>
+            <inn>2222222222222</inn>
+            <kpp>888888888888</kpp>
+        </seller>
+        <buyer>
+            <gln>2000000002460</gln>
+            <guid>77ee6049-abb2-4459-a9b1-aaf413c9125e</guid>
+            <name>Кухня1</name>
+            <internalCode>2</internalCode>
+        </buyer>
+        <deliveryInfo>
+            <requestedDeliveryDateTime>2016-08-06T00:00:00</requestedDeliveryDateTime>
+        </deliveryInfo>
+        <lineItems>
+            <lineItem>
+                <lineNumber>1</lineNumber>
+                <internalBuyerCode>0001</internalBuyerCode>
+                <name>Апельсин</name>
+                <requestedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>2.500000000</quantity>
+                </requestedQuantity>
+                <priceWithoutVat>55.08</priceWithoutVat>
+                <priceWithVat>55.08</priceWithVat>
+                <sumWithoutVat>137.700000000</sumWithoutVat>
+                <sumWithVat>137.700000000</sumWithVat>
+            </lineItem>
+            <totalSumWithVat>137.700000000</totalSumWithVat>
+        </lineItems>
+    </order>
+</orderCreationOrUpdateResultDto>
+    
+    
+  
+
+   Модификация заказа
+
+  
+Версия iiko: 5.1
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/edi/{ediSystem}/orders/update
+      
+    
+  
+
+Параметры запроса
+
+    
+      
+
+                   Название         
+                   Значение         
+                   Описание         
+      
+    
+    
+      
+
+        	ediSystem 
+        	
+          GUID  
+        
+        	
+          
+             Идентификатор участника EDI, подключенной к нашему REST API.           
+          
+             Каждый участник EDI должен получить свой собственный GUID ключ - идентификатор системы EDI (EdiSystem) для подключения к REST API электронного документооборота iiko. См. Обмен данными → Системы EDI в iikoOffice.           
+        
+      
+    
+  
+
+Что в ответе
+
+           Модифицированный заказ вместе с дополнительной информацией (возможные предупреждения при обновлении) в контейнере OrderCreationOrUpdateResultDto.
+Модифицирует переданный заказ EDI для зарегистрированного в системе iiko участника ediSystem.             
+             Номер и дата документа не могут быть модифицированы, т.к. используются для идентификации заказа.
+
+Пример вызова 
+
+   https://localhost:9080/resto/api/edi/709f5a71-47b6-f2fc-b5a8-d10176a851d7/orders/update?key=85471800-4e83-edff-02d3-c245270349b9 
+   Пример тела запроса 
+
+  
+     [+]     Тело PUT-запроса на модификацию ранее сохраненного заказа       
+  
+     [-]     Тело PUT-запроса на модификацию ранее сохраненного заказа   
+  
+  
+
+    
+    
+	
+Copy Code
+Код
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <order number="10026" date="2016-08-24" status="original" processingStatus="draft">
+        <seller>
+            <gln>1111111111111</gln>
+            <name>Поставщик02</name>
+            <inn>2222222222222</inn>
+            <kpp>888888888888</kpp>
+        </seller>
+        <buyer>
+            <gln>2000000002460</gln>
+            <guid>77ee6049-abb2-4459-a9b1-aaf413c9125e</guid>
+            <name>Кухня1</name>
+            <internalCode>2</internalCode>
+        </buyer>
+        <deliveryInfo>
+            <requestedDeliveryDateTime>2016-08-06T00:00:00</requestedDeliveryDateTime>
+        </deliveryInfo>
+        <lineItems>
+            <lineItem>
+                <lineNumber>1</lineNumber>
+                <internalBuyerCode>0001</internalBuyerCode>
+                <name>Апельсин</name>
+                <requestedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>5.000000000</quantity>
+                </requestedQuantity>
+                <priceWithoutVat>55.08</priceWithoutVat>
+                <priceWithVat>55.08</priceWithVat>
+                <sumWithoutVat>275.400000000</sumWithoutVat>
+                <sumWithVat>275.400000000</sumWithVat>
+            </lineItem>
+            <totalSumWithVat>275.400000000</totalSumWithVat>
+        </lineItems>
+    </order> 
+
+Пример ответа
+
+ 
+  
+
+  
+     [+]     Ответ на запрос (нет предупреждений)       
+  
+     [-]     Ответ на запрос (нет предупреждений)     
+  
+
+    
+    
+	
+Copy Code
+Код
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<orderCreationOrUpdateResultDto>
+    <warnings/>
+    <order number="10026" date="2016-08-24" status="original" processingStatus="draft">
+        <seller>
+            <gln>1111111111111</gln>
+            <name>Поставщик02</name>
+            <inn>2222222222222</inn>
+            <kpp>888888888888</kpp>
+        </seller>
+        <buyer>
+            <gln>2000000002460</gln>
+            <guid>77ee6049-abb2-4459-a9b1-aaf413c9125e</guid>
+            <name>Кухня1</name>
+            <internalCode>2</internalCode>
+        </buyer>
+        <deliveryInfo>
+            <requestedDeliveryDateTime>2016-08-06T00:00:00</requestedDeliveryDateTime>
+        </deliveryInfo>
+        <lineItems>
+            <lineItem>
+                <lineNumber>1</lineNumber>
+                <internalBuyerCode>0001</internalBuyerCode>
+                <name>Апельсин</name>
+                <requestedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>5.000000000</quantity>
+                </requestedQuantity>
+                <priceWithoutVat>55.08</priceWithoutVat>
+                <priceWithVat>55.08</priceWithVat>
+                <sumWithoutVat>275.400000000</sumWithoutVat>
+                <sumWithVat>275.400000000</sumWithVat>
+            </lineItem>
+            <totalSumWithVat>275.400000000</totalSumWithVat>
+        </lineItems>
+    </order>
+</orderCreationOrUpdateResultDto> 
+    
+    
+    
+  
+
+Проведение заказа
+
+  
+Версия iiko: 5.1        
+	                	         https://host:port/resto/api/edi/{ediSystem}/orders/register                
+Параметры запроса
+
+ 
+
+  
+    
+      
+
+                                Название                    
+                                Значение                    
+                                Описание                    
+      
+    
+    
+      
+
+        	ediSystem 
+        	
+          GUID  
+        
+        	
+          
+             Идентификатор участника EDI, подключенной к нашему REST API.           
+          
+             Каждый участник EDI должен получить свой собственный GUID ключ - идентификатор системы EDI (EdiSystem) для подключения к REST API электронного документооборота iiko. См. "Обмен данными/Системы EDI" в iikoOffice.           
+        
+      
+    
+  
+
+Что в ответе
+
+           Список проведенных заказов (OrderDto).        
+Осуществляет проведение (установку статуса "проведен") для заказов EDI, номера и даты которых переданы, для зарегистрированного в системе iiko участника ediSystem. 
+
+Пример вызова   
+   
+
+https://localhost:9080/resto/api/edi/709f5a71-47b6-f2fc-b5a8-d10176a851d7/orders/register?key=85471800-4e83-edff-02d3-c245270349b9
+ 
+
+Пример тела запроса
+
+  
+     [+]     Тело запроса — список идентификаторов документов, которые необходимо провести       
+  
+     [-]     Тело запроса — список идентификаторов документов, которые необходимо провести     
+  
+
+    
+    
+	
+Copy Code
+Код
+	<documentIdentifierDtoes>
+   <documentIdentifier number="10026" date="2016-08-24" />
+</documentIdentifierDtoes>
+
+Пример ответа
+
+  
+     [+]     Ответ на запрос на проведение документов — список проведенных документов с обновленными статусами       
+  
+     [-]     Ответ на запрос на проведение документов — список проведенных документов с обновленными статусами     
+  
+
+    
+    
+	
+Copy Code
+Код
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<orderDtoes>
+    <order number="10026" date="2016-08-24" status="original" processingStatus="registered">
+        <seller>
+            <gln>1111111111111</gln>
+            <name>Поставщик02</name>
+            <inn>2222222222222</inn>
+            <kpp>888888888888</kpp>
+        </seller>
+        <buyer>
+            <gln>2000000002460</gln>
+            <guid>77ee6049-abb2-4459-a9b1-aaf413c9125e</guid>
+            <name>Кухня1</name>
+            <internalCode>2</internalCode>
+        </buyer>
+        <deliveryInfo>
+            <requestedDeliveryDateTime>2016-08-06T00:00:00</requestedDeliveryDateTime>
+        </deliveryInfo>
+        <lineItems>
+            <lineItem>
+                <lineNumber>1</lineNumber>
+                <internalBuyerCode>0001</internalBuyerCode>
+                <name>Апельсин</name>
+                <requestedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>5.000000000</quantity>
+                </requestedQuantity>
+                <priceWithoutVat>55.08</priceWithoutVat>
+                <priceWithVat>55.08</priceWithVat>
+                <sumWithoutVat>275.400000000</sumWithoutVat>
+                <sumWithVat>275.400000000</sumWithVat>
+            </lineItem>
+            <totalSumWithVat>275.400000000</totalSumWithVat>
+        </lineItems>
+    </order>
+</orderDtoes>
+
+   Распроведение заказа
+
+  
+Версия iiko: 5.1        
+	                	         https://host:port/resto/api/edi/{ediSystem}/orders/unregister                
+Параметры запроса
+
+ 
+
+  
+    
+      
+
+                                Название                    
+                                Значение                    
+                                Описание                    
+      
+    
+    
+      
+
+        	
+          ediSystem 
+        
+        	
+          GUID  
+        
+        	
+          
+             Идентификатор участника EDI, подключенной к нашему REST API.           
+          
+             Каждый участник EDI должен получить свой собственный GUID ключ - идентификатор системы EDI (EdiSystem) для подключения к REST API электронного документооборота iiko. См. Обмен данными → Системы EDI в iikoOffice.           
+        
+      
+    
+  
+
+Что в ответе
+
+           Список проведенных заказов (OrderDto).        
+Осуществляет распроведение (установку статуса "не проведен") для заказов EDI, номера и даты которых переданы, для зарегистрированного в системе iiko участника ediSystem.             
+             Операция, обратная проведению документов. 
+
+Пример вызова
+
+   https://localhost:9080/resto/api/edi/709f5a71-47b6-f2fc-b5a8-d10176a851d7/orders/unregister?key=85471800-4e83-edff-02d3-c245270349b9
+
+  
+     [+]     Пример тела запроса       
+  
+     [-]     Пример тела запроса     
+  
+
+    
+    
+	
+Copy Code
+Код
+	<documentIdentifierDtoes>
+   <documentIdentifier number="10026" date="2016-08-24" />
+</documentIdentifierDtoes>
+
+  
+     [+]     Пример ответа       
+  
+     [-]     Пример ответа     
+  
+
+    
+  
+	
+Copy Code
+Код
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<orderDtoes>
+    <order number="10026" date="2016-08-24" status="original" processingStatus="draft">
+        <seller>
+            <gln>1111111111111</gln>
+            <name>Поставщик02</name>
+            <inn>2222222222222</inn>
+            <kpp>888888888888</kpp>
+        </seller>
+        <buyer>
+            <gln>2000000002460</gln>
+            <guid>77ee6049-abb2-4459-a9b1-aaf413c9125e</guid>
+            <name>Кухня1</name>
+            <internalCode>2</internalCode>
+        </buyer>
+        <deliveryInfo>
+            <requestedDeliveryDateTime>2016-08-06T00:00:00</requestedDeliveryDateTime>
+        </deliveryInfo>
+        <lineItems>
+            <lineItem>
+                <lineNumber>1</lineNumber>
+                <internalBuyerCode>0001</internalBuyerCode>
+                <name>Апельсин</name>
+                <requestedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>5.000000000</quantity>
+                </requestedQuantity>
+                <priceWithoutVat>55.08</priceWithoutVat>
+                <priceWithVat>55.08</priceWithVat>
+                <sumWithoutVat>275.400000000</sumWithoutVat>
+                <sumWithVat>275.400000000</sumWithVat>
+            </lineItem>
+            <totalSumWithVat>275.400000000</totalSumWithVat>
+        </lineItems>
+    </order>
+</orderDtoes> 
+  
+  
+  
+  
+  
+
+   Постановка заказа на отправку
+
+  
+Версия iiko: 5.1
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/edi/{ediSystem}/orders/send
+      
+    
+  
+
+Параметры запроса
+
+ 
+
+  
+    
+      
+
+                                Название                    
+                                Значение                    
+                                Описание                    
+      
+    
+    
+      
+
+        	ediSystem 
+        	
+          GUID  
+        
+        	
+          
+             Идентификатор участника EDI, подключенной к нашему REST API.           
+          
+             Каждый участник EDI должен получить свой собственный GUID ключ - идентификатор системы EDI (EdiSystem) для подключения к REST API электронного документооборота iiko. См. Обмен данными → Системы EDI в iikoOffice.           
+        
+      
+    
+  
+
+Что в ответе
+
+           Список заказов (OrderDto), поставленных на отправку, с обновленными статусами.        
+          
+             Осуществляет постановку на отправку заказов EDI, номера и даты которых переданы, для зарегистрированного в системе iiko участника ediSystem.
+        
+Пример вызова
+
+   https://localhost:9080/resto/api/edi/709f5a71-47b6-f2fc-b5a8-d10176a851d7/orders/send?key=8af2341a-d1fb-6e26-f8a0-701664d93181  
+
+  
+     [+]     Пример тела запроса       
+  
+     [-]     Пример тела запроса     
+  
+
+   
+    
+	
+Copy Code
+Код
+	<documentIdentifierDtoes>
+   <documentIdentifier number="10025" date="2016-08-24" />
+</documentIdentifierDtoes>
+
+  
+     [+]     Пример тела ответа       
+  
+     [-]     Пример тела ответа     
+  
+
+    
+    
+	
+Copy Code
+Код
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<orderDtoes>
+    <order number="10025" date="2016-08-24" status="original" processingStatus="readyToSend">
+        <seller>
+            <gln>1111111111111</gln>
+            <name>Поставщик02</name>
+            <inn>2222222222222</inn>
+            <kpp>888888888888</kpp>
+        </seller>
+        <buyer>
+            <gln>2000000002460</gln>
+            <guid>77ee6049-abb2-4459-a9b1-aaf413c9125e</guid>
+            <name>Кухня1</name>
+            <internalCode>2</internalCode>
+        </buyer>
+        <deliveryInfo>
+            <requestedDeliveryDateTime>2016-08-06T00:00:00</requestedDeliveryDateTime>
+        </deliveryInfo>
+        <lineItems>
+            <lineItem>
+                <lineNumber>1</lineNumber>
+                <internalBuyerCode>0001</internalBuyerCode>
+                <internalSupplierCode>15151515</internalSupplierCode>
+                <name>Orangeee</name>
+                <requestedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>2.500000000</quantity>
+                </requestedQuantity>
+                <priceWithoutVat>55.08</priceWithoutVat>
+                <priceWithVat>55.08</priceWithVat>
+                <sumWithoutVat>137.700000000</sumWithoutVat>
+                <sumWithVat>137.700000000</sumWithVat>
+            </lineItem>
+            <totalSumWithVat>137.700000000</totalSumWithVat>
+        </lineItems>
+    </order>
+</orderDtoes>

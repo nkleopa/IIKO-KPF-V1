@@ -1,0 +1,2386 @@
+Элементы номенклатуры
+
+  
+
+    
+
+  
+Получение элементов номенклатуры
+Параметры запроса
+Что в ответе
+Пример запроса и результата
+Получение элементов номенклатуры
+Тело запроса
+Что в ответе
+Импорт элемента номенклатуры
+Параметры запроса
+Что в ответе
+Пример запроса и результата
+Редактирование элемента номенклатуры
+Параметры запроса
+Тело запроса
+Что в ответе
+Примеры запроса и результата
+Удаление элементов номенклатуры
+Тело запроса
+Что в ответе
+Примеры запроса и результат
+Восстановление элементов номенклатуры
+Параметры запроса
+Тело запроса
+Что в ответе
+Пример запроса и результата 
+
+  
+  
+
+  
+
+Получение элементов номенклатуры
+
+Чтобы пользоваться API экспорта и импорта номенклатуры:
+У пользователя, под чьим именем осуществляется вход, должно быть право B_EN "Редактирование номенклатурных справочников".
+Версия iiko: 6.1
+  
+    
+
+      	
+        
+      
+      	
+        https://host:port/resto/api/v2/entities/products/list
+    
+
+Параметры запроса
+
+  
+    
+
+      	                
+      	         Если  надо отфильтровать по полю, значение которого null, то соответствующее  значение параметра не задаём: "parentId=". На сервере это будет список с  одним нулевым элементом [null].
+
+Если надо отфильтровать сразу по  нескольким параметрам одного типа, например parentId, параметры передаём  в следующим виде: "parentId=111&parentId=222&parentId=333". На  сервере это преобразуется в список [111, 222, 333].
+
+Следующий список параметров "parentId=111&parentId=222&parentId=" на сервере преобразуется  в [111, 222, null].
+    
+  
+
+  
+    
+
+      
+        
+           Параметр         
+      
+      
+        
+           Версия iiko         
+      
+      
+        
+           Тип, формат         
+      
+      
+        
+           Описание         
+      
+    
+  
+  
+    
+
+      	         includeDeleted       
+      	         6.1       
+      	         Boolean       
+      	         Включать ли в результат удаленные элементы. По умолчанию false.       
+    
+    
+
+      	         ids       
+      	         6.2       
+      	         List<UUID>       
+      	         Возвращаемые элементы номенклатуры должны иметь id из этого списка.       
+    
+    
+
+      	         nums       
+      	         6.2       
+      	         List<String>       
+      	         Возвращаемые элементы номенклатуры должны иметь артикул из этого списка.       
+    
+    
+
+      	         types       
+      	         6.2       
+      	         List<ProductType>       
+      	         Возвращаемые элементы номенклатуры должны иметь тип из этого списка.       
+    
+    
+
+      	         categoryIds       
+      	         6.2       
+      	         List<UUID>       
+      	         Возвращаемые элементы номенклатуры должны иметь категорию продукта с id из этого списка.       
+    
+    
+
+      	         parentIds       
+      	         6.2       
+      	         List<UUID>       
+      	         Возвращаемые элементы номенклатуры должны иметь родительскую группу с id из этого списка.       
+    
+  
+
+   
+
+Что в ответе
+
+   
+ 
+         Список элементов номенклатуры.
+  
+
+  
+
+    [+]
+    
+      Список ProductDto
+    
+  
+  
+
+    [-]
+    
+      Список ProductDto
+    
+  
+  
+
+     
+  
+  
+    
+
+      
+        
+           Параметр         
+      
+      
+        
+           Версия iiko         
+      
+      
+        
+           Тип, формат         
+      
+      
+        
+           Описание         
+      
+    
+  
+  
+    
+
+      	         id       
+      	         6.1       
+      	         UUID       
+      	         UUID элемента номенклатуры.       
+    
+    
+
+      	         deleted       
+      	         6.1       
+      	         Boolean       
+      	         Удален.       
+    
+    
+
+      	         name       
+      	         6.1       
+      	         String       
+      	         Имя.       
+    
+    
+
+      	         description       
+      	         6.1       
+      	         String       
+      	         Описание.       
+    
+    
+
+      	         num       
+      	         6.1       
+      	         String       
+      	
+        
+           Артикул, используется при печати документов (тех. карт и т.д.).           
+         
+      
+    
+    
+
+      	         code       
+      	         6.1       
+      	         String       
+      	
+        
+           Код продукта. Используется для быстрого поиска продукта           
+           в экране редактирования заказа.         
+      
+    
+    
+
+      	         parent       
+      	         6.1       
+      	         UUID       
+      	
+        
+           UUID родительской группы продукта.            
+           Если продукт принадлежит корневой группе, то parent == null.         
+      
+    
+    
+
+      	         modifiers       
+      	         6.2       
+      	         List<ChoiceBindingDto>       
+      	
+        
+           Модификаторы. Поле не учитывает модификаторы из схемы модификаторов.         
+        
+          
+            
+
+              
+                
+                   Параметр                 
+              
+              
+                
+                   Тип, формат                 
+              
+              
+                
+                   Описание                 
+              
+            
+          
+          
+            
+
+              	                 modifier               
+              	                 UUID               
+              	                 UUID модификатора либо номенклатурной группы, если это групповой модификатор.               
+            
+            
+
+              	                 defaultAmount               
+              	                 Integer               
+              	                 Количество по умолчанию.               Для группового модификатора всегда равен 0.
+            
+            
+
+              	                 freeOfChargeAmount               
+              	                 Integer               
+              	                 Количество бесплатных модификаторов.               
+            
+            
+
+              	                 minimumAmount               
+              	                 Integer               
+              	                 Минимальное количество.               
+            
+            
+
+              	                 maximumAmount               
+              	                 Integer               
+              	                 Максимальное количество.               
+            
+            
+
+              	                 hideIfDefaultAmount               
+              	                 Boolean               
+              	                 Скрывать, если количество по умолчанию.               
+            
+            
+
+              	                 required               
+              	                 Boolean               
+              	
+                 Является ли модификатор обязательным.               
+Начиная с версии iiko 6.2.3 данный параметр не используется.
+
+            
+            
+
+              	                 childModifiersHaveMinMaxRestrictions               
+              	                 Boolean               
+              	                 Ограничения на мин. макс. количество у дочерних модификаторов.               
+            
+            
+
+              	                 splittable               
+              	                 Boolean               
+              	                 Признак делимости модификатора. Используется только в схемах модификаторов.               
+            
+            
+
+              	                 childModifiers               
+              	                 List<ChoiceBindingDto>               
+              	                 Дочерние модификаторы.               
+            
+          
+        
+      
+    
+    
+
+      	         taxCategory       
+      	         6.1       
+      	         UUID       
+      	         UUID налоговой категории.       
+    
+    
+
+      	         category       
+      	         6.1       
+      	         UUID       
+      	         UUID пользовательской категории.       
+    
+    
+
+      	         accountingCategory       
+      	         6.1       
+      	         UUID       
+      	         UUID бухгалтерской категории.       
+    
+    
+
+      	         color       
+      	         6.2       
+      	         RGBColorDto       
+      	
+        
+           Цвет фона оформления кнопки в iikoFront.         
+        
+          
+            
+
+              
+                
+                   Параметр                 
+              
+              
+                
+                   Тип, формат                 
+              
+              
+                
+                   Описание                 
+              
+            
+          
+          
+            
+
+              	                 red               
+              	                 Integer               
+              	                 Значение для красного.               
+            
+            
+
+              	                 green               
+              	                 Integer               
+              	                 Значение для зеленого.               
+            
+            
+
+              	                 blue               
+              	                 Integer               
+              	                 Значение для синего.               
+            
+          
+        
+      
+    
+    
+
+      	         fontColor       
+      	         6.2       
+      	         RGBColorDto       
+      	         Цвет шрифта кнопки в iikoFront.       
+    
+    
+
+      	         frontImageId       
+      	         6.2       
+      	         UUID       
+      	         UUID изображения для отображения в iikoFront.       
+    
+    
+
+      	         position       
+      	         6.2       
+      	         Integer       
+      	         Позиция в меню.       
+    
+    
+
+      	         mainUnit       
+      	         6.1       
+      	         UUID       
+      	         UUID основной единицы измерения продукта.       
+    
+    
+
+      	         excludedSections       
+      	         6.1       
+      	         Set<UUID>       
+      	         Множество UUID отделений ресторана, в которых нельзя продавать данный продукт         
+         (поле имеет смысл только для блюд).       
+    
+    
+
+      	         defaultSalePrice       
+      	         6.1       
+      	         BigDecimal       
+      	         Цена, по которой по умолчанию продаётся продукт (если для него нет приказов о меню).       
+    
+    
+
+      	         placeType       
+      	         6.1       
+      	         UUID       
+      	         UUID места приготовления блюда (поле имеет смысл только для блюд).       
+    
+    
+
+      	         defaultIncludeInMenu       
+      	         6.1       
+      	         Boolean       
+      	         Включать ли по умолчанию (если нет приказов о меню) позицию в меню.       
+    
+    
+
+      	         type       
+      	         6.1       
+      	         Enum       
+      	
+        
+           Тип элемента номенклатуры.         
+        
+          
+            
+
+              
+                
+                   Название                 
+              
+              
+                
+                   Значение                 
+              
+            
+          
+          
+            
+
+              	                 GOODS               
+              	                 Товар.               
+            
+            
+
+              	                 DISH               
+              	                 Блюдо.               
+            
+            
+
+              	                 PREPARED               
+              	                 Заготовка (полуфабрикат).               
+            
+            
+
+              	                 SERVICE               
+              	                 Услуга.               
+            
+            
+
+              	                 MODIFIER               
+              	                 Модификатор.               
+            
+            
+
+              	                 OUTER               
+              	                 Товары поставщиков, не являющиеся товарами систем iiko.               
+            
+            
+
+              	                 RATE               
+              	                 Тариф (дочерний элемента для услуги).               
+            
+          
+        
+      
+    
+    
+
+      	         unitWeight       
+      	         6.1       
+      	         BigDecimal       
+      	         Вес одной единицы в килограммах.       
+    
+    
+
+      	         unitCapacity       
+      	         6.1       
+      	         BigDecimal       
+      	         Объем одной единицы в литрах.       
+    
+    
+
+      	         notInStoreMovement       
+      	         6.1       
+      	         Boolean       
+      	
+        
+           Участвует ли в перемещениях по складу.           
+           Услуга с такой настройкой, если указана в ПН, на склад никогда не приходуется ни количеством, ни суммой.           
+           Она влияет только на расчет итоговых сумм документа. Относительно стоимости услуг с такой настройкой в ПН           
+           рассчитываются суммы дополнительных расходов для других позиций документа.           
+           Для услуги с такой настройкой в ПН не рассчитывается сумма дополнительных расходов.         
+      
+    
+  
+	containers 	6.2.4	List<ContainerDto>	
+Фасовки.
+
+Параметр
+Тип, формат
+Описание
+	id	UUID	UUID фасовки.
+	num	String	Артикул.
+	name	String	Название.
+	count 	BigDecimal	Количество продукта в единицах измерения продукта.
+	minContainerWeight	BigDecimal	Минимальный вес элемента номенклатуры.
+	maxContainerWeight	BigDecimal	Максимальный вес элемента номенклатуры.
+	containerWeight	BigDecimal	Вес тары.
+	fullContainerWeight 	BigDecimal	Вес элемента номенклатуры вместе с тарой.
+	backwardRecalculation 	Boolean	Всегда false
+	useInFront 	Boolean 	Использовать на фронте.
+	deleted
+	Boolean
+	Удалена или нет.
+
+  
+	modifierSchemaId
+	6.4
+	UUID
+	UUID схемы модификаторов.
+
+  
+	productScaleId
+	6.4
+	UUID
+	UUID шкалы размеров. Если задана схема модификаторов, то шкала размеров берется из нее, а эта не учитывается.
+
+  
+	coldLossPercent
+	7.1.2
+	BigDecimal
+	Потери при холодной обработке (%).
+
+  
+	hotLossPercent
+	7.1.2
+	BigDecimal
+	Потери при горячей обработке обработке (%).
+
+  
+	allergenGroups
+	7.1.5
+	BigDecimal
+	Набор идентификаторов групп аллергенов, которые присутствуют в данном элементе номенклатуры.
+
+  
+	canSetOpenPrice
+	7.4.4
+	Boolean
+	Свободная цена.
+
+  
+	barcodes 	8.7.1 	List<ContainerDto> 	
+Штрихкоды.
+
+Параметр
+Тип, формат
+Описание
+	barcode 	String	Штрихкод.
+	containerId 	UUID 	UUID фасовки.
+  
+
+    
+
+   Пример запроса и результата
+
+Запрос
+
+   https://localhost:8080/resto/api/v2/entities/products/list?includeDeleted=false
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	[
+   {
+      "id":"567791bd-7881-4bcf-8f84-138ca9d0f53c",
+      "deleted":false,
+      "name":"товар1",
+      "description":"",
+      "num":"00089",
+      "code":"95",
+      "parent":null,
+      "modifiers":[
+         {
+            "modifier":"21ce6d98-8229-4cdd-a0ac-9f0c99a6347f",
+            "defaultAmount":0,
+            "freeOfChargeAmount":0,
+            "minimumAmount":0,
+            "maximumAmount":1,
+            "hideIfDefaultAmount":false,
+            "required":false,
+            "childModifiersHaveMinMaxRestrictions":false,
+            "splittable":false,
+            "childModifiers":[
+               {
+                  "modifier":"6e1ecad4-e6a8-4887-b835-9639dacb7387",
+                  "defaultAmount":0,
+                  "freeOfChargeAmount":0,
+                  "minimumAmount":0,
+                  "maximumAmount":0,
+                  "hideIfDefaultAmount":false,
+                  "required":false,
+                  "childModifiersHaveMinMaxRestrictions":false,
+                  "splittable":false,
+                  "childModifiers":null
+               },
+               {
+                  "modifier":"f0272448-5527-4dcf-be1d-ea47db29c55b",
+                  "defaultAmount":0,
+                  "freeOfChargeAmount":0,
+                  "minimumAmount":0,
+                  "maximumAmount":0,
+                  "hideIfDefaultAmount":false,
+                  "required":false,
+                  "childModifiersHaveMinMaxRestrictions":false,
+                  "splittable":false,
+                  "childModifiers":null
+               }
+            ]
+         },
+         {
+            "modifier":"cbaa0430-0599-4499-b766-5bbddf7826aa",
+            "defaultAmount":0,
+            "freeOfChargeAmount":0,
+            "minimumAmount":0,
+            "maximumAmount":1,
+            "hideIfDefaultAmount":false,
+            "required":false,
+            "childModifiersHaveMinMaxRestrictions":false,
+            "splittable":false,
+            "childModifiers":null
+         }
+      ],
+      "taxCategory":null,
+      "category":null,
+      "accountingCategory":"8bc08505-c81d-075d-8572-af7b636d049b",
+      "color":{
+         "red":170,
+         "green":170,
+         "blue":170
+      },
+      "fontColor":{
+         "red":0,
+         "green":0,
+         "blue":0
+      },
+      "frontImageId":null,
+      "position":null,
+      "mainUnit":"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc",
+      "excludedSections":null,
+      "defaultSalePrice":0,
+      "placeType":null,
+      "defaultIncludedInMenu":false,
+      "type":"GOODS",
+      "unitWeight":1,
+      "unitCapacity":0,
+      "notInStoreMovement":false
+   },
+   {
+      "id":"b2f105b2-a9bd-4055-ab7b-13cb3662015a",
+      "deleted":false,
+      "name":"Блюдо со ШР+ОтдТК+НеактРазмер(создано из Блюдо с заготовкой)",
+      "description":"",
+      "num":"00051",
+      "code":"56",
+      "parent":null,
+      "modifiers":[
+ 
+      ],
+      "taxCategory":null,
+      "category":null,
+      "accountingCategory":"8bc08505-c81d-075d-8572-af7b636d049b",
+      "color":{
+         "red":170,
+         "green":170,
+         "blue":170
+      },
+      "fontColor":{
+         "red":0,
+         "green":0,
+         "blue":0
+      },
+      "frontImageId":null,
+      "position":null,
+      "mainUnit":"6040d92d-e286-f4f9-a613-ed0e6fd241e1",
+      "excludedSections":null,
+      "defaultSalePrice":0,
+      "placeType":null,
+      "defaultIncludedInMenu":false,
+      "type":"DISH",
+      "unitWeight":3.71444,
+      "unitCapacity":0,
+      "notInStoreMovement":false
+   }
+]
+  
+
+   
+
+  
+
+    [+]
+    
+      Список ProductGroupDto
+    
+  
+  
+
+    [-]
+    
+      Список ProductGroupDto
+    
+  
+  
+
+Параметр
+Версия iiko
+Тип, формат
+Описание
+	id	6.1	UUID	UUID элемента номенклатуры.
+	deleted	6.1	Boolean	Удален.
+	name	6.1	String	Имя.
+	description	6.1	String	Описание.
+	num	6.1	String	
+Артикул, используется при печати документов (тех. карт и т.д.).
+
+	code	6.1	String	
+Код продукта. Используется для быстрого поиска продукта
+в экране редактирования заказа.
+	parent	6.1	UUID	
+UUID родительской группы продукта. 
+Если продукт принадлежит корневой группе, то parent == null.
+	modifiers	6.2	List<ChoiceBindingDto>	
+Модификаторы. Поле не учитывает модификаторы из схемы модификаторов.
+
+Параметр
+Тип, формат
+Описание
+	modifier	UUID	UUID модификатора либо номенклатурной группы, если это групповой модификатор.
+	defaultAmount	Integer	Количество по умолчанию. Для группового модификатора всегда равен 0.
+	freeOfChargeAmount	Integer	Количество бесплатных модификаторов.
+	minimumAmount	Integer	Минимальное количество.
+	maximumAmount	Integer	Максимальное количество.
+	hideIfDefaultAmount	Boolean	Скрывать, если количество по умолчанию.
+	required	Boolean	
+Является ли модификатор обязательным.
+Начиная с версии iiko 6.2.3 данный параметр не используется.
+
+	childModifiersHaveMinMaxRestrictions	Boolean	Ограничения на мин. макс. количество у дочерних модификаторов.
+	splittable	Boolean	Признак делимости модификатора. Используется только в схемах модификаторов.
+	childModifiers	List<ChoiceBindingDto>	Дочерние модификаторы.
+	taxCategory	6.1	UUID	UUID налоговой категории.
+	category	6.1	UUID	UUID пользовательской категории.
+	accountingCategory	6.1	UUID	UUID бухгалтерской категории.
+	color	6.2	RGBColorDto	
+Цвет фона оформления кнопки в iikoFront.
+
+Параметр
+Тип, формат
+Описание
+	red	Integer	Значение для красного.
+	green	Integer	Значение для зеленого.
+	blue	Integer	Значение для синего.
+	fontColor	6.2	RGBColorDto	Цвет шрифта кнопки в iikoFront.
+	frontImageId	6.2	UUID	UUID изображения для отображения в iikoFront.
+	position	6.2	Integer	Позиция в меню.
+	mainUnit	6.1	UUID	UUID основной единицы измерения продукта.
+	excludedSections	6.1	Set<UUID>	Множество UUID отделений ресторана, в которых нельзя продавать данный продукт
+(поле имеет смысл только для блюд).
+	defaultSalePrice	6.1	BigDecimal	Цена, по которой по умолчанию продаётся продукт (если для него нет приказов о меню).
+	placeType	6.1	UUID	UUID места приготовления блюда (поле имеет смысл только для блюд).
+	defaultIncludeInMenu	6.1	Boolean	Включать ли по умолчанию (если нет приказов о меню) позицию в меню.
+	type	6.1	Enum	
+Тип элемента номенклатуры.
+
+Название
+Значение
+	GOODS	Товар.
+	DISH	Блюдо.
+	PREPARED	Заготовка (полуфабрикат).
+	SERVICE	Услуга.
+	MODIFIER	Модификатор.
+	OUTER	Товары поставщиков, не являющиеся товарами систем iiko.
+	RATE	Тариф (дочерний элемента для услуги).
+	unitWeight	6.1	BigDecimal	Вес одной единицы в килограммах.
+	unitCapacity	6.1	BigDecimal	Объем одной единицы в литрах.
+	notInStoreMovement	6.1	Boolean	
+Участвует ли в перемещениях по складу.
+Услуга с такой настройкой, если указана в ПН, на склад никогда не приходуется ни количеством, ни суммой.
+Она влияет только на расчет итоговых сумм документа. Относительно стоимости услуг с такой настройкой в ПН
+рассчитываются суммы дополнительных расходов для других позиций документа.
+Для услуги с такой настройкой в ПН не рассчитывается сумма дополнительных расходов.
+	containers 	6.2.4	List<ContainerDto>	
+Фасовки.
+
+Параметр
+Тип, формат
+Описание
+	id	UUID	UUID фасовки.
+	num	String	Артикул.
+	name	String	Название.
+	count 	BigDecimal	Количество продукта в единицах измерения продукта.
+	minContainerWeight	BigDecimal	Минимальный вес элемента номенклатуры.
+	maxContainerWeight	BigDecimal	Максимальный вес элемента номенклатуры.
+	containerWeight	BigDecimal	Вес тары.
+	fullContainerWeight 	BigDecimal	Вес элемента номенклатуры вместе с тарой.
+	backwardRecalculation 	Boolean	Всегда false
+	useInFront 	Boolean 	Использовать на фронте.
+	deleted
+	Boolean
+	Удалена или нет.
+
+	modifierSchemaId
+	6.4
+	UUID
+	UUID схемы модификаторов.
+
+	productScaleId
+	6.4
+	UUID
+	UUID шкалы размеров. Если задана схема модификаторов, то шкала размеров берется из нее, а эта не учитывается.
+
+	coldLossPercent
+	7.1.2
+	BigDecimal
+	Потери при холодной обработке (%).
+
+	hotLossPercent
+	7.1.2
+	BigDecimal
+	Потери при горячей обработке обработке (%).
+
+	allergenGroups
+	7.1.5
+	BigDecimal
+	Оценочная себестоимость. Поле используется для расчёта себестоимости в случае, если по данному товару не было приходов.
+
+	canSetOpenPrice
+	7.4.4
+	Boolean
+	Свободная цена.
+
+	barcodes 	8.7.1 	List<ContainerDto> 	
+Штрихкоды.
+
+Параметр
+Тип, формат
+Описание
+	barcode 	String	Штрихкод.
+	containerId 	UUID 	UUID фасовки.
+
+Получение элементов номенклатуры 
+
+Версия iiko: 6.4
+  
+
+    
+	
+        
+      	https://host:port/resto/api/v2/entities/products/list
+    
+  
+
+Тело запроса
+         
+Content-Type: application/x-www-form-urlencoded                      
+                                          
+                                
+                   Параметр                                               
+Версия iiko                              Тип, формат
+                 
+Описание                                                               
+               	                 includeDeleted               	                 6.4                              	Boolean
+	                 Включать ли в результат удаленные элементы. По умолчанию false.             
+	revisionFrom
+	6.4
+	-1, число
+	
+Номер ревизии, начиная с которой  необходимо отфильтровать сущности. Не включающий саму ревизию, т.е.  ревизия объекта > revisionFrom.
+По умолчанию (неревизионный запрос) revisionFrom = -1             
+	ids
+	6.4
+	List<UUID>
+	Возвращаемые элементы номенклатуры должны иметь id из этого списка.
+             
+	nums
+	6.4
+	List<String>
+	Возвращаемые элементы номенклатуры должны иметь артикул из этого списка.
+             
+	codes
+	6.4
+	List<String>
+	Возвращаемые элементы номенклатуры должны иметь код из этого списка.
+             
+	types
+	6.4	List<ProductType>
+	Возвращаемые элементы номенклатуры должны иметь тип из этого списка.
+             
+	categoryIds
+	6.4
+	List<UUID>
+	Возвращаемые элементы номенклатуры должны иметь категорию продукта с id из этого списка.
+             
+	parentIds
+	6.4
+	List<UUID>
+	 
+Что в ответе
+
+  
+
+Список элементов номенклатуры.
+
+Импорт элемента номенклатуры
+
+Версия iiko: 6.1
+  
+    
+	
+        
+      	https://host:port/resto/api/v2/entities/products/save
+    
+  
+
+Параметры запроса
+
+        
+          
+            
+
+              Название               
+                               Тип               
+                               Описание               
+            
+          
+          
+            
+
+              	                 generateNomenclatureCode                 
+               
+              	                 Boolean                 
+               
+              	
+                
+                   Надо ли генерировать артикул элемента номенклатуры.                 
+                
+                   
+                 
+                
+                   Необязательный. По умолчанию true                 
+              
+            
+            
+
+              	                 generateFastCode                 
+               
+              	                 Boolean                 
+               
+              	
+                
+                   Надо ли генерировать код быстрого поиска элемента номенклатуры.                 
+                
+                   
+                 
+                
+                   Необязательный. По умолчанию true.                 
+              
+            
+          
+        
+        
+    
+
+  
+
+    [+]
+    
+      Тело запроса
+    
+  
+  
+
+    [-]
+    
+      Тело запроса
+    
+  
+  
+
+ПолеВерсия iikoТип данныхОбязательное
+Значение
+	name	6.1	String	да
+	Имя.
+	description	6.1	String	нет
+	Описание.
+	num 	6.2.4
+	String
+	да, если generateNomenclatureCode == false
+	Артикул, используется при печати документов (тех. карт и т.д.). Обязателен, если generateNomenclatureCode == false.
+
+	code 	6.2.4
+	String
+	нет
+	Код продукта. Используется для быстрого поиска продукта на экране редактирования заказа. Если generateFastCode == false и поле не задано, то создастся пустым.
+
+	parent	6.1	UUID	нет
+	UUID родительской группы продукта. 
+Если продукт принадлежит корневой группе, то parent == null.
+	modifiers	6.2	List<ChoiceBindingDto>	нет
+	
+Модификаторы.
+ПараметрТип, форматОписание
+	modifier	UUID	UUID модификатора либо номенклатурной группы, если это групповой модификатор.
+	defaultAmount	Integer	Количество по умолчанию. Должно лежать в пределах мин. и макс. значений.
+У группового модификатора равно сумме значений по умолчанию дочерних элементов.
+	freeOfChargeAmount	Integer	Количество бесплатных модификаторов. Не более макс. количества.
+	minimumAmount	Integer	Минимальное количество. Если модификатор обязательный, то минимальное количество
+должно быть больше 0.
+	maximumAmount	Integer	Максимальное количество.
+	hideIfDefaultAmount	Integer	Скрывать, если количество по умолчанию.
+	required	Boolean	Является ли модификатор обязательным.
+	
+childModifiersHaveMinMaxRestrictions	Boolean	Ограничения на мин. макс. количество у дочерних модификаторов. Значение флага 
+в дочерних и одиночных модификаторов должно быть false.
+	splittable	Boolean	Признак делимости модификатора. Используется только в схемах модификаторов.
+	childModifiers	List<ChoiceBindingDto>	Дочерние модификаторы. Если у группового модификатора выключены ограничения на мин.
+макс. количество у дочерних модификаторов (childModifiersHaveMinMaxRestrictions = false), то
+значение freeOfChargeAmount у дочерних модификаторов должны быть такими же как у группового,
+required должен быть false, а мин. макс. кол-во должны быть равны нулю(minimumAmount = 0, maximumAmount = 0).
+	taxCategory	6.1	UUID	нет
+	UUID налоговой категории.
+	category	6.1	UUID	нет
+	UUID пользовательской категории.
+	accountingCategory
+	6.2.3
+	UUID
+	нет, по умолчанию "товар"
+	UUID бухгалтерской категории.
+
+	color	6.2	RGBColorDto	нет
+	Цвет фона оформления кнопки в iikoFront.
+	fontColor	6.2	RGBColorDto	нет
+	Цвет шрифта кнопки в iikoFront.
+	frontImageId	6.2	UUID	нет
+	UUID изображения для отображения в iikoFront. API изображений.
+	position	6.2	Integer	нет
+	Позиция в меню.
+	mainUnit	6.1	UUID	да
+	UUID основной единицы измерения продукта.
+	excludedSections	6.1	Set<UUID>	нет
+	Множество UUID отделений ресторана, в которых нельзя продавать данный продукт
+(поле имеет смысл только для блюд).
+	defaultSalePrice	6.1	BigDecimal	нет, по умолчанию 0
+	Цена, по которой по умолчанию продаётся продукт (если для него нет приказов о меню). По умолчанию 0.
+	placeType	6.1	UUID	
+обязательное, если defaultIncludeInMenu == true	UUID места приготовления блюда (поле имеет смысл только для блюд).
+	defaultIncludeInMenu	6.1	Boolean	нет, по умолчанию false
+	Включать ли по умолчанию (если нет приказов о меню) позицию в меню.[1]
+	type	6.1	Enum	да
+	
+Тип элемента номенклатуры.
+
+Название
+Значение
+	GOODS	Товар.
+	DISH	Блюдо.
+	PREPARED	Заготовка (полуфабрикат).
+	MODIFIER	Модификатор.
+	SERVICE	Услуга.
+	RATE	Тариф (дочерний элемента для услуги).[2]
+	unitWeight
+	6.2.4
+	BigDecimal
+	нет, по умолчанию 1
+	Вес одной единицы в килограммах.
+
+	unitCapacity	6.1	BigDecimal	нет, по умолчанию 0
+	Объем одной единицы в литрах. По умолчанию 0.
+	notInStoreMovement	6.1	Boolean	нет, по умолчанию false
+	
+Участвует ли в перемещениях по складу.
+Услуга с такой настройкой, если указана в ПН, на склад никогда не приходуется ни количеством, ни суммой.
+Она влияет только на расчет итоговых сумм документа. Относительно стоимости услуг с такой настройкой в ПН
+рассчитываются суммы дополнительных расходов для других позиций документа.
+Для услуги с такой настройкой в ПН не рассчитывается сумма дополнительных расходов.
+	containers	6.2.4	List<ContainerDto>	нет
+	
+Фасовки.
+
+Параметр
+ТипОбязательный
+
+Описание
+	name	String	да
+	Название.
+	num	String	да
+	Артикул.
+	count	Integer	да
+	Количество продукта в единицах измерения продукта.
+	minContainerWeight
+	BigDecimal
+	нет, по умолчанию 0
+	Минимальный вес элемента номенклатуры.
+
+	containerWeight
+	BigDecimal
+	да
+	Вес тары.
+
+	fullContainerWeight
+	BigDecimal
+	да
+	Вес элемента номенклатуры вместе с тарой.
+
+	backwardRecalculation
+	Boolean
+	нет
+	Параметр не используется, значение будет проигнорировано
+
+	useInFront
+	Boolean
+	нет, по умолчанию true
+	Использовать на фронте.
+
+	coldLossPercent
+	7.1.2
+	BigDecimal
+	нет, по умолчанию 0
+	Потери при холодной обработке (%).
+
+	hotLossPercent
+	7.1.2
+	BigDecimal
+	нет, по умолчанию 0
+	Потери при горячей обработке обработке (%).
+
+	allergenGroups
+	7.1.2
+	Set<UUID>
+	нет	Набор идентификаторов групп аллергенов, которые присутствуют в данном элементе номенклатуры.
+
+	estimatedPurchasePrice
+	7.1.5
+	BigDecimal
+	нет, по умолчанию 0
+	
+
+[1].  При defaultIncludeInMenu=true обязательно указывается placeType, независимо от типа элемента номенклатуры(блюдо, товар и т.д.)
+При defaultIncludeInMenu=false поле excludedSections должно быть null.
+[2]. Менять тип номенклатуры можно только на тип той же категории, что и исходный. Категории разбиты по цветам.
+     
+  
+
+    
+    
+        
+
+  
+
+    [+]
+    
+      Пример тела запроса
+    
+  
+  
+
+    [-]
+    
+      Пример тела запроса
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{  
+   "name":"товар созданный через апи",
+   "description":"тест",
+   "parent":null,
+   "modifiers":[  
+      {  
+         "modifier":"21ce6d98-8229-4cdd-a0ac-9f0c99a6347f",
+         "defaultAmount":0,
+         "freeOfChargeAmount":0,
+         "minimumAmount":0,
+         "maximumAmount":1,
+         "hideIfDefaultAmount":false,
+         "required":false,
+         "childModifiersHaveMinMaxRestrictions":false,
+         "splittable":false,
+         "childModifiers":[  
+            {  
+               "modifier":"6e1ecad4-e6a8-4887-b835-9639dacb7387",
+               "defaultAmount":0,
+               "freeOfChargeAmount":0,
+               "minimumAmount":0,
+               "maximumAmount":0,
+               "hideIfDefaultAmount":false,
+               "required":false,
+               "childModifiersHaveMinMaxRestrictions":false,
+               "splittable":false,
+               "childModifiers":null
+            },
+            {  
+               "modifier":"f0272448-5527-4dcf-be1d-ea47db29c55b",
+               "defaultAmount":0,
+               "freeOfChargeAmount":0,
+               "minimumAmount":0,
+               "maximumAmount":0,
+               "hideIfDefaultAmount":false,
+               "required":false,
+               "childModifiersHaveMinMaxRestrictions":false,
+               "splittable":false,
+               "childModifiers":null
+            }
+         ]
+      },
+      {  
+         "modifier":"cbaa0430-0599-4499-b766-5bbddf7826aa",
+         "defaultAmount":0,
+         "freeOfChargeAmount":0,
+         "minimumAmount":0,
+         "maximumAmount":1,
+         "hideIfDefaultAmount":false,
+         "required":false,
+         "childModifiersHaveMinMaxRestrictions":false,
+         "splittable":false,
+         "childModifiers":null
+      }
+   ],
+   "taxCategory":null,
+   "category":null,
+   "color":{  
+      "red":170,
+      "green":170,
+      "blue":170
+   },
+   "fontColor":{  
+      "red":0,
+      "green":0,
+      "blue":0
+   },
+   "frontImageId":null,
+   "position":null,
+   "mainUnit":"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc",
+   "excludedSections":null,
+   "defaultSalePrice":0,
+   "placeType":null,
+   "defaultIncludedInMenu":false,
+   "type":"GOODS",
+   "unitWeight":1,
+   "unitCapacity":0,
+   "notInStoreMovement":false
+}
+  
+
+Что в ответе
+
+           Содержит результат импорта (Json структура), который состоит из результата валидации импортируемого элемента и самого элемента. Результат валидации состоит из ошибок. Ошибка состоит из кода ошибки и текста ошибки.
+
+Результат 
+
+  
+    
+
+                          Поле                
+                          Тип данных                
+                          Значение                
+    
+  
+  
+    
+
+      	         result       
+      	         Enum:         
+         "SUCCESS",         
+         "ERROR"       
+      	         Результата операции.       
+    
+    
+
+      	         errors       
+      	         List<ErrorDto>       
+      	
+        
+           Список ошибок, не позволивших сделать успешный импорт документа.         
+      
+    
+    
+
+      	         response       
+      	         ProductDto       
+      	         В случае успешного импорта - сохраненный объект,         
+         в противном случае импортируемый объект.       
+    
+  
+
+   Пример запроса и результата
+
+Запрос
+
+   https://localhost:8080/resto/api/v2/entities/products/save
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{  
+   "name":"товар созданный через апи",
+   "description":"тест",
+   "parent":null,
+   "modifiers":[  
+      {  
+         "modifier":"21ce6d98-8229-4cdd-a0ac-9f0c99a6347f",
+         "defaultAmount":0,
+         "freeOfChargeAmount":0,
+         "minimumAmount":0,
+         "maximumAmount":1,
+         "hideIfDefaultAmount":false,
+         "required":false,
+         "childModifiersHaveMinMaxRestrictions":false,
+         "splittable":false,
+         "childModifiers":[  
+            {  
+               "modifier":"6e1ecad4-e6a8-4887-b835-9639dacb7387",
+               "defaultAmount":0,
+               "freeOfChargeAmount":0,
+               "minimumAmount":0,
+               "maximumAmount":0,
+               "hideIfDefaultAmount":false,
+               "required":false,
+               "childModifiersHaveMinMaxRestrictions":false,
+               "splittable":false,
+               "childModifiers":null
+            },
+            {  
+               "modifier":"f0272448-5527-4dcf-be1d-ea47db29c55b",
+               "defaultAmount":0,
+               "freeOfChargeAmount":0,
+               "minimumAmount":0,
+               "maximumAmount":0,
+               "hideIfDefaultAmount":false,
+               "required":false,
+               "childModifiersHaveMinMaxRestrictions":false,
+               "splittable":false,
+               "childModifiers":null
+            }
+         ]
+      },
+      {  
+         "modifier":"cbaa0430-0599-4499-b766-5bbddf7826aa",
+         "defaultAmount":0,
+         "freeOfChargeAmount":0,
+         "minimumAmount":0,
+         "maximumAmount":1,
+         "hideIfDefaultAmount":false,
+         "required":false,
+         "childModifiersHaveMinMaxRestrictions":false,
+         "splittable":false,
+         "childModifiers":null
+      }
+   ],
+   "taxCategory":null,
+   "category":null,
+   "color":{  
+      "red":170,
+      "green":170,
+      "blue":170
+   },
+   "fontColor":{  
+      "red":0,
+      "green":0,
+      "blue":0
+   },
+   "frontImageId":null,
+   "position":null,
+   "mainUnit":"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc",
+   "excludedSections":null,
+   "defaultSalePrice":0,
+   "placeType":null,
+   "defaultIncludedInMenu":false,
+   "type":"GOODS",
+   "unitWeight":1,
+   "unitCapacity":0,
+   "notInStoreMovement":false
+}
+  
+
+  
+
+    [+]
+    
+      Пример успешного результата вызова API: entities/products/save
+    
+  
+  
+
+    [-]
+    
+      Пример успешного результата вызова API: entities/products/save
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{
+   "result":"SUCCESS",
+   "errors":null,
+   "response":{
+      "id":"523b1595-b284-3fb4-0164-ffa807c60113",
+      "deleted":false,
+      "name":"товар созданный через апи",
+      "description":"тест",
+      "num":"00093",
+      "code":"102",
+      "parent":null,
+      "modifiers":[
+         {
+            "modifier":"21ce6d98-8229-4cdd-a0ac-9f0c99a6347f",
+            "defaultAmount":0,
+            "freeOfChargeAmount":0,
+            "minimumAmount":0,
+            "maximumAmount":1,
+            "hideIfDefaultAmount":false,
+            "required":false,
+            "childModifiersHaveMinMaxRestrictions":false,
+            "splittable":false,
+            "childModifiers":[
+               {
+                  "modifier":"6e1ecad4-e6a8-4887-b835-9639dacb7387",
+                  "defaultAmount":0,
+                  "freeOfChargeAmount":0,
+                  "minimumAmount":0,
+                  "maximumAmount":0,
+                  "hideIfDefaultAmount":false,
+                  "required":false,
+                  "childModifiersHaveMinMaxRestrictions":false,
+                  "splittable":false,
+                  "childModifiers":null
+               },
+               {
+                  "modifier":"f0272448-5527-4dcf-be1d-ea47db29c55b",
+                  "defaultAmount":0,
+                  "freeOfChargeAmount":0,
+                  "minimumAmount":0,
+                  "maximumAmount":0,
+                  "hideIfDefaultAmount":false,
+                  "required":false,
+                  "childModifiersHaveMinMaxRestrictions":false,
+                  "splittable":false,
+                  "childModifiers":null
+               }
+            ]
+         },
+         {
+            "modifier":"cbaa0430-0599-4499-b766-5bbddf7826aa",
+            "defaultAmount":0,
+            "freeOfChargeAmount":0,
+            "minimumAmount":0,
+            "maximumAmount":1,
+            "hideIfDefaultAmount":false,
+            "required":false,
+            "childModifiersHaveMinMaxRestrictions":false,
+            "splittable":false,
+            "childModifiers":null
+         }
+      ],
+      "taxCategory":null,
+      "category":null,
+      "accountingCategory":"8bc08505-c81d-075d-8572-af7b636d049b",
+      "color":{
+         "red":170,
+         "green":170,
+         "blue":170
+      },
+      "fontColor":{
+         "red":0,
+         "green":0,
+         "blue":0
+      },
+      "frontImageId":null,
+      "position":null,
+      "mainUnit":"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc",
+      "excludedSections":null,
+      "defaultSalePrice":0,
+      "placeType":null,
+      "defaultIncludedInMenu":false,
+      "type":"GOODS",
+      "unitWeight":1,
+      "unitCapacity":0,
+      "notInStoreMovement":false
+   }
+}
+  
+
+  
+
+    [+]
+    
+      Пример НЕ успешного результата вызова API: entities/products/save
+    
+  
+  
+
+    [-]
+    
+      Пример НЕ успешного результата вызова API: entities/products/save
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{
+   "result":"ERROR",
+   "errors":[
+      {
+         "value":"f0272448-5527-4dcf-be1d-ea47db29c55b",
+         "code":"NO_RESTRICTION_AND_MIN_MAX_NOT_ZERO"
+      },
+      {
+         "value":"21ce6d98-8229-4cdd-a0ac-9f0c99a6347f",
+         "code":"PARENT_AMOUNT_BY_DEFAULT_NOT_EQUAL_SUM_OF_CHILDREN"
+      },
+      {
+         "value":"cbaa0430-0599-4499-b766-5bbddf7826aa",
+         "code":"SINGLE_MODIFIER_HAS_CHILD_RESTRICTION"
+      }
+   ],
+   "response":{
+      "id":null,
+      "deleted":false,
+      "name":"Блюдо",
+      "description":"тест",
+      "num":null,
+      "code":"",
+      "parent":null,
+      "modifiers":[
+         {
+            "modifier":"21ce6d98-8229-4cdd-a0ac-9f0c99a6347f",
+            "defaultAmount":0,
+            "freeOfChargeAmount":0,
+            "minimumAmount":0,
+            "maximumAmount":1,
+            "hideIfDefaultAmount":false,
+            "required":false,
+            "childModifiersHaveMinMaxRestrictions":false,
+            "splittable":false,
+            "childModifiers":[
+               {
+                  "modifier":"6e1ecad4-e6a8-4887-b835-9639dacb7387",
+                  "defaultAmount":1,
+                  "freeOfChargeAmount":0,
+                  "minimumAmount":0,
+                  "maximumAmount":0,
+                  "hideIfDefaultAmount":false,
+                  "required":false,
+                  "childModifiersHaveMinMaxRestrictions":false,
+                  "splittable":false,
+                  "childModifiers":null
+               },
+               {
+                  "modifier":"f0272448-5527-4dcf-be1d-ea47db29c55b",
+                  "defaultAmount":0,
+                  "freeOfChargeAmount":0,
+                  "minimumAmount":0,
+                  "maximumAmount":1,
+                  "hideIfDefaultAmount":false,
+                  "required":false,
+                  "childModifiersHaveMinMaxRestrictions":false,
+                  "splittable":false,
+                  "childModifiers":null
+               }
+            ]
+         },
+         {
+            "modifier":"cbaa0430-0599-4499-b766-5bbddf7826aa",
+            "defaultAmount":0,
+            "freeOfChargeAmount":0,
+            "minimumAmount":0,
+            "maximumAmount":1,
+            "hideIfDefaultAmount":false,
+            "required":false,
+            "childModifiersHaveMinMaxRestrictions":true,
+            "splittable":false,
+            "childModifiers":null
+         }
+      ],
+      "taxCategory":null,
+      "category":null,
+      "accountingCategory":null,
+      "color":{
+         "red":170,
+         "green":170,
+         "blue":170
+      },
+      "fontColor":{
+         "red":0,
+         "green":0,
+         "blue":0
+      },
+      "frontImageId":null,
+      "position":null,
+      "mainUnit":"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc",
+      "excludedSections":null,
+      "defaultSalePrice":0,
+      "placeType":null,
+      "defaultIncludedInMenu":false,
+      "type":"GOODS",
+      "unitWeight":1,
+      "unitCapacity":0,
+      "notInStoreMovement":false
+   }
+}
+  
+
+   Редактирование элемента номенклатуры
+
+Версия iiko: 6.1
+
+  
+    
+	
+        
+      	https://host:port/resto/api/v2/entities/products/update
+    
+  
+
+Параметры запроса
+
+  
+    
+
+               Название       
+               Тип, формат       
+               Описание       
+    
+  
+  
+    
+
+      	         overrideFastCode       
+      	         Boolean       
+      	         Перегенерировать ли код быстрого поиска элемента номенклатуры.         
+         По умолчанию false.       
+    
+    
+
+      	         overrideNomenclatureCode       
+      	         Boolean       
+      	         Перегенерировать ли артикул элемента номенклатуры.         
+         По умолчанию false.
+    
+  
+
+    
+
+Тело запроса
+
+  
+Аналогично импорту только с id редактируемого элемента
+  
+          
+            
+
+              
+                
+Поле                 
+              
+              
+                
+                   Тип данных                 
+              
+              
+                
+                   Значение                 
+              
+            
+          
+          
+            
+
+              	                 id               
+              	                 UUID               
+              	                 UUID редактируемого элемента номенклатуры
+            
+          
+        
+      
+   
+    
+  
+
+  
+
+    [+]
+    
+      Тело запроса
+  
+
+    [-]
+    
+     Тело запроса
+  
+
+     
+	
+Copy Code
+JSON
+	{
+   "id":"fcdf4324-4a2f-f250-0162-d3887cf1005d",
+   "name":"товар созданный через апи",
+   "description":"тест",
+   "parent":null,
+   "modifiers":[ 
+      { 
+         "modifier":"21ce6d98-8229-4cdd-a0ac-9f0c99a6347f",
+         "defaultAmount":0,
+         "freeOfChargeAmount":0,
+         "minimumAmount":0,
+         "maximumAmount":1,
+         "hideIfDefaultAmount":false,
+         "required":false,
+         "childModifiersHaveMinMaxRestrictions":false,
+         "splittable":false,
+         "childModifiers":[ 
+            { 
+               "modifier":"6e1ecad4-e6a8-4887-b835-9639dacb7387",
+               "defaultAmount":0,
+               "freeOfChargeAmount":0,
+               "minimumAmount":0,
+               "maximumAmount":0,
+               "hideIfDefaultAmount":false,
+               "required":false,
+               "childModifiersHaveMinMaxRestrictions":false,
+               "splittable":false,
+               "childModifiers":null
+            },
+            { 
+               "modifier":"f0272448-5527-4dcf-be1d-ea47db29c55b",
+               "defaultAmount":0,
+               "freeOfChargeAmount":0,
+               "minimumAmount":0,
+               "maximumAmount":0,
+               "hideIfDefaultAmount":false,
+               "required":false,
+               "childModifiersHaveMinMaxRestrictions":false,
+               "splittable":false,
+               "childModifiers":null
+            }
+         ]
+      },
+      { 
+         "modifier":"cbaa0430-0599-4499-b766-5bbddf7826aa",
+         "defaultAmount":0,
+         "freeOfChargeAmount":0,
+         "minimumAmount":0,
+         "maximumAmount":1,
+         "hideIfDefaultAmount":false,
+         "required":false,
+         "childModifiersHaveMinMaxRestrictions":false,
+         "splittable":false,
+         "childModifiers":null
+      }
+   ],
+   "taxCategory":null,
+   "category":null,
+   "color":{ 
+      "red":170,
+      "green":170,
+      "blue":170
+   },
+   "fontColor":{ 
+      "red":0,
+      "green":0,
+      "blue":0
+   },
+   "frontImageId":null,
+   "position":null,
+   "mainUnit":"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc",
+   "excludedSections":null,
+   "defaultSalePrice":0,
+   "placeType":null,
+   "defaultIncludedInMenu":false,
+   "type":"GOODS",
+   "unitWeight":1,
+   "unitCapacity":0,
+   "notInStoreMovement":false
+}
+    
+        
+    
+    
+Что в ответе
+
+  Содержит Json структуру результата изменения, которая состоит из результата валидации измененного элемента           
+           и самого элемента. Результат валидации состоит из ошибок. Ошибка состоит из кода ошибки и текста ошибки.
+
+Примеры запроса и результата
+
+Запрос
+
+   https://localhost:8080/resto/api/v2/entities/products/update?overrideFastCode=false&overrideNomenclatureCode=false 
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{
+   "id":"fcdf4324-4a2f-f250-0162-d3887cf1005d",
+   "deleted":false,
+   "name":"Хлеб",
+   "description":"обычный",
+   "modifiers":null,
+   "taxCategory":"ccf8be1e-4b39-478a-8c79-940af8c6cd02",
+   "color":{ 
+      "red":170,
+      "green":170,
+      "blue":170
+   },
+   "fontColor":{ 
+      "red":0,
+      "green":0,
+      "blue":0
+   },
+   "frontImageId":null,
+   "position":null,
+   "mainUnit":"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc",
+   "excludedSections":null,
+   "defaultSalePrice":80,
+   "placeType":"7bce50f2-c5d0-1bb7-5194-8d2e55752764",
+   "defaultIncludedInMenu":true,
+   "type":"GOODS",
+   "unitCapacity":0,
+   "notInStoreMovement":false
+}
+  
+
+  
+
+    [+]
+    
+      Пример успешного результата вызова API: entities/products/update
+    
+  
+  
+
+    [-]
+    
+      Пример успешного результата вызова API: entities/products/update
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{ 
+   "result":"SUCCESS",
+   "errors":null,
+   "response":{ 
+      "id":"fcdf4324-4a2f-f250-0162-d3887cf1005d",
+      "deleted":false,
+      "name":"Хлеб",
+      "description":"обычный",
+      "num":"00022",
+      "parent":null,
+      "modifiers":[],
+      "code":"24",
+      "taxCategory":"ccf8be1e-4b39-478a-8c79-940af8c6cd02",
+      "color":{ 
+         "red":170,
+         "green":170,
+         "blue":170
+      },
+      "fontColor":{ 
+         "red":0,
+         "green":0,
+         "blue":0
+     },
+     "frontImageId":null,
+     "position":null,
+     "mainUnit":"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc",
+     "excludedSections":null,
+     "defaultSalePrice":80,
+     "placeType":"7bce50f2-c5d0-1bb7-5194-8d2e55752764",
+     "defaultIncludedInMenu":true,
+     "type":"GOODS",
+     "unitCapacity":0,
+     "notInStoreMovement":false
+   }
+}
+  
+
+  
+
+    [+]
+    
+      Пример НЕ успешного результата вызова API: entities/products/update
+    
+  
+  
+
+    [-]
+    
+      Пример НЕ успешного результата вызова API: entities/products/update
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{ 
+   "result":"ERROR",
+   "errors":[ 
+      { 
+         "value":"placeType",
+         "code":"COOKING_PLACE_EMPTY_FOR_SALE_DISH"
+      }
+   ],
+   "response":{ 
+      "id":"fcdf4324-4a2f-f250-0162-d3887cf1005d",
+      "deleted":false,
+      "name":"Хлеб",
+      "description":"обычный",
+      "num":"00022",
+      "code":"24",
+      "parent":null,
+      "modifiers":[],          
+      "taxCategory":"ccf8be1e-4b39-478a-8c79-940af8c6cd02",
+      "color":{ 
+         "red":170,
+         "green":170,
+         "blue":170
+      },
+      "fontColor":{ 
+         "red":0,
+         "green":0,
+         "blue":0
+     },
+     "frontImageId":null,
+     "position":null,
+     "mainUnit":"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc",
+     "excludedSections":null,
+     "defaultSalePrice":80,
+     "placeType":"7bce50f2-c5d0-1bb7-5194-8d2e55752764",
+     "defaultIncludedInMenu":true,
+     "type":"GOODS",
+     "unitCapacity":0,
+     "notInStoreMovement":false
+   }
+}
+  
+
+   
+ 
+
+   Удаление элементов номенклатуры
+
+ Версия iiko: 6.1
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/products/delete
+      
+    
+  
+
+Тело запроса
+
+          
+            
+
+              
+                
+Поле                 
+              
+              
+                
+                   Тип данных                 
+              
+              
+                
+                   Значение                 
+              
+            
+          
+          
+            
+
+              	                                  items                             
+              	                                  List<IdCodetDto>                             
+              	
+                 Список UUID элементов, которые нужно удалить
+Поле
+Тип данных
+Значение
+
+	id
+	UUID
+	UUID элемента
+            
+          
+        
+      
+
+	
+Copy Code
+Код
+	{ 
+   "items":[ 
+      { 
+         "id":"fcdf4324-4a2f-f250-0162-d3887cf1005d"
+      }
+   ]
+}
+
+Что в ответе
+Содержит Json структуру результата удаления.
+
+Примеры запроса и результат
+
+Запрос
+
+   https://localhost:8080/resto/api/v2/entities/products/delete 
+
+Результат
+
+	
+Copy Code
+XML
+	{ 
+   "items":[ 
+      { 
+         "id":"fcdf4324-4a2f-f250-0162-d3887cf1005d"
+      }
+   ]
+}
+
+  
+
+    [+]
+    
+      Пример успешного результата вызова API: entities/products/delete
+    
+  
+  
+
+    [-]
+    
+      Пример успешного результата вызова API: entities/products/delete
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	{ 
+   "result":"SUCCESS",
+   "errors":null,
+   "response":[ 
+      { 
+         "id":"fcdf4324-4a2f-f250-0162-d3887cf1005d",
+         "deleted":true,
+         "name":"test API-6",
+         "description":"description",
+         "num":"00022",
+         "parent":null,
+         "modifiers":[],   
+         "code":"24",
+         "category":null,
+         "accountingCategory":null,
+         "color":{
+            "red":170,
+            "green":170,
+            "blue":170
+         },
+         "fontColor":{
+            "red":0,
+            "green":0,
+            "blue":0
+         },
+         "frontImageId":null,
+         "position":null,
+         "taxCategory":"ccf8be1e-4b39-478a-8c79-940af8c6cd02",
+         "mainUnit":"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc",
+         "excludedSections":null,
+         "defaultSalePrice":80,
+         "placeType":null,
+         "defaultIncludedInMenu":false,
+         "type":"DISH",
+         "unitWeight":1,
+         "unitCapacity":0,
+         "notInStoreMovement":false
+      }
+   ]
+}
+  
+
+    
+
+  
+
+    [+]
+    
+      Пример НЕ успешного результата вызова API: entities/products/delete
+    
+  
+  
+
+    [-]
+    
+      Пример НЕ успешного результата вызова API: entities/products/delete
+    
+  
+  
+
+     
+
+  Could not delete already deleted products: [fcdf4324-4a2f-f250-0162-d3887cf1005d]​.
+
+  
+
+   Восстановление элементов номенклатуры
+
+Версия iiko: 6.1
+  
+    
+	
+        
+      	
+                 https://host:port/resto/api/v2/entities/products/restore      
+      
+    
+  
+
+Параметры запроса
+
+ПараметрВерсия
+Тип, форматОписание
+	overrideNomenclatureCode	6.4
+	Boolean	
+Если у восстанавливаемого продукта артикул совпадает с одним из  текущих и параметр указан равным true, то у восстанавливаемого продукта  будет сгенерирован новый артикул.
+Необязательный. По умолчанию false.
+Тело запроса
+
+                    
+	Поле
+	Тип данных
+	Значение
+
+	items	List<IdCodetDto>
+	
+Список UUID элементов, которые нужно восстановить
+
+ПолеТип данных
+
+Описание
+	id	UUID
+	UUID элемента.
+Что в ответе
+
+  
+Содержит Json структуру результата восстановления.
+Пример запроса и результата
+
+Запрос
+
+https://localhost:8080/resto/api/v2/entities/products/restore 
+
+Результат
+
+	
+Copy Code
+Код
+	{ 
+   "items":[ 
+      { 
+         "id":"fcdf4324-4a2f-f250-0162-d3887cf1005d"
+      }
+   ]
+}
+
+  
+
+    [+]
+    
+      Пример успешного результата вызова API: entities/products/restore
+    
+  
+  
+
+    [-]
+    
+      Пример успешного результата вызова API: entities/products/restore
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{ 
+   "result":"SUCCESS",
+   "errors":null,
+   "response":[ 
+      { 
+         "id":"fcdf4324-4a2f-f250-0162-d3887cf1005d",
+         "deleted":false,
+         "name":"test API-6",
+         "description":"description",
+         "num":"00022",
+         "parent":null,
+         "modifiers":[],   
+         "code":"24",
+         "category":null,
+         "accountingCategory":null,
+         "color":{
+            "red":170,
+            "green":170,
+            "blue":170
+         },
+         "fontColor":{
+            "red":0,
+            "green":0,
+            "blue":0
+         },
+         "frontImageId":null,
+         "position":null,
+         "taxCategory":"ccf8be1e-4b39-478a-8c79-940af8c6cd02",
+         "mainUnit":"7ba81c3a-8de5-8f9d-fb9f-e39efcbc57cc",
+         "excludedSections":null,
+         "defaultSalePrice":80,
+         "placeType":null,
+         "defaultIncludedInMenu":false,
+         "type":"DISH",
+         "unitWeight":1,
+         "unitCapacity":0,
+         "notInStoreMovement":false
+      }
+   ]
+}
+  
+
+  
+
+    [+]
+    
+      Пример НЕ успешного результата вызова API: entities/products/restore
+    
+  
+  
+
+    [-]
+    
+      Пример НЕ успешного результата вызова API: entities/products/restore
+    
+  
+  
+
+     Could not restore not deleted products: [fcdf4324-4a2f-f250-0162-d3887cf1005d].

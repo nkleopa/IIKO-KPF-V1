@@ -1,0 +1,281 @@
+Загрузка возвратной накладной
+
+  
+
+    
+
+  
+Тело запроса
+Что в ответе
+Пример вызова и результата 
+
+  
+  
+
+  
+
+Версия iiko: 4.4
+  
+    
+
+      	
+        
+      
+      	
+        
+        
+        
+https://host:port/resto/api/documents/import/returnedInvoice
+      
+      
+    
+    
+
+                    Content-Type: application/xml               
+Тело запроса
+
+Структура returnedInvoiceDto
+
+  
+
+    [+]
+    
+      XSD Возвратная накладная
+    
+  
+  
+
+    [-]
+    
+      XSD Возвратная накладная
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="document" type="outgoingInvoiceDto"/>
+ 
+    <xs:complexType name="outgoingInvoiceDto">
+        <xs:sequence>
+            <xs:element name="documentNumber" type="xs:string" minOccurs="0"/>
+            <!--
+            Учетная дата-время документа.
+            Если не заполнено, используется дата-время сервера.
+            Поддерживаемые форматы:
+            yyyy-MM-ddTHH:mm:ss, yyyy-MM-dd (dd.MM.yyyy не рекомендуется).
+            -->
+            <xs:element name="dateIncoming" type="xs:dateTime" minOccurs="0"/>
+            <!--
+            false (по умолчанию): использовать переданные дату-время dateIncoming как есть.
+            true: использовать настройки проведения документов, заданные в подразделении:
+             * В режиме "текущее время" - дату и время из dateIncoming;
+             * "фиксированное время" или "время закрытия кассовой смены" - дату из dateIncoming, а время из настроек.
+            @since 5.2
+            -->
+            <xs:element name="useDefaultDocumentTime" type="xs:boolean" minOccurs="0" default="false"/>
+            <xs:element name="status" type="documentStatus" minOccurs="0"/>
+            <!--
+            Номер и учетная дата приходной накладной, для которой заводится возврат.
+            -->
+            <xs:element name="incomingInvoiceNumber" type="xs:string" minOccurs="1"/>
+            <xs:element name="incomingInvoiceDate" type="xs:dateTime" minOccurs="1"/>
+            <!--
+            Способ учета себестоимости:
+            true: списывать по цене приобретения товара,
+            false: списывать по текущей (средневзвешенной скользящей) себестоимости.
+            -->
+            <xs:element name="storeCostAffected" type="xs:string" minOccurs="0" default="false"/>
+            <!-- Счет для списания товаров (расходный счет). По умолчанию "5.01" ("Расход продуктов"). -->
+            <xs:element name="accountToCode" type="xs:string" minOccurs="0"/>
+            <!--
+            Склад (id или код). При создании накладных с проведением обязателен.
+            Заполняется либо в документе, либо в каждой строке отдельно, но не одновременно.
+            Если заполнен в документе, в бекофисе будет отмечена галочка "Отгрузить со склада".
+            -->
+            <xs:element name="defaultStoreId" type="xs:string" minOccurs="0"/>
+            <xs:element name="defaultStoreCode" type="xs:string" minOccurs="0"/>
+            <!-- Контрагент -->
+            <xs:element name="counteragentId" type="xs:string" minOccurs="0"/>
+            <xs:element name="counteragentCode" type="xs:string" minOccurs="0"/>
+            <!-- Концепция -->
+            <xs:element name="conceptionId" type="xs:string" minOccurs="0"/>
+            <xs:element name="conceptionCode" type="xs:string" minOccurs="0"/>
+            <!-- Комментарий -->
+            <xs:element name="comment" type="xs:string" minOccurs="0"/>
+            <xs:element name="items">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="item" type="outgoingInvoiceItemDto" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+ 
+    <xs:complexType name="outgoingInvoiceItemDto">
+        <xs:sequence>
+            <!-- Элемент номенклатуры (id или код (артикул), обязателен)-->
+            <xs:element name="productId" type="xs:string" minOccurs="0"/>
+            <xs:element name="productArticle" type="xs:string" minOccurs="0"/>
+            <!-- Товар поставщика (id или код (артикул), необязательное поле). @since 5.0.2 -->
+            <xs:element name="supplierProduct" type="xs:string" minOccurs="0"/>
+            <xs:element name="supplierProductArticle" type="xs:string" minOccurs="0"/>
+            <!--
+            Номер государственной таможенной декларации
+            @since 7.6
+            -->
+            <xs:element name="customsDeclarationNumber" type="xs:string" minOccurs="0"/>
+            <!--
+            Склад (id или код). При создании накладных с проведением обязателен.
+            Заполняется либо в документе, либо в каждой строке отдельно, но не одновременно.
+            -->
+            <xs:element name="storeId" type="xs:string" minOccurs="0"/>
+            <xs:element name="storeCode" type="xs:string" minOccurs="0"/>
+            <!-- Фасовка (id или код(артикул)) -->
+            <xs:element name="containerId" type="xs:string" minOccurs="0"/>
+            <xs:element name="containerCode" type="xs:string" minOccurs="0"/>
+            <!-- Цена с НДС за фасовку без учета скидки -->
+            <xs:element name="price" type="xs:decimal" minOccurs="1"/>
+            <!-- Количество товара в его основных единицах измерения -->
+            <xs:element name="amount" type="xs:decimal" minOccurs="1"/>
+            <!--
+            Cумма строки без учета скидки.
+            Как правило sum == amount * price / container + discountSum + vatSum
+             -->
+            <xs:element name="sum" type="xs:decimal" minOccurs="1"/>
+            <!-- Cумма скидки -->
+            <xs:element name="discountSum" type="xs:decimal" minOccurs="0"/>
+            <!--
+            Величина процента НДС и сумма НДС для строки документа.
+            Если не задана сумма, она вычисляется по проценту.
+            Если не задан процент, он берется из карточки товара.
+            Нельзя задать только сумму, не задавая процент.
+            @since 5.0
+             -->
+            <xs:element name="vatPercent" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="vatSum" type="xs:decimal" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+ 
+    <xs:simpleType name="documentStatus">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="NEW"/>
+            <xs:enumeration value="PROCESSED"/>
+            <xs:enumeration value="DELETED"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
+  
+
+Что в ответе
+
+Структура documentValidationResult
+
+  
+
+    [+]
+    
+      XSD Результат валидации документа
+    
+  
+  
+
+    [-]
+    
+      XSD Результат валидации документа
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="documentValidationResult" type="documentValidationResult"/>
+ 
+    <!--
+    Результат валидации документа.
+    Некоторые документы возвращают более подробную информацию, смотрите:
+     * incomingInventoryValidationResult.xsd
+    -->
+    <xs:complexType name="documentValidationResult">
+        <xs:sequence>
+            <!-- Результат валидации. -->
+            <xs:element name="valid" type="xs:boolean"/>
+            <!-- Указывает на то, что ошибка не критичная и служит в качестве предупреждения. -->
+            <xs:element name="warning" type="xs:boolean"/>
+            <!-- Номер валидируемого документа. -->
+            <xs:element name="documentNumber" type="xs:string" minOccurs="0"/>
+            <!--
+            Новый номер для документа.
+            Отличен от null, если старый нарушает уникальность или не изменились влияющие на номер поля.
+            -->
+            <xs:element name="otherSuggestedNumber" type="xs:string" minOccurs="0"/>
+            <!--
+            Текст ошибки (или только заголовок, если задано additionalInfo).
+            Предназначен для показа пользователю, но в REST API не всегда локализован.
+            -->
+            <xs:element name="errorMessage" type="xs:string" minOccurs="0"/>
+            <!--
+            Для невалидного результата может быть указана дополнительная информация, содержащая детали ошибки.
+            Например, для случая списания в минус это поле содержит детальную информацию по каждой позиции документа,
+            приводящей к отрицательным остаткам.
+            -->
+            <xs:element name="additionalInfo" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+  
+
+Пример вызова и результата
+
+ 
+
+   Запрос 
+
+   
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<document>
+  <documentNumber>TAKT0003</documentNumber>
+  <dateIncoming>2016-05-03T00:12:35</dateIncoming>
+  <status>PROCESSED</status>
+  <incomingInvoiceNumber>TAKT0001</incomingInvoiceNumber>
+  <incomingInvoiceDate>2016-05-01</incomingInvoiceDate>
+  <counteragentId>4F1AC4B8-21AC-4FE6-8BEB-464EA10C5FFB</counteragentId>
+  <items>
+    <item>
+      <storeId>84A2C3D1-488B-42F4-96C1-4670F7D08583</storeId>
+      <productId>FBCC2C7A-9B52-4FDB-8B95-4C9725273DE4</productId>
+      <price>30</price>
+      <amount>10</amount>
+      <sum>300</sum>
+      <vatPercent>12</vatPercent>
+      <vatSum>32.20</vatSum>
+    </item>
+  </items>
+</document>
+ 
+
+   Результат 
+
+   
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<documentValidationResult>
+    <valid>false</valid>
+    <warning>false</warning>
+    <documentNumber>400234</documentNumber>
+    <errorMessage>Cannot find document of type INCOMING_INVOICE by number 'TAKT0001' and date '2016-05-01'</errorMessage>
+</documentValidationResult>

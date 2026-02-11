@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="ru-RU" dir="ltr"><head><style type="text/css">.ArticleViewer_searchKeywords{background-color: yellow !important;}body{overflow:hidden;}</style>
+<link rel="canonical" href="/articles/api-documentations/polzovatelskie-kategorii"/>
+<title>Пользовательские категории</title><script type="text/javascript">//<!--
+var imgPopupTexts={openInNewWindowText: 'Открыть в новом окне', closeText: 'Закрыть'};var isArticlesNavViaMessage=true;var articleTitleText='Пользовательские категории';
+//--></script><link rel="stylesheet" type="text/css" href="/resources/Styles/api-documentations/NewStyle.css"/><link rel="stylesheet" type="text/css" href="/resources/Styles/api-documentations/Projects2.css"/><link rel="stylesheet" type="text/css" href="/resources/Styles/api-documentations/NewStyle1.css"/><link rel="stylesheet" type="text/css" href="/style-bundles/article-published.css?v=1.0.9482.29209"/><script src="/resources/Scripts/api-documentations/Script2.js" type="text/javascript"></script><script src="/resources/Scripts/api-documentations/highlight.pack2.js" type="text/javascript"></script><script src="/script-bundles/article-published.js?v=1.0.9482.29209" type="text/javascript"></script><meta charset="utf-8"><meta http-equiv="Content-Type" content="text/html;charset=utf-8"></head><body><span id="__clhTop"></span><!-- используется для Sidebar -->
+
+  <div class="sidebar">
+    <p>
+  <ul class="CHMiniToc"><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h2__1157722915" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h2__1157722915&#39;,this);">Получение пользовательских категорий (GET)</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_1827755295" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_1827755295&#39;,this);">Параметры запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3__730346366" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3__730346366&#39;,this);">Результат (Список EntityDto)</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_501454233" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_501454233&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_1250036116" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_1250036116&#39;,this);">Пример запроса и результат</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h2_1277335404" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h2_1277335404&#39;,this);">Получение пользовательских категорий (POST)</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3__1577225432" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3__1577225432&#39;,this);">Параметры запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3__918938987" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3__918938987&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h2__949064581" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h2__949064581&#39;,this);">Импорт пользовательской категории</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_631086644" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_631086644&#39;,this);">Тело запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_185825779" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_185825779&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3__185610488" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3__185610488&#39;,this);">Примеры запроса и результат</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h2_875448508" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h2_875448508&#39;,this);">Редактирование пользовательской категории</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_1150399349" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_1150399349&#39;,this);">Тело запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_1508133909" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_1508133909&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_276521740" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_276521740&#39;,this);">Пример запроса и результат</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h2__1948544756" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h2__1948544756&#39;,this);">Удаление пользовательской категории</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_1095830170" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_1095830170&#39;,this);">Тело запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3__363142106" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3__363142106&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_2077977772" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_2077977772&#39;,this);">Пример запроса и результат</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h2_788676018" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h2_788676018&#39;,this);">Восстановление пользовательской категории</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_247050547" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_247050547&#39;,this);">Тело запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3__1120435937" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3__1120435937&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3__726183675" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3__726183675&#39;,this);">Примеры запроса и результат</a></li></ul>&nbsp;
+</p>
+<p>
+  
+  <br/>
+</p>
+  </div>
+
+<h2 id="h2__1157722915" data-has-heading-anchor="true">   Получение пользовательских категорий (GET)<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h2__1157722915" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h2__1157722915&#39;,this);"></a></h2>
+  <p>Версия iiko: 6.2</p><table class="CHHttpRequest CHHttpRequest_get">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_get.png" alt="GET Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">https://host:port/resto/api/v2/           entities/products/category/list        </td></tr>
+    
+  </tbody>
+</table><h3 id="h3_1827755295" data-has-heading-anchor="true">Параметры запроса<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_1827755295" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_1827755295&#39;,this);"></a></h3>
+  <table class="CHTable" cellspacing="0" cellpadding="0">
+    <thead>
+      <tr>
+        <th data-column="0">                        Параметр                    </th>
+        <th data-column="1">                        Тип                    </th>
+        <th data-column="2">                        Описание                    </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>           includeDeleted         </td>
+        <td>           Boolean         </td>
+        <td>           Включать ли в результат удаленные элементы. По умолчанию false.         </td>
+      </tr>
+      <tr>
+        <td>           ids         </td>
+        <td>           List&lt;UUID&gt;         </td>
+        <td>           Возвращаемые элементы должны иметь id из этого списка.         </td>
+      </tr>
+    <tr><td>revisionFrom<br/></td><td>-1, число</td><td><p>Номер ревизии, начиная с которой  необходимо отфильтровать сущности. Не включающий саму ревизию, т.е.  ревизия объекта &gt; revisionFrom.</p><p>По умолчанию (неревизионный запрос) revisionFrom = -1</p></td></tr>
+    </tbody>
+  </table><h3 id="h3__730346366" data-has-heading-anchor="true">   Результат (Список EntityDto) <a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3__730346366" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3__730346366&#39;,this);"></a></h3>
+  <table class="CHTable" cellspacing="0" cellpadding="0">
+    <thead>
+      <tr>
+        <th data-column="0">                        Параметр                    </th>
+        <th data-column="1">                        Тип                    </th>
+        <th data-column="2">                        Описание                    </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>           id         </td>
+        <td>           UUID         </td>
+        <td>           UUID категории         </td>
+      </tr>
+      <tr>
+        <td>           deleted         </td>
+        <td>           Boolean         </td>
+        <td>           Удалена ли данная категория         </td>
+      </tr>
+      <tr>
+        <td>           name         </td>
+        <td>           String         </td>
+        <td>           Имя категории.         </td>
+      </tr>
+    </tbody>
+  </table><h3 id="h3_501454233" data-has-heading-anchor="true">Что в ответе<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_501454233" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_501454233&#39;,this);"></a></h3>
+<p>             Список пользовательских категорий           </p>
+        <p>
+  </p><p>
+</p><h3 id="h3_1250036116" data-has-heading-anchor="true">Пример запроса и результат<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_1250036116" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_1250036116&#39;,this);"></a></h3>
+<h4 id="h4_1966919031" data-has-heading-anchor="true">Запрос<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h4_1966919031" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h4_1966919031&#39;,this);"></a></h4><p class="code">   https://localhost:8080/resto/api/v2/entities/products/category/list </p>
+<h4 id="h4_631086644" data-has-heading-anchor="true">Результат<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h4_631086644" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h4_631086644&#39;,this);"></a></h4><p><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">JSON</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>[{ <br/>  <span class="cm-string">"id"</span>:<span class="cm-string">"7e29cd73-05da-7ac4-0165-0f11a132002b"</span>,<br/>  <span class="cm-string">"rootType"</span>:<span class="cm-string">"ProductCategory"</span>,<br/>  <span class="cm-string">"deleted"</span>:<span class="cm-atom">false</span>,<br/>  <span class="cm-string">"code"</span>:<span class="cm-atom">null</span>,<br/>  <span class="cm-string">"name"</span>:<span class="cm-string">"Категория 1"</span><br/>}]</pre></td></tr></table> </p>
+<p><br/></p>
+<h2 id="h2_1277335404" data-has-heading-anchor="true">   Получение пользовательских категорий (POST)<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h2_1277335404" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h2_1277335404&#39;,this);"></a></h2>   <p>Версия iiko: 6.4</p><table class="CHHttpRequest CHHttpRequest_post">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">
+        https://host:port/resto/api/v2/entities/products/category/list
+      </td></tr>
+    
+  </tbody>
+</table><h3 id="h3__1577225432" data-has-heading-anchor="true">Параметры запроса<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3__1577225432" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3__1577225432&#39;,this);"></a></h3>   <p><span style="font-weight: normal;">Content-Type: application/x-www-form-urlencoded</span></p><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;">     <thead>       <tr>         <th data-column="0">                        Параметр                    </th>         <th>Версия<br/></th><th data-column="1">                        Тип                    </th>         <th data-column="2">                        Описание                    </th>       </tr>     </thead>     <tbody>       <tr>         <td>           includeDeleted         </td>         <td>&nbsp;6.4<br/></td><td>           Boolean         </td>         <td>           Включать ли в результат удаленные элементы. По умолчанию false.         </td>       </tr>       <tr>         <td>           ids         </td>         <td>&nbsp;6.4<br/></td><td>           List&lt;UUID&gt;         </td>         <td>           Возвращаемые элементы должны иметь id из этого списка.         </td></tr><tr><td>revisionFrom<br/></td><td>&nbsp;6.4<br/></td><td>-1, число<br/></td><td><p>Номер ревизии, начиная с которой  необходимо отфильтровать сущности. Не включающий саму ревизию, т.е.  ревизия объекта &gt; revisionFrom.</p><p>По умолчанию (неревизионный запрос) revisionFrom = -1</p></td></tr></tbody></table><h3 id="h3__918938987" data-has-heading-anchor="true">Что в ответе<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3__918938987" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3__918938987&#39;,this);"></a></h3><p>             </p>
+                   <p>             Список пользовательских категорий           </p>         <p> </p>
+<h2 id="h2__949064581" data-has-heading-anchor="true">   Импорт пользовательской категории<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h2__949064581" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h2__949064581&#39;,this);"></a></h2>
+  <p>Версия iiko: 6.2</p><table class="CHHttpRequest CHHttpRequest_post">   <tbody>     <tr><td class="CHHttpRequest_headerImg">         <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="height: auto; max-width: 100%;" loading="lazy"/>       </td><td class="CHHttpRequest_headerText">         https://host:port/resto/api/v2/entities/products/category/save</td></tr></tbody></table><h3 id="h3_631086644" data-has-heading-anchor="true">Тело запроса<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_631086644" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_631086644&#39;,this);"></a></h3>
+  
+            <table class="CHTable" cellspacing="0" cellpadding="0">
+              <thead>
+                <tr>
+                  <th data-column="0">                                            Поле                                        </th>
+                  <th data-column="1">                                            Тип данных                                        </th>
+                  <th data-column="2">                                            Значение                                        </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>                     name                   </td>
+                  <td>                     String                   </td>
+                  <td>                     Имя категории.                   </td>
+                </tr>
+              </tbody>
+            </table>
+        <h3 id="h3_185825779" data-has-heading-anchor="true">Что в ответе<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_185825779" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_185825779&#39;,this);"></a></h3><p>             </p>
+                   <p>             Json структура результата импорта.&nbsp;</p>         <h3 id="h3_631086644" data-has-heading-anchor="true">Результат <a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_631086644" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_631086644&#39;,this);"></a></h3>
+  <table class="CHTable" cellspacing="0" cellpadding="0">
+    <thead>
+      <tr>
+        <th colspan="1" data-column="0">                        Параметр                    </th>
+        <th colspan="1" data-column="1">                        Тип, формат                    </th>
+        <th colspan="1" data-column="2">                        Описание                    </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>           result         </td>
+        <td>           Enum:           <br/>           "SUCCESS",           <br/>           "ERROR"         </td>
+        <td>           Результата операции.         </td>
+      </tr>
+      <tr>
+        <td>           errors         </td>
+        <td>           List&lt;ErrorDto&gt;         </td>
+        <td>
+          <p>             Список&nbsp;ошибок, не позволивших сделать успешный импорт документа.           </p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="1">           response         </td>
+        <td colspan="1">           EntityDto         </td>
+        <td colspan="1">
+          <p>             В случае успешного импорта - сохраненная пользовательская категория,             <br/>             в противном случае импортируемый&nbsp;объект.           </p>
+            <table class="CHTable" cellspacing="0" cellpadding="0">
+              <thead>
+                <tr>
+                  <th data-column="0">                                            Поле                                        </th>
+                  <th data-column="1">                                            Тип данных                                        </th>
+                  <th data-column="2">                                            Значение                                        </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>                     id                   </td>
+                  <td>                     UUID                   </td>
+                  <td>                     UUID категории                   </td>
+                </tr>
+                <tr>
+                  <td>                     deleted                   </td>
+                  <td>                     Boolean                   </td>
+                  <td>                     Удалена.                   </td>
+                </tr>
+                <tr>
+                  <td>                     name                   </td>
+                  <td>                     String                   </td>
+                  <td>                     Имя категории.                   </td>
+                </tr>
+              </tbody>
+            </table>
+        </td>
+      </tr>
+    </tbody>
+  </table><h3 id="h3__185610488" data-has-heading-anchor="true">   Примеры запроса и результат<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3__185610488" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3__185610488&#39;,this);"></a></h3>
+<h4 id="h4__382641528" data-has-heading-anchor="true">Запрос<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h4__382641528" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h4__382641528&#39;,this);"></a></h4><p class="code">    <span style="font-family: Courier;">https://localhost:8080/resto/api/v2/entities/products/category/save</span> </p>
+<h4 id="h4_58757779" data-has-heading-anchor="true">Результат<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h4_58757779" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h4_58757779&#39;,this);"></a></h4><p><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">JSON</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{  <br/>   <span class="cm-string">"name"</span>:<span class="cm-string">"Категория 1"</span><br/>}</pre></td></tr></table></p>
+<p>   Пример <u>успешного</u> результата вызова API: entities/products/category/save </p>
+<p>   <table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">JSON</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{  <br/>   <span class="cm-string">"result"</span>:<span class="cm-string">"SUCCESS"</span>,<br/>   <span class="cm-string">"errors"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"response"</span>:{  <br/>      <span class="cm-string">"id"</span>:<span class="cm-string">"7e29cd73-05da-7ac4-0165-0f11a132002b"</span>,<br/>      <span class="cm-string">"rootType"</span>:<span class="cm-string">"ProductCategory"</span>,<br/>      <span class="cm-string">"deleted"</span>:<span class="cm-atom">false</span>,<br/>      <span class="cm-string">"code"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"name"</span>:<span class="cm-string">"Категория 1"</span><br/>   }<br/>}</pre></td></tr></table> </p>
+<p>   Пример <u>НЕ&nbsp; успешного</u> результата вызова API: entities/products/category/save </p>
+<p>
+  <span class="code">Category name is not specified or consist of whitespaces</span>&nbsp;</p>
+<p>   <br/> </p>
+<h2 id="h2_875448508" data-has-heading-anchor="true">   Редактирование пользовательской категории<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h2_875448508" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h2_875448508&#39;,this);"></a></h2>
+  <p>Версия iiko: 6.2</p><table class="CHHttpRequest CHHttpRequest_post">   <tbody>     <tr><td class="CHHttpRequest_headerImg ">         <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="height: auto; max-width: 100%;" loading="lazy"/>       </td><td class="CHHttpRequest_headerText ">         https://host:port/resto/api/v2/entities/products/category/update</td></tr></tbody></table><h3 id="h3_1150399349" data-has-heading-anchor="true">Тело запроса<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_1150399349" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_1150399349&#39;,this);"></a></h3>
+            <table class="CHTable" cellspacing="0" cellpadding="0">
+              
+              <thead><tr>
+                  <th data-column="0" scope="col">Поле                                        </th>
+                  <th data-column="1" scope="col">                                            Тип данных                                        </th>
+                  <th data-column="2" scope="col">                                            Значение                                        </th>
+                </tr></thead><tbody>
+                <tr>
+                  <td>                     id                   </td>
+                  <td>                     UUID                   </td>
+                  <td>                     UUID редактируемой категории.                   </td>
+                </tr>
+                <tr>
+                  <td colspan="1">                     name                   </td>
+                  <td colspan="1">                     String                   </td>
+                  <td colspan="1">                     Новое имя категории.                   </td>
+                </tr>
+              </tbody>
+            </table>
+        <h3 id="h3_1508133909" data-has-heading-anchor="true">Что в ответе<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_1508133909" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_1508133909&#39;,this);"></a></h3><p>             </p>
+                   <p>             Json структура результата редактирования.&nbsp;</p>         <h3 id="h3_276521740" data-has-heading-anchor="true">   Пример  запроса и результат<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_276521740" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_276521740&#39;,this);"></a></h3>
+<h4 id="h4__1933383187" data-has-heading-anchor="true">Запрос&nbsp;<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h4__1933383187" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h4__1933383187&#39;,this);"></a></h4><p class="code"><span style="font-family: Courier;">https://localhost:8080/resto/api/v2/entities/products/category/save</span> </p>
+<h4 id="h4_522856244" data-has-heading-anchor="true">Результат<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h4_522856244" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h4_522856244&#39;,this);"></a></h4><p><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">JSON</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{ <br/>   <span class="cm-string">"id"</span>:<span class="cm-string">"70936cd4-474d-4b5f-b9bc-ac2799bfc137"</span>,<br/>   <span class="cm-string">"name"</span>:<span class="cm-string">"Категория 2"</span><br/>}</pre></td></tr></table></p>
+<p>   Пример <u>успешного</u> результата вызова API: entities/products/category/update </p>
+<p>   <table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">JSON</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{  <br/>   <span class="cm-string">"result"</span>:<span class="cm-string">"SUCCESS"</span>,<br/>   <span class="cm-string">"errors"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"response"</span>:{  <br/>      <span class="cm-string">"id"</span>:<span class="cm-string">"70936cd4-474d-4b5f-b9bc-ac2799bfc137"</span>,<br/>      <span class="cm-string">"rootType"</span>:<span class="cm-string">"ProductCategory"</span>,<br/>      <span class="cm-string">"deleted"</span>:<span class="cm-atom">false</span>,<br/>      <span class="cm-string">"code"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"name"</span>:<span class="cm-string">"Категория 2"</span><br/>   }<br/>}</pre></td></tr></table></p>
+<p>   Пример <u>НЕ успешного</u> результата вызова API: entities/products/category/update </p>
+<p>
+  <span class="code">Category name is not specified or consist of whitespaces</span>
+  <br/> </p>
+<p>   &nbsp; </p>
+
+<h2 id="h2__1948544756" data-has-heading-anchor="true">   Удаление пользовательской категории<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h2__1948544756" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h2__1948544756&#39;,this);"></a></h2>
+  <p>Версия iiko: 6.2</p><table class="CHHttpRequest CHHttpRequest_post">   <tbody>     <tr><td class="CHHttpRequest_headerImg">         <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="height: auto; max-width: 100%;" loading="lazy"/>       </td><td class="CHHttpRequest_headerText">         https://host:port/resto/api/v2/entities/products/category/delete</td></tr></tbody></table><h3 id="h3_1095830170" data-has-heading-anchor="true">Тело запроса<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_1095830170" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_1095830170&#39;,this);"></a></h3>
+            <table class="CHTable" cellspacing="0" cellpadding="0">
+              
+              <thead><tr>
+                  <th data-column="0" scope="col">Поле                                        </th>
+                  <th data-column="1" scope="col">                                            Тип данных                                        </th>
+                  <th data-column="2" scope="col">                                            Значение                                        </th>
+                </tr></thead><tbody>
+                <tr>
+                  <td>                     id                   </td>
+                  <td>                     UUID                   </td>
+                  <td>                     UUID удаляемой категории.                   </td>
+                </tr>
+                </tbody>
+            </table>
+        <h3 id="h3__363142106" data-has-heading-anchor="true">Что в ответе<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3__363142106" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3__363142106&#39;,this);"></a></h3><p>             </p>
+                   <p>             Json структура результата удаления.&nbsp;           Содержит результат удаления. Нельзя удалить уже удаленные объекты.        &nbsp;</p>         <h3 id="h3_2077977772" data-has-heading-anchor="true">   Пример  запроса и результат<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_2077977772" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_2077977772&#39;,this);"></a></h3>
+<h4 id="h4__297217937" data-has-heading-anchor="true">Запрос&nbsp;&nbsp;<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h4__297217937" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h4__297217937&#39;,this);"></a></h4><p class="code">   <span style="font-family: Courier;">https://localhost:8080/resto/api/v2/entities/products/category/delete</span> </p>
+<h4 id="h4__993490910" data-has-heading-anchor="true">Результат<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h4__993490910" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h4__993490910&#39;,this);"></a></h4><p><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">JSON</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{ <br/>   <span class="cm-string">"id"</span>:<span class="cm-string">"70936cd4-474d-4b5f-b9bc-ac2799bfc137"</span> <br/>}</pre></td></tr></table></p>
+<p>   Пример <u>успешного</u> результата вызова API: entities/products/category/delete </p>
+<p>   <table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">JSON</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{  <br/>   <span class="cm-string">"result"</span>:<span class="cm-string">"SUCCESS"</span>,<br/>   <span class="cm-string">"errors"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"response"</span>:{  <br/>      <span class="cm-string">"id"</span>:<span class="cm-string">"70936cd4-474d-4b5f-b9bc-ac2799bfc137"</span>,<br/>      <span class="cm-string">"rootType"</span>:<span class="cm-string">"ProductCategory"</span>,<br/>      <span class="cm-string">"deleted"</span>:<span class="cm-atom">true</span>,<br/>      <span class="cm-string">"code"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"name"</span>:<span class="cm-string">"Категория 1"</span><br/>   }<br/>}</pre></td></tr></table></p>
+<p>   Пример <u>НЕ успешного</u> результата вызова API: entities/products/category/save </p>
+<p class="code">   Could not delete already deleted product category: [7e29cd73-05da-7ac4-0165-0f11a132002b]. </p>
+<p>   <br/> </p>
+<p> </p>
+<h2 id="h2_788676018" data-has-heading-anchor="true">   Восстановление пользовательской категории<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h2_788676018" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h2_788676018&#39;,this);"></a></h2>
+  <p>Версия iiko: 6.2</p><table class="CHHttpRequest CHHttpRequest_post">   <tbody>     <tr><td class="CHHttpRequest_headerImg">         <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="height: auto; max-width: 100%;" loading="lazy"/>       </td><td class="CHHttpRequest_headerText">         https://host:port/resto/api/v2/entities/products/category/restore</td></tr></tbody></table><h3 id="h3_247050547" data-has-heading-anchor="true">Тело запроса<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3_247050547" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3_247050547&#39;,this);"></a></h3>
+            <table class="CHTable" cellspacing="0" cellpadding="0">
+              
+              <thead><tr>
+                  <th data-column="0" scope="col">Поле                                        </th>
+                  <th data-column="1" scope="col">                                            Тип данных                                        </th>
+                  <th data-column="2" scope="col">                                            Значение                                        </th>
+                </tr></thead><tbody>
+                <tr>
+                  <td>                     id                   </td>
+                  <td>                     UUID                   </td>
+                  <td>                     UUID восстанавливаемой категории.                   </td>
+                </tr>
+                </tbody>
+            </table>
+        <h3 id="h3__1120435937" data-has-heading-anchor="true">Что в ответе<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3__1120435937" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3__1120435937&#39;,this);"></a></h3><p>             </p>
+                   <p>Json структура результата восстановления.&nbsp;           Содержит результат восстановления. Нельзя восстановить НЕ удаленные объекты.        <br/></p>         <h3 id="h3__726183675" data-has-heading-anchor="true">  Примеры запроса и результат<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h3__726183675" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h3__726183675&#39;,this);"></a></h3>
+<h4 id="h4__31176998" data-has-heading-anchor="true">Запрос<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h4__31176998" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h4__31176998&#39;,this);"></a></h4><p class="code">   http://localhost:8080/resto/api/v2/entities/products/category/restore </p>
+<h4 id="h4__1870743433" data-has-heading-anchor="true">Результат<a href="/articles/api-documentations/polzovatelskie-kategorii/a/h4__1870743433" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/polzovatelskie-kategorii/a/h4__1870743433&#39;,this);"></a></h4><p><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">JSON</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{ <br/>   <span class="cm-string">"id"</span>:<span class="cm-string">"70936cd4-474d-4b5f-b9bc-ac2799bfc137"</span> <br/>}</pre></td></tr></table></p>
+<p>   Пример <u>успешного</u> результата вызова API: entities/products/category/restore </p>
+<p>   <table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">JSON</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{  <br/>   <span class="cm-string">"result"</span>:<span class="cm-string">"SUCCESS"</span>,<br/>   <span class="cm-string">"errors"</span>:<span class="cm-atom">null</span>,<br/>   <span class="cm-string">"response"</span>:{  <br/>      <span class="cm-string">"id"</span>:<span class="cm-string">"70936cd4-474d-4b5f-b9bc-ac2799bfc137"</span>,<br/>      <span class="cm-string">"rootType"</span>:<span class="cm-string">"ProductCategory"</span>,<br/>      <span class="cm-string">"deleted"</span>:<span class="cm-atom">false</span>,<br/>      <span class="cm-string">"code"</span>:<span class="cm-atom">null</span>,<br/>      <span class="cm-string">"name"</span>:<span class="cm-string">"Категория 1"</span><br/>   }<br/>}</pre></td></tr></table></p>
+<div>   Пример <u>НЕ успешного</u> результата вызова API: entities/products/category/restore </div>
+<p class="code">   Could not restore not deleted product category: [70936cd4-474d-4b5f-b9bc-ac2799bfc137]​. </p>
+<p> </p>
+<script src="/resources/Scripts/Lightbox/lightbox-plus-jquery.min.js"></script> <!-- скрипт используется для галереи картинок-->
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script> <!-- скрипт используется для подсветки примеров кода --></body></html>

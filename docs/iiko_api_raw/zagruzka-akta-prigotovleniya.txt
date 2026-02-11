@@ -1,0 +1,238 @@
+Загрузка акта приготовления
+
+  
+
+    
+
+  
+Тело запроса
+Что в ответе
+Пример вызова и результат 
+
+  
+  
+
+  
+
+Версия iiko: 3.9
+  
+    
+
+      	
+        
+      
+      	
+        
+        
+        
+        
+https://host:port/resto/api/documents/import/productionDocument
+      
+      
+      
+    
+    
+
+                    Content-Type: application/xml               
+Тело запроса
+
+Структура productionDocumentDto
+
+  
+
+    [+]
+    
+      XSD Акт приготовления
+    
+  
+  
+
+    [-]
+    
+      XSD Акт приготовления
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="document" type="productionDocumentDto"/>
+ 
+    <xs:complexType name="productionDocumentDto">
+        <xs:sequence>
+            <!--Статус Проведен-->
+            <xs:element name="status" type="documentStatus" minOccurs="0"/>
+            <!--Концепция (guid)-->
+            <xs:element name="conception" type="xs:string" minOccurs="0"/>
+            <!--
+            Код концепции.
+            @since 7.8
+            -->
+            <xs:element name="conceptionCode" type="xs:string" minOccurs="0"/>
+            <!--Комментарий-->
+            <xs:element name="comment" type="xs:string" minOccurs="0"/>
+            <!--Номер документа-->
+            <xs:element name="documentNumber" type="xs:string" minOccurs="0"/>
+            <!--
+            Дата документа.
+            Поддерживаемые форматы:
+            yyyy-MM-ddTHH:mm:ss, yyyy-MM-dd (dd.MM.yyyy не рекомендуется).
+            -->
+            <xs:element name="dateIncoming" type="xs:string" minOccurs="0"/>
+            <!--На склад (guid)-->
+            <xs:element name="storeTo" type="xs:string" minOccurs="0"/>
+            <!--Со склада (guid)-->
+            <xs:element name="storeFrom" type="xs:string" minOccurs="0"/>
+            <!--Позиции документа-->
+            <xs:element name="items" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="item" type="productionDocumentItemDto" minOccurs="0" maxOccurs="unbounded"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+ 
+    <!--Позиция документа-->
+    <xs:complexType name="productionDocumentItemDto">
+        <xs:sequence>
+            <!--Количество товара в его основных единицах измерения-->
+            <xs:element name="amount" type="xs:decimal" minOccurs="0"/>
+            <!--Товар (guid)-->
+            <xs:element name="product" type="xs:string" minOccurs="0"/>
+            <!--Товар (артикул). Можно задать вместо guid товара начиная с 5.0, guid имеет приоритет-->
+            <xs:element name="productArticle" type="xs:string" minOccurs="0"/>
+            <!--Порядковый номер в документе-->
+            <xs:element name="num" type="xs:int" minOccurs="0"/>
+            <!--Фасовка (guid)-->
+            <xs:element name="containerId" type="xs:string" minOccurs="0"/>
+            <!--Базовая единица измерения (guid)-->
+            <xs:element name="amountUnit" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+  
+
+Что в ответе
+
+Структура documentValidationResult
+
+  
+
+    [+]
+    
+      XSD Результат валидации документа
+    
+  
+  
+
+    [-]
+    
+      XSD Результат валидации документа
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="documentValidationResult" type="documentValidationResult"/>
+ 
+    <!--
+    Результат валидации документа.
+    Некоторые документы возвращают более подробную информацию, смотрите:
+     * incomingInventoryValidationResult.xsd
+    -->
+    <xs:complexType name="documentValidationResult">
+        <xs:sequence>
+            <!-- Результат валидации. -->
+            <xs:element name="valid" type="xs:boolean"/>
+            <!-- Указывает на то, что ошибка не критичная и служит в качестве предупреждения. -->
+            <xs:element name="warning" type="xs:boolean"/>
+            <!-- Номер валидируемого документа. -->
+            <xs:element name="documentNumber" type="xs:string" minOccurs="0"/>
+            <!--
+            Новый номер для документа.
+            Отличен от null, если старый нарушает уникальность или не изменились влияющие на номер поля.
+            -->
+            <xs:element name="otherSuggestedNumber" type="xs:string" minOccurs="0"/>
+            <!--
+            Текст ошибки (или только заголовок, если задано additionalInfo).
+            Предназначен для показа пользователю, но в REST API не всегда локализован.
+            -->
+            <xs:element name="errorMessage" type="xs:string" minOccurs="0"/>
+            <!--
+            Для невалидного результата может быть указана дополнительная информация, содержащая детали ошибки.
+            Например, для случая списания в минус это поле содержит детальную информацию по каждой позиции документа,
+            приводящей к отрицательным остаткам.
+            -->
+            <xs:element name="additionalInfo" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+
+  
+
+Пример вызова и результат
+
+   Запрос 
+
+    https://localhost:8080/resto/api/documents/import/productionDocument?key=d7474d4a-0a40-d918-85fa-2cd98fddfeb1  
+
+	
+Copy Code
+XML
+	<document>
+  <!--Со склада (guid)-->
+  <storeFrom>1239d270-1bbe-f64f-b7ea-5f00518ef508</storeFrom>
+   <!--На склад (guid)-->
+  <storeTo>1239d270-1bbe-f64f-b7ea-5f00518ef508</storeTo>
+   <!--Дата документа-->
+  <dateIncoming>17.12.2014</dateIncoming>
+   <!--Номер документа-->
+  <documentNumber>api-0002</documentNumber>
+   <!--Комментарий-->
+  <comment>api test api-0002</comment>
+  <!--Статус Проведен -->
+  <status>PROCESSED</status>
+   <items>
+       <item>
+          <!--Фасовка (guid)-->
+          <amountUnit>cd19b5ea-1b32-a6e5-1df7-5d2784a0549a</amountUnit>
+           <!--Контейнер (guid)-->
+          <containerId>C66196B6-68F2-4C17-97C2-C2008A39A76A</containerId>   
+          <!--Порядковый номер в документе-->
+          <num>1</num>
+          <!--Товар (guid)-->
+          <product>0f22aa60-e8ae-4c8e-80cd-f1e00b88fec6</product>
+          <!--Количество-->
+        <amount>1</amount>
+        </item> 
+    </items>
+  </document> 
+
+   Результат 
+
+   
+	
+Copy Code
+XML
+	HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Vary: Accept-Encoding
+Content-Type: application/xml
+Content-Length: 192
+Date: Wed, 17 Dec 2014 08:47:50 GMT
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><documentValidationResult>
+  <documentNumber>api-0002</documentNumber>
+  <valid>true</valid>
+  <warning>false</warning>
+</documentValidationResult>

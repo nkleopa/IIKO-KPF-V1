@@ -1,0 +1,716 @@
+Корпорации
+
+  
+
+    
+
+  
+Иерархия подразделений
+Параметры запроса
+Что в ответе
+Пример запроса
+Список складов
+Параметры запроса
+Что в ответе
+Пример запроса
+Список групп и отделений
+Параметры запроса
+Что в ответе
+Пример запроса
+Список терминалов
+Параметры запроса
+Что в ответе
+Пример запроса
+Поиск подразделения
+Параметры запроса
+Что в ответе
+Пример запроса
+Что в ответе
+Пример запроса
+Поиск групп отделений
+Параметры запроса
+Что в ответе
+Пример запроса
+Поиск терминала
+Параметры запроса
+Что в ответе
+Пример запроса
+Получение настроек корпорации
+Доступ
+Результат
+Пример запроса и результата 
+
+  
+  
+
+  
+
+   Иерархия подразделений
+
+Версия iiko: 3.9
+
+  
+    
+	
+        
+      	https://host:port/resto/api/corporation/departments/
+    
+  
+
+Параметры запроса
+
+	Название
+	Значение
+	Версия iiko
+	Описание
+
+	revisionFrom	
+число, номер ревизии	с 6.4	
+Номер  ревизии, начиная с которой необходимо отфильтровать сущности. Не  включающий саму ревизию, т.е. ревизия объекта > revisionFrom.
+По умолчанию (неревизионный запрос) revisionFrom = -1
+Что в ответе
+
+Все подразделения по типам в виде структуры corporateItemDto.
+См. расшифровки возможных типов в разделе "Расшифровки кодов базовых типов - Типы подразделений".
+Типы подразделений         
+
+        
+        
+          
+            
+
+              
+                
+                
+                   Код                 
+                
+              
+              
+                
+                
+                   Название                 
+                
+              
+            
+          
+          
+            
+
+              	
+                
+                   CORPORATION                 
+              
+              	
+                
+                   Корпорация                 
+              
+            
+            
+
+              	
+                
+                   JURPERSON                 
+              
+              	
+                
+                   Юридическое лицо                 
+              
+            
+            
+
+              	
+                
+                   ORGDEVELOPMENT                 
+              
+              	
+                
+                   Структурное подразделение                 
+              
+            
+            
+
+              	
+                
+                   DEPARTMENT                 
+              
+              	
+                
+                   Торговое предприятие                 
+              
+            
+            
+
+              	
+                
+                   MANUFACTURE                 
+              
+              	
+                
+                   Производство                 
+              
+            
+            
+
+              	
+                
+                   CENTRALSTORE                 
+              
+              	
+                
+                   Центральный склад                 
+              
+            
+            
+
+              	
+                
+                   CENTRALOFFICE                 
+              
+              	
+                
+                   Центральный офис                 
+              
+            
+            
+
+              	
+                
+                   SALEPOINT                 
+              
+              	
+                
+                   Точка продаж                 
+              
+            
+            
+
+              	
+                
+                   STORE                 
+              
+              	
+                
+                   Склад
+              
+            
+          
+        
+        
+        
+Пример запроса
+
+https://localhost:8080/resto/api/corporation/departments?key=420d0839-2aa7-801e-9f1a-cf7d23f65fba&revisionFrom=-1
+Список складов 
+
+Версия iiko: 3.9
+        
+	                	https://host:port/resto/api/corporation/stores/         
+Параметры запроса
+
+	Название 	Тип данных
+	Версия	Описание
+	revisionFrom	-1, число	с 6.4	
+Номер   ревизии, начиная с которой необходимо отфильтровать сущности. Не   включающий саму ревизию, т.е. ревизия объекта > revisionFrom.
+По умолчанию (неревизионный запрос) revisionFrom = -1
+Что в ответе
+
+           Все склады ТП в виде структуры corporateItemDto.
+
+Пример запроса
+
+https://localhost:8080/resto/api/corporation/stores?key=71046728-36fa-053c-b01c-c5b43bfd277f&revisionFrom=-1
+
+   Список групп и отделений 
+
+Версия iiko: 4.3
+        
+	                	https://host:port/resto/api/corporation/groups/         
+Параметры запроса
+
+	Название 	Тип данных
+	Версия	Описание
+	revisionFrom	-1, число	с 6.4	
+Номер   ревизии, начиная с которой необходимо отфильтровать сущности. Не   включающий саму ревизию, т.е. ревизия объекта > revisionFrom.
+По умолчанию (неревизионный запрос) revisionFrom = -1
+Что в ответе
+
+           Все группы отделений, отделения и точки продаж ТП в виде структуры groupDto.
+
+В группе отделений может быть несколько точек продаж, но главная касса (свойство groupDto/pointOfSaleDtoes/pointOfSaleDto/main=true) может быть подключена только к одной из них.
+
+         В iikoChain информация о кассе точки продаж (groupDto/pointOfSaleDtoes/pointOfSaleDto/cashRegisterInfo) может отсутствовать.
+
+Пример запроса
+
+https://localhost:8080/resto/api/corporation/groups?key=71046728-36fa-053c-b01c-c5b43bfd277f&revisionFrom=-1
+
+   Список терминалов 
+
+Версия iiko: 4.3
+        
+	                	https://host:port/resto/api/corporation/terminals/         
+Параметры запроса
+
+	Название 	Тип данных
+	Версия	Описание
+	revisionFrom	-1, число	с 6.4	
+Номер   ревизии, начиная с которой необходимо отфильтровать сущности. Не   включающий саму ревизию, т.е. ревизия объекта > revisionFrom.
+По умолчанию (неревизионный запрос) revisionFrom = -1
+Что в ответе
+
+           Все терминалы ТП в виде структуры terminalDto.
+
+Как правило, интересны только фронтовые терминалы, см. поиск терминалов /corporation/terminal/search.
+
+Пример запроса
+
+https://localhost:8080/resto/api/corporation/terminals?key=71046728-36fa-053c-b01c-c5b43bfd277f&revisionFrom=-1 
+
+   Поиск подразделения 
+
+Версия iiko: 3.9
+        
+	                	https://host:port/resto/api/corporation/departments/search         
+Параметры запроса
+
+  
+    
+
+                        Название                
+                        Значение                
+                        Описание                
+    
+  
+  
+    
+
+      	         code       
+      	
+        [departmentCode]
+      
+      	
+        
+           Код торгового предприятия. Значение элемента <code> из структуры corporateItemDto         
+        
+           Регулярное выражение. Если задать просто строку, то ищет любое вхождение этой строки в код ТП с учетом регистра         
+      
+    
+  
+
+Что в ответе
+
+Структура corporateItemDto, если существует подразделение с данным кодом.
+
+         Поиск торгового предприятия по коду. Имеет смысл только для подразделений с типом DEPARTMENT и в основном только в iikoChain, т.к. в рамках iikoRMS только одна сущность с таким типом.
+
+Пример запроса
+
+  https://localhost:8080/resto/api/corporation/departments/search?key=71046728-36fa-053c-b01c-c5b43bfd277f&code=1
+
+Что в ответе
+
+Структура corporateItemDto, если существует склад с данным кодом.
+
+Поиск склада по коду. Для работы этого метода необходимо, чтобы коды складов в ТП были заполнены (данное поле является необязательным и по умолчанию пусто
+      
+
+Пример запроса
+
+  https://localhost:8080/resto/api/corporation/stores/search?key=71046728-36fa-053c-b01c-c5b43bfd277f&code=Dom
+
+   Поиск групп отделений 
+
+Версия iiko: 4.3
+        
+	                	https://host:port/resto/api/corporation/groups/search         
+Параметры запроса
+
+  
+    
+
+                        Название                
+                        Значение                
+                        Описание                
+    
+  
+  
+    
+
+      	
+        name
+      
+      	
+        regex
+      
+      	         Название группы       
+    
+    
+
+      	
+        departmentId
+      
+      	
+        uuid
+      
+      	         ID подразделения       
+    
+  
+
+Что в ответе
+
+Список groupDto, если существуют подходящие группы отделений
+
+Пример запроса
+
+  https://localhost:8080/resto/api/corporation/terminal/search?key=71046728-36fa-053c-b01c-c5b43bfd277f&name=New%20group 
+
+   Поиск терминала 
+
+Версия iiko: 4.3
+        
+	                	https://host:port/resto/api/corporation/terminals/search         
+Параметры запроса
+
+  
+    
+
+                        Название                
+               Значение       
+               Описание       
+    
+  
+  
+    
+
+      	         name       
+      	         regex       
+      	         Имя терминала в том виде, как он отображается в бекофисе       
+    
+    
+
+      	         computerName       
+      	         regex       
+      	         Имя компьютера       
+    
+    
+
+      	         anonymous       
+      	         false/true       
+      	
+        
+           Фронты имеют anonymous=false, бекофисы и системные терминалы — true.         
+      
+    
+  
+
+Что в ответе
+
+         Поиск терминалов. Список terminalDto, если существуют подходящие терминалы.
+
+Пример запроса
+
+  https://localhost:8080/resto/api/corporation/terminals/search?key=71046728-36fa-053c-b01c-c5b43bfd277f&anonymous=false
+
+Получение настроек корпорации
+
+Доступ
+
+Чтобы пользоваться API настроек предприятия:
+У пользователя, под чьим именем осуществляется вход, должно быть право B_ADM "Администрирование системы".
+Версия iiko: 6.2
+        
+	                	https://host:port/resto/api/corporation/settings         
+Результат
+
+Json структура настроек предприятия
+
+Поле
+	Значение
+	Результат
+
+vatAccounting	
+VAT_INCLUDED_IN_PRICE,
+VAT_NOT_INCLUDED_IN_PRICE	
+"НДС вкл. в цену закупки".
+"НДС не вкл. в цену закупки".
+Пример запроса и результата
+
+https://localhost:8080/resto/api/v2/corporation/settings
+
+	
+Copy Code
+Код
+	{
+  "vatAccounting":"VAT_INCLUDED_IN_PRICE"
+}
+
+  
+
+    [+]
+    
+      XSD Группа отделений и точек продаж
+    
+  
+  
+
+    [-]
+    
+     XSD Группа отделений и точек продаж
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+ 
+    <xs:element name="groupDto" type="groupDto"/>
+ 
+    <xs:complexType name="groupDto">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="1"/>
+            <xs:element name="name" type="xs:string" minOccurs="1"/>
+            <xs:element name="departmentId" type="xs:string" minOccurs="0"/>
+            <!--
+            Режим работы (обслуживания).
+            @since 6.2
+            -->
+            <xs:element name="groupServiceMode" type="groupServiceModeDto" minOccurs="1"/>
+            <xs:element name="pointOfSaleDtoes" minOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="pointOfSaleDto" type="pointOfSaleDto" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="restaurantSectionInfos" minOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="restaurantSectionInfo" type="idName" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+ 
+    <xs:simpleType name="groupServiceModeDto">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="FAST_FOOD"/>
+            <xs:enumeration value="TABLE_SERVICE"/>
+            <xs:enumeration value="PETROLEUM"/>
+        </xs:restriction>
+    </xs:simpleType>
+     
+    <xs:complexType name="pointOfSaleDto">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="1"/>
+            <xs:element name="name" type="xs:string" minOccurs="1"/>
+            <xs:element name="main" type="xs:boolean" minOccurs="1"/>
+            <xs:element name="cashRegisterInfo" type="idName" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+ 
+    <xs:complexType name="idName">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="1"/>
+            <xs:element name="name" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+  
+
+  
+
+    [+]
+    
+      XSD Терминал
+    
+  
+  
+
+    [-]
+    
+     XSD Терминал
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+ 
+    <xs:element name="terminalDto" type="terminalDto"/>
+ 
+    <xs:complexType name="terminalDto">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="1"/>
+            <xs:element name="name" type="xs:string" minOccurs="1"/>
+            <xs:element name="computerName" type="xs:string" minOccurs="0"/>
+            <xs:element name="anonymous" type="xs:boolean" minOccurs="1"/>
+            <xs:element name="groupInfo" type="idName" minOccurs="0"/>
+            <xs:element name="restaurantSectionIds" minOccurs="1">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="i" type="xs:string" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+ 
+    <xs:complexType name="idName">
+        <xs:sequence>
+            <xs:element name="id" type="xs:string" minOccurs="1"/>
+            <xs:element name="name" type="xs:string" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>
+  
+
+  
+
+    [+]
+    
+      XSD Элемент иерархии корпорации
+    
+  
+  
+
+    [-]
+    
+     XSD Элемент иерархии корпорации
+    
+  
+  
+
+     
+	
+Copy Code
+XML
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+    <xs:element name="corporateItemDto" type="corporateItemDto"/>
+
+    <xs:complexType name="corporateItemDto">
+        <xs:sequence>
+            <!-- id объекта иерархии (guid)  -->
+            <xs:element name="id" type="xs:string" minOccurs="1"/>
+            <!-- id родительского объекта иерархии (guid)-->
+            <xs:element name="parentId" type="xs:string" minOccurs="0"/>
+            <!-- Код счета -->
+            <xs:element name="code" type="xs:string" minOccurs="0"/>
+            <!-- Наименование -->
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+            <!-- Тип объекта (ИМЯ КЛАССА в верхнем регистре) -->
+            <xs:element name="type" type="xs:string" minOccurs="1"/>
+            <!-- ИНН юрлица -->
+            <xs:element name="taxpayerIdNumber" type="xs:string" minOccurs="1"/>
+            <!--
+            Расширенная информация по юрлицу
+            @since 6.3
+            -->
+            <xs:element name="jurPersonAdditionalPropertiesDto" type="jurPersonAdditionalPropertiesDto" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="jurPersonAdditionalPropertiesDto">
+        <xs:sequence>
+            <!-- ИНН -->
+            <xs:element name="taxpayerId" type="xs:string" minOccurs="0"/>
+            <!-- КПП -->
+            <xs:element name="accountingReasonCode" type="xs:string" minOccurs="0"/>
+            <!-- ОКПО -->
+            <xs:element name="businessClassificationCode" type="xs:string" minOccurs="0"/>
+            <!-- ОКДП -->
+            <xs:element name="economicActivityClassificationCode" type="xs:string" minOccurs="0"/>
+            <!-- International Bank Account Number -->
+            <xs:element name="iban" type="xs:string" minOccurs="0"/>
+            <!-- SWIFT BIC -->
+            <xs:element name="swiftBic" type="xs:string" minOccurs="0"/>
+            <!-- Регистрационный номер -->
+            <xs:element name="registrationNumber" type="xs:string" minOccurs="0"/>
+            <!-- Адрес -->
+            <xs:element name="address" type="xs:string" minOccurs="0"/>
+            <!-- Расчетный счет -->
+            <xs:element name="settlementAccount" type="xs:string" minOccurs="0"/>
+            <!-- БИК -->
+            <xs:element name="bik" type="xs:string" minOccurs="0"/>
+            <!-- Банк -->
+            <xs:element name="bank" type="xs:string" minOccurs="0"/>
+            <!-- Город Банка -->
+            <xs:element name="bankCity" type="xs:string" minOccurs="0"/>
+            <!-- Корреспондентский счет -->
+            <xs:element name="correspondentAccount" type="xs:string" minOccurs="0"/>
+            <!-- Телефон -->
+            <xs:element name="phone" type="xs:string" minOccurs="0"/>
+            <!-- Global Location Number -->
+            <xs:element name="gln" type="xs:string" minOccurs="0"/>
+            <!-- Описание -->
+            <xs:element name="description" type="xs:string" minOccurs="0"/>
+            <!-- Детализированный юридический адрес -->
+            <xs:element name="legalAddressDto" type="legalAddressDto" minOccurs="0"/>
+            <!-- Данные о представителях компании (Map) -->
+            <xs:element name="officialEmployees" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="i" type="officialEmployeeDto" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="officialEmployeeDto">
+        <xs:sequence>
+            <!-- ZIP код -->
+            <xs:element name="role" type="xs:string" minOccurs="0"/>
+            <!-- Офис -->
+            <xs:element name="name" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="legalAddressDto">
+        <xs:sequence>
+            <!-- ZIP код -->
+            <xs:element name="zipCode" type="xs:string" minOccurs="0"/>
+            <!-- Офис -->
+            <xs:element name="office" type="xs:string" minOccurs="0"/>
+            <!-- Строение -->
+            <xs:element name="building" type="xs:string" minOccurs="0"/>
+            <!-- Дом -->
+            <xs:element name="house" type="xs:string" minOccurs="0"/>
+            <!-- Улица -->
+            <xs:element name="street" type="xs:string" minOccurs="0"/>
+            <!-- Населенный пункт -->
+            <xs:element name="community" type="xs:string" minOccurs="0"/>
+            <!-- Город -->
+            <xs:element name="city" type="xs:string" minOccurs="0"/>
+            <!-- Район -->
+            <xs:element name="district" type="xs:string" minOccurs="0"/>
+            <!-- Регион -->
+            <xs:element name="region" type="xs:string" minOccurs="0"/>
+            <!-- Страна -->
+            <xs:element name="country" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="officialEmployeeRoleDto">
+        <xs:restriction base="xs:string">
+            <!-- Бухгалтер -->
+            <xs:enumeration value="ACCOUNTANT"/>
+            <!-- Руководитель -->
+            <xs:enumeration value="LEADER"/>
+            <!-- Технолог -->
+            <xs:enumeration value="TECHNOLOGIST"/>
+            <!-- Зав. производством -->
+            <xs:enumeration value="WORKS_MANAGER"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

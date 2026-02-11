@@ -1,0 +1,530 @@
+Пользовательские категории
+
+  
+
+    
+
+  
+Получение пользовательских категорий (GET)
+Параметры запроса
+Результат (Список EntityDto)
+Что в ответе
+Пример запроса и результат
+Получение пользовательских категорий (POST)
+Параметры запроса
+Что в ответе
+Импорт пользовательской категории
+Тело запроса
+Что в ответе
+Примеры запроса и результат
+Редактирование пользовательской категории
+Тело запроса
+Что в ответе
+Пример запроса и результат
+Удаление пользовательской категории
+Тело запроса
+Что в ответе
+Пример запроса и результат
+Восстановление пользовательской категории
+Тело запроса
+Что в ответе
+Примеры запроса и результат 
+
+  
+  
+
+  
+
+   Получение пользовательских категорий (GET)
+
+  
+Версия iiko: 6.2
+  
+    
+	
+        
+      	https://host:port/resto/api/v2/           entities/products/category/list        
+    
+  
+
+Параметры запроса
+
+  
+    
+      
+
+                                Параметр                    
+                                Тип                    
+                                Описание                    
+      
+    
+    
+      
+
+        	           includeDeleted         
+        	           Boolean         
+        	           Включать ли в результат удаленные элементы. По умолчанию false.         
+      
+      
+
+        	           ids         
+        	           List<UUID>         
+        	           Возвращаемые элементы должны иметь id из этого списка.         
+      
+    
+	revisionFrom
+	-1, число	
+Номер ревизии, начиная с которой  необходимо отфильтровать сущности. Не включающий саму ревизию, т.е.  ревизия объекта > revisionFrom.
+По умолчанию (неревизионный запрос) revisionFrom = -1
+    
+  
+   Результат (Список EntityDto) 
+
+  
+    
+      
+
+                                Параметр                    
+                                Тип                    
+                                Описание                    
+      
+    
+    
+      
+
+        	           id         
+        	           UUID         
+        	           UUID категории         
+      
+      
+
+        	           deleted         
+        	           Boolean         
+        	           Удалена ли данная категория         
+      
+      
+
+        	           name         
+        	           String         
+        	           Имя категории.         
+      
+    
+  
+Что в ответе
+
+             Список пользовательских категорий           
+        
+
+  
+
+Пример запроса и результат
+
+Запрос
+
+   https://localhost:8080/resto/api/v2/entities/products/category/list 
+
+Результат
+
+	
+Copy Code
+JSON
+	[{ 
+  "id":"7e29cd73-05da-7ac4-0165-0f11a132002b",
+  "rootType":"ProductCategory",
+  "deleted":false,
+  "code":null,
+  "name":"Категория 1"
+}] 
+
+   Получение пользовательских категорий (POST)
+   
+Версия iiko: 6.4
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/products/category/list
+      
+    
+  
+
+Параметры запроса
+   
+Content-Type: application/x-www-form-urlencoded            
+                                 Параметр                             Версия
+                        Тип                                                     Описание                                            
+         	           includeDeleted                  	 6.4
+	           Boolean                  	           Включать ли в результат удаленные элементы. По умолчанию false.                       
+         	           ids                  	 6.4
+	           List<UUID>                  	           Возвращаемые элементы должны иметь id из этого списка.         
+	revisionFrom
+	 6.4
+	-1, число
+	
+Номер ревизии, начиная с которой  необходимо отфильтровать сущности. Не включающий саму ревизию, т.е.  ревизия объекта > revisionFrom.
+По умолчанию (неревизионный запрос) revisionFrom = -1
+Что в ответе
+
+             
+                   
+             Список пользовательских категорий                    
+ 
+
+   Импорт пользовательской категории
+
+  
+Версия iiko: 6.2        
+	                	         https://host:port/resto/api/v2/entities/products/category/save
+Тело запроса
+
+  
+            
+              
+                
+
+                                                              Поле                                        
+                                                              Тип данных                                        
+                                                              Значение                                        
+                
+              
+              
+                
+
+                  	                     name                   
+                  	                     String                   
+                  	                     Имя категории.                   
+                
+              
+            
+        
+Что в ответе
+
+             
+                   
+             Json структура результата импорта.          
+Результат 
+
+  
+    
+      
+
+                                Параметр                    
+                                Тип, формат                    
+                                Описание                    
+      
+    
+    
+      
+
+        	           result         
+        	           Enum:           
+           "SUCCESS",           
+           "ERROR"         
+        	           Результата операции.         
+      
+      
+
+        	           errors         
+        	           List<ErrorDto>         
+        	
+          
+             Список ошибок, не позволивших сделать успешный импорт документа.           
+        
+      
+      
+
+        	           response         
+        	           EntityDto         
+        	
+          
+             В случае успешного импорта - сохраненная пользовательская категория,             
+             в противном случае импортируемый объект.           
+            
+              
+                
+
+                                                              Поле                                        
+                                                              Тип данных                                        
+                                                              Значение                                        
+                
+              
+              
+                
+
+                  	                     id                   
+                  	                     UUID                   
+                  	                     UUID категории                   
+                
+                
+
+                  	                     deleted                   
+                  	                     Boolean                   
+                  	                     Удалена.                   
+                
+                
+
+                  	                     name                   
+                  	                     String                   
+                  	                     Имя категории.                   
+                
+              
+            
+        
+      
+    
+  
+   Примеры запроса и результат
+
+Запрос
+
+    https://localhost:8080/resto/api/v2/entities/products/category/save 
+
+Результат
+
+	
+Copy Code
+JSON
+	{  
+   "name":"Категория 1"
+}
+
+   Пример успешного результата вызова API: entities/products/category/save 
+
+   
+	
+Copy Code
+JSON
+	{  
+   "result":"SUCCESS",
+   "errors":null,
+   "response":{  
+      "id":"7e29cd73-05da-7ac4-0165-0f11a132002b",
+      "rootType":"ProductCategory",
+      "deleted":false,
+      "code":null,
+      "name":"Категория 1"
+   }
+} 
+
+   Пример НЕ  успешного результата вызова API: entities/products/category/save 
+
+  Category name is not specified or consist of whitespaces 
+
+   
+ 
+
+   Редактирование пользовательской категории
+
+  
+Версия iiko: 6.2        
+	                	         https://host:port/resto/api/v2/entities/products/category/update
+Тело запроса
+
+            
+              
+              
+
+                  Поле                                        
+                                                              Тип данных                                        
+                                                              Значение                                        
+                
+                
+
+                  	                     id                   
+                  	                     UUID                   
+                  	                     UUID редактируемой категории.                   
+                
+                
+
+                  	                     name                   
+                  	                     String                   
+                  	                     Новое имя категории.                   
+                
+              
+            
+        
+Что в ответе
+
+             
+                   
+             Json структура результата редактирования.          
+   Пример  запроса и результат
+
+Запрос 
+
+https://localhost:8080/resto/api/v2/entities/products/category/save 
+
+Результат
+
+	
+Copy Code
+JSON
+	{ 
+   "id":"70936cd4-474d-4b5f-b9bc-ac2799bfc137",
+   "name":"Категория 2"
+}
+
+   Пример успешного результата вызова API: entities/products/category/update 
+
+   
+	
+Copy Code
+JSON
+	{  
+   "result":"SUCCESS",
+   "errors":null,
+   "response":{  
+      "id":"70936cd4-474d-4b5f-b9bc-ac2799bfc137",
+      "rootType":"ProductCategory",
+      "deleted":false,
+      "code":null,
+      "name":"Категория 2"
+   }
+}
+
+   Пример НЕ успешного результата вызова API: entities/products/category/update 
+
+  Category name is not specified or consist of whitespaces
+  
+ 
+
+     
+
+   Удаление пользовательской категории
+
+  
+Версия iiko: 6.2        
+	                	         https://host:port/resto/api/v2/entities/products/category/delete
+Тело запроса
+
+            
+              
+              
+
+                  Поле                                        
+                                                              Тип данных                                        
+                                                              Значение                                        
+                
+                
+
+                  	                     id                   
+                  	                     UUID                   
+                  	                     UUID удаляемой категории.                   
+                
+                
+            
+        
+Что в ответе
+
+             
+                   
+             Json структура результата удаления.            Содержит результат удаления. Нельзя удалить уже удаленные объекты.                  
+   Пример  запроса и результат
+
+Запрос  
+
+   https://localhost:8080/resto/api/v2/entities/products/category/delete 
+
+Результат
+
+	
+Copy Code
+JSON
+	{ 
+   "id":"70936cd4-474d-4b5f-b9bc-ac2799bfc137" 
+}
+
+   Пример успешного результата вызова API: entities/products/category/delete 
+
+   
+	
+Copy Code
+JSON
+	{  
+   "result":"SUCCESS",
+   "errors":null,
+   "response":{  
+      "id":"70936cd4-474d-4b5f-b9bc-ac2799bfc137",
+      "rootType":"ProductCategory",
+      "deleted":true,
+      "code":null,
+      "name":"Категория 1"
+   }
+}
+
+   Пример НЕ успешного результата вызова API: entities/products/category/save 
+
+   Could not delete already deleted product category: [7e29cd73-05da-7ac4-0165-0f11a132002b]. 
+
+   
+ 
+
+ 
+
+   Восстановление пользовательской категории
+
+  
+Версия iiko: 6.2        
+	                	         https://host:port/resto/api/v2/entities/products/category/restore
+Тело запроса
+
+            
+              
+              
+
+                  Поле                                        
+                                                              Тип данных                                        
+                                                              Значение                                        
+                
+                
+
+                  	                     id                   
+                  	                     UUID                   
+                  	                     UUID восстанавливаемой категории.                   
+                
+                
+            
+        
+Что в ответе
+
+             
+                   
+Json структура результата восстановления.            Содержит результат восстановления. Нельзя восстановить НЕ удаленные объекты.        
+         
+  Примеры запроса и результат
+
+Запрос
+
+   http://localhost:8080/resto/api/v2/entities/products/category/restore 
+
+Результат
+
+	
+Copy Code
+JSON
+	{ 
+   "id":"70936cd4-474d-4b5f-b9bc-ac2799bfc137" 
+}
+
+   Пример успешного результата вызова API: entities/products/category/restore 
+
+   
+	
+Copy Code
+JSON
+	{  
+   "result":"SUCCESS",
+   "errors":null,
+   "response":{  
+      "id":"70936cd4-474d-4b5f-b9bc-ac2799bfc137",
+      "rootType":"ProductCategory",
+      "deleted":false,
+      "code":null,
+      "name":"Категория 1"
+   }
+}
+
+   Пример НЕ успешного результата вызова API: entities/products/category/restore 
+
+   Could not restore not deleted product category: [70936cd4-474d-4b5f-b9bc-ac2799bfc137]​.

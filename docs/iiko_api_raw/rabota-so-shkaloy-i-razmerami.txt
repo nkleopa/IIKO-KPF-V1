@@ -1,0 +1,2665 @@
+Работа со шкалой и размерами
+
+  
+
+    
+
+  
+Доступ
+Описание шкалы с размерами
+Получение шкал размеров (GET)
+Параметры запроса
+Что в ответе
+Пример запроса и результат
+Получение шкал размеров (POST)
+Тело запроса
+Что в ответе
+Получение шкалы размеров по id
+Что в ответе
+Создание шкалы
+Тело запроса
+Что в ответе
+Пример запроса и результат
+Редактирование шкалы
+Что в ответе
+Удаление шкал
+Тело запроса
+Что в ответе
+Пример запроса и результат
+Восстановление шкал
+Что в ответе
+Пример запроса и результат
+Получение шкалы с коэффициентами и доступностью размеров
+Параметры запроса
+Что в ответе
+Примеры запроса и результат
+Получение шкал с коэффициентами и доступностью размеров по списку продуктов (GET)
+Параметры запроса
+Что в ответе
+Пример запроса и результат
+Получение шкал с коэффициентами и доступностью размеров по списку продуктов (POST)
+Параметры запроса
+Что в ответе
+Задание/редактирование шкалы с доступностью и коэффициентами для размеров
+Параметры запроса
+Тело запроса
+Что в ответе
+Пример запроса и результат
+Удаление шкалы размеров у продукта
+Параметры запроса
+Что в ответе 
+
+  
+  
+
+  
+
+   Доступ  
+
+   Чтобы пользоваться данным API: 
+
+  
+     У пользователя, под чьим именем осуществляется вход, должно быть право B_EN "Редактирование номенклатурных справочников".   
+
+  Описание шкалы с размерами
+
+ 
+
+  
+    
+
+      
+        
+
+          Параметр
+        
+      
+      
+        
+
+          Тип, формат
+        
+      
+      
+        
+
+          Описание
+        
+      
+    
+  
+  
+    
+
+      	
+        id
+      
+      	
+        UUID
+      
+      	
+        UUID шкалы.
+      
+    
+    
+
+      	
+        deleted
+      
+      	
+        Boolean
+      
+      	
+        Удалена или нет.
+      
+    
+    
+
+      	
+        name
+      
+      	
+        String
+      
+      	
+        Название шкалы.
+      
+    
+    
+
+      	
+        productSizes
+      
+      	
+        List<ProductSizeDto>
+      
+      	
+        
+
+          Список размеров
+          
+         
+        
+          
+            
+
+              
+                
+
+                  Параметр
+                
+              
+              
+                
+
+                  Тип, формат
+                
+              
+              
+                
+
+                  Описание
+                
+              
+            
+          
+          
+            
+
+              	
+                id 
+              
+              	
+                UUID
+              
+              	
+                UUID размера.
+              
+            
+            
+
+              	
+                deleted 
+              
+              	
+                Boolean
+              
+              	
+                Удалён или нет.
+              
+            
+            
+
+              	                 
+
+                name 
+              
+              	
+                String
+                
+               
+              	
+                Название размера.
+                
+               
+            
+            
+
+              	
+                shortName
+                
+               
+              	
+                String
+                
+               
+              	
+                Короткое название.
+                
+               
+            
+            
+
+              	
+                priority
+                
+               
+              	
+                Integer
+                
+               
+              	
+                Местоположение размера в списке размеров шкалы.
+                
+               
+            
+            
+
+              	
+                default
+                
+               
+              	
+                Boolean
+                
+               
+              	
+                Является ли размером по умолчанию для данной шкалы. У шкалы может быть не больше одного размера по умолчанию.
+                
+               
+            
+          
+        
+      
+    
+  
+
+   
+ 
+
+  Получение шкал размеров (GET)
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/productScales
+      
+    
+  
+
+Параметры запроса
+
+          
+            
+
+              
+                
+
+                  Параметр
+                
+              
+              
+                
+
+                  Тип 
+                
+              
+              
+                
+
+                  Описание
+                
+              
+            
+          
+          
+            
+
+              	
+                ids
+              
+              	
+                List<UUID>
+              
+              	
+                Включать ли в ответ удаленные элементы. По умолчанию false.
+              
+            
+            
+
+              	
+                includeDeleted
+                
+               
+              	
+                Boolean
+                
+               
+              	
+                Включать ли в ответ удаленные элементы. По умолчанию false.
+                
+               
+            
+          
+        
+      
+Что в ответе
+
+  
+        Список шкал с размерами
+        
+
+  Пример запроса и результат
+
+  Запрос
+
+  https://localhost:8080/resto/api/v2/entities/productScales?includeDeleted=true&ids=64efc54c-ad17-4923-9d94-2720822fdd7e&ids=f56f3600-c883-495e-93dd-298219a416e4
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	[
+    {
+        "id": "64efc54c-ad17-4923-9d94-2720822fdd7e",
+        "deleted": false,
+        "name": "Размеры для пива",
+        "productSizes": [
+            {
+                "id": "ed78afdf-e74b-49bb-92fa-d37944b5fa51",
+                "deleted": false,
+                "name": "кружка (0.5 л)",
+                "shortName": "0.5",
+                "priority": 0,
+                "default": true
+            },
+            {
+                "id": "f879d845-537d-4ebc-a513-ff580fc9a4e1",
+                "deleted": false,
+                "name": "бокал (0.33 л)",
+                "shortName": "0.33",
+                "priority": 1,
+                "default": false
+            },
+            {
+                "id": "2ede4241-529e-42a4-95b3-6462dc9ea9dd",
+                "deleted": false,
+                "name": "стакан (0.2 л)",
+                "shortName": "0.2",
+                "priority": 2,
+                "default": false
+            },
+            {
+                "id": "97a74df8-7e63-429d-b65a-d07909832a11",
+                "deleted": false,
+                "name": "большая кружка (1 л)",
+                "shortName": "1",
+                "priority": 3,
+                "default": false
+            }
+        ]
+    },
+    {
+        "id": "f56f3600-c883-495e-93dd-298219a416e4",
+        "deleted": false,
+        "name": "Шкала для бургеров",
+        "productSizes": [
+            {
+                "id": "eda25c4b-a02b-4329-ac2d-c748d0a364b2",
+                "deleted": false,
+                "name": "Размер ХХХ",
+                "shortName": "Большой",
+                "priority": 0,
+                "default": false
+            },
+            {
+                "id": "01d4fefb-af03-4cd9-aa6f-09a423045925",
+                "deleted": false,
+                "name": "Размер ХХ",
+                "shortName": "Средний",
+                "priority": 1,
+                "default": false
+            },
+            {
+                "id": "4c12ca38-b558-4d60-a943-bb4eb487d8a5",
+                "deleted": false,
+                "name": "Размер Х",
+                "shortName": "Малый",
+                "priority": 2,
+                "default": false
+            }
+        ]
+    }
+]
+  
+
+   
+ 
+
+  Получение шкал размеров (POST)
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/
+        entities/productScales  
+      
+      
+    
+  
+
+Тело запроса
+
+        
+
+          Content-Type: application/x-www-form-urlencoded
+        
+        
+          
+            
+
+              
+                
+
+                  Параметр
+                
+              
+              
+                
+
+                  Тип 
+                
+              
+              
+                
+
+                  Описание
+                  
+                 
+              
+            
+          
+          
+            
+
+              	
+                ids
+              
+              	
+                List<UUID>
+              
+              	
+                Возвращаемые шкалы размеров должны иметь id из этого списка.
+              
+            
+            
+
+              	
+                includeDeleted
+                
+               
+              	
+                Boolean
+                
+               
+              	
+                Включать ли в ответ удаленные элементы. По умолчанию false.
+                
+            
+          
+        
+      
+Что в ответе
+
+Шкала размеров
+
+  Получение шкалы размеров по id
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/productScales/{productScaleId} 
+      
+    
+  
+
+Параметры запроса
+  
+    
+
+      
+        Параметр
+        
+       
+      
+        Тип
+        
+       
+      
+        Описание
+      
+    
+  
+  
+    
+
+      	
+        productScaleId 
+      
+      	
+        UUID 
+      
+      	
+        UUID шкалы.
+        
+       
+    
+  
+
+  Что в ответе
+
+  Шкала с размерами
+
+  Пример запроса и результат
+
+  
+  Запрос
+
+  https://localhost:8080/resto/api/v2/entities/productScales/64efc54c-ad17-4923-9d94-2720822fdd7e
+
+   
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{
+    "id": "64efc54c-ad17-4923-9d94-2720822fdd7e",
+    "deleted": false,
+    "name": "Размеры для пива",
+    "productSizes": [
+        {
+            "id": "ed78afdf-e74b-49bb-92fa-d37944b5fa51",
+            "deleted": false,
+            "name": "кружка (0.5 л)",
+            "shortName": "0.5",
+            "priority": 0,
+            "default": true
+        },
+        {
+            "id": "f879d845-537d-4ebc-a513-ff580fc9a4e1",
+            "deleted": false,
+            "name": "бокал (0.33 л)",
+            "shortName": "0.33",
+            "priority": 1,
+            "default": false
+        },
+        {
+            "id": "2ede4241-529e-42a4-95b3-6462dc9ea9dd",
+            "deleted": false,
+            "name": "стакан (0.2 л)",
+            "shortName": "0.2",
+            "priority": 2,
+            "default": false
+        },
+        {
+            "id": "97a74df8-7e63-429d-b65a-d07909832a11",
+            "deleted": false,
+            "name": "большая кружка (1 л)",
+            "shortName": "1",
+            "priority": 3,
+            "default": false
+        }
+    ]
+}
+  
+
+   
+ 
+
+  Создание шкалы
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/productScales/save 
+      
+    
+  
+
+Тело запроса 
+
+  
+    
+
+      	
+        Поле
+        
+       
+      	
+        Тип данных
+        
+       
+      	
+        Значение
+        
+       
+    
+    
+
+      	
+        productSizes
+      
+      	
+        List<ProductSizeDto>
+        
+       
+      	
+        
+
+          Список размеров 
+          
+         
+        
+
+          
+            
+              
+
+                
+                  
+
+                    Поле
+                  
+                
+                
+                  Тип 
+                  
+                 
+                
+                  
+
+                    Описание
+                  
+                
+              
+            
+            
+              
+
+                	
+                  name
+                
+                	
+                  String
+                  
+                 
+                	
+                  Название размера
+                
+              
+              
+
+                	
+                  shortName
+                  
+                 
+                	
+                  String
+                  
+                 
+                	
+                  Короткое название
+                  
+                 
+              
+              
+
+                	
+                  priority
+                  
+                 
+                	
+                  Integer
+                  
+                 
+                	
+                  Место в списке
+                  
+                 
+              
+              
+
+                	
+                  default
+                  
+                 
+                	
+                  Boolean
+                  
+                 
+                	
+                  Является ли размером по умолчанию
+                  
+                 
+              
+            
+          
+        
+      
+    
+    
+
+      	
+        name
+        
+       
+      	
+        String
+        
+       
+      	
+        Название шкалы
+        
+       
+    
+  
+
+  
+        
+      
+
+  
+
+   
+
+  
+
+    [+]
+    
+      Пример тела запроса 
+    
+  
+  
+
+    [-]
+    
+      Пример тела запроса  
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{
+    "name": "Размеры для пива",
+    "productSizes": [
+        {
+            "name": "кружка (0.5 л)",
+            "shortName": "0.5",
+            "priority": 0,
+            "default": true
+        },
+        {
+            "name": "бокал (0.33 л)",
+            "shortName": "0.33",
+            "priority": 1,
+            "default": false
+        },
+        {
+            "name": "стакан (0.2 л)",
+            "shortName": "0.2",
+            "priority": 2,
+            "default": false
+        },
+        {
+            "name": "большая кружка (1 л)",
+            "shortName": "1",
+            "priority": 3,
+            "default": false
+        }
+    ]
+}
+  
+
+  Что в ответе
+
+   Созданная шкала с размерами. 
+      
+
+  Пример запроса и результат
+
+  
+  
+  Запрос
+
+  https://localhost:8080/resto/api/v2/entities/productScales/save
+
+   
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{
+    "id": "64efc54c-ad17-4923-9d94-2720822fdd7e",
+    "deleted": false,
+    "name": "Размеры для пива",
+    "productSizes": [
+        {
+            "id": "ed78afdf-e74b-49bb-92fa-d37944b5fa51",
+            "deleted": false,
+            "name": "кружка (0.5 л)",
+            "shortName": "0.5",
+            "priority": 0,
+            "default": true
+        },
+        {
+            "id": "f879d845-537d-4ebc-a513-ff580fc9a4e1",
+            "deleted": false,
+            "name": "бокал (0.33 л)",
+            "shortName": "0.33",
+            "priority": 1,
+            "default": false
+        },
+        {
+            "id": "2ede4241-529e-42a4-95b3-6462dc9ea9dd",
+            "deleted": false,
+            "name": "стакан (0.2 л)",
+            "shortName": "0.2",
+            "priority": 2,
+            "default": false
+        },
+        {
+            "id": "97a74df8-7e63-429d-b65a-d07909832a11",
+            "deleted": false,
+            "name": "большая кружка (1 л)",
+            "shortName": "1",
+            "priority": 3,
+            "default": false
+        }
+    ]
+}
+  
+
+  Редактирование шкалы
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/productScales/update
+      
+    
+  
+
+  Тело запроса
+  
+ 
+
+  
+    
+
+      	
+        Поле
+        
+       
+      	
+        Тип
+        
+       
+      	
+        Значение
+        
+       
+    
+    
+
+      	
+        id
+        
+       
+      	
+        UUID
+        
+       
+      	
+        UUID шкалы
+        
+       
+    
+    
+
+      	
+        name
+        
+       
+      	
+        String
+        
+       
+      	
+        Название шкалы
+        
+       
+    
+    
+
+      	
+        productSizes
+      
+      	
+        List<ProductSizeDto>
+        
+       
+      	
+        
+
+          Список размеров
+        
+        
+
+          
+            
+              
+
+                
+                  
+
+                    Поле
+                  
+                
+                
+                  Тип 
+                
+                
+                  
+
+                    Описание
+                  
+                
+              
+            
+            
+              
+
+                	
+                  id
+                
+                	
+                  UUID
+                  
+                 
+                	
+                  UUID размера. Если не задан, то создаётся новый
+                
+              
+              
+
+                	
+                  deleted
+                  
+                 
+                	
+                  Boolean
+                  
+                 
+                	
+                  Удалён или нет
+                  
+                 
+              
+              
+
+                	
+                  name
+                  
+                 
+                	
+                  String
+                  
+                 
+                	
+                  Название размера
+                  
+                 
+              
+              
+
+                	
+                  shortName
+                  
+                 
+                	
+                  String
+                  
+                 
+                	
+                  Короткое название
+                  
+                 
+              
+              
+
+                	
+                  priority
+                  
+                 
+                	
+                  Integer
+                  
+                 
+                	
+                  Место в списке
+                  
+                 
+              
+              
+
+                	
+                  default
+                  
+                 
+                	
+                  Boolean
+                  
+                 
+                	
+                  Является ли размером по умолчанию
+                  
+                 
+              
+            
+          
+        
+      
+    
+  
+
+   Что в ответе
+
+  Отредактированная шкала с размерами
+
+  Удаление шкал
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/productScales/delete 
+      
+    
+  
+
+Тело запроса
+
+  
+    
+
+      	
+        Поле
+        
+       
+      	
+        Тип данных
+        
+       
+      	
+        Значение
+        
+       
+    
+    
+
+      	
+        items
+      
+      	
+        List<IdCodetDto>
+        
+       
+      	
+        
+
+          Список UUID шкал, которые нужно удалить. 
+          
+         
+        
+
+          
+            
+              
+
+                
+                  
+
+                    Поле
+                  
+                
+                
+                  Тип данных
+                  
+                 
+                
+                  
+
+                    Описание
+                  
+                
+              
+            
+            
+              
+
+                	
+                  id
+                
+                	
+                  UUID
+                  
+                 
+                	
+                  UUID шкалы.
+                
+              
+            
+          
+        
+      
+    
+  
+
+   
+	
+Copy Code
+Код
+	{ 
+   "items":[ 
+      { 
+         "id":"64efc54c-ad17-4923-9d94-2720822fdd7e"
+      }
+   ]
+}   
+ 
+
+Что в ответе
+
+   Удалённая шкала с размерами 
+
+  Пример запроса и результат
+
+  Запрос
+
+  https://localhost:8080/resto/api/v2/entities/productScales/delete
+  
+   
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{
+    "id": "64efc54c-ad17-4923-9d94-2720822fdd7e",
+    "deleted": true,
+    "name": "Размеры для пива",
+    "productSizes": [
+        {
+            "id": "ed78afdf-e74b-49bb-92fa-d37944b5fa51",
+            "deleted": false,
+            "name": "кружка (0.5 л)",
+            "shortName": "0.5",
+            "priority": 0,
+            "default": true
+        },
+        {
+            "id": "f879d845-537d-4ebc-a513-ff580fc9a4e1",
+            "deleted": false,
+            "name": "бокал (0.33 л)",
+            "shortName": "0.33",
+            "priority": 1,
+            "default": false
+        },
+        {
+            "id": "2ede4241-529e-42a4-95b3-6462dc9ea9dd",
+            "deleted": false,
+            "name": "стакан (0.2 л)",
+            "shortName": "0.2",
+            "priority": 2,
+            "default": false
+        },
+        {
+            "id": "97a74df8-7e63-429d-b65a-d07909832a11",
+            "deleted": false,
+            "name": "большая кружка (1 л)",
+            "shortName": "1",
+            "priority": 3,
+            "default": false
+        }
+    ]
+}
+  
+
+   
+ 
+
+  Восстановление шкал
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/productScales/restore 
+      
+    
+  
+
+Тело запроса
+  
+    
+
+      	
+        Поле
+        
+       
+      	
+        Тип данных
+        
+       
+      	
+        Значение
+        
+       
+    
+    
+
+      	
+        items
+      
+      	
+        List<IdCodetDto>
+        
+       
+      	
+        
+
+          Список UUID шкал, которые нужно восстановить. 
+          
+         
+        
+
+          
+            
+              
+
+                
+                  
+
+                    Поле
+                  
+                
+                
+                  Тип данных
+                  
+                 
+                
+                  
+
+                    Описание
+                  
+                
+              
+            
+            
+              
+
+                	
+                  id
+                
+                	
+                  UUID
+                  
+                 
+                	
+                  UUID шкалы.
+                
+              
+            
+          
+        
+      
+    
+  
+
+   
+	
+Copy Code
+Код
+	{ 
+   "items":[ 
+      { 
+         "id":"64efc54c-ad17-4923-9d94-2720822fdd7e"
+      }
+   ]
+} 
+
+   
+
+Что в ответе
+
+   
+        Восстановленная шкала с размерами 
+      
+
+  Пример запроса и результат
+
+Запрос
+
+  https://localhost:8080/resto/api/v2/entities/productScales/restore
+
+   
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{
+    "id": "64efc54c-ad17-4923-9d94-2720822fdd7e",
+    "deleted": false,
+    "name": "Размеры для пива",
+    "productSizes": [
+        {
+            "id": "ed78afdf-e74b-49bb-92fa-d37944b5fa51",
+            "deleted": false,
+            "name": "кружка (0.5 л)",
+            "shortName": "0.5",
+            "priority": 0,
+            "default": true
+        },
+        {
+            "id": "f879d845-537d-4ebc-a513-ff580fc9a4e1",
+            "deleted": false,
+            "name": "бокал (0.33 л)",
+            "shortName": "0.33",
+            "priority": 1,
+            "default": false
+        },
+        {
+            "id": "2ede4241-529e-42a4-95b3-6462dc9ea9dd",
+            "deleted": false,
+            "name": "стакан (0.2 л)",
+            "shortName": "0.2",
+            "priority": 2,
+            "default": false
+        },
+        {
+            "id": "97a74df8-7e63-429d-b65a-d07909832a11",
+            "deleted": false,
+            "name": "большая кружка (1 л)",
+            "shortName": "1",
+            "priority": 3,
+            "default": false
+        }
+    ]
+}
+  
+
+   
+ 
+
+  Получение шкалы с коэффициентами и доступностью размеров
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/products/{productId}/productScale  
+      
+    
+  
+
+Параметры запроса
+
+        
+          
+            
+
+              
+                
+
+                  Параметр
+                
+              
+              
+                
+
+                  Тип
+                
+              
+              
+                
+
+                  Описание
+                
+              
+            
+          
+          
+            
+
+              	
+                productId 
+              
+              	
+                UUID 
+              
+              	
+                UUID продукта. 
+              
+            
+          
+        
+      
+
+  Что в ответе
+
+  
+        Шкала с коэффициентами и доступностью размеров 
+        
+
+  
+    
+
+      
+        Параметр
+      
+      
+        Тип, формат
+      
+      
+        Описание
+      
+    
+  
+  
+    
+
+      	
+        id
+      
+      	
+        UUID
+      
+      	
+        UUID шкалы.
+      
+    
+    
+
+      	
+        deleted
+      
+      	
+        Boolean
+      
+      	
+        Удалена или нет.
+      
+    
+    
+
+      	
+        name
+      
+      	
+        String
+      
+      	
+        Название шкалы.
+      
+    
+    
+
+      	
+        productSizes
+      
+      	
+        List<ProductSizeDto>
+      
+      	
+        
+
+          Список размеров с коэффициентами и доступностью. 
+          
+         
+        
+          
+            
+
+              
+                
+
+                  Поле
+                
+              
+              
+                
+
+                  Тип
+                
+              
+              
+                
+
+                  Описание
+                
+              
+            
+          
+          
+            
+
+              	
+                id
+              
+              	
+                UUID
+              
+              	
+                UUID размера.
+              
+            
+            
+
+              	
+                deleted
+              
+              	
+                Boolean
+              
+              	
+                Удалён или нет.
+              
+            
+            
+
+              	
+                name
+              
+              	
+                String
+              
+              	
+                Название размера.
+              
+            
+            
+
+              	
+                shortName
+                
+               
+              	
+                String
+                
+               
+              	
+                Короткое название.
+                
+               
+            
+            
+
+              	
+                priority
+                
+               
+              	
+                Integer
+                
+               
+              	
+                Местоположение размера в списке размеров шкалы.
+                
+               
+            
+            
+
+              	
+                default
+                
+               
+              	
+                Boolean
+                
+               
+              	
+                Является ли размером по умолчанию для данной шкалы.
+                
+               
+            
+            
+
+              	
+                disabled
+                
+               
+              	
+                Boolean
+                
+               
+              	
+                Доступен ли данный размер в текущем продукте
+                
+               
+            
+            
+
+              	
+                factors
+              
+              	
+                List<ProductSizeFactorDto> 
+              
+              	
+                
+
+                  Коэффициенты для данного размера 
+                  
+                 
+                
+                  
+                    
+
+                      
+                        
+
+                          Поле
+                        
+                      
+                      
+                        
+
+                          Тип
+                        
+                      
+                      
+                        
+
+                          Описание
+                        
+                      
+                    
+                  
+                  
+                    
+
+                      	
+                        startNumber
+                      
+                      	
+                        Integer
+                      
+                      	
+                        Количество от
+                      
+                    
+                    
+
+                      	
+                        factor
+                      
+                      	
+                        BigDecimal
+                      
+                      	
+                        Коэффициент
+                      
+                    
+                  
+                
+              
+            
+          
+        
+      
+    
+  
+
+ 
+
+  Примеры запроса и результат
+
+  Запрос
+
+https://localhost:8080/resto/api/v2/entities/products/f928e371-81ac-409d-86d7-0ebb16fb1223/productScale
+ 
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{
+    "result": "SUCCESS",
+    "errors": null,
+    "response": {
+        "id": "64efc54c-ad17-4923-9d94-2720822fdd7e",
+        "deleted": false,
+        "name": "Размеры для пива",
+        "productSizes": [
+            {
+                "id": "ed78afdf-e74b-49bb-92fa-d37944b5fa51",
+                "deleted": false,
+                "name": "кружка (0.5 л)",
+                "shortName": "0.5",
+                "priority": 0,
+                "disabled": false,
+                "factors": [
+                    {
+                        "startNumber": 0,
+                        "factor": 1
+                    }
+                ],
+                "default": true
+            },
+            {
+                "id": "f879d845-537d-4ebc-a513-ff580fc9a4e1",
+                "deleted": false,
+                "name": "бокал (0.33 л)",
+                "shortName": "0.33",
+                "priority": 1,
+                "disabled": false,
+                "factors": [
+                    {
+                        "startNumber": 0,
+                        "factor": 1
+                    }
+                ],
+                "default": false
+            },
+            {
+                "id": "2ede4241-529e-42a4-95b3-6462dc9ea9dd",
+                "deleted": false,
+                "name": "стакан (0.2 л)",
+                "shortName": "0.2",
+                "priority": 2,
+                "disabled": false,
+                "factors": [
+                    {
+                        "startNumber": 0,
+                        "factor": 1
+                    },
+                    {
+                        "startNumber": 1,
+                        "factor": 0.8
+                    },
+                    {
+                        "startNumber": 2,
+                        "factor": 0.6
+                    }
+                ],
+                "default": false
+            },
+            {
+                "id": "97a74df8-7e63-429d-b65a-d07909832a11",
+                "deleted": false,
+                "name": "большая кружка (1 л)",
+                "shortName": "1",
+                "priority": 3,
+                "disabled": false,
+                "factors": [
+                    {
+                        "startNumber": 0,
+                        "factor": 1
+                    }
+                ],
+                "default": false
+            }
+        ]
+    }
+}
+  
+
+Запрос
+ 
+
+  https://localhost:8080/resto/api/v2/entities/products/94c07bee-1382-4a87-b43e-5b88fa561588/productScale
+
+Результат
+
+	
+Copy Code
+Код
+	{
+    "result": "SUCCESS",
+    "errors": null,
+    "response": null
+} 
+
+   
+ 
+
+  Получение шкал с коэффициентами и доступностью размеров по списку продуктов (GET)
+
+  
+    
+	
+        
+      	
+        
+https://host:port/resto/api/v2/entities/products/productScales  
+      
+    
+  
+
+  Параметры запроса
+
+        
+
+          Чтобы задать UUID для нескольких продуктов используем параметр productId несколько раз.  
+          
+         
+        
+          
+            
+
+              
+                
+
+                  Параметр
+                
+              
+              
+                Тип
+                
+               
+              
+                
+
+                  Описание
+                
+              
+            
+          
+          
+            
+
+              	
+                includeDeletedProducts
+              
+              	
+                Boolean
+                
+               
+              	
+                Включать ли в результат шкалы для удалённых продуктов. По умолчанию - false.
+              
+            
+            
+
+              	
+                productId
+                
+               
+              	
+                UUID
+                
+               
+              	
+                
+
+                  UUID продукта. Если не задать, то возвращаются шкалы для всех не удалённых продуктов.
+                
+              
+            
+          
+        
+      
+
+  Что в ответе
+
+        Список пар (productId : шкала)
+        
+
+  Пример запроса и результат
+
+  https://localhost:8080/resto/api/v2/entities/products/productScales?productId=f928e371-81ac-409d-86d7-0ebb16fb1223&productId=c5016116-d4cf-4afe-998e-0059fc0964f2
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{
+    "c5016116-d4cf-4afe-998e-0059fc0964f2": null,
+    "f928e371-81ac-409d-86d7-0ebb16fb1223": {
+        "id": "05a829aa-316a-5977-0169-34e42edd008f",
+        "deleted": false,
+        "name": "Размеры для лимонада",
+        "productSizes": [
+            {
+                "id": "05a829aa-316a-5977-0169-34e42edd0092",
+                "deleted": false,
+                "name": "стакан (0.21 л)",
+                "shortName": "0.21",
+                "priority": 0,
+                "disabled": false,
+                "factors": [
+                    {
+                        "startNumber": 0,
+                        "factor": 1
+                    }
+                ],
+                "default": false
+            },
+            {
+                "id": "05a829aa-316a-5977-0169-34e42edd0091",
+                "deleted": false,
+                "name": "бокал (0.37 л)",
+                "shortName": "0.37",
+                "priority": 1,
+                "disabled": true,
+                "factors": [
+                    {
+                        "startNumber": 0,
+                        "factor": 1.2
+                    }
+                ],
+                "default": true
+            },
+            {
+                "id": "05a829aa-316a-5977-0169-34e42edd0090",
+                "deleted": false,
+                "name": "кружка (0.53 л)",
+                "shortName": "0.53",
+                "priority": 2,
+                "disabled": false,
+                "factors": [
+                    {
+                        "startNumber": 0,
+                        "factor": 1.4
+                    }
+                ],
+                "default": false
+            }
+        ]
+    }
+}
+  
+
+   
+ 
+
+  Получение шкал с коэффициентами и доступностью размеров по списку продуктов (POST)
+
+ 
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/products/productScales  
+      
+    
+  
+
+Параметры запроса
+
+        
+
+          Чтобы задать UUID для нескольких продуктов используем параметр productId несколько раз.
+        
+        
+
+          Content-Type: application/x-www-form-urlencoded  
+          
+         
+        
+          
+            
+
+              
+                
+
+                  Параметр
+                
+              
+              
+                Тип
+                
+               
+              
+                
+
+                  Описание
+                
+              
+            
+          
+          
+            
+
+              	
+                includeDeletedProducts
+              
+              	
+                Boolean
+                
+               
+              	
+                Включать ли в результат шкалы для удалённых продуктов. По умолчанию - false.
+              
+            
+            
+
+              	
+                productId
+                
+               
+              	
+                UUID
+                
+               
+              	
+                
+
+                  UUID продукта. Если не задать, то возвращаются шкалы для всех не удалённых продуктов.
+                
+              
+            
+          
+        
+      
+
+  Что в ответе
+
+        Список пар (productId : шкала)
+        
+
+  Задание/редактирование шкалы с доступностью и коэффициентами для размеров
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/products/{productId}/productScale
+      
+    
+  
+
+  Параметры запроса
+
+  
+    
+
+      
+        
+
+          Параметр
+        
+      
+      
+        Тип, формат
+        
+       
+      
+        
+
+          Описание
+        
+      
+    
+  
+  
+    
+
+      	
+        productId 
+      
+      	
+        UUID
+        
+       
+      	
+        UUID продукта
+      
+    
+  
+
+  Тело запроса
+
+  
+    
+
+      
+        
+
+          Поле
+        
+      
+      
+        Тип 
+      
+      
+        
+
+          Описание
+        
+      
+    
+  
+  
+    
+
+      	
+        id
+      
+      	
+        UUID
+        
+       
+      	
+        UUID шкалы
+      
+    
+    
+
+      	
+        productSizes
+        
+       
+      	
+        List<ProductSizeDto> 
+      
+      	
+        
+
+          Список коэффициентов и доступности для размеров 
+          
+         
+        
+
+          
+            
+              
+
+                
+                  
+
+                    Поле
+                  
+                
+                
+                  Тип
+                  
+                 
+                
+                  
+
+                    Описание
+                  
+                
+              
+            
+            
+              
+
+                	
+                  id
+                
+                	
+                  UUID
+                  
+                 
+                	
+                  UUID размера
+                
+              
+              
+
+                	
+                  disabled
+                
+                	
+                  Boolean
+                  
+                 
+                	
+                  
+
+                    Доступен ли данный размер в текущем продукте
+                  
+                
+              
+              
+
+                	
+                  factors 
+                
+                	
+                  List<ProductSizeFactorDto>
+                  
+                 
+                	
+                  
+
+                    Коэффициенты для данного размера 
+                    
+                   
+                  
+
+                    
+                      
+                        
+
+                          
+                            
+
+                              Поле
+                            
+                          
+                          
+                            Тип
+                            
+                           
+                          
+                            
+
+                              Описание
+                            
+                          
+                        
+                      
+                      
+                        
+
+                          	
+                            startNumber
+                          
+                          	
+                            Integer
+                            
+                           
+                          	
+                            Количество от
+                          
+                        
+                        
+
+                          	
+                            factor 
+                          
+                          	
+                            BigDecimal
+                            
+                           
+                          	
+                            Коэффициент
+                          
+                        
+                      
+                    
+                  
+                
+              
+            
+          
+        
+      
+    
+  
+
+   
+
+  
+
+    [+]
+    
+      Пример тела запроса 
+    
+  
+  
+
+    [-]
+    
+      Пример тела запроса  
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{
+    "id": "64efc54c-ad17-4923-9d94-2720822fdd7e",
+    "productSizes": [
+        {
+            "id": "ed78afdf-e74b-49bb-92fa-d37944b5fa51",
+            "disabled": false,
+            "factors": [
+                {
+                    "startNumber": 0,
+                    "factor": 1
+                }
+            ]
+        },
+        {
+            "id": "f879d845-537d-4ebc-a513-ff580fc9a4e1",
+            "disabled": false,
+            "factors": [
+                {
+                    "startNumber": 0,
+                    "factor": 1
+                }
+            ]
+        },
+        {
+            "id": "2ede4241-529e-42a4-95b3-6462dc9ea9dd",
+            "disabled": false,
+            "factors": [
+                {
+                    "startNumber": 0,
+                    "factor": 1
+                },
+                {
+                    "startNumber": 1,
+                    "factor": 0.8
+                },
+                {
+                    "startNumber": 2,
+                    "factor": 0.6
+                }
+            ]
+        },
+        {
+            "id": "97a74df8-7e63-429d-b65a-d07909832a11",
+            "disabled": false,
+            "factors": [
+                {
+                    "startNumber": 0,
+                    "factor": 1
+                }
+            ]
+        }
+    ]
+}
+  
+
+  
+
+  Что в ответе
+
+        Шкала с коэффициентами и доступностью размеров
+        
+
+  Пример запроса и результат
+
+Запрос
+
+https://localhost:8080/resto/api/v2/entities/products/f928e371-81ac-409d-86d7-0ebb16fb1223/productScale
+ 
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+Код
+	{
+    "id": "64efc54c-ad17-4923-9d94-2720822fdd7e",
+    "deleted": false,
+    "name": "Размеры для пива",
+    "productSizes": [
+        {
+            "id": "ed78afdf-e74b-49bb-92fa-d37944b5fa51",
+            "deleted": false,
+            "name": "кружка (0.5 л)",
+            "shortName": "0.5",
+            "priority": 0,
+            "disabled": false,
+            "factors": [
+                {
+                    "startNumber": 0,
+                    "factor": 1
+                }
+            ],
+            "default": true
+        },
+        {
+            "id": "f879d845-537d-4ebc-a513-ff580fc9a4e1",
+            "deleted": false,
+            "name": "бокал (0.33 л)",
+            "shortName": "0.33",
+            "priority": 1,
+            "disabled": false,
+            "factors": [
+                {
+                    "startNumber": 0,
+                    "factor": 1
+                }
+            ],
+            "default": false
+        },
+        {
+            "id": "2ede4241-529e-42a4-95b3-6462dc9ea9dd",
+            "deleted": false,
+            "name": "стакан (0.2 л)",
+            "shortName": "0.2",
+            "priority": 2,
+            "disabled": false,
+            "factors": [
+                {
+                    "startNumber": 0,
+                    "factor": 1
+                },
+                {
+                    "startNumber": 1,
+                    "factor": 0.8
+                },
+                {
+                    "startNumber": 2,
+                    "factor": 0.6
+                }
+            ],
+            "default": false
+        },
+        {
+            "id": "97a74df8-7e63-429d-b65a-d07909832a11",
+            "deleted": false,
+            "name": "большая кружка (1 л)",
+            "shortName": "1",
+            "priority": 3,
+            "disabled": false,
+            "factors": [
+                {
+                    "startNumber": 0,
+                    "factor": 1
+                }
+            ],
+            "default": false
+        }
+    ]
+}
+  
+
+   
+ 
+
+  Удаление шкалы размеров у продукта
+
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/entities/products/{productId}/productScale 
+      
+    
+  
+
+  Параметры запроса
+
+  
+    
+
+      
+        
+
+          Параметр
+        
+      
+      
+        Тип, формат
+        
+       
+      
+        
+
+          Описание
+        
+      
+    
+  
+  
+    
+
+      	
+        productId 
+      
+      	
+        UUID
+        
+       
+      	
+        UUID продукта
+      
+    
+  
+
+ 
+
+Что в ответе
+
+  
+          UUID шкалы

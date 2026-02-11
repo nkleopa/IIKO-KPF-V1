@@ -1,0 +1,12 @@
+.env
+__pycache__/
+*.pyc
+node_modules/
+.venv/
+dist/
+build/
+*.egg-info/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.playwright-mcp/

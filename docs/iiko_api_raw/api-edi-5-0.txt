@@ -1,0 +1,1345 @@
+API EDI (5.0)
+
+  
+
+    
+
+  
+Старт
+Список заказов для участника EDI senderId и поставщика seller
+Параметры запроса
+Что в ответе
+Пример вызова
+Пример ответа
+Подтверждение получения (квитирование ) заказа участником EDI
+Параметры запроса
+Что в ответе
+Пример вызова
+Подтверждение внешнего заказа
+Параметры запроса
+Что в ответе
+Примеры тела запроса
+Выполнение заказа
+Параметры запроса
+Тело запроса
+Что в ответе
+Пример вызова
+Пример тела запроса 
+
+  
+  
+
+  
+
+Старт 
+
+   Чтобы подключиться и работать с API EDI в iiko, необходимо создать в iikoOffice систему EDI. 
+
+   На данный момент при старте системы на чистой базе создаются три системы EDI: 
+
+  
+    
+
+      	         Внешняя система EDI         
+
+      	         709f5a71-47b6-f2fc-b5a8-d10176a851d7         
+
+    
+    
+
+      	         Внутренняя система EDI         
+
+      	         b478869a-2c10-c398-5600-cd9202db4cd7         
+
+    
+    
+
+      	         Контур EDI         
+
+      	         947385b3-1f5f-1074-249a-ba09b8eb1d64         
+
+    
+  
+
+Настройки для создания и управления подключенными системами EDI находятся в iikoOffice: 
+
+  
+Обмен данными → Системы EDI
+
+   Выбрать нужную систему EDI можно у поставщика: 
+
+  
+Поставщики → Персональная карточка → Дополнительные сведения → Система EDI
+
+   Реализована проверка поставщика на принадлежность к системе EDI. При обращении к внешним заказам через API заказы фильтруются по EdiSystem, который нужно указывать в запросе. 
+
+   База с предварительно настроенными Customer, Products для Chain: ChainEdiTest.zip. 
+
+   Данные для запросов по тестовой базе: 
+
+  
+     EdiSystem для поставщика — Внешняя система EDI 709F5A71-47B6-F2FC-B5A8-D10176A851D7        
+  
+     Имя поставщика — Вася.   
+  
+     GLN поставщика — 4545646546454.   
+  
+     Номер документа 10001.   
+  
+     Дата 2016-06-02.
+
+   Список заказов для участника EDI senderId и поставщика seller
+
+Версия iiko: 5.0
+  
+    
+	
+        
+      	
+        
+https://host:port/resto/api/edi/{ediSystem}/orders/bySeller?gln={sellerGln}&inn={sellerInn}&kpp={sellerKpp}&name={sellerName}
+      
+    
+  
+
+Параметры запроса
+
+ 
+
+  
+    
+
+                        Название                
+                        Значение                
+                        Описание                
+    
+  
+  
+    
+
+      	                  ediSystem                
+      	                  GUID                
+      	                  Идентификатор участника EDI, подключенной к нашему REST API.                  
+           Каждый участник EDI должен получить свой собственный GUID ключ - идентификатор системы EDI (EdiSystem) для подключения к REST API электронного документооборота iiko. См. Обмен данными → Системы EDI в iikoOffce.         
+      
+    
+    
+
+      	         gln                
+      	         String       
+      	         GLN поставщика. Может отсутствовать, но тогда параметр inn должен быть заполнен       
+    
+    
+
+      	         inn       
+      	         String       
+      	         ИНН (идентификационный номер налогоплательщика). Может отсутствовать, но тогда параметр gln должен быть заполнен
+      
+    
+    
+
+      	         kpp       
+      	         String       
+      	         КПП (код причины постановки). Необязательное поле.         
+
+      
+    
+    
+
+      	         name       
+      	         String       
+      	         Имя поставщика. Необязательное поле       
+    
+  
+
+Что в ответе
+
+Cписок заказов (Массив ediMessageDto).
+      
+Высылает список заказов EDI для зарегистрированного в системе iiko участника ediSystem и указанного поставщика.           
+           В списке присутствуют также те отмененные на стороне iiko заказы, получение которых участник подтвердил ранее.           
+           Получение как отправленных, так и отмененных заказов требуется подтверждать, см. метод edi/{ediSystem}/orders/ack
+      
+Пример вызова
+      
+
+ 
+
+  https://localhost:9080/resto/api/edi/709f5a71-47b6-f2fc-b5a8-d10176a851d7/orders/bySeller?gln=4545646546454
+
+   Пример ответа 
+
+  
+     [+]     Получили все заказы в статусе «Отправляется»  
+  
+     [-]     Получили все заказы в статусе «Отправляется»  
+  
+  
+
+    
+	
+Copy Code
+Код
+	<ediMessageDtoes>
+    <ediMessage id="3eacd707-ad57-9161-0155-1178b8a00010" creationDateTime="2016-06-02T17:17:05">
+        <header>
+            <sender>
+                <gln>1212121212121</gln>
+                <name>СКЛ1</name>
+                <internalCode/>
+            </sender>
+            <recipient>
+                <gln>4545646546454</gln>
+                <name>Вася</name>
+                <inn/>
+                <kpp/>
+            </recipient>
+            <documentType>ORDERS</documentType>
+        </header>
+        <order number="10001" date="2016-06-02" status="original">
+            <seller>
+                <gln>4545646546454</gln>
+                <name>Вася</name>
+                <inn/>
+                <kpp/>
+            </seller>
+            <buyer>
+                <gln>1212121212121</gln>
+                <name>СКЛ1</name>
+                <internalCode/>
+            </buyer>
+            <lineItems>
+                <lineItem>
+                    <lineNumber>1</lineNumber>
+                    <internalBuyerCode>00001</internalBuyerCode>
+                    <name>Товар1</name>
+                    <requestedQuantity>
+                        <measureUnit>KG</measureUnit>
+                        <quantity>1.000000000</quantity>
+                    </requestedQuantity>
+                    <priceWithVat>3.000000000</priceWithVat>
+                    <sumWithVat>3.000000000</sumWithVat>
+                </lineItem>
+                <lineItem>
+                    <lineNumber>2</lineNumber>
+                    <internalBuyerCode>00002</internalBuyerCode>
+                    <name>Товар2</name>
+                    <requestedQuantity>
+                        <measureUnit>KG</measureUnit>
+                        <quantity>14.000000000</quantity>
+                        <container>
+                            <internalCode>1</internalCode>
+                            <name>Пак</name>
+                            <quantity>7.000000000</quantity>
+                        </container>
+                        <containerQuantity>14.000000000</containerQuantity>
+                    </requestedQuantity>
+                    <priceWithVat>4.000000000</priceWithVat>
+                    <sumWithVat>56.000000000</sumWithVat>
+                </lineItem>
+                <totalSumWithVat>59.000000000</totalSumWithVat>
+            </lineItems>
+        </order>
+    </ediMessage>
+</ediMessageDtoes>     
+    
+ 
+    
+  
+
+   Подтверждение получения (квитирование) заказа участником EDI
+
+Версия iiko: 5.0
+  
+    
+	
+        
+      	https://host:port/resto/api/edi/{ediSystem}/orders/bySeller?gln={sellerGln}&inn={sellerInn}&kpp={sellerKpp}&name={sellerName}
+      
+    
+  
+
+Параметры запроса
+
+ 
+
+ 
+
+  
+    
+      
+
+                                Название                    
+                                Значение                    
+                                Описание                    
+      
+    
+    
+      
+
+        	           ediSystem          
+        	           GUID           
+        	
+          
+             Идентификатор участника EDI             
+
+        
+      
+      
+
+        	           number         
+        	           String         
+        	           Номер документа         
+      
+      
+
+        	           date         
+        	           String         
+        	           Дата документа (в формате YYYY-MM-DD)         
+      
+      
+
+        	           status         
+        	           String         
+        	
+          
+original — подтверждение получения заказа (по умолчанию).           
+          
+canceled — подтверждение получения участником EDI отмены заказа со стороны iikoServer'а.           
+        
+      
+    
+  
+
+Что в ответе
+
+          
+Вызов, подтверждающий получение заказа и изменяющий статус документа в iiko на "отправленный".           
+          
+             В этом статусе документ перестанет быть доступным в запросе списка заказов.
+        
+Пример вызова
+
+ 
+
+  https://localhost:9080/resto/api/edi/709f5a71-47b6-f2fc-b5a8-d10176a851d7/orders/ack?number=10001&date=2016-06-02&status=original
+
+Подтверждение внешнего заказа 
+
+Поставщик может подтвердить, добавить и отменить позиции товаров. 
+
+   Чтобы подтвердить позицию, ее нужно прислать с теми же полями и соответствующими подтвержденными полями. 
+
+   Чтобы отменить позицию, достаточно прислать ее с нулевым количеством. 
+
+   Чтобы добавить позицию, нужно прислать ее с orderlineNumber = null и lineNumber не входящим в заказ. 
+
+   Чтобы уточнить позицию, ее нужно сначала удалить (обнулить количество), а потом добавить новую позицию. 
+
+  
+Версия iiko: 5.0        
+	                	https://host:port/resto/api/edi/{ediSystem}/response                
+Параметры запроса
+
+ 
+
+  
+    
+      
+
+                                Название                    
+                                Значение                    
+                                Описание                    
+      
+    
+    
+      
+
+        	           ediSystem          
+        	           GUID           
+        	
+          
+             Идентификатор участника EDI           
+        
+      
+    
+  
+
+Что в ответе
+
+           Структура EdiMessageDto.            Подтверждение внешнего заказа          
+        
+
+Пример вызова
+
+ 
+
+  https://localhost:9080/resto/api/edi/709f5a71-47b6-f2fc-b5a8-d10176a851d7/response
+
+Примеры тела запроса
+
+  
+     [+]     Подтверждение всех позиций без уточнения
+  
+     [-]     Подтверждение всех позиций без уточнения  
+  
+
+    
+	
+Copy Code
+Код
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ediMessage id="73201586-292c-fb27-0155-10808021046d" creationDateTime="2016-06-02T15:08:36">
+    <header>
+        <sender>
+            <gln>1212121212121</gln>
+            <name>СКЛ1</name>
+            <internalCode/>
+        </sender>
+        <recipient>
+            <gln>4545646546454</gln>
+            <name>Вася</name>
+            <inn/>
+            <kpp/>
+        </recipient>
+        <documentType>ORDRSP</documentType>
+    </header>
+    <ordersp number="10001" date="2016-06-02" status="Accepted">
+    <originOrder number="10001" date="2016-06-02"/>
+        <seller>
+            <gln>4545646546454</gln>
+            <name>Вася</name>
+            <inn/>
+            <kpp/>
+        </seller>
+        <buyer>
+            <gln>1212121212121</gln>
+            <name>СКЛ1</name>
+            <internalCode/>
+        </buyer>
+        <deliveryInfo>
+                <requestedDeliveryDateTime>2016-06-02T12:32:01</requestedDeliveryDateTime>
+            </deliveryInfo>
+        <lineItems>
+            <lineItem>
+            <orderLineNumber>1</orderLineNumber>
+                <lineNumber>1</lineNumber>
+                <internalBuyerCode>00001</internalBuyerCode>
+                <name>Товар1</name>
+                <requestedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>1.000000000</quantity>
+                </requestedQuantity>
+                <confirmedQuantity>
+                        <measureUnit>KG</measureUnit>
+                        <quantity>1.000000000</quantity>
+                    </confirmedQuantity>
+                <priceWithVat>3.000000000</priceWithVat>
+                <sumWithVat>3.000000000</sumWithVat>
+            </lineItem>
+            <lineItem>
+            <orderLineNumber>2</orderLineNumber>
+                <lineNumber>2</lineNumber>
+                <internalBuyerCode>00002</internalBuyerCode>
+                <name>Товар2</name>
+                <requestedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>14.000000000</quantity>
+                    <container>
+                        <internalCode>1</internalCode>
+                        <name>Пак</name>
+                        <quantity>7.000000000</quantity>
+                    </container>
+                    <containerQuantity>14.000000000</containerQuantity>
+                </requestedQuantity>
+                <confirmedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>14.000000000</quantity>
+                    <container>
+                        <internalCode>1</internalCode>
+                        <name>Пак</name>
+                        <quantity>7.000000000</quantity>
+                    </container>
+                    <containerQuantity>14.000000000</containerQuantity>
+                </confirmedQuantity>
+                <priceWithVat>4.000000000</priceWithVat>
+                <sumWithVat>56.000000000</sumWithVat>
+            </lineItem>
+            <totalSumWithVat>59.000000000</totalSumWithVat>
+        </lineItems>
+    </ordersp>
+</ediMessage>     
+    
+    
+  
+
+  
+     [+]     Подтверждение с удалением позиции    
+  
+     [-]     Подтверждение с удалением позиции   
+  
+
+    
+	
+Copy Code
+Код
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ediMessage id="73201586-292c-fb27-0155-10808021046d" creationDateTime="2016-06-02T15:08:36">
+    <header>
+        <sender>
+            <gln>1212121212121</gln>
+            <name>СКЛ1</name>
+            <internalCode/>
+        </sender>
+        <recipient>
+            <gln>4545646546454</gln>
+            <name>Вася</name>
+            <inn/>
+            <kpp/>
+        </recipient>
+        <documentType>ORDRSP</documentType>
+    </header>
+    <ordersp number="10001" date="2016-06-02" status="Accepted">
+    <originOrder number="10001" date="2016-06-02"/>
+        <seller>
+            <gln>4545646546454</gln>
+            <name>Вася</name>
+            <inn/>
+            <kpp/>
+        </seller>
+        <buyer>
+            <gln>1212121212121</gln>
+            <name>СКЛ1</name>
+            <internalCode/>
+        </buyer>
+        <deliveryInfo>
+                <requestedDeliveryDateTime>2016-06-02T12:32:01</requestedDeliveryDateTime>
+            </deliveryInfo>
+        <lineItems>
+            <lineItem>
+            <orderLineNumber>1</orderLineNumber>
+                <lineNumber>1</lineNumber>
+                <internalBuyerCode>00001</internalBuyerCode>
+                <name>Товар1</name>
+                <requestedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>1.000000000</quantity>
+                </requestedQuantity>
+                <confirmedQuantity>
+                        <measureUnit>KG</measureUnit>
+                        <quantity>1.000000000</quantity>
+                    </confirmedQuantity>
+                <priceWithVat>3.000000000</priceWithVat>
+                <sumWithVat>3.000000000</sumWithVat>
+            </lineItem>
+            <lineItem>
+            <orderLineNumber>2</orderLineNumber>
+                <lineNumber>2</lineNumber>
+                <internalBuyerCode>00002</internalBuyerCode>
+                <name>Товар2</name>
+                <requestedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>14.000000000</quantity>
+                    <container>
+                        <internalCode>1</internalCode>
+                        <name>Пак</name>
+                        <quantity>7.000000000</quantity>
+                    </container>
+                    <containerQuantity>14.000000000</containerQuantity>
+                </requestedQuantity>
+                <confirmedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>0.000000000</quantity>
+                    <container>
+                        <internalCode>1</internalCode>
+                        <name>Пак</name>
+                        <quantity>0.000000000</quantity>
+                    </container>
+                    <containerQuantity>0.000000000</containerQuantity>
+                </confirmedQuantity>
+                <priceWithVat>4.000000000</priceWithVat>
+                <sumWithVat>56.000000000</sumWithVat>
+            </lineItem>
+            <totalSumWithVat>59.000000000</totalSumWithVat>
+        </lineItems>
+    </ordersp>
+</ediMessage>
+   
+    
+    
+  
+
+  
+     [+]     Подтверждение с новой позицией которая не является внутренним товаром
+  
+     [-]     Подтверждение с новой позицией которая не является внутренним товаром  
+  
+
+    
+    
+	
+Copy Code
+Код
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ediMessage id="73201586-292c-fb27-0155-10808021046d" creationDateTime="2016-06-02T15:08:36">
+    <header>
+        <sender>
+            <gln>1212121212121</gln>
+            <name>СКЛ1</name>
+            <internalCode/>
+        </sender>
+        <recipient>
+            <gln>4545646546454</gln>
+            <name>Вася</name>
+            <inn/>
+            <kpp/>
+        </recipient>
+        <documentType>ORDRSP</documentType>
+    </header>
+    <ordersp number="10001" date="2016-06-02" status="Accepted">
+    <originOrder number="10001" date="2016-06-02"/>
+        <seller>
+            <gln>4545646546454</gln>
+            <name>Вася</name>
+            <inn/>
+            <kpp/>
+        </seller>
+        <buyer>
+            <gln>1212121212121</gln>
+            <name>СКЛ1</name>
+            <internalCode/>
+        </buyer>
+        <deliveryInfo>
+                <requestedDeliveryDateTime>2016-06-02T12:32:01</requestedDeliveryDateTime>
+            </deliveryInfo>
+        <lineItems>
+            <lineItem>
+            <orderLineNumber>1</orderLineNumber>
+                <lineNumber>1</lineNumber>
+                <internalBuyerCode>00001</internalBuyerCode>
+                <name>Товар1</name>
+                <requestedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>1.000000000</quantity>
+                </requestedQuantity>
+                <confirmedQuantity>
+                        <measureUnit>KG</measureUnit>
+                        <quantity>1.000000000</quantity>
+                    </confirmedQuantity>
+                <priceWithVat>3.000000000</priceWithVat>
+                <sumWithVat>3.000000000</sumWithVat>
+            </lineItem>
+            <lineItem>
+            <orderLineNumber>2</orderLineNumber>
+                <lineNumber>2</lineNumber>
+                <internalBuyerCode>00002</internalBuyerCode>
+                <name>Товар2</name>
+                <requestedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>14.000000000</quantity>
+                    <container>
+                        <internalCode>1</internalCode>
+                        <name>Пак</name>
+                        <quantity>7.000000000</quantity>
+                    </container>
+                    <containerQuantity>14.000000000</containerQuantity>
+                </requestedQuantity>
+                <confirmedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>14.000000000</quantity>
+                    <container>
+                        <internalCode>1</internalCode>
+                        <name>Пак</name>
+                        <quantity>7.000000000</quantity>
+                    </container>
+                    <containerQuantity>14.000000000</containerQuantity>
+                </confirmedQuantity>
+                <priceWithVat>4.000000000</priceWithVat>
+                <sumWithVat>56.000000000</sumWithVat>
+            </lineItem>
+            <lineItem>
+                    <orderLineNumber></orderLineNumber>
+                    <lineNumber>3</lineNumber>
+                    <name>Т5</name>
+                    <requestedQuantity>
+                        <measureUnit>KG</measureUnit>
+                        <quantity>7.000000000</quantity>
+                    </requestedQuantity>
+                    <confirmedQuantity>
+                        <measureUnit>KG</measureUnit>
+                        <quantity>7.000000000</quantity>
+                    </confirmedQuantity>
+                    <priceWithVat>5.000000000</priceWithVat>
+                    <sumWithVat>35.000000000</sumWithVat>
+                </lineItem>
+            <totalSumWithVat>59.000000000</totalSumWithVat>
+        </lineItems>
+    </ordersp>
+</ediMessage> 
+    
+    
+    
+  
+
+  
+     [+]     Подтверждение с новой позицией которая является внутренним товаром   
+  
+     [-]     Подтверждение с новой позицией которая является внутренним товаром  
+  
+
+    
+    
+	
+Copy Code
+Код
+	 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ediMessage id="73201586-292c-fb27-0155-10808021046d" creationDateTime="2016-06-02T15:08:36">
+    <header>
+        <sender>
+            <gln>1212121212121</gln>
+            <name>СКЛ1</name>
+            <internalCode/>
+        </sender>
+        <recipient>
+            <gln>4545646546454</gln>
+            <name>Вася</name>
+            <inn/>
+            <kpp/>
+        </recipient>
+        <documentType>ORDRSP</documentType>
+    </header>
+    <ordersp number="10001" date="2016-06-02" status="Accepted">
+    <originOrder number="10001" date="2016-06-02"/>
+        <seller>
+            <gln>4545646546454</gln>
+            <name>Вася</name>
+            <inn/>
+            <kpp/>
+        </seller>
+        <buyer>
+            <gln>1212121212121</gln>
+            <name>СКЛ1</name>
+            <internalCode/>
+        </buyer>
+        <deliveryInfo>
+                <requestedDeliveryDateTime>2016-06-02T12:32:01</requestedDeliveryDateTime>
+            </deliveryInfo>
+        <lineItems>
+            <lineItem>
+            <orderLineNumber>1</orderLineNumber>
+                <lineNumber>1</lineNumber>
+                <internalBuyerCode>00001</internalBuyerCode>
+                <name>Товар1</name>
+                <requestedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>1.000000000</quantity>
+                </requestedQuantity>
+                <confirmedQuantity>
+                        <measureUnit>KG</measureUnit>
+                        <quantity>1.000000000</quantity>
+                    </confirmedQuantity>
+                <priceWithVat>3.000000000</priceWithVat>
+                <sumWithVat>3.000000000</sumWithVat>
+            </lineItem>
+            <lineItem>
+            <orderLineNumber>2</orderLineNumber>
+                <lineNumber>2</lineNumber>
+                <internalBuyerCode>00002</internalBuyerCode>
+                <name>Товар2</name>
+                <requestedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>14.000000000</quantity>
+                    <container>
+                        <internalCode>1</internalCode>
+                        <name>Пак</name>
+                        <quantity>7.000000000</quantity>
+                    </container>
+                    <containerQuantity>14.000000000</containerQuantity>
+                </requestedQuantity>
+                <confirmedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>14.000000000</quantity>
+                    <container>
+                        <internalCode>1</internalCode>
+                        <name>Пак</name>
+                        <quantity>7.000000000</quantity>
+                    </container>
+                    <containerQuantity>14.000000000</containerQuantity>
+                </confirmedQuantity>
+                <priceWithVat>4.000000000</priceWithVat>
+                <sumWithVat>56.000000000</sumWithVat>
+            </lineItem>
+            <lineItem>
+            <orderLineNumber></orderLineNumber>
+                <lineNumber>3</lineNumber>
+                <internalBuyerCode>00002</internalBuyerCode>
+                <name>Товар2</name>
+                <requestedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>0.000000000</quantity>
+                </requestedQuantity>
+                <confirmedQuantity>
+                    <measureUnit>KG</measureUnit>
+                    <quantity>20.000000000</quantity>
+                </confirmedQuantity>
+                <priceWithVat>4.000000000</priceWithVat>
+                <sumWithVat>40.000000000</sumWithVat>
+            </lineItem>
+            <totalSumWithVat>59.000000000</totalSumWithVat>
+        </lineItems>
+    </ordersp>
+</ediMessage>     
+    
+    
+  
+
+Выполнение заказа 
+
+Версия iiko: 5.0        
+	                	https://host:port/resto/api/edi/{EdiSystem}/invoice                
+Параметры запроса
+
+ 
+
+  
+    
+      
+
+                                Название                    
+                                Значение                    
+                                Описание                    
+      
+    
+    
+      
+
+        	           senderId          
+        	           GUID           
+        	                        Идентификатор пользователя                    
+      
+    
+  
+
+Тело запроса
+
+Структура EdiMessageDto.
+        
+Что в ответе
+        
+
+Подтверждение отгрузки, отправка счета-фактуры в iiko.
+
+  
+Пример вызова
+
+ 
+
+  https://localhost:9080/resto/api/edi/709f5a71-47b6-f2fc-b5a8-d10176a851d7/invoice
+
+Пример тела запроса
+
+  
+     [+]     Подтверждение отгрузки
+  
+     [-]     Подтверждение отгрузки  
+  
+
+    
+    
+	
+Copy Code
+Код
+	<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    <ediMessage id="0000301540" creationDateTime="2016-07-08T17:17:05"> <!--идентификатор сообщения, время сообщения-->
+        <header>
+            <sender>
+                <gln>1212121212121</gln>
+                <name>СКЛ1</name>
+                <internalCode/>
+            </sender>
+            <recipient>
+                <gln>4545646546454</gln>
+                <name>Вася</name>
+                <inn/>
+                <kpp/>
+            </recipient>
+            <documentType>ORDRSP</documentType>
+        </header>
+        <invoice number="10001" date="2016-07-08" type="Original">
+            <originOrder number="10001" date="2016-06-02" type="Original"/>
+            <seller>
+                <gln>4545646546454</gln>
+                <name>Вася</name>
+                <inn/>
+                <kpp/>
+            </seller>
+            <buyer>
+                <gln>1212121212121</gln>
+                <name>СКЛ1</name>
+                <internalCode/>
+            </buyer>
+            <invoicee>
+                <gln>1212121212121</gln>
+                <name>СКЛ1</name>
+                <internalCode/>
+            </invoicee>
+            <deliveryInfo>
+                <requestedDeliveryDateTime>2016-06-02T12:32:01</requestedDeliveryDateTime>
+            </deliveryInfo>
+            <lineItems>
+                <lineItem>
+                    <orderLineNumber>1</orderLineNumber>
+                    <lineNumber>1</lineNumber>
+                    <internalBuyerCode>00001</internalBuyerCode>
+                    <name>Товар1</name>
+                    <requestedQuantity>
+                        <measureUnit>KG</measureUnit>
+                        <quantity>1.000000000</quantity>
+                    </requestedQuantity>
+                    <confirmedQuantity>
+                        <measureUnit>KG</measureUnit>
+                        <quantity>1.000000000</quantity>
+                    </confirmedQuantity>
+                    <priceWithVat>3.000000000</priceWithVat>
+                    <sumWithVat>3.000000000</sumWithVat>
+                </lineItem>
+                <lineItem>
+                    <orderLineNumber>2</orderLineNumber>
+                    <lineNumber>2</lineNumber>
+                    <internalBuyerCode>00002</internalBuyerCode>
+                    <name>Товар2</name>
+                    <requestedQuantity>
+                        <measureUnit>KG</measureUnit>
+                        <quantity>14.000000000</quantity>
+                        <container>
+                            <internalCode>1</internalCode>
+                            <name>Пак</name>
+                            <quantity>7.000000000</quantity>
+                        </container>
+                        <containerQuantity>14.000000000</containerQuantity>
+                    </requestedQuantity>
+                    <confirmedQuantity>
+                        <measureUnit>KG</measureUnit>
+                        <quantity>14.000000000</quantity>
+                        <container>
+                            <internalCode>1</internalCode>
+                            <name>Пак</name>
+                            <quantity>7.000000000</quantity>
+                        </container>
+                        <containerQuantity>14.000000000</containerQuantity>
+                    </confirmedQuantity>
+                    <priceWithVat>4.000000000</priceWithVat>
+                    <sumWithVat>56.000000000</sumWithVat>
+                </lineItem>
+                <totalSumWithVat>59.000000000</totalSumWithVat>
+            </lineItems>
+        </invoice>
+    </ediMessage> 
+    
+    
+  
+
+  
+     [+]     XSD EdiMessageDto
+  
+     [-]     XSD EdiMessageDto  
+  
+
+    
+    
+	
+Copy Code
+Код
+	<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema"
+ xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+ elementFormDefault="unqualified"
+ attributeFormDefault="unqualified"
+ jaxb:version="2.0">
+
+    <xs:annotation>
+        <xs:appinfo>
+            <!-- Mapping xs:date и xs:dateTime in java.util.Date. By default in XMLGregorianCalendar -->
+ <jaxb:globalBindings>
+                <jaxb:javaType
+ name="java.util.Date"
+ xmlType="xs:dateTime"
+ parseMethod="resto.utils.DateUtils.parseXsDateTime"
+ printMethod="resto.utils.DateUtils.printXsDateTime"/>
+                <jaxb:javaType
+ name="java.util.Date"
+ xmlType="xs:date"
+ parseMethod="resto.utils.DateUtils.parseXsDate"
+ printMethod="resto.utils.DateUtils.printXsDate"/>
+            </jaxb:globalBindings>
+        </xs:appinfo>
+    </xs:annotation>
+
+    <!-- Message title of exchange -->
+ <xs:element name="ediMessage" type="EdiMessageDto"/>
+
+    <xs:complexType name="EdiMessageDto">
+        <xs:sequence>
+            <xs:element name="header">
+                <xs:complexType>
+                    <xs:sequence>
+                        <!-- GLN of the message sender. -->
+ <xs:element name="sender" type="ContractorDto"/>
+                        <!-- GLN of the message recipient. -->
+ <xs:element name="recipient" type="ContractorDto"/>
+                        <!-- Document type. -->
+ <xs:element name="documentType" type="DocumentTypeDto"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:choice>
+                <!-- Order. -->
+ <xs:element name="order" type="OrderDto"/>
+                <!-- Order confirmation. -->
+ <xs:element name="ordersp" type="OrderResponseDto"/>
+                <!-- Invoice. -->
+ <xs:element name="invoice" type="InvoiceDto"/>
+            </xs:choice>
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" use="required"/>
+        <xs:attribute name="creationDateTime" type="xs:dateTime"/>
+    </xs:complexType>
+
+    <xs:complexType name="OrderDto">
+        <xs:sequence>
+            <xs:element name="seller" type="ContractorDto"/>
+            <xs:element name="buyer" type="ContractorDto"/>
+            <xs:element name="invoicee" type="ContractorDto" minOccurs="0"/>
+            <xs:element name="deliveryInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <!-- Required delivery date. -->
+ <xs:element name="requestedDeliveryDateTime" type="xs:dateTime" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="comment" type="xs:string" minOccurs="0"/>
+            <xs:element name="lineItems">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="lineItem" type="OrderItemDto" maxOccurs="unbounded"/>
+                        <!-- The total sum of the order without VAT. -->
+ <!-- Not implemented! -->
+ <xs:element name="totalSumWithoutVat" type="xs:decimal" minOccurs="0"/>
+                        <!-- VAT -->
+ <!-- Not implemented! -->
+ <xs:element name="totalVat" type="xs:decimal" minOccurs="0"/>
+                        <!-- The total sum of the order with VAT. -->
+ <xs:element name="totalSumWithVat" type="xs:decimal" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <!-- Number of the order. Number and date are unique. -->
+ <xs:attribute name="number" type="xs:string" use="required"/>
+        <!-- Date of the order. Number and date are unique. -->
+ <xs:attribute name="date" type="xs:date" use="required"/>
+        <xs:attribute name="status" type="OrderStatusDto" use="required"/>
+    </xs:complexType>
+
+    <xs:simpleType name="OrderStatusDto">
+        <xs:restriction base="xs:string">
+            <!-- Ordinary order. -->
+ <xs:enumeration value="original"/>
+            <!-- Order cancellation. -->
+ <xs:enumeration value="canceled"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="OrderItemDto">
+        <xs:sequence>
+            <!-- Order line number. -->
+ <xs:element name="lineNumber" type="xs:integer" minOccurs="1"/>
+            <!-- If not specified, internalBuyerCode must be filling. -->
+ <xs:element name="gtin" type="xs:string"/>
+            <!-- Internal product code in the buyer accounting system (product number iiko). -->
+ <xs:element name="internalBuyerCode" type="xs:string" minOccurs="0"/>
+            <!-- Internal product code in the supplier's accounting system. -->
+ <xs:element name="internalSupplierCode" type="xs:string" minOccurs="0"/>
+            <!-- Product name (description). -->
+ <xs:element name="name" type="xs:string" minOccurs="0"/>
+            <!-- Comment to the order item. -->
+ <xs:element name="comment" type="xs:string" minOccurs="0"/>
+            <!-- Requested quantity. -->
+ <xs:element name="requestedQuantity" type="QuantityDto" minOccurs="1"/>
+            <!-- Product price excluding VAT per package
+ (or per basic measurement units of the product if packaging info is not filled). -->
+ <!-- Not implemented! -->
+ <xs:element name="priceWithoutVat" type="xs:decimal" minOccurs="0"/>
+            <!-- Product price with VAT per package
+ (or per basic measurement units of the product if packaging info is not filled). -->
+ <xs:element name="priceWithVat" type="xs:decimal" minOccurs="0"/>
+            <!-- The sum of position excluding VAT. -->
+ <!-- Not implemented! -->
+ <xs:element name="sumWithoutVat" type="xs:decimal" minOccurs="0"/>
+            <!-- VAT rate. -->
+ <!-- Not implemented! -->
+ <xs:element name="vatRate" type="xs:decimal" minOccurs="0"/>
+            <!-- The sum of VAT. -->
+ <!-- Not implemented! -->
+ <xs:element name="sumVat" type="xs:decimal" minOccurs="0"/>
+            <!-- The sum of position with VAT. -->
+ <xs:element name="sumWithVat" type="xs:decimal" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="OrderResponseDto">
+        <xs:sequence>
+            <!-- Link to the order. -->
+ <xs:element name="originOrder" type="DocumentIdentifierDto"/>
+            <!-- Seller. Must be equals with order seller. -->
+ <xs:element name="seller" type="ContractorDto" minOccurs="0"/>
+            <!-- Buyer. Must be equals with order buyer. -->
+ <xs:element name="buyer" type="ContractorDto" minOccurs="0"/>
+            <!-- Invoicee. Must be equals with order invoicee. -->
+ <xs:element name="invoicee" type="ContractorDto" minOccurs="0"/>
+            <xs:element name="deliveryInfo" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <!-- Requested delivery date time. -->
+ <xs:element name="requestedDeliveryDateTime" type="xs:dateTime" minOccurs="0"/>
+                        <!-- Estimated delivery date time. -->
+ <xs:element name="estimatedDeliveryDateTime" type="xs:dateTime" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="lineItems" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="lineItem" minOccurs="0" maxOccurs="unbounded" type="OrderResponseItemDto"/>
+                        <!-- Total sum without VAT. -->
+ <xs:element name="totalSumExcludingTaxes" minOccurs="0" type="xs:decimal"/>
+                        <!-- The sum of VAT. -->
+ <xs:element name="totalVATSum" minOccurs="0" type="xs:decimal"/>
+                        <!-- The total sum with VAT. -->
+ <xs:element name="totalSum" minOccurs="0" type="xs:decimal"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+
+        <xs:attribute name="number" type="xs:string" use="required"/>
+        <xs:attribute name="date" type="xs:date" use="required"/>
+        <xs:attribute name="status" type="OrderResponseStatusDto" use="required"/>
+    </xs:complexType>
+
+    <xs:simpleType name="OrderResponseStatusDto">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Rejected"/>
+            <xs:enumeration value="Accepted"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="InvoiceDto">
+        <xs:sequence>
+            <!-- Link to the order. -->
+ <xs:element name="originOrder" type="DocumentIdentifierDto" minOccurs="1"/>
+            <!-- Seller. Must be equals with order seller. -->
+ <xs:element name="seller" type="ContractorDto" minOccurs="0"/>
+            <!-- Buyer. Must be equals with order buyer. -->
+ <xs:element name="buyer" type="ContractorDto" minOccurs="0"/>
+            <!-- Invoicee. Must be equals with order invoicee. -->
+ <xs:element name="invoicee" type="ContractorDto" minOccurs="0"/>
+            <xs:element name="deliveryInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <!-- Requested delivery date time. -->
+ <xs:element name="requestedDeliveryDateTime" type="xs:dateTime" minOccurs="0"/>
+                        <!-- Estimated delivery date time. -->
+ <xs:element name="estimatedDeliveryDateTime" type="xs:dateTime" minOccurs="0"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <!-- Invoice items. If not specified, then order will be fully executed along with all requested items, quantities and sums. -->
+ <xs:element name="lineItems" minOccurs="0">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="lineItem" minOccurs="0" maxOccurs="unbounded" type="InvoiceItemDto"/>
+                        <!-- Total sum without VAT. -->
+ <xs:element name="totalSumExcludingTaxes" minOccurs="0" type="xs:decimal"/>
+                        <!-- The sum of VAT. -->
+ <xs:element name="totalVATSum" minOccurs="0" type="xs:decimal"/>
+                        <!-- The total sum with VAT. -->
+ <xs:element name="totalSum" minOccurs="0" type="xs:decimal"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="number" type="xs:string" use="required"/>
+        <xs:attribute name="date" type="xs:date" use="required"/>
+        <xs:attribute name="type" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <!-- Invoice -->
+ <xs:enumeration value="Original"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+
+    <xs:complexType name="InvoiceItemDto">
+        <xs:sequence>
+            <!-- If not specified, orderLineNumber or internalBuyerCode must be filling. -->
+ <xs:element name="gtin" type="xs:string" minOccurs="0"/>
+            <!-- Internal product code in the accounting system of the customer (product number iiko).
+ Must be same with internalBuyerCode for corresponding (by orderLineNumber) order line.
+ -->
+ <xs:element name="internalBuyerCode" type="xs:string" minOccurs="0"/>
+            <!-- Internal product code in the supplier's accounting system.
+ Must be same with internalSupplierCode for corresponding (by orderLineNumber) order line.
+ -->
+ <xs:element name="internalSupplierCode" minOccurs="0" type="xs:string"/>
+            <!-- Order line number. -->
+ <xs:element name="orderLineNumber" minOccurs="1" type="xs:integer"/>
+            <!-- Invoice line number. -->
+ <xs:element name="lineNumber" minOccurs="1" type="xs:integer"/>
+            <!-- Product name (description). -->
+ <xs:element name="name" minOccurs="0" type="xs:string"/>
+            <!-- Comment to the order item. -->
+ <xs:element name="comment" minOccurs="0" type="xs:string"/>
+            <!-- Requested quantity. -->
+ <xs:element name="requestedQuantity" type="QuantityDto" minOccurs="0"/>
+            <!-- Confirmed quantity. -->
+ <xs:element name="confirmedQuantity" type="QuantityDto" minOccurs="1"/>
+            <!-- Product price excluding VAT per package
+ (or the basic unit of measurement of the product if the package is is not filled). -->
+ <!-- Not implemented! -->
+ <xs:element name="priceWithoutVat" type="xs:decimal" minOccurs="0"/>
+            <!-- Product price with VAT per package
+ (or the basic unit of measurement of the product if the package is is not filled). -->
+ <xs:element name="priceWithVat" type="xs:decimal" minOccurs="0"/>
+            <!-- The sum of position excluding VAT. -->
+ <!-- Not implemented! -->
+ <xs:element name="sumWithoutVat" type="xs:decimal" minOccurs="0"/>
+            <!-- VAT rate. -->
+ <!-- Not implemented! -->
+ <xs:element name="vatRate" type="xs:decimal" minOccurs="0"/>
+            <!-- The sum of the VAT. -->
+ <!-- Not implemented! -->
+ <xs:element name="sumVat" type="xs:decimal" minOccurs="0"/>
+            <!-- The sum of position with VAT. -->
+ <xs:element name="sumWithVat" type="xs:decimal" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="OrderResponseItemDto">
+        <xs:sequence>
+            <!-- If not specified, orderLineNumber or internalBuyerCode must be filling. -->
+ <xs:element name="gtin" type="xs:string" minOccurs="0"/>
+            <!-- Internal product code in the accounting system of the customer (product number iiko).
+ Must be same with internalBuyerCode for corresponding (by orderLineNumber) order line.
+ -->
+ <xs:element name="internalBuyerCode" type="xs:string" minOccurs="0"/>
+            <!-- Internal product code in the supplier's accounting system.
+ Must be same with internalSupplierCode for corresponding (by orderLineNumber) order line.
+ -->
+ <xs:element name="internalSupplierCode" minOccurs="0" type="xs:string"/>
+            <!-- Order line number. -->
+ <xs:element name="orderLineNumber" minOccurs="0" type="xs:integer"/>
+            <!-- OrderResponse line number. -->
+ <xs:element name="lineNumber" minOccurs="1" type="xs:integer"/>
+            <!-- Product name (description). -->
+ <xs:element name="name" minOccurs="0" type="xs:string"/>
+            <!-- Comment to the order item. -->
+ <xs:element name="comment" minOccurs="0" type="xs:string"/>
+            <!-- Requested quantity. -->
+ <xs:element name="requestedQuantity" type="QuantityDto" minOccurs="0"/>
+            <!-- Confirmed quantity. -->
+ <xs:element name="confirmedQuantity" type="QuantityDto" minOccurs="1"/>
+            <!-- Product price excluding VAT per package
+ (or the basic unit of measurement of the product if the package is is not filled). -->
+ <!-- Not implemented! -->
+ <xs:element name="priceWithoutVat" type="xs:decimal" minOccurs="0"/>
+            <!-- Product price with VAT per package
+ (or the basic unit of measurement of the product if the package is is not filled). -->
+ <xs:element name="priceWithVat" type="xs:decimal" minOccurs="0"/>
+            <!-- The sum of position excluding VAT. -->
+ <!-- Not implemented! -->
+ <xs:element name="sumWithoutVat" type="xs:decimal" minOccurs="0"/>
+            <!-- VAT rate. -->
+ <!-- Not implemented! -->
+ <xs:element name="vatRate" type="xs:decimal" minOccurs="0"/>
+            <!-- The sum of the VAT. -->
+ <!-- Not implemented! -->
+ <xs:element name="sumVat" type="xs:decimal" minOccurs="0"/>
+            <!-- The sum of position with VAT. -->
+ <xs:element name="sumWithVat" type="xs:decimal" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="DocumentTypeDto">
+        <xs:restriction base="xs:string">
+            <!-- Order. -->
+ <xs:enumeration value="ORDERS"/>
+            <!-- Order Response. -->
+ <xs:enumeration value="ORDRSP"/>
+            <!-- Invoice. -->
+ <xs:enumeration value="INVOIC"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="QuantityDto">
+        <xs:sequence>
+            <!-- Primary measurement unit of the product. -->
+ <xs:element name="measureUnit" type="MeasureUnitDto" minOccurs="1"/>
+            <!-- Requested quantity, in primary measurement units. -->
+ <xs:element name="quantity" minOccurs="1" type="xs:decimal"/>
+            <!-- Packaging. -->
+ <xs:element name="container" minOccurs="0" type="ContainerDto"/>
+            <!-- Quantity of packaging units. -->
+ <xs:element name="containerQuantity" minOccurs="0" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="ContainerDto">
+        <xs:sequence>
+            <!-- Inner packaging code (unique under a single product). -->
+ <xs:element name="internalCode" type="xs:string" minOccurs="0"/>
+            <!-- Package name. -->
+ <xs:element name="name" minOccurs="0" type="xs:string"/>
+            <!-- Quantity in the package, in the primary measurement units. -->
+ <xs:element name="quantity" minOccurs="1" type="xs:decimal"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="MeasureUnitDto">
+        <xs:restriction base="xs:string">
+            <!-- Kilograms. -->
+ <xs:enumeration value="KG"/>
+            <!-- Pieces. -->
+ <xs:enumeration value="PCE"/>
+            <!-- Litres. -->
+ <xs:enumeration value="LT"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="ContractorDto">
+        <xs:sequence>
+            <!-- GLN. Can be null, then inn (VAT identifier) must be specified. -->
+ <xs:element name="gln" type="xs:string" minOccurs="0"/>
+ <!--
+ Internal iiko id. Can be used in cases when either GLN and INN are not unique in iiko database
+ @since 5.4
+ -->
+ <xs:element name="guid" type="xs:string" minOccurs="0"/>
+            <xs:element name="name" minOccurs="0" type="xs:string"/>
+            <!--Inner code (Filled in only for storage) -->
+ <xs:element name="internalCode" minOccurs="0" type="xs:string"/>
+            <!-- Counterparty inn (VAT identifier). Can be null then GLN must be specified). -->
+ <xs:element name="inn" minOccurs="0" type="xs:string"/>
+            <xs:element name="kpp" minOccurs="0" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="DocumentIdentifierDto">
+        <xs:attribute name="number" type="xs:string" use="required"/>
+        <xs:attribute name="date" type="xs:date" use="required"/>
+    </xs:complexType>
+
+</xs:schema>

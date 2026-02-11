@@ -1,0 +1,1732 @@
+<!DOCTYPE html><html lang="ru-RU" dir="ltr"><head><style type="text/css">.ArticleViewer_searchKeywords{background-color: yellow !important;}body{overflow:hidden;}</style>
+<link rel="canonical" href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami"/>
+<title>Работа со шкалой и размерами</title><script type="text/javascript">//<!--
+var imgPopupTexts={openInNewWindowText: 'Открыть в новом окне', closeText: 'Закрыть'};var isArticlesNavViaMessage=true;var articleTitleText='Работа со шкалой и размерами';
+//--></script><link rel="stylesheet" type="text/css" href="/resources/Styles/api-documentations/NewStyle.css"/><link rel="stylesheet" type="text/css" href="/resources/Styles/api-documentations/Projects2.css"/><link rel="stylesheet" type="text/css" href="/resources/Styles/api-documentations/NewStyle1.css"/><link rel="stylesheet" type="text/css" href="/style-bundles/article-published.css?v=1.0.9482.29209"/><script src="/resources/Scripts/api-documentations/Script2.js" type="text/javascript"></script><script src="/resources/Scripts/api-documentations/highlight.pack2.js" type="text/javascript"></script><script src="/script-bundles/article-published.js?v=1.0.9482.29209" type="text/javascript"></script><meta charset="utf-8"><meta http-equiv="Content-Type" content="text/html;charset=utf-8"></head><body><span id="__clhTop"></span><!-- используется для Sidebar -->
+
+  <div class="sidebar">
+    <p>
+  <ul class="CHMiniToc"><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Доступ" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Доступ&#39;,this);">Доступ</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Описаниешкалысразмерами" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Описаниешкалысразмерами&#39;,this);">Описание шкалы с размерами</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Получениешкалразмеров(GET)" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Получениешкалразмеров(GET)&#39;,this);">Получение шкал размеров (GET)</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__998506674" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__998506674&#39;,this);">Параметры запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1629008397" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1629008397&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Пример" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Пример&#39;,this);">Пример запроса и результат</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Получениешкалразмеров(POST)" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Получениешкалразмеров(POST)&#39;,this);">Получение шкал размеров (POST)</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1150399349" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1150399349&#39;,this);">Тело запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_501454233" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_501454233&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Получениешкалыразмеровпоid" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Получениешкалыразмеровпоid&#39;,this);">Получение шкалы размеров по id</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Пример.1" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Пример.1&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Созданиешкалы" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Созданиешкалы&#39;,this);">Создание шкалы</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__463698209" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__463698209&#39;,this);">Тело запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1285735115" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1285735115&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Пример.2" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Пример.2&#39;,this);">Пример запроса и результат</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Редактированиешкалы" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Редактированиешкалы&#39;,this);">Редактирование шкалы</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1030254367" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1030254367&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Удалениешкал" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Удалениешкал&#39;,this);">Удаление шкал</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__2146460462" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__2146460462&#39;,this);">Тело запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__408898924" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__408898924&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__232688264" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__232688264&#39;,this);">Пример запроса и результат</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Восстановлениешкал" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Восстановлениешкал&#39;,this);">Восстановление шкал</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__232796413" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__232796413&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1387997121" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1387997121&#39;,this);">Пример запроса и результат</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h2__775456170" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h2__775456170&#39;,this);">Получение шкалы с коэффициентами и доступностью размеров</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1661681783" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1661681783&#39;,this);">Параметры запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_631086644" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_631086644&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1185794887" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1185794887&#39;,this);">Примеры запроса и результат</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h2__946062459" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h2__946062459&#39;,this);">Получение шкал с коэффициентами и доступностью размеров по списку продуктов (GET)</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1590217795" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1590217795&#39;,this);">Параметры запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__2007841869" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__2007841869&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1250036116" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1250036116&#39;,this);">Пример запроса и результат</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h2_80033247" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h2_80033247&#39;,this);">Получение шкал с коэффициентами и доступностью размеров по списку продуктов (POST)</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1632451357" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1632451357&#39;,this);">Параметры запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__440243066" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__440243066&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h2__1196830820" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h2__1196830820&#39;,this);">Задание/редактирование шкалы с доступностью и коэффициентами для размеров</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1567929138" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1567929138&#39;,this);">Параметры запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__732406067" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__732406067&#39;,this);">Тело запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1210183833" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1210183833&#39;,this);">Что в ответе</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1250329157" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1250329157&#39;,this);">Пример запроса и результат</a></li><li class="CHMiniToc_heading2"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h2__1034296538" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h2__1034296538&#39;,this);">Удаление шкалы размеров у продукта</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1827755295" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1827755295&#39;,this);">Параметры запроса</a></li><li class="CHMiniToc_heading3 CHMiniToc_indent1"><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__113935422" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__113935422&#39;,this);">Что в ответе</a></li></ul>&nbsp;
+</p>
+<p>
+  
+  <br/>
+</p>
+  </div>
+<h2 id="id-1.Создание,редактирование,удалениешкалиразмеров.-Доступ" style="text-align: justify;" data-has-heading-anchor="true">   Доступ&nbsp; <a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Доступ" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Доступ&#39;,this);"></a></h2>
+<p style="text-align: justify;">   Чтобы пользоваться данным API: </p>
+<ul style="text-align: justify;">
+  <li>     У пользователя, под чьим именем осуществляется вход, должно быть право B_EN "Редактирование номенклатурных справочников".   </li>
+</ul>
+<h2 id="id-1.Создание,редактирование,удалениешкалиразмеров.-Описаниешкалысразмерами" data-has-heading-anchor="true">
+  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание шкалы с размерами</span>
+<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Описаниешкалысразмерами" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Описаниешкалысразмерами&#39;,this);"></a></h2>
+&nbsp;
+<table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;">
+  <thead>
+    <tr>
+      <th data-column="0">
+        <div>
+          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Параметр</span>
+        </div>
+      </th>
+      <th data-column="2">
+        <div>
+          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Тип, формат</span>
+        </div>
+      </th>
+      <th data-column="3">
+        <div>
+          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание</span>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="height: 33px;">
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">id</span>
+      </td>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID</span>
+      </td>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID шкалы.</span>
+      </td>
+    </tr>
+    <tr style="height: 33px;">
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">deleted</span>
+      </td>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Boolean</span>
+      </td>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Удалена или нет.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">name</span>
+      </td>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">String</span>
+      </td>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Название шкалы.</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">productSizes</span>
+      </td>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">List&lt;ProductSizeDto&gt;</span>
+      </td>
+      <td>
+        <p>
+          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Список размеров</span>
+          <br/>         </p>
+        <table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;">
+          <thead>
+            <tr>
+              <th data-column="0" style="width: 72px;">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Параметр</span>
+                </div>
+              </th>
+              <th data-column="1" style="width: 60px;">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Тип, формат</span>
+                </div>
+              </th>
+              <th data-column="2" style="width: 141px;">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="width: 72px;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">id&nbsp;</span>
+              </td>
+              <td style="width: 60px;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID</span>
+              </td>
+              <td style="width: 141px;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID размера.</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 72px;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">deleted&nbsp;</span>
+              </td>
+              <td style="width: 60px;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Boolean</span>
+              </td>
+              <td style="width: 141px;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Удалён или нет.</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="width: 72px;">                 <br/>
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">name&nbsp;</span>
+              </td>
+              <td style="width: 60px;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">String</span>
+                <br/>               </td>
+              <td style="width: 141px;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Название размера.</span>
+                <br/>               </td>
+            </tr>
+            <tr>
+              <td style="width: 72px;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">shortName</span>
+                <br/>               </td>
+              <td style="width: 60px;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">String</span>
+                <br/>               </td>
+              <td style="width: 141px;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Короткое название.</span>
+                <br/>               </td>
+            </tr>
+            <tr>
+              <td style="width: 72px;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">priority</span>
+                <br/>               </td>
+              <td style="width: 60px;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Integer</span>
+                <br/>               </td>
+              <td style="width: 141px;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Местоположение размера в списке размеров шкалы.</span>
+                <br/>               </td>
+            </tr>
+            <tr>
+              <td style="width: 72px;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">default</span>
+                <br/>               </td>
+              <td style="width: 60px;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Boolean</span>
+                <br/>               </td>
+              <td style="width: 141px;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Является ли размером по умолчанию для данной шкалы. У шкалы может быть не больше одного размера по умолчанию.</span>
+                <br/>               </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>   <br/> </p>
+<h2 id="id-1.Создание,редактирование,удалениешкалиразмеров.-Получениешкалразмеров(GET)" data-has-heading-anchor="true">
+  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Получение шкал размеров (GET)</span>
+<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Получениешкалразмеров(GET)" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Получениешкалразмеров(GET)&#39;,this);"></a></h2>
+<table class="CHHttpRequest CHHttpRequest_get">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_get.png" alt="GET Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">
+        https://host:port/resto/api/v2/entities/productScales
+      </td></tr>
+    
+  </tbody>
+</table><h3 id="h3__998506674" data-has-heading-anchor="true">Параметры запроса<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__998506674" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__998506674&#39;,this);"></a></h3><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;">
+          <thead>
+            <tr>
+              <th data-column="0">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Параметр</span>
+                </div>
+              </th>
+              <th data-column="1">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Тип </span>
+                </div>
+              </th>
+              <th data-column="2">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">ids</span>
+              </td>
+              <td>
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">List&lt;UUID&gt;</span>
+              </td>
+              <td>
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Включать ли в ответ удаленные элементы. По умолчанию false.</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">includeDeleted</span>
+                <br/>               </td>
+              <td>
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Boolean</span>
+                <br/>               </td>
+              <td>
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Включать ли в ответ удаленные элементы. По умолчанию false.</span>
+                <br/>               </td>
+            </tr>
+          </tbody>
+        </table>
+      <h3 id="h3__1629008397" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">Что в ответе</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1629008397" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1629008397&#39;,this);"></a></h3><p>
+  
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Список шкал с размерами</span>
+        </p><p>
+</p><h3 id="id-1.Создание,редактирование,удалениешкалиразмеров.-Пример" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="">Пример запроса и результат</span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Пример" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Пример&#39;,this);"></a></h3>
+<h4 id="h4_1966919031" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="">Запрос</span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h4_1966919031" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h4_1966919031&#39;,this);"></a></h4><p class="code"><span style="font-family: Courier;">
+  <span style="">https://localhost:8080/resto/api/v2/entities/productScales?includeDeleted=true&amp;ids=64efc54c-ad17-4923-9d94-2720822fdd7e&amp;ids=f56f3600-c883-495e-93dd-298219a416e4</span>
+</span></p>
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Результат
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+     Результат
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>[<br/>    {<br/>        "id": "64efc54c-ad17-4923-9d94-2720822fdd7e",<br/>        "deleted": false,<br/>        "name": "Размеры для пива",<br/>        "productSizes": [<br/>            {<br/>                "id": "ed78afdf-e74b-49bb-92fa-d37944b5fa51",<br/>                "deleted": false,<br/>                "name": "кружка (0.5 л)",<br/>                "shortName": "0.5",<br/>                "priority": 0,<br/>                "default": true<br/>            },<br/>            {<br/>                "id": "f879d845-537d-4ebc-a513-ff580fc9a4e1",<br/>                "deleted": false,<br/>                "name": "бокал (0.33 л)",<br/>                "shortName": "0.33",<br/>                "priority": 1,<br/>                "default": false<br/>            },<br/>            {<br/>                "id": "2ede4241-529e-42a4-95b3-6462dc9ea9dd",<br/>                "deleted": false,<br/>                "name": "стакан (0.2 л)",<br/>                "shortName": "0.2",<br/>                "priority": 2,<br/>                "default": false<br/>            },<br/>            {<br/>                "id": "97a74df8-7e63-429d-b65a-d07909832a11",<br/>                "deleted": false,<br/>                "name": "большая кружка (1 л)",<br/>                "shortName": "1",<br/>                "priority": 3,<br/>                "default": false<br/>            }<br/>        ]<br/>    },<br/>    {<br/>        "id": "f56f3600-c883-495e-93dd-298219a416e4",<br/>        "deleted": false,<br/>        "name": "Шкала для бургеров",<br/>        "productSizes": [<br/>            {<br/>                "id": "eda25c4b-a02b-4329-ac2d-c748d0a364b2",<br/>                "deleted": false,<br/>                "name": "Размер ХХХ",<br/>                "shortName": "Большой",<br/>                "priority": 0,<br/>                "default": false<br/>            },<br/>            {<br/>                "id": "01d4fefb-af03-4cd9-aa6f-09a423045925",<br/>                "deleted": false,<br/>                "name": "Размер ХХ",<br/>                "shortName": "Средний",<br/>                "priority": 1,<br/>                "default": false<br/>            },<br/>            {<br/>                "id": "4c12ca38-b558-4d60-a943-bb4eb487d8a5",<br/>                "deleted": false,<br/>                "name": "Размер Х",<br/>                "shortName": "Малый",<br/>                "priority": 2,<br/>                "default": false<br/>            }<br/>        ]<br/>    }<br/>]</pre></td></tr></table></pre>
+  </div>
+</div>
+
+
+<p>   <br/> </p>
+<h2 id="id-1.Создание,редактирование,удалениешкалиразмеров.-Получениешкалразмеров(POST)" style="text-align: justify;" data-has-heading-anchor="true">
+  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Получение шкал размеров (POST)</span>
+<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Получениешкалразмеров(POST)" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Получениешкалразмеров(POST)&#39;,this);"></a></h2>
+<table class="CHHttpRequest CHHttpRequest_post">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">
+        https://host:port/resto/api/v2/<span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">entities/productScales&nbsp;&nbsp;</span>
+      </span>
+      </td></tr>
+    
+  </tbody>
+</table><h3 id="h3_1150399349" data-has-heading-anchor="true">Тело запроса<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1150399349" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1150399349&#39;,this);"></a></h3>
+        <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+          <span style=""><strong>Content-Type: application/x-www-form-urlencoded</strong></span>
+        </span></p>
+        <table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;">
+          <thead>
+            <tr>
+              <th data-column="0" style="text-align: justify;">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Параметр</span>
+                </div>
+              </th>
+              <th data-column="1" style="text-align: justify;">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Тип </span>
+                </div>
+              </th>
+              <th data-column="2" style="text-align: justify;">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание</span>
+                  <br/>                 </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">ids</span>
+              </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">List&lt;UUID&gt;</span>
+              </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Возвращаемые шкалы размеров должны иметь id из этого списка.</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">includeDeleted</span>
+                <br/>               </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Boolean</span>
+                <br/>               </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Включать ли в ответ удаленные элементы. По умолчанию false.</span>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      <h3 id="h3_501454233" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">Что в ответе</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_501454233" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_501454233&#39;,this);"></a></h3><p><span style="font-weight: normal;">Шкала размеров</span></p><h2 id="id-1.Создание,редактирование,удалениешкалиразмеров.-Получениешкалыразмеровпоid" style="text-align: justify;" data-has-heading-anchor="true">
+  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Получение шкалы размеров по id</span>
+<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Получениешкалыразмеровпоid" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Получениешкалыразмеровпоid&#39;,this);"></a></h2>
+<table class="CHHttpRequest CHHttpRequest_get">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_get.png" alt="GET Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">
+        https://host:port/resto/api/v2<span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">/entities/productScales/{productScaleId}&nbsp;</span>
+      </td></tr>
+    
+  </tbody>
+</table><p><b style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">Параметры запроса</b></p><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;">
+  <thead>
+    <tr>
+      <th data-column="0" style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Параметр</span>
+        <br/>       </th>
+      <th data-column="1" style="width: 76px; text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Тип</span>
+        <br/>       </th>
+      <th data-column="2" style="width: 352px; text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="1" style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">productScaleId&nbsp;</span>
+      </td>
+      <td colspan="1" style="width: 76px; text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID&nbsp;</span>
+      </td>
+      <td colspan="1" style="width: 352px; text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID шкалы.</span>
+        <br/>       </td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="id-1.Создание,редактирование,удалениешкалиразмеров.-Пример.1" style="text-align: justify;" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="">Что в ответе</span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Пример.1" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Пример.1&#39;,this);"></a></h3>
+<p>
+  Шкала с размерами</p><p>
+</p><h3 id="id-1.Создание,редактирование,удалениешкалиразмеров.-Пример.1" style="text-align: justify;" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="">Пример запроса и результат</span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Пример.1" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Пример.1&#39;,this);"></a></h3>
+<h4 id="h4_336699176" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="">
+  <span>Запрос</span>
+</span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h4_336699176" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h4_336699176&#39;,this);"></a></h4><p class="code" style="text-align: justify;"><span style="font-family: Courier;">
+  <span style="">https://localhost:8080/resto/api/v2/entities/productScales/64efc54c-ad17-4923-9d94-2720822fdd7e</span>
+</span></p>
+<p>   </p>
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Результат
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+     Результат
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{<br/>    "id": "64efc54c-ad17-4923-9d94-2720822fdd7e",<br/>    "deleted": false,<br/>    "name": "Размеры для пива",<br/>    "productSizes": [<br/>        {<br/>            "id": "ed78afdf-e74b-49bb-92fa-d37944b5fa51",<br/>            "deleted": false,<br/>            "name": "кружка (0.5 л)",<br/>            "shortName": "0.5",<br/>            "priority": 0,<br/>            "default": true<br/>        },<br/>        {<br/>            "id": "f879d845-537d-4ebc-a513-ff580fc9a4e1",<br/>            "deleted": false,<br/>            "name": "бокал (0.33 л)",<br/>            "shortName": "0.33",<br/>            "priority": 1,<br/>            "default": false<br/>        },<br/>        {<br/>            "id": "2ede4241-529e-42a4-95b3-6462dc9ea9dd",<br/>            "deleted": false,<br/>            "name": "стакан (0.2 л)",<br/>            "shortName": "0.2",<br/>            "priority": 2,<br/>            "default": false<br/>        },<br/>        {<br/>            "id": "97a74df8-7e63-429d-b65a-d07909832a11",<br/>            "deleted": false,<br/>            "name": "большая кружка (1 л)",<br/>            "shortName": "1",<br/>            "priority": 3,<br/>            "default": false<br/>        }<br/>    ]<br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+
+<p>   <br/> </p>
+<h2 id="id-1.Создание,редактирование,удалениешкалиразмеров.-Созданиешкалы" data-has-heading-anchor="true">
+  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Создание шкалы</span>
+<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Созданиешкалы" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Созданиешкалы&#39;,this);"></a></h2>
+<table class="CHHttpRequest CHHttpRequest_post">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">
+        https://host:port/resto/api/v2/<span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">entities/productScales/save&nbsp;</span>
+      </td></tr>
+    
+  </tbody>
+</table><h3 id="h3__463698209" data-has-heading-anchor="true"><span style="font-size: 14pt; font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">Тело запроса&nbsp;</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__463698209" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__463698209&#39;,this);"></a></h3><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 677.542px;">
+  <tbody>
+    <tr>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style=""><b>Поле</b></span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style=""><b>Тип данных</b></span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style=""><b>Значение</b></span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+    </tr>
+    <tr>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">productSizes</span>
+      </span></td>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">List&lt;ProductSizeDto&gt;</span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td>
+        <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+          <span style="">Список размеров </span>
+          </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">         </span></p>
+        <div>
+          <table class="CHTable" cellspacing="0" cellpadding="0" style="width: 404px; height: 195.667px;">
+            <thead>
+              <tr>
+                <th data-column="0">
+                  <div><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                    <span style="">Поле</span>
+                  </span></span></div>
+                </th>
+                <th><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">Тип </span>
+                  </span></span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></span></th>
+                <th data-column="1">
+                  <div><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                    <span style="">Описание</span>
+                  </span></span></div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">name</span>
+                </span></span></td>
+                <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">String</span>
+                  </span></span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></span></td>
+                <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">Название размера</span>
+                </span></span></td>
+              </tr>
+              <tr>
+                <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">shortName</span>
+                  </span></span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></span></td>
+                <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">String</span>
+                  </span></span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></span></td>
+                <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">Короткое название</span>
+                  </span></span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></span></td>
+              </tr>
+              <tr>
+                <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">priority</span>
+                  </span></span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></span></td>
+                <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">Integer</span>
+                  </span></span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></span></td>
+                <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">Место в списке</span>
+                  </span></span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></span></td>
+              </tr>
+              <tr>
+                <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">default</span>
+                  </span></span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></span></td>
+                <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">Boolean</span>
+                  </span></span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></span></td>
+                <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">Является ли размером по умолчанию</span>
+                  </span></span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">name</span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">String</span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">Название шкалы</span>
+        </span><br/>       </td>
+    </tr>
+  </tbody>
+</table>
+<p>
+  
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;"></span>
+      </p><p>
+</p><h3 id="h3__1146104627">
+  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;"><span style="font-size: 14pt; font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><b></b></span></span>
+</h3><p>   </p>
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Пример тела запроса 
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+      Пример тела запроса  
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{<br/>    "name": "Размеры для пива",<br/>    "productSizes": [<br/>        {<br/>            "name": "кружка (0.5 л)",<br/>            "shortName": "0.5",<br/>            "priority": 0,<br/>            "default": true<br/>        },<br/>        {<br/>            "name": "бокал (0.33 л)",<br/>            "shortName": "0.33",<br/>            "priority": 1,<br/>            "default": false<br/>        },<br/>        {<br/>            "name": "стакан (0.2 л)",<br/>            "shortName": "0.2",<br/>            "priority": 2,<br/>            "default": false<br/>        },<br/>        {<br/>            "name": "большая кружка (1 л)",<br/>            "shortName": "1",<br/>            "priority": 3,<br/>            "default": false<br/>        }<br/>    ]<br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+
+
+<h3 id="h3__1285735115" data-has-heading-anchor="true">
+  <span style="font-size: 14pt; font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><b>Что в ответе</b></span>
+<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1285735115" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1285735115&#39;,this);"></a></h3><p>   <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Созданная шкала с размерами.&nbsp;</span>
+      </p><h3 id="id-1.Создание,редактирование,удалениешкалиразмеров.-Пример.2" style="text-align: justify;" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="">Пример запроса и результат</span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Пример.2" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Пример.2&#39;,this);"></a></h3>
+<h4 id="h4_610676722" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="">
+  <span>
+  <span>Запрос</span>
+</span>
+</span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h4_610676722" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h4_610676722&#39;,this);"></a></h4><p class="code"><span style="font-family: Courier;">
+  <span style="">https://localhost:8080/resto/api/v2/entities/productScales/save</span>
+</span></p>
+<p>   </p>
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Результат
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+     Результат
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{<br/>    "id": "64efc54c-ad17-4923-9d94-2720822fdd7e",<br/>    "deleted": false,<br/>    "name": "Размеры для пива",<br/>    "productSizes": [<br/>        {<br/>            "id": "ed78afdf-e74b-49bb-92fa-d37944b5fa51",<br/>            "deleted": false,<br/>            "name": "кружка (0.5 л)",<br/>            "shortName": "0.5",<br/>            "priority": 0,<br/>            "default": true<br/>        },<br/>        {<br/>            "id": "f879d845-537d-4ebc-a513-ff580fc9a4e1",<br/>            "deleted": false,<br/>            "name": "бокал (0.33 л)",<br/>            "shortName": "0.33",<br/>            "priority": 1,<br/>            "default": false<br/>        },<br/>        {<br/>            "id": "2ede4241-529e-42a4-95b3-6462dc9ea9dd",<br/>            "deleted": false,<br/>            "name": "стакан (0.2 л)",<br/>            "shortName": "0.2",<br/>            "priority": 2,<br/>            "default": false<br/>        },<br/>        {<br/>            "id": "97a74df8-7e63-429d-b65a-d07909832a11",<br/>            "deleted": false,<br/>            "name": "большая кружка (1 л)",<br/>            "shortName": "1",<br/>            "priority": 3,<br/>            "default": false<br/>        }<br/>    ]<br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+
+
+<h2 id="id-1.Создание,редактирование,удалениешкалиразмеров.-Редактированиешкалы" style="text-align: justify;" data-has-heading-anchor="true">
+  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Редактирование шкалы</span>
+<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Редактированиешкалы" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Редактированиешкалы&#39;,this);"></a></h2>
+<table class="CHHttpRequest CHHttpRequest_post">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">
+        https://host:port/resto/api/v2/<span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">entities/productScales/update</span>
+      </td></tr>
+    
+  </tbody>
+</table><p style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="font-size: 14pt;"><b>Тело запроса</b></span>
+  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"> </span></p>
+<table class="CHTable" cellspacing="0" cellpadding="0" style="width: 868.55px; height: 466.7px;">
+  <tbody>
+    <tr>
+      <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style=""><b>Поле</b></span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style=""><b>Тип</b></span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style=""><b>Значение</b></span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+    </tr>
+    <tr>
+      <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">id</span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">UUID</span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">UUID шкалы</span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+    </tr>
+    <tr>
+      <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">name</span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">String</span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">Название шкалы</span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+    </tr>
+    <tr>
+      <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">productSizes</span>
+      </span></td>
+      <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">List&lt;ProductSizeDto&gt;</span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td style="text-align: justify;">
+        <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+          <span style="">Список размеров</span>
+        </span></p>
+        <div>
+          <table class="CHTable" cellspacing="0" cellpadding="0" style="width: 508px; height: 259.9px;">
+            <thead>
+              <tr>
+                <th data-column="0" style="text-align: justify;">
+                  <div><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                    <span style="">Поле</span>
+                  </span></div>
+                </th>
+                <th style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">Тип </span>
+                </span></th>
+                <th data-column="1" style="text-align: justify;">
+                  <div><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                    <span style="">Описание</span>
+                  </span></div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">id</span>
+                </span></td>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">UUID</span>
+                  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></td>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">UUID размера. Если не задан, то создаётся новый</span>
+                </span></td>
+              </tr>
+              <tr>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">deleted</span>
+                  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></td>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">Boolean</span>
+                  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></td>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">Удалён или нет</span>
+                  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></td>
+              </tr>
+              <tr style="height: 33px;">
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">name</span>
+                  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></td>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">String</span>
+                  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></td>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">Название размера</span>
+                  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></td>
+              </tr>
+              <tr style="height: 33px;">
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">shortName</span>
+                  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></td>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">String</span>
+                  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></td>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">Короткое название</span>
+                  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></td>
+              </tr>
+              <tr>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">priority</span>
+                  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></td>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">Integer</span>
+                  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></td>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">Место в списке</span>
+                  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></td>
+              </tr>
+              <tr>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">default</span>
+                  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></td>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">Boolean</span>
+                  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></td>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">Является ли размером по умолчанию</span>
+                  </span><br/>                 </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="h3__1030254367" data-has-heading-anchor="true">   Что в ответе<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1030254367" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1030254367&#39;,this);"></a></h3><p>
+  Отредактированная шкала с размерами</p><p>
+</p><h2 id="id-1.Создание,редактирование,удалениешкалиразмеров.-Удалениешкал" style="text-align: justify;" data-has-heading-anchor="true">
+  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Удаление шкал</span>
+<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Удалениешкал" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Удалениешкал&#39;,this);"></a></h2>
+<table class="CHHttpRequest CHHttpRequest_post">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">
+        https://host:port/resto/api/v2/<span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">entities/productScales/delete&nbsp;</span>
+      </td></tr>
+    
+  </tbody>
+</table><h3 id="h3__2146460462" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><b>Тело запроса</b></span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__2146460462" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__2146460462&#39;,this);"></a></h3><p style="text-align: justify;"><font face="Segoe UI, Frutiger, Frutiger Linotype, Dejavu Sans, Helvetica Neue, Arial, sans-serif"></font></p>
+<table class="CHTable" cellspacing="0" cellpadding="0" style="width: 677.542px;">
+  <tbody>
+    <tr>
+      <td style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;"><b>Поле</b></span>
+        <br/>       </td>
+      <td style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;"><b>Тип данных</b></span>
+        <br/>       </td>
+      <td style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;"><b>Значение</b></span>
+        <br/>       </td>
+    </tr>
+    <tr>
+      <td style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">items</span>
+      </td>
+      <td style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">List&lt;IdCodetDto&gt;</span>
+        <br/>       </td>
+      <td style="text-align: justify;">
+        <p>
+          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Список UUID шкал, которые нужно удалить. </span>
+          <br/>         </p>
+        <div>
+          <table class="CHTable" cellspacing="0" cellpadding="0" style="width: 319px;">
+            <thead>
+              <tr>
+                <th data-column="0" style="text-align: justify;">
+                  <div>
+                    <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Поле</span>
+                  </div>
+                </th>
+                <th style="text-align: justify;">
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Тип данных</span>
+                  <br/>                 </th>
+                <th data-column="1" style="text-align: justify;">
+                  <div>
+                    <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="text-align: justify;">
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">id</span>
+                </td>
+                <td style="text-align: justify;">
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID</span>
+                  <br/>                 </td>
+                <td style="text-align: justify;">
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID шкалы.</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>   <table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{ <br/>   "items":[ <br/>      { <br/>         "id":"64efc54c-ad17-4923-9d94-2720822fdd7e"<br/>      }<br/>   ]<br/>}</pre></td></tr></table>   <br/> </p>
+<h3 id="h3__408898924" data-has-heading-anchor="true">Что в ответе<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__408898924" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__408898924&#39;,this);"></a></h3><p>   Удалённая шкала с размерами&nbsp;</p><h3 id="h3__232688264" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style=""><b>Пример запроса и результат</b></span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__232688264" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__232688264&#39;,this);"></a></h3><h4 id="h4__551821388" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style=""><b>Запрос</b></span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h4__551821388" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h4__551821388&#39;,this);"></a></h4><p class="code"><span style="font-family: Courier;">
+  <span style="">https://localhost:8080/resto/api/v2/entities/productScales/delete</span>
+  </span></p><p>   </p>
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Результат
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+     Результат
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{<br/>    "id": "64efc54c-ad17-4923-9d94-2720822fdd7e",<br/>    "deleted": true,<br/>    "name": "Размеры для пива",<br/>    "productSizes": [<br/>        {<br/>            "id": "ed78afdf-e74b-49bb-92fa-d37944b5fa51",<br/>            "deleted": false,<br/>            "name": "кружка (0.5 л)",<br/>            "shortName": "0.5",<br/>            "priority": 0,<br/>            "default": true<br/>        },<br/>        {<br/>            "id": "f879d845-537d-4ebc-a513-ff580fc9a4e1",<br/>            "deleted": false,<br/>            "name": "бокал (0.33 л)",<br/>            "shortName": "0.33",<br/>            "priority": 1,<br/>            "default": false<br/>        },<br/>        {<br/>            "id": "2ede4241-529e-42a4-95b3-6462dc9ea9dd",<br/>            "deleted": false,<br/>            "name": "стакан (0.2 л)",<br/>            "shortName": "0.2",<br/>            "priority": 2,<br/>            "default": false<br/>        },<br/>        {<br/>            "id": "97a74df8-7e63-429d-b65a-d07909832a11",<br/>            "deleted": false,<br/>            "name": "большая кружка (1 л)",<br/>            "shortName": "1",<br/>            "priority": 3,<br/>            "default": false<br/>        }<br/>    ]<br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+
+<p>   <br/> </p>
+<h2 id="id-1.Создание,редактирование,удалениешкалиразмеров.-Восстановлениешкал" style="text-align: justify;" data-has-heading-anchor="true">
+  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Восстановление шкал</span>
+<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Восстановлениешкал" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/id-1.Создание,редактирование,удалениешкалиразмеров.-Восстановлениешкал&#39;,this);"></a></h2>
+<table class="CHHttpRequest CHHttpRequest_post">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">
+        https://host:port/resto/api/v2/entities/productScales/restore&nbsp;
+      </td></tr>
+    
+  </tbody>
+</table><p><b style="font-size: 14pt; font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">Тело запроса</b></p><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 677.542px;">
+  <tbody>
+    <tr>
+      <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style=""><b>Поле</b></span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style=""><b>Тип данных</b></span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style=""><b>Значение</b></span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+    </tr>
+    <tr>
+      <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">items</span>
+      </span></td>
+      <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+        <span style="">List&lt;IdCodetDto&gt;</span>
+        </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">       </span></td>
+      <td style="text-align: justify;">
+        <p><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+          <span style="">Список UUID шкал, которые нужно восстановить. </span>
+          </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">         </span></p>
+        <div>
+          <table class="CHTable" cellspacing="0" cellpadding="0" style="width: 319px;">
+            <thead>
+              <tr>
+                <th data-column="0" style="text-align: justify;">
+                  <div><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                    <span style="">Поле</span>
+                  </span></div>
+                </th>
+                <th style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">Тип данных</span>
+                  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></th>
+                <th data-column="1" style="text-align: justify;">
+                  <div><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                    <span style="">Описание</span>
+                  </span></div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">id</span>
+                </span></td>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">UUID</span>
+                  </span><br/><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">                 </span></td>
+                <td style="text-align: justify;"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+                  <span style="">UUID шкалы.</span>
+                </span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p style="text-align: justify;"></p>
+<p>   <table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{ <br/>   "items":[ <br/>      { <br/>         "id":"64efc54c-ad17-4923-9d94-2720822fdd7e"<br/>      }<br/>   ]<br/>}</pre></td></tr></table> </p>
+<p>   </p>
+<h3 id="h3__232796413" data-has-heading-anchor="true">Что в ответе<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__232796413" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__232796413&#39;,this);"></a></h3><p>   
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Восстановленная шкала с размерами&nbsp;</span>
+      </p><h3 id="h3_1387997121" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="font-size: 14pt;"><b>Пример запроса и результат</b></span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1387997121" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1387997121&#39;,this);"></a></h3><h4 id="h4_176544057" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><b>Запрос</b></span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h4_176544057" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h4_176544057&#39;,this);"></a></h4><p class="code"><span style="font-family: Courier;">
+  <span style="">https://localhost:8080/resto/api/v2/entities/productScales/restore</span>
+</span></p>
+<p>   </p>
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Результат
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+     Результат
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{<br/>    "id": "64efc54c-ad17-4923-9d94-2720822fdd7e",<br/>    "deleted": false,<br/>    "name": "Размеры для пива",<br/>    "productSizes": [<br/>        {<br/>            "id": "ed78afdf-e74b-49bb-92fa-d37944b5fa51",<br/>            "deleted": false,<br/>            "name": "кружка (0.5 л)",<br/>            "shortName": "0.5",<br/>            "priority": 0,<br/>            "default": true<br/>        },<br/>        {<br/>            "id": "f879d845-537d-4ebc-a513-ff580fc9a4e1",<br/>            "deleted": false,<br/>            "name": "бокал (0.33 л)",<br/>            "shortName": "0.33",<br/>            "priority": 1,<br/>            "default": false<br/>        },<br/>        {<br/>            "id": "2ede4241-529e-42a4-95b3-6462dc9ea9dd",<br/>            "deleted": false,<br/>            "name": "стакан (0.2 л)",<br/>            "shortName": "0.2",<br/>            "priority": 2,<br/>            "default": false<br/>        },<br/>        {<br/>            "id": "97a74df8-7e63-429d-b65a-d07909832a11",<br/>            "deleted": false,<br/>            "name": "большая кружка (1 л)",<br/>            "shortName": "1",<br/>            "priority": 3,<br/>            "default": false<br/>        }<br/>    ]<br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+
+<p>   <br/> </p>
+<h2 id="h2__775456170" style="text-align: justify;" data-has-heading-anchor="true">
+  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Получение шкалы с коэффициентами и доступностью размеров</span>
+<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h2__775456170" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h2__775456170&#39;,this);"></a></h2>
+<table class="CHHttpRequest CHHttpRequest_get">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_get.png" alt="GET Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">
+        https://host:port/resto/api/v2/entities/products/{productId}/productScale<b>&nbsp;</b>&nbsp;
+      </td></tr>
+    
+  </tbody>
+</table><h3 id="h3_1661681783" data-has-heading-anchor="true">Параметры запроса<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1661681783" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1661681783&#39;,this);"></a></h3>
+        <table class="CHTable" cellspacing="0" cellpadding="0" style="width: 566.396px;">
+          <thead>
+            <tr>
+              <th data-column="0" style="text-align: justify;">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Параметр</span>
+                </div>
+              </th>
+              <th data-column="1" style="text-align: justify;">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Тип</span>
+                </div>
+              </th>
+              <th data-column="2" style="text-align: justify;">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">productId&nbsp;</span>
+              </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID&nbsp;</span>
+              </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID продукта.&nbsp;</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <h3 id="h3_631086644" style="text-align: justify;" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="">Что в ответе</span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_631086644" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_631086644&#39;,this);"></a></h3>
+<p>
+  
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Шкала с коэффициентами и доступностью размеров </span>
+        </p><p>
+</p><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;">
+  <thead>
+    <tr>
+      <th data-column="0" style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Параметр</span>
+      </th>
+      <th data-column="1" style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Тип, формат</span>
+      </th>
+      <th data-column="2" style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание</span>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">id</span>
+      </td>
+      <td style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID</span>
+      </td>
+      <td style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID шкалы.</span>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">deleted</span>
+      </td>
+      <td style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Boolean</span>
+      </td>
+      <td style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Удалена или нет.</span>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">name</span>
+      </td>
+      <td style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">String</span>
+      </td>
+      <td style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Название шкалы.</span>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">productSizes</span>
+      </td>
+      <td style="text-align: justify;">
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">List&lt;ProductSizeDto&gt;</span>
+      </td>
+      <td style="text-align: justify;">
+        <p>
+          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Список размеров с коэффициентами и доступностью. </span>
+          <br/>         </p>
+        <table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;">
+          <thead>
+            <tr>
+              <th data-column="0" style="text-align: justify;">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Поле</span>
+                </div>
+              </th>
+              <th data-column="1" style="text-align: justify;">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Тип</span>
+                </div>
+              </th>
+              <th data-column="2" style="text-align: justify;">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">id</span>
+              </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID</span>
+              </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID размера.</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">deleted</span>
+              </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Boolean</span>
+              </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Удалён или нет.</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">name</span>
+              </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">String</span>
+              </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Название размера.</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">shortName</span>
+                <br/>               </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">String</span>
+                <br/>               </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Короткое название.</span>
+                <br/>               </td>
+            </tr>
+            <tr>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">priority</span>
+                <br/>               </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Integer</span>
+                <br/>               </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Местоположение размера в списке размеров шкалы.</span>
+                <br/>               </td>
+            </tr>
+            <tr>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">default</span>
+                <br/>               </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Boolean</span>
+                <br/>               </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Является ли размером по умолчанию для данной шкалы.</span>
+                <br/>               </td>
+            </tr>
+            <tr>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">disabled</span>
+                <br/>               </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Boolean</span>
+                <br/>               </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Доступен ли данный размер в текущем продукте</span>
+                <br/>               </td>
+            </tr>
+            <tr>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">factors</span>
+              </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">List&lt;ProductSizeFactorDto&gt;&nbsp;</span>
+              </td>
+              <td style="text-align: justify;">
+                <p>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Коэффициенты для данного размера </span>
+                  <br/>                 </p>
+                <table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;">
+                  <thead>
+                    <tr>
+                      <th data-column="0" style="text-align: justify;">
+                        <div>
+                          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Поле</span>
+                        </div>
+                      </th>
+                      <th data-column="1" style="text-align: justify;">
+                        <div>
+                          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Тип</span>
+                        </div>
+                      </th>
+                      <th data-column="2" style="text-align: justify;">
+                        <div>
+                          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание</span>
+                        </div>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td style="text-align: justify;">
+                        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">startNumber</span>
+                      </td>
+                      <td style="text-align: justify;">
+                        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Integer</span>
+                      </td>
+                      <td style="text-align: justify;">
+                        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Количество от</span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="text-align: justify;">
+                        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">factor</span>
+                      </td>
+                      <td style="text-align: justify;">
+                        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">BigDecimal</span>
+                      </td>
+                      <td style="text-align: justify;">
+                        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Коэффициент</span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div style="text-align: justify;"> </div>
+<h3 id="h3__1185794887" style="text-align: justify;" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="">Примеры запроса и результат</span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1185794887" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1185794887&#39;,this);"></a></h3>
+<h4 id="h4_567378520" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="">Запрос</span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h4_567378520" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h4_567378520&#39;,this);"></a></h4><p class="code">https://localhost:8080/resto/api/v2/entities/products/f928e371-81ac-409d-86d7-0ebb16fb1223/productScale<br/> </p>
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Результат
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+     Результат
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{<br/>    "result": "SUCCESS",<br/>    "errors": null,<br/>    "response": {<br/>        "id": "64efc54c-ad17-4923-9d94-2720822fdd7e",<br/>        "deleted": false,<br/>        "name": "Размеры для пива",<br/>        "productSizes": [<br/>            {<br/>                "id": "ed78afdf-e74b-49bb-92fa-d37944b5fa51",<br/>                "deleted": false,<br/>                "name": "кружка (0.5 л)",<br/>                "shortName": "0.5",<br/>                "priority": 0,<br/>                "disabled": false,<br/>                "factors": [<br/>                    {<br/>                        "startNumber": 0,<br/>                        "factor": 1<br/>                    }<br/>                ],<br/>                "default": true<br/>            },<br/>            {<br/>                "id": "f879d845-537d-4ebc-a513-ff580fc9a4e1",<br/>                "deleted": false,<br/>                "name": "бокал (0.33 л)",<br/>                "shortName": "0.33",<br/>                "priority": 1,<br/>                "disabled": false,<br/>                "factors": [<br/>                    {<br/>                        "startNumber": 0,<br/>                        "factor": 1<br/>                    }<br/>                ],<br/>                "default": false<br/>            },<br/>            {<br/>                "id": "2ede4241-529e-42a4-95b3-6462dc9ea9dd",<br/>                "deleted": false,<br/>                "name": "стакан (0.2 л)",<br/>                "shortName": "0.2",<br/>                "priority": 2,<br/>                "disabled": false,<br/>                "factors": [<br/>                    {<br/>                        "startNumber": 0,<br/>                        "factor": 1<br/>                    },<br/>                    {<br/>                        "startNumber": 1,<br/>                        "factor": 0.8<br/>                    },<br/>                    {<br/>                        "startNumber": 2,<br/>                        "factor": 0.6<br/>                    }<br/>                ],<br/>                "default": false<br/>            },<br/>            {<br/>                "id": "97a74df8-7e63-429d-b65a-d07909832a11",<br/>                "deleted": false,<br/>                "name": "большая кружка (1 л)",<br/>                "shortName": "1",<br/>                "priority": 3,<br/>                "disabled": false,<br/>                "factors": [<br/>                    {<br/>                        "startNumber": 0,<br/>                        "factor": 1<br/>                    }<br/>                ],<br/>                "default": false<br/>            }<br/>        ]<br/>    }<br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+
+
+<h4 id="h4_1900701765" data-has-heading-anchor="true">Запрос<br/> <a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h4_1900701765" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h4_1900701765&#39;,this);"></a></h4><p class="code" style="text-align: justify;"><span style="font-family: Courier;">
+  <span style="">https://localhost:8080/resto/api/v2/entities/products/94c07bee-1382-4a87-b43e-5b88fa561588/productScale</span>
+</span></p>
+<h4 id="h4_631086644" data-has-heading-anchor="true">Результат<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h4_631086644" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h4_631086644&#39;,this);"></a></h4><p><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{<br/>    "result": "SUCCESS",<br/>    "errors": null,<br/>    "response": null<br/>}</pre></td></tr></table> </p>
+<p>   <br/> </p>
+<h2 id="h2__946062459" style="text-align: justify;" data-has-heading-anchor="true">
+  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Получение шкал с коэффициентами и доступностью размеров по списку продуктов (GET)</span>
+<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h2__946062459" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h2__946062459&#39;,this);"></a></h2>
+<table class="CHHttpRequest CHHttpRequest_get">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_get.png" alt="GET Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">
+        <p>https://host:port/resto/api/v2/entities/products/productScales<b>&nbsp;</b>&nbsp;</p>
+      </td></tr>
+    
+  </tbody>
+</table><h3 id="h3_1590217795" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="">Параметры запроса</span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1590217795" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1590217795&#39;,this);"></a></h3>
+        <p>
+          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Чтобы задать UUID для нескольких продуктов используем параметр productId несколько раз.&nbsp; </span>
+          <br/>         </p>
+        <table class="CHTable" cellspacing="0" cellpadding="0" style="width: 778.2px; height: 115.683px;">
+          <thead>
+            <tr>
+              <th data-column="0" style="text-align: justify;">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Параметр</span>
+                </div>
+              </th>
+              <th style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Тип</span>
+                <br/>               </th>
+              <th data-column="2" style="text-align: justify;">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">includeDeletedProducts</span>
+              </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Boolean</span>
+                <br/>               </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Включать ли в результат шкалы для удалённых продуктов. По умолчанию - false.</span>
+              </td>
+            </tr>
+            <tr>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">productId</span>
+                <br/>               </td>
+              <td style="text-align: justify;">
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID</span>
+                <br/>               </td>
+              <td style="text-align: justify;">
+                <p>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID продукта. Если не задать, то возвращаются шкалы для всех не удалённых продуктов.</span>
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <h3 style="text-align: justify;" id="h3__2007841869" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span>Что в ответе</span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__2007841869" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__2007841869&#39;,this);"></a></h3>
+<p>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Список пар (productId : шкала)</span>
+        </p><h3 id="h3_1250036116" style="text-align: justify;" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="">Пример запроса и результат</span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1250036116" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1250036116&#39;,this);"></a></h3>
+<p class="code" style="text-align: justify;"><span style="font-family: Courier;">
+  <span style="">https://localhost:8080/resto/api/v2/entities/products/productScales?productId=f928e371-81ac-409d-86d7-0ebb16fb1223&amp;productId=c5016116-d4cf-4afe-998e-0059fc0964f2</span>
+</span></p>
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Результат
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+     Результат
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{<br/>    "c5016116-d4cf-4afe-998e-0059fc0964f2": null,<br/>    "f928e371-81ac-409d-86d7-0ebb16fb1223": {<br/>        "id": "05a829aa-316a-5977-0169-34e42edd008f",<br/>        "deleted": false,<br/>        "name": "Размеры для лимонада",<br/>        "productSizes": [<br/>            {<br/>                "id": "05a829aa-316a-5977-0169-34e42edd0092",<br/>                "deleted": false,<br/>                "name": "стакан (0.21 л)",<br/>                "shortName": "0.21",<br/>                "priority": 0,<br/>                "disabled": false,<br/>                "factors": [<br/>                    {<br/>                        "startNumber": 0,<br/>                        "factor": 1<br/>                    }<br/>                ],<br/>                "default": false<br/>            },<br/>            {<br/>                "id": "05a829aa-316a-5977-0169-34e42edd0091",<br/>                "deleted": false,<br/>                "name": "бокал (0.37 л)",<br/>                "shortName": "0.37",<br/>                "priority": 1,<br/>                "disabled": true,<br/>                "factors": [<br/>                    {<br/>                        "startNumber": 0,<br/>                        "factor": 1.2<br/>                    }<br/>                ],<br/>                "default": true<br/>            },<br/>            {<br/>                "id": "05a829aa-316a-5977-0169-34e42edd0090",<br/>                "deleted": false,<br/>                "name": "кружка (0.53 л)",<br/>                "shortName": "0.53",<br/>                "priority": 2,<br/>                "disabled": false,<br/>                "factors": [<br/>                    {<br/>                        "startNumber": 0,<br/>                        "factor": 1.4<br/>                    }<br/>                ],<br/>                "default": false<br/>            }<br/>        ]<br/>    }<br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+
+<p>   <br/> </p>
+<h2 id="h2_80033247" data-has-heading-anchor="true">
+  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Получение шкал с коэффициентами и доступностью размеров по списку продуктов (POST)</span>
+<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h2_80033247" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h2_80033247&#39;,this);"></a></h2>
+&nbsp;
+<table class="CHHttpRequest CHHttpRequest_post">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">
+        https://host:port/resto/api/v2/entities/products/productScales&nbsp;&nbsp;
+      </td></tr>
+    
+  </tbody>
+</table><h3 id="h3_1632451357" data-has-heading-anchor="true">Параметры запроса<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1632451357" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1632451357&#39;,this);"></a></h3>
+        <p>
+          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Чтобы задать UUID для нескольких продуктов используем параметр productId несколько раз.</span>
+        </p>
+        <p>
+          <span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><strong>Content-Type: application/x-www-form-urlencoded</strong>&nbsp; </span>
+          <br/>         </p>
+        <table class="CHTable" cellspacing="0" cellpadding="0" style="width: 571.208px;">
+          <thead>
+            <tr>
+              <th data-column="0">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Параметр</span>
+                </div>
+              </th>
+              <th>
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Тип</span>
+                <br/>               </th>
+              <th data-column="2">
+                <div>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание</span>
+                </div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">includeDeletedProducts</span>
+              </td>
+              <td>
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Boolean</span>
+                <br/>               </td>
+              <td>
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Включать ли в результат шкалы для удалённых продуктов. По умолчанию - false.</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">productId</span>
+                <br/>               </td>
+              <td>
+                <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID</span>
+                <br/>               </td>
+              <td>
+                <p>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID продукта. Если не задать, то возвращаются шкалы для всех не удалённых продуктов.</span>
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      <h3 style="text-align: justify;" id="h3__440243066" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span>Что в ответе</span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__440243066" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__440243066&#39;,this);"></a></h3>
+<p>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Список пар (productId : шкала)</span>
+        </p><h2 id="h2__1196830820" data-has-heading-anchor="true">
+  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Задание/редактирование шкалы с доступностью и коэффициентами для размеров</span>
+<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h2__1196830820" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h2__1196830820&#39;,this);"></a></h2>
+<table class="CHHttpRequest CHHttpRequest_post">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_post.png" alt="POST Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">
+        https://host:port/resto/api/v2/entities/products/{productId}/productScale
+      </td></tr>
+    
+  </tbody>
+</table><h3 id="h3__1567929138" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="font-size: 14pt;"><b>Параметры запроса</b></span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1567929138" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__1567929138&#39;,this);"></a></h3><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 571.208px;">
+  <thead>
+    <tr>
+      <th data-column="0">
+        <div>
+          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Параметр</span>
+        </div>
+      </th>
+      <th>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Тип, формат</span>
+        <br/>       </th>
+      <th data-column="2">
+        <div>
+          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание</span>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">productId&nbsp;</span>
+      </td>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID</span>
+        <br/>       </td>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID продукта</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h3 id="h3__732406067" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="font-size: 14pt;"><b>Тело запроса</b></span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__732406067" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__732406067&#39;,this);"></a></h3><table class="CHTable" cellspacing="0" cellpadding="0" style="width: 923.2px; height: 436.85px;">
+  <thead>
+    <tr>
+      <th data-column="0">
+        <div>
+          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Поле</span>
+        </div>
+      </th>
+      <th>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Тип </span>
+      </th>
+      <th data-column="2">
+        <div>
+          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание</span>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">id</span>
+      </td>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID</span>
+        <br/>       </td>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID шкалы</span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">productSizes</span>
+        <br/>       </td>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">List&lt;ProductSizeDto&gt;&nbsp;</span>
+      </td>
+      <td>
+        <p>
+          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Список коэффициентов и доступности для размеров </span>
+          <br/>         </p>
+        <div>
+          <table class="CHTable" cellspacing="0" cellpadding="0" style="width: 568.667px; height: 305.917px;">
+            <thead>
+              <tr>
+                <th data-column="0">
+                  <div>
+                    <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Поле</span>
+                  </div>
+                </th>
+                <th>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Тип</span>
+                  <br/>                 </th>
+                <th data-column="1">
+                  <div>
+                    <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание</span>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">id</span>
+                </td>
+                <td>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID</span>
+                  <br/>                 </td>
+                <td>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID размера</span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">disabled</span>
+                </td>
+                <td>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Boolean</span>
+                  <br/>                 </td>
+                <td>
+                  <p>
+                    <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Доступен ли данный размер в текущем продукте</span>
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">factors&nbsp;</span>
+                </td>
+                <td>
+                  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">List&lt;ProductSizeFactorDto&gt;</span>
+                  <br/>                 </td>
+                <td>
+                  <p>
+                    <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Коэффициенты для данного размера </span>
+                    <br/>                   </p>
+                  <div>
+                    <table class="CHTable" cellspacing="0" cellpadding="0" style="width: 100%;">
+                      <thead>
+                        <tr>
+                          <th data-column="0" style="width: 72px;">
+                            <div>
+                              <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Поле</span>
+                            </div>
+                          </th>
+                          <th style="width: 63px;">
+                            <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Тип</span>
+                            <br/>                           </th>
+                          <th data-column="1">
+                            <div>
+                              <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание</span>
+                            </div>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style="width: 72px;">
+                            <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">startNumber</span>
+                          </td>
+                          <td style="width: 63px;">
+                            <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Integer</span>
+                            <br/>                           </td>
+                          <td>
+                            <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Количество от</span>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td style="width: 72px;">
+                            <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">factor&nbsp;</span>
+                          </td>
+                          <td style="width: 63px;">
+                            <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">BigDecimal</span>
+                            <br/>                           </td>
+                          <td>
+                            <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Коэффициент</span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>
+  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">&nbsp;<span style="font-size: 14pt;"><b></b></span></span>
+</p>
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Пример тела запроса 
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+      Пример тела запроса  
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{<br/>    "id": "64efc54c-ad17-4923-9d94-2720822fdd7e",<br/>    "productSizes": [<br/>        {<br/>            "id": "ed78afdf-e74b-49bb-92fa-d37944b5fa51",<br/>            "disabled": false,<br/>            "factors": [<br/>                {<br/>                    "startNumber": 0,<br/>                    "factor": 1<br/>                }<br/>            ]<br/>        },<br/>        {<br/>            "id": "f879d845-537d-4ebc-a513-ff580fc9a4e1",<br/>            "disabled": false,<br/>            "factors": [<br/>                {<br/>                    "startNumber": 0,<br/>                    "factor": 1<br/>                }<br/>            ]<br/>        },<br/>        {<br/>            "id": "2ede4241-529e-42a4-95b3-6462dc9ea9dd",<br/>            "disabled": false,<br/>            "factors": [<br/>                {<br/>                    "startNumber": 0,<br/>                    "factor": 1<br/>                },<br/>                {<br/>                    "startNumber": 1,<br/>                    "factor": 0.8<br/>                },<br/>                {<br/>                    "startNumber": 2,<br/>                    "factor": 0.6<br/>                }<br/>            ]<br/>        },<br/>        {<br/>            "id": "97a74df8-7e63-429d-b65a-d07909832a11",<br/>            "disabled": false,<br/>            "factors": [<br/>                {<br/>                    "startNumber": 0,<br/>                    "factor": 1<br/>                }<br/>            ]<br/>        }<br/>    ]<br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+<p>
+  <span style="font-size: 14pt; font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;"></span>
+</p>
+<h3 style="text-align: justify;" id="h3_1210183833" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span>Что в ответе</span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1210183833" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1210183833&#39;,this);"></a></h3>
+<p>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Шкала с коэффициентами и доступностью размеров</span>
+        </p><h3 id="h3_1250329157" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="font-size: 14pt;"><b>Пример запроса и результат</b></span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1250329157" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1250329157&#39;,this);"></a></h3><h4 id="h4__162018287" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;"><b>Запрос</b></span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h4__162018287" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h4__162018287&#39;,this);"></a></h4><p style="text-align: justify;" class="code">https://localhost:8080/resto/api/v2/entities/products/f928e371-81ac-409d-86d7-0ebb16fb1223/productScale<br/> </p>
+
+<div class="CHBoxShowMore">
+  <div class="showMoreLabel nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [+]
+    <a href="javascript:void(0)" target="_top">
+      Результат
+    </a>
+  </div>
+  <div class="hideLabel Article_hiddenBlock nonPrintable" style="margin-top: 10px; margin-bottom: 10px; cursor: pointer; display:table" onclick="toggleBox(this)">
+    [-]
+    <a href="javascript:void(0)" target="_top">
+     Результат
+    </a>
+  </div>
+  <div class="showMoreContent Article_hiddenBlock" style="padding-left: 20px">
+    <pre><code class="xml hljs"> </code><table class="CHCodeSample_container notranslate" cellspacing="0" cellpadding="0"><tr class="CHCodeSample_tr1"><td class="CHCodeSample_header"><div class="CHCodeSample_copyCode nonPrintable"><a onclick="copyCodeSample(this)" href="javascript:void(0)">Copy Code</a></div><div class="CHCodeSample_langName notranslate">Код</div></td></tr><tr class="CHCodeSample_tr2"><td class="CHCodeSample_code notranslate cm-s-default"><pre>{<br/>    "id": "64efc54c-ad17-4923-9d94-2720822fdd7e",<br/>    "deleted": false,<br/>    "name": "Размеры для пива",<br/>    "productSizes": [<br/>        {<br/>            "id": "ed78afdf-e74b-49bb-92fa-d37944b5fa51",<br/>            "deleted": false,<br/>            "name": "кружка (0.5 л)",<br/>            "shortName": "0.5",<br/>            "priority": 0,<br/>            "disabled": false,<br/>            "factors": [<br/>                {<br/>                    "startNumber": 0,<br/>                    "factor": 1<br/>                }<br/>            ],<br/>            "default": true<br/>        },<br/>        {<br/>            "id": "f879d845-537d-4ebc-a513-ff580fc9a4e1",<br/>            "deleted": false,<br/>            "name": "бокал (0.33 л)",<br/>            "shortName": "0.33",<br/>            "priority": 1,<br/>            "disabled": false,<br/>            "factors": [<br/>                {<br/>                    "startNumber": 0,<br/>                    "factor": 1<br/>                }<br/>            ],<br/>            "default": false<br/>        },<br/>        {<br/>            "id": "2ede4241-529e-42a4-95b3-6462dc9ea9dd",<br/>            "deleted": false,<br/>            "name": "стакан (0.2 л)",<br/>            "shortName": "0.2",<br/>            "priority": 2,<br/>            "disabled": false,<br/>            "factors": [<br/>                {<br/>                    "startNumber": 0,<br/>                    "factor": 1<br/>                },<br/>                {<br/>                    "startNumber": 1,<br/>                    "factor": 0.8<br/>                },<br/>                {<br/>                    "startNumber": 2,<br/>                    "factor": 0.6<br/>                }<br/>            ],<br/>            "default": false<br/>        },<br/>        {<br/>            "id": "97a74df8-7e63-429d-b65a-d07909832a11",<br/>            "deleted": false,<br/>            "name": "большая кружка (1 л)",<br/>            "shortName": "1",<br/>            "priority": 3,<br/>            "disabled": false,<br/>            "factors": [<br/>                {<br/>                    "startNumber": 0,<br/>                    "factor": 1<br/>                }<br/>            ],<br/>            "default": false<br/>        }<br/>    ]<br/>}</pre></td></tr></table></pre>
+  </div>
+</div>
+
+
+<p>   <br/> </p>
+<h2 id="h2__1034296538" data-has-heading-anchor="true">
+  <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Удаление шкалы размеров у продукта</span>
+<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h2__1034296538" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h2__1034296538&#39;,this);"></a></h2>
+<table class="CHHttpRequest CHHttpRequest_delete">
+  <tbody>
+    <tr><td class="CHHttpRequest_headerImg">
+        <img src="/resources/Storage/api-documentations/http_request_delete.png" alt="DELETE Request" style="max-width: 100%; height: auto;" loading="lazy"/>
+      </td><td class="CHHttpRequest_headerText">
+        https://host:port/resto/api/v2/entities/products/{productId}/productScale&nbsp;
+      </td></tr>
+    
+  </tbody>
+</table><h3 id="h3_1827755295" data-has-heading-anchor="true"><span style="font-family: &quot;Open Sans&quot;, Arial, Helvetica, sans-serif;">
+  <span style="">Параметры запроса</span>
+</span><a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1827755295" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3_1827755295&#39;,this);"></a></h3>
+<table class="CHTable" cellspacing="0" cellpadding="0" style="width: 571.208px;">
+  <thead>
+    <tr>
+      <th data-column="0">
+        <div>
+          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Параметр</span>
+        </div>
+      </th>
+      <th>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Тип, формат</span>
+        <br/>       </th>
+      <th data-column="2">
+        <div>
+          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">Описание</span>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">productId&nbsp;</span>
+      </td>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID</span>
+        <br/>       </td>
+      <td>
+        <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID продукта</span>
+      </td>
+    </tr>
+  </tbody>
+</table>
+&nbsp;
+<h3 id="h3__113935422" data-has-heading-anchor="true">Что в ответе<a href="/articles/api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__113935422" class="CHHeadingLink" title="Link to this heading" aria-hidden="true" onclick="return n(&#39;!api-documentations/rabota-so-shkaloy-i-razmerami/a/h3__113935422&#39;,this);"></a></h3><p>
+  
+          <span style="font-family: &quot;Segoe UI&quot;, Frutiger, &quot;Frutiger Linotype&quot;, &quot;Dejavu Sans&quot;, &quot;Helvetica Neue&quot;, Arial, sans-serif;">UUID шкалы</span>
+        </p><p>
+</p><br/><script src="/resources/Scripts/Lightbox/lightbox-plus-jquery.min.js"></script> <!-- скрипт используется для галереи картинок-->
+<script type="text/javascript">hljs.initHighlightingOnLoad();</script> <!-- скрипт используется для подсветки примеров кода --></body></html>

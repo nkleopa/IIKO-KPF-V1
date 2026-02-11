@@ -1,0 +1,506 @@
+Цены, заданные приказами 
+
+  
+
+    
+
+  
+API цен, заданных приказами
+ProductPriceDto
+ProductPriceItemDto
+IncludeForCategoryDto
+PriceForCategoryDto
+Получение цен
+Параметры запроса
+Что в ответе
+Примеры 
+
+  
+  
+
+  
+
+API цен, заданных приказами
+
+Версия iiko: 7.8
+Описание полей
+ProductPriceDto
+
+Поле
+Тип
+Описание
+	departmentId	UUID	Идентификатор департамента, в котором осуществляется продажа данного продукта.
+	productId	UUID	Идентификатор продукта.
+	productSizeId	UUID	Идентификатор размера продукта.
+	prices	List<ProductPriceItemDto>	Список цен на интервалах для данного продукта.
+ProductPriceItemDto
+
+Цена, действующая и остающаяся неизменной на интервале [dateFrom, dateTo), т.е. цена из базового приказа.
+Если задано расписание (schedule != null), то это цена, действующая согласно расписанию на интервале [dateFrom, dateTo), т.е. цена из приказа по времени.
+
+Поле
+Тип
+Описание
+	dateFrom	String	Начало действия приказа в формате "yyyy-MM-dd".
+	dateTo	String	Конец действия приказа в формате "yyyy-MM-dd".
+	price	BigDecimal	Цена.
+	includeForCategories	List<IncludeForCategoryDto>	Если в этом списке присутствует идентификатор категории, то для данной ценовой категории есть своя специфика ценообразования.
+	pricesForCategories	List<PriceForCategoryDto>	Цены для категорий.
+	included	Boolean	Включен ли продукт в прайс-лист.
+	dishOfDay	Boolean	Является ли блюдо хитом.
+	flyerProgram	Boolean	Участвует ли блюдо во флаерной программе.
+	documentId	UUID	Идентификатор приказа.
+	schedule	PeriodScheduleDto	Расписание. См. апи расписаний (структура такая же, только поле deleted исключено).
+	taxCategoryId
+	UUID
+	Идентификатор налоговой категории(НК). Действует только для базовых приказов без расписания.
+
+	taxCategoryEnabled
+	Boolean
+	Включена ли НК. Если да, то значение НК нужно брать из прейскуранта,  заданного приказом. Если нет - из карточки товара. Действует только для  базовых приказов без расписания.
+
+IncludeForCategoryDto
+
+Поле
+Тип
+Описание
+	categoryId	UUID	Идентификатор ценовой категории.
+	include	Boolean	Если true, то цену берем из PriceForCategoryDto, если false, то для данной ценовой категории данный продукт исключен из прайс-листа.
+PriceForCategoryDto
+
+Поле
+Тип
+Описание
+	categoryId	UUID	Идентификатор ценовой категории.
+	price	BigDecimal	Цена.
+Получение цен
+
+  
+    
+	
+        
+      	https://host:port/resto/api/v2/price
+    
+  
+
+Параметры запроса
+
+Параметр
+Тип
+Описание
+	dateFrom	String	Начало временного интервала в формате "yyyy-MM-dd". Обязательный.
+	dateTo	String	Конец временного интервала в формате "yyyy-MM-dd". По умолчанию '2500-01-01'.
+	departmentId	UUID	Список ресторанов, по которым делается запрос. Если не задан, то для всех.
+	includeOutOfSale	Boolean	Включать в ответ записи о снятии с продажи. По умолчанию false.
+	type	Enum	
+Цены какого типа выгружать. Если не задано, то все.
+
+Значение
+Описание
+	BASE	Цена, которая действует на всем заданном интервале, т.е. из базового приказа.
+	SCHEDULED	Цена, которая действует по расписанию на заданном интервале, т.е. из приказа по времени.
+	revisionFrom	Integer	В ответе будут сущности с ревизией выше данной. По умолчанию '-1'.
+Что в ответе
+
+Список цен.
+Поле revision - максимальная ревизия, доступная для выгрузки во внешние системы на момент запроса (это значит, что в базе присутствуют записи с такой ревизией, а записей с ревизией выше этой в базе нет).
+Эту ревизию можно использовать в качестве параметра revisionFrom в следующем запросе на получение списка расписаний.
+Примеры
+
+Запрос
+
+https://localhost:8080/resto/api/v2/price?dateFrom=2019-01-01&type=BASE
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{
+  "result": "SUCCESS",
+  "errors": [
+  ],
+  "response": [
+    {
+      "departmentId": "6713a472-973e-4215-8e0f-e3142945befd",
+      "productId": "8972b757-4e08-4c50-a145-80cd12bb4f1e",
+      "productSizeId": null,
+      "prices": [
+        {
+          "dateFrom": "2019-12-25",
+          "dateTo": "2500-01-01",
+          "price": 111,
+          "pricesForCategories": [
+          ],
+          "includeForCategories": [
+          ],
+          "included": true,
+          "dishOfDay": false,
+          "flyerProgram": false,
+          "documentId": "a28cbb15-d8f5-458f-a8df-f1a156b9e30b",
+          "schedule": null                
+        }
+        
+      ]
+      
+    },
+    {
+      "departmentId": "6713a472-973e-4215-8e0f-e3142945befd",
+      "productId": "a4f2ac36-2836-4cb2-ae63-e1d3b4d7a6e0",
+      "productSizeId": "7fd28fbc-82d1-4e3e-8280-1b6226cc3c85",
+      "prices": [
+        {
+          "dateFrom": "2019-05-13",
+          "dateTo": "2019-12-25",
+          "price": 110,
+          "pricesForCategories": [
+          ],
+          "includeForCategories": [
+          ],
+          "included": true,
+          "dishOfDay": false,
+          "flyerProgram": false,
+          "documentId": "c061accb-e6f5-46be-9e6f-d8af185d78b3",
+          "schedule": null                
+        }
+        
+      ]
+      
+    },
+    {
+      "departmentId": "6713a472-973e-4215-8e0f-e3142945befd",
+      "productId": "81d457b6-adbb-46de-9ac5-3923f2619b7b",
+      "productSizeId": null,
+      "prices": [
+        {
+          "dateFrom": "2019-12-25",
+          "dateTo": "2500-01-01",
+          "price": 11,
+          "pricesForCategories": [
+          ],
+          "includeForCategories": [
+          ],
+          "included": true,
+          "dishOfDay": false,
+          "flyerProgram": false,
+          "documentId": "a28cbb15-d8f5-458f-a8df-f1a156b9e30b",
+          "schedule": null                
+        }
+        
+      ]
+      
+    },
+    {
+      "departmentId": "6713a472-973e-4215-8e0f-e3142945befd",
+      "productId": "ccdada6c-1643-4c52-9e09-752a4de117a0",
+      "productSizeId": null,
+      "prices": [
+        {
+          "dateFrom": "2019-12-25",
+          "dateTo": "2500-01-01",
+          "price": 110,
+          "pricesForCategories": [
+          ],
+          "includeForCategories": [
+          ],
+          "included": true,
+          "dishOfDay": false,
+          "flyerProgram": false,
+          "documentId": "a28cbb15-d8f5-458f-a8df-f1a156b9e30b",
+          "schedule": null                
+        }
+        
+      ]
+      
+    },
+    {
+      "departmentId": "6713a472-973e-4215-8e0f-e3142945befd",
+      "productId": "4a5e8eea-8d6a-44f9-a72d-db834d666cf2",
+      "productSizeId": null,
+      "prices": [
+        {
+          "dateFrom": "2019-12-25",
+          "dateTo": "2500-01-01",
+          "price": 12,
+          "pricesForCategories": [
+          ],
+          "includeForCategories": [
+          ],
+          "included": true,
+          "dishOfDay": false,
+          "flyerProgram": false,
+          "documentId": "a28cbb15-d8f5-458f-a8df-f1a156b9e30b",
+          "schedule": null                
+        }
+        
+      ]
+      
+    }
+    
+    ],
+  "revision": 186459
+}
+  
+
+Запрос
+
+https://localhost:8080/resto/api/v2/price?dateFrom=2019-01-01&dateTo=2021-08-31&type=SCHEDULED
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	{
+  "result": "SUCCESS",
+  "errors": [
+  ],
+  "response": [
+    {
+      "departmentId": "6713a472-973e-4215-8e0f-e3142945befd",
+      "productId": "4a5e8eea-8d6a-44f9-a72d-db834d666cf2",
+      "productSizeId": null,
+      "prices": [
+        {
+          "dateFrom": "2021-07-16",
+          "dateTo": "2500-01-01",
+          "price": 12,
+          "pricesForCategories": [
+          ],
+          "includeForCategories": [
+          ],
+          "included": true,
+          "dishOfDay": false,
+          "flyerProgram": false,
+          "documentId": "631407d4-d004-49a5-941c-2e4c86a8c9e0",
+          "schedule": {
+            "id": "a31ffb8a-05dd-42a1-9cc6-b1c6d4826ddf",
+            "name": "Выходные",
+            "periods": [
+              {
+                "begin": "19:00",
+                "end": "23:59",
+                "daysOfWeek": [
+                  5                                
+                ]
+                
+              },
+              {
+                "begin": "00:00",
+                "end": "23:59",
+                "daysOfWeek": [
+                  6                                
+                ]
+                
+              },
+              {
+                "begin": "00:00",
+                "end": "00:00",
+                "daysOfWeek": [
+                  7                                
+                ]
+                
+              }
+              
+            ]
+            
+          }
+          
+        },
+        {
+          "dateFrom": "2021-08-01",
+          "dateTo": "2500-01-01",
+          "price": null,
+          "pricesForCategories": [
+            {
+              "categoryId": "515d91b3-f4e3-46fa-abc2-de7567df95c9",
+              "price": 14                        
+            },
+            {
+              "categoryId": "67a54111-99ff-40cc-9f34-f2feddd0ff2b",
+              "price": 13                        
+            }
+            
+          ],
+          "includeForCategories": [
+            {
+              "categoryId": "515d91b3-f4e3-46fa-abc2-de7567df95c9",
+              "include": true                        
+            },
+            {
+              "categoryId": "67a54111-99ff-40cc-9f34-f2feddd0ff2b",
+              "include": true                        
+            }
+            
+          ],
+          "included": false,
+          "dishOfDay": false,
+          "flyerProgram": true,
+          "documentId": "d57dfa32-7e4a-446c-b2e4-e28e065b2112",
+          "schedule": {
+            "id": "598ce53a-c49c-4cd5-8248-1e2b4f0994cf",
+            "name": "Рабочий полдник",
+            "periods": [
+              {
+                "begin": "16:00",
+                "end": "17:00",
+                "daysOfWeek": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5                                
+                ]
+                
+              }
+              
+            ]
+            
+          }
+          
+        }
+        
+      ]
+      
+    },
+    {
+      "departmentId": "6713a472-973e-4215-8e0f-e3142945befd",
+      "productId": "a00a470c-6cc9-4b7f-835f-393e41af8fcf",
+      "productSizeId": "e4a246af-d94f-4505-ae2e-7bc854e6908a",
+      "prices": [
+        {
+          "dateFrom": "2021-07-16",
+          "dateTo": "2500-01-01",
+          "price": 99,
+          "pricesForCategories": [
+          ],
+          "includeForCategories": [
+          ],
+          "included": true,
+          "dishOfDay": false,
+          "flyerProgram": false,
+          "documentId": "631407d4-d004-49a5-941c-2e4c86a8c9e0",
+          "schedule": {
+            "id": "a31ffb8a-05dd-42a1-9cc6-b1c6d4826ddf",
+            "name": "Выходные",
+            "periods": [
+              {
+                "begin": "19:00",
+                "end": "23:59",
+                "daysOfWeek": [
+                  5                                
+                ]
+                
+              },
+              {
+                "begin": "00:00",
+                "end": "23:59",
+                "daysOfWeek": [
+                  6                                
+                ]
+                
+              },
+              {
+                "begin": "00:00",
+                "end": "00:00",
+                "daysOfWeek": [
+                  7                                
+                ]
+                
+              }
+              
+            ]
+            
+          }
+          
+        },
+        {
+          "dateFrom": "2021-08-01",
+          "dateTo": "2500-01-01",
+          "price": null,
+          "pricesForCategories": [
+            {
+              "categoryId": "515d91b3-f4e3-46fa-abc2-de7567df95c9",
+              "price": 101                        
+            },
+            {
+              "categoryId": "67a54111-99ff-40cc-9f34-f2feddd0ff2b",
+              "price": 100                        
+            }
+            
+          ],
+          "includeForCategories": [
+            {
+              "categoryId": "515d91b3-f4e3-46fa-abc2-de7567df95c9",
+              "include": true                        
+            },
+            {
+              "categoryId": "67a54111-99ff-40cc-9f34-f2feddd0ff2b",
+              "include": true                        
+            }
+            
+          ],
+          "included": false,
+          "dishOfDay": false,
+          "flyerProgram": true,
+          "documentId": "d57dfa32-7e4a-446c-b2e4-e28e065b2112",
+          "schedule": {
+            "id": "598ce53a-c49c-4cd5-8248-1e2b4f0994cf",
+            "name": "Рабочий полдник",
+            "periods": [
+              {
+                "begin": "16:00",
+                "end": "17:00",
+                "daysOfWeek": [
+                  1,
+                  2,
+                  3,
+                  4,
+                  5                                
+                ]
+                
+              }
+              
+            ]
+            
+          }
+          
+        }
+        
+      ]
+      
+    }
+    
+    ],
+  "revision": 187657
+}

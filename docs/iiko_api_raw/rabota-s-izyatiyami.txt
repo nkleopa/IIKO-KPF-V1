@@ -1,0 +1,457 @@
+Работа с изъятиями
+
+  
+
+    
+
+  
+Доступ
+Получение типов внесений и изъятий
+Параметры запроса
+Что в ответе
+Пример запроса и результата
+Совершить изъятие
+Тело запроса
+Что в ответе
+Пример вызова
+Получение платежных ведомостей
+Параметры запроса
+Что в ответе
+Пример запроса и результата
+Примеры изъятий
+Изъятие. Платёжная ведомость
+Изъятие. Аванс поставщику 
+
+  
+  
+
+  
+
+Доступ
+
+Чтобы пользоваться API:
+Получения типов внесений и изъятий: право B_APIO "Просматривать типы внесений/изъятий".
+Выполнения изъятий: право F_APIO "Авторизовывать кассовые внесения и изъятия".
+Получение типов внесений и изъятий
+
+  
+    
+	
+        
+      	https://host:port/resto/api/v2/entities/payInOutTypes/list
+    
+  
+
+Параметры запроса
+
+	Название 	Тип данных
+	Версия	Описание
+	includeDeleted	Boolean	 	включая удаленные (по умолчанию false)
+	revisionFrom	-1, число	с 6.4	
+Номер  ревизии, начиная с которой необходимо отфильтровать сущности. Не  включающий саму ревизию, т.е. ревизия объекта > revisionFrom.
+По умолчанию (неревизионный запрос) revisionFrom = -1
+Что в ответе
+
+Json структура. Возвращает список типов внесений и изъятий. 
+
+	
+Поле	
+Тип данных	Описание
+
+	id	UUID	Guid внесения/изъятия в базе iiko.
+	chiefAccount	UUID	Guid шеф-счёта. При изъятии перемещаются на корр. счёт, а при внесении наоборот.
+	account	UUID	Guid корр-счёта. При изъятии перемещаются на корр. счёт, а при внесении наоборот.
+	counteragentType	Enum	
+Тип контрагента:
+NONE (нет)
+COUNTERAGENT (все)
+EMPLOYEE (сотрудник)
+SUPPLIER (поставщик)
+CLIENT (гость)
+INTERNAL_SUPPLIER (внутренний поставщик)
+
+	transactionType	Enum	Тип проводки.
+	cashFlowCategory	DTO	 Статья движения денежных средств (ДДС).
+	conception	DTO       	         
+           Концепция                                 
+                                
+                   Параметр                                                                
+                   Тип, формат                                                                
+                   Описание                                                                                
+               	                 id               	                 String                              	                 Guid концепции в базе iiko.                          
+               	                 code                              	                 String                              	                 Код.                          
+               	                 name                              	                 String                              	                 Название. 
+	limit
+	BigDecimal
+	 Предельная сумма для внесений/изъятий на iikoFront.
+
+	comment	String
+	Комментарий
+
+	mandatoryFrontComment
+	Boolean
+	 Требовать ввода комментария к операции в iikoFront.
+
+	isDeleted
+	Boolean
+	Удален
+
+Пример запроса и результата
+
+Запрос
+ https://localhost:8080/resto/api/v2/entities/payInOutTypes/list?includeDeleted=true
+
+  
+
+    [+]
+    
+      Результат
+    
+  
+  
+
+    [-]
+    
+     Результат
+    
+  
+  
+
+     
+	
+Copy Code
+JSON
+	[ 
+   { 
+      "id":"3d06e5b4-7029-c30c-064a-a70801843b60",
+      "chiefAccount":null,
+      "account":"8ccc8f0f-24f6-64d2-5eea-04f829ba381f",
+      "counteragentType":"NONE",
+      "transactionType":"PAYIN",
+      "cashFlowCategory":null,
+      "conception":null,
+      "limit":0,
+      "comment":"",
+      "mandatoryFrontComment":false,
+      "isDeleted":false
+   },
+   { 
+      "id":"32e01087-ded3-b5bb-4b82-6a3f0348af84",
+      "chiefAccount":null,
+      "account":"8ccc8f0f-24f6-64d2-5eea-04f829ba381f",
+      "counteragentType":"NONE",
+      "transactionType":"PAYOUT",
+      "cashFlowCategory":null,
+      "conception":null,
+      "limit":0,
+      "comment":"",
+      "mandatoryFrontComment":false,
+      "isDeleted":false
+   },
+   { 
+      "id":"384599a3-cd7a-7d5a-2094-87198c77d02d",
+      "chiefAccount":null,
+      "account":"32fb90c9-133d-c2c7-c1cf-219449f330a3",
+      "counteragentType":"SUPPLIER",
+      "transactionType":"PAYOUT",
+      "cashFlowCategory":{ 
+         "id":"294924eb-29aa-0c5a-e218-c486cc57adca",
+         "code":"6",
+         "parentCategoryId":null,
+         "type":"OPERATIONAL"
+      },
+      "conception":null,
+      "limit":0,
+      "comment":"",
+      "mandatoryFrontComment":false,
+      "isDeleted":false
+   },
+   { 
+      "id":"d5bd872a-aa91-e905-82b6-2b3f16efff9b",
+      "chiefAccount":null,
+      "account":"ad3cc1aa-a60e-c85c-e66d-3904490de4b9",
+      "counteragentType":"EMPLOYEE",
+      "transactionType":"PAYOUT",
+      "cashFlowCategory":{ 
+         "id":"968432d9-49bd-105d-e78e-06a975964160",
+         "code":"7",
+         "parentCategoryId":null,
+         "type":"OPERATIONAL"
+      },
+      "conception":null,
+      "limit":0,
+      "comment":"",
+      "mandatoryFrontComment":false,
+      "isDeleted":false
+   }
+]
+
+  
+
+Совершить изъятие
+
+Версия iiko: 6.0
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/payInOuts/addPayOut
+      
+    
+  
+
+Content-Type: application/json
+Тело запроса
+                        
+                                
+                   Поле                                               
+                   Тип данных                                               
+                   Описание                                                                                
+               	                 payOutTypeId                              	                 UUID                              	                 Guid типа изъятия в базе iiko.                          
+               	                 payOutDate                              	                 String                              	                 Дата в формате yyyy-MM-dd. Время проставляется текущее.                          
+               	                 counteragent                              	                 UUID                              	                 Guid контрагента в базе iiko. В зависимости от типа изъятия.
+	departmentSumMap
+	UUID -> BigDecimal
+	Торговое предприятие -> сумма изъятия.
+
+	payrollId
+	UUID
+	Guid платежной ведомости в базе iiko. Указывается если изъятие происходит на счет
+(т.е. корр.счет) "Текущие расчеты с сотрудниками".
+
+	comment
+	String
+	Комментарий.
+Что в ответе
+
+Содержит результат изъятия, который состоит из результата валидации параметров изъятия и самого изъятия. Результат валидации состоит из ошибок. Ошибка состоит из кода ошибки и текста ошибки.
+
+ПолеТип данных
+
+Значение
+	result	Enum
+	SUCCESS, ERROR
+	payOutSettings	DTO
+	Параметры изъятия.
+	errors	DTO
+	Список ошибок, не позволивших сделать изъятие. 
+Пример вызова
+
+ https://localhost:8080/resto/api/v2/payInOuts/addPayOut
+Пример результата - SUCCESS 
+
+	
+Copy Code
+JSON
+	 { 
+   "result":"SUCCESS",
+   "errors":null,
+   "payOutSettings":{ 
+      "payOutTypeId":"37d410d1-c524-4a76-b28c-8b733e313d7a",
+      "payOutDate":"2017-10-18",
+      "counteragent":null,
+      "departmentSumMap":{ 
+         "06d7ec0c-8fee-f341-015f-b58127ff000d":1500
+      },
+      "payrollId":null,
+      "comment":null
+   }
+}
+
+Пример результата - ERROR 
+
+	
+Copy Code
+JSON
+	{ 
+   "result":"ERROR",
+   "errors":[ 
+      { 
+         "value":"chiefAccount",
+         "code":"ACCOUNT_NOT_SPECIFIED"
+      }
+   ],
+   "payOutSettings":{ 
+      "payOutTypeId":"32e01087-ded3-b5bb-4b82-6a3f0348af84",
+      "payOutDate":"2017-10-18",
+      "counteragent":null,
+      "departmentSumMap":{ 
+         "06d7ec0c-8fee-f341-015f-b58127ff000d":-100
+      },
+      "payrollId":null,
+      "comment":null
+   }
+}
+
+Получение платежных ведомостей
+
+Версия iiko: 6.0
+  
+    
+	
+        
+      	
+        https://host:port/resto/api/v2/payrolls/list
+    
+  
+
+Параметры запроса
+
+ПолеТип данных
+
+Описание
+	dateFrom	String
+	Начало периода в формате yyyy-MM-dd, включительно.
+	dateTo	String
+	Окончание периода в формате yyyy-MM-dd, включительно.
+	department	UUID
+	Guid  торгового предприятия. в базе iiko.
+	includeDeleted	Boolean
+	Включая удаленные (по умолчанию false). 
+Что в ответе
+
+Возвращает список платежных ведомостей.
+
+ПолеТип данных
+
+Описание
+	payrollId	UUID
+	UUID ведомости.
+	dateFrom	Date
+	Дата начала действия.
+	dateTo	Date
+	Дата окончания действия.
+	department	UUID
+	Guid торгового предприятия.
+	documentNumber
+	String
+	Номер документа.
+
+	status
+	Enum
+	Статус документа (NEW, PROCESSED, DELETED).
+
+	comment
+	String
+	Комментарий.
+
+Пример запроса и результата
+
+Запрос
+https://localhost:8080/resto/api/v2/payrolls/list?dateFrom=2017-08-01&dateTo=2017-10-01&department=372f68b4-8e7a-bae1-015f-0f9c638f000d
+Результат
+
+	
+Copy Code
+JSON
+	[
+    {
+        "id": "d4b29bd7-076f-48ba-9f93-6f21b78f47bf",
+        "dateFrom": "2017-10-01T00:00:00",
+        "dateTo": "2017-10-31T23:59:59",
+        "department": "372f68b4-8e7a-bae1-015f-0f9c638f000d",
+        "documentNumber": "0001",
+        "status": "PROCESSED",
+        "comment": null
+   }
+]
+
+  
+    
+
+	  	
+	    
+	  
+	  	 	    Для использования кириллицы в комментарии (параметр comment) при совершении изъятия в headers запроса должен быть параметр: content-type: application/json;charset=UTF-8
+	  
+    
+  
+
+Примеры изъятий
+
+Изъятие. Платёжная ведомость
+
+Запрос        
+	                	         https://localhost:8080/resto/api/v2/payInOuts/addPayOut                
+
+	
+Copy Code
+Код
+	
+{
+"payOutTypeId":"114c757f-bac4-422c-a184-0935923b60b8",
+"payOutDate":"2017-12-13",
+"counteragent":"d244cb85-9115-4b4d-8e02-a4f7fdd8ec15",
+"departmentSumMap":{
+"2b9c2770-f146-43b8-9ac1-ad717d9c7996":90.0
+},
+"payrollId":"c1349656-8401-4476-9541-7f0325c65f98",
+"comment":"Comment"
+}
+
+   
+     
+           
+Результат
+
+	
+Copy Code
+Код
+	{
+"result": "SUCCESS",
+"errors": null,
+"payOutSettingsDto": {
+"payOutTypeId": "114c757f-bac4-422c-a184-0935923b60b8",
+"payOutDate": "2017-12-13",
+"counteragent": "d244cb85-9115-4b4d-8e02-a4f7fdd8ec15",
+"departmentSumMap": {"2b9c2770-f146-43b8-9ac1-ad717d9c7996": 90},
+"payrollId": "c1349656-8401-4476-9541-7f0325c65f98",
+"comment": "Comment "
+}
+}
+
+Изъятие. Аванс поставщику
+
+Запрос
+  
+    
+	
+        
+      	
+        https://localhost:8080/resto/api/v2/payInOuts/addPayOut
+      
+    
+  
+
+	
+Copy Code
+Код
+	
+{
+"payOutTypeId":"0cacd214-c280-4f58-afb3-28d25de90c21",
+"payOutDate":"2017-12-13",
+"counteragent":"ac716010-c95c-4705-a4bf-d202816c406e",
+"departmentSumMap":{
+"2b9c2770-f146-43b8-9ac1-ad717d9c7996":1000.0
+},
+"comment":"test1"
+}
+
+Результат
+
+	
+Copy Code
+Код
+	{
+"result": "SUCCESS",
+"errors": null,
+"payOutSettingsDto": {
+"payOutTypeId": "0cacd214-c280-4f58-afb3-28d25de90c21",
+"payOutDate": "2017-12-13",
+"counteragent": "ac716010-c95c-4705-a4bf-d202816c406e",
+"departmentSumMap": {"2b9c2770-f146-43b8-9ac1-ad717d9c7996": 1000},
+"payrollId": null,
+"comment": "test1"
+}
+}
