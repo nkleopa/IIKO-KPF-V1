@@ -5,30 +5,35 @@ from decimal import Decimal
 from app.core.logger import logger
 
 # --- OrderType mapping (revenue) ---
-# Exact-match whitelist per official KPF report "02 Отчет по выручке СХ"
+# Uses iiko OLAP fields: OrderType + Delivery.SourceKey
+#
+# Delivery.SourceKey identifies the external delivery platform.
+# External platforms → "delivery"; everything else uses OrderType whitelist.
 
-DELIVERY_TYPES = {
-    "ДОСТАВКА",                       # iiko OLAP aggregate delivery type
-    "Яндекс",                         # may appear as sub-type
-    "Бронибой",                        # may appear as sub-type
-    "Личная курьерская доставка",      # may appear as sub-type
+EXTERNAL_DELIVERY_SOURCES = {
+    "Broniboy",
+    "yandex_food",
+    "delivery_club",
 }
 
 HALL_TYPES = {
     "ОБЫЧНЫЙ ЗАКАЗ",                   # iiko OLAP: regular hall order
     "Самовывоз",                       # iiko OLAP: takeout (all variants)
+    "С СОБОЙ (СС)",                    # iiko OLAP: takeaway
+    "ПРЕДЗАКАЗ",                       # iiko OLAP: pre-order
 }
 
 
-def map_order_type(raw_type: str) -> str:
-    """Map iiko OrderType to delivery/hall/excluded.
+def map_order_type(raw_type: str, delivery_source: str | None = None) -> str:
+    """Map iiko OrderType + Delivery.SourceKey to delivery/hall/excluded.
 
-    Only the whitelisted types count towards KPF revenue.
-    Everything else is 'excluded'.
+    1. If delivery_source is an external platform → "delivery"
+    2. Elif OrderType in HALL_TYPES → "hall"
+    3. Else → "excluded"
     """
-    stripped = raw_type.strip()
-    if stripped in DELIVERY_TYPES:
+    if delivery_source and delivery_source in EXTERNAL_DELIVERY_SOURCES:
         return "delivery"
+    stripped = raw_type.strip()
     if stripped in HALL_TYPES:
         return "hall"
     return "excluded"

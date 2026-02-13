@@ -86,8 +86,10 @@ async def daily_sync(target_date: date | None = None, sync_type: str = "daily"):
 
 
 async def _ensure_branch(session: AsyncSession) -> Branch:
-    """Get or create the alpha branch (СХ Воронеж Пушкинская)."""
-    dept_id = "80bae93a-37c8-40bf-982b-d80ef4229fe2"
+    """Get or create the target branch from config."""
+    from app.core.config import settings
+
+    dept_id = settings.IIKO_DEPARTMENT_ID
     result = await session.execute(
         select(Branch).where(Branch.iiko_department_id == dept_id)
     )
@@ -95,7 +97,7 @@ async def _ensure_branch(session: AsyncSession) -> Branch:
     if not branch:
         branch = Branch(
             iiko_department_id=dept_id,
-            name="СХ Воронеж Пушкинская",
+            name=settings.IIKO_DEPARTMENT_NAME,
             city="Воронеж",
             is_active=True,
         )
@@ -138,7 +140,7 @@ async def _sync_revenue(
         }
     rows = await client.get_olap_report(
         report_type="SALES",
-        group_fields=["OpenDate.Typed", "OrderType", "DishName"],
+        group_fields=["OpenDate.Typed", "OrderType", "Delivery.SourceKey", "DishName"],
         agg_fields=["DishDiscountSumInt", "DishAmountInt"],
         date_from=date_str,
         date_to=date_str,
@@ -160,6 +162,7 @@ async def _sync_revenue(
     count = 0
     for row in rows:
         raw_order_type = row.get("OrderType", "")
+        delivery_source = row.get("Delivery.SourceKey")
         item_name = row.get("DishName")
         quantity = _safe_decimal(row.get("DishAmountInt"))
         quantity_adjusted = adjust_quantity(item_name, quantity)
@@ -167,7 +170,7 @@ async def _sync_revenue(
         record = DailyRevenue(
             branch_id=branch_id,
             date=target_date,
-            order_type=map_order_type(raw_order_type),
+            order_type=map_order_type(raw_order_type, delivery_source),
             order_type_detail=raw_order_type,
             revenue_amount=_safe_decimal(row.get("DishDiscountSumInt")),
             order_count=_safe_int(row.get("DishAmountInt")),

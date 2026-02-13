@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 iiko KPF Dashboard — a full-stack SaaS application for calculating restaurant Branch Performance Coefficient (KPF) metrics. It fetches data **read-only** from the iiko ERP API, caches it in PostgreSQL, and presents analytics via a React dashboard.
 
-**Current phase**: Alpha — single branch "СХ Воронеж-Пушкинская". Next: scale to 14 branches, then multi-tenant SaaS.
+**Current phase**: Alpha — single branch "СХ Воронеж 20-летия Октября" (СХ1). Next: scale to 14 branches, then multi-tenant SaaS.
 
 ## Commands
 
@@ -38,7 +38,7 @@ alembic revision --autogenerate -m "description"  # Create new migration
 
 ### Backend: FastAPI + async SQLAlchemy
 - **`backend/app/main.py`** — App entry, CORS, lifespan (scheduler startup), route mounting
-- **`backend/app/core/config.py`** — Pydantic Settings from `.env` (IIKO_HOST, IIKO_LOGIN, IIKO_PASSWORD, DATABASE_URL, SYNC_HOUR/MINUTE)
+- **`backend/app/core/config.py`** — Pydantic Settings from `.env` (IIKO_HOST, IIKO_LOGIN, IIKO_PASSWORD, DATABASE_URL, IIKO_DEPARTMENT_ID, IIKO_DEPARTMENT_NAME, SYNC_HOUR/MINUTE)
 - **`backend/app/api/v1/`** — REST endpoints: dashboard/kpf, revenue, labor, writeoffs, sync, branches. All accept `branch_id`, `date_from`, `date_to` query params
 - **`backend/app/services/`** — Business logic: revenue aggregation, labor cost calculation, write-off mapping, KPF formula
 - **`backend/app/worker/`** — APScheduler CronTrigger for daily sync at 03:00 AM
@@ -64,10 +64,10 @@ alembic revision --autogenerate -m "description"  # Create new migration
 ## Key Business Rules (KPF Manual Calibration)
 
 - **Revenue**: Use "Revenue with discount" (Сумма со скидкой) from OLAP Report "02".
-- **Order Mapping** (iiko OLAP `OrderType` field values):
-    - **Delivery**: "ДОСТАВКА" (also accept "Яндекс", "Бронибой", "Личная курьерская доставка" if they appear as sub-types).
-    - **Hall**: "ОБЫЧНЫЙ ЗАКАЗ", "Самовывоз".
-    - **Excluded** from KPF revenue: "ПРЕДЗАКАЗ", "С СОБОЙ (СС)", and any other types.
+- **Order Mapping** (two-field classification using iiko OLAP `OrderType` + `Delivery.SourceKey`):
+    - **Delivery**: Orders where `Delivery.SourceKey` is an external platform: `Broniboy`, `yandex_food`, `delivery_club`.
+    - **Hall**: "ОБЫЧНЫЙ ЗАКАЗ", "Самовывоз", "С СОБОЙ (СС)", "ПРЕДЗАКАЗ" — when NOT from an external delivery source (includes own-brand pickup via хинкалыч.рф).
+    - **Excluded**: Any `OrderType` not in the hall whitelist AND not from an external delivery source.
 - **KPF Formulas**:
     - `KC% = (Kitchen_Labor_Cost / Total_Revenue) × 100`
     - `LC% = (Total_Labor_Cost / Total_Revenue) × 100`
@@ -85,14 +85,14 @@ alembic revision --autogenerate -m "description"  # Create new migration
 - **Format**: Use Form-encoded POST body for auth and logout.
 - **Session**: Always POST to `/resto/api/logout` to free up the single available license slot.
 - **Endpoints**:
-    - OLAP (Revenue/Upsells): `/resto/api/v2/reports/olap` (JSON).
+    - OLAP (Revenue/Upsells): `/resto/api/v2/reports/olap` (JSON). Group fields include `Delivery.SourceKey` for delivery platform detection. Use `Department.Id` filter (not `Department`) to scope to a branch.
     - Attendance: `/resto/api/employees/attendance` (XML). No `duration` field in response; calculate from `dateFrom`/`dateTo` timestamps. Use `withPaymentDetails=true` for payment sums.
     - COGS: Pull from P&L report as "% of revenue".
 - Reference docs: `IIKO_KNOWLEDGE_BASE.md` and `IIKO_MASTER_REFERENCE.md` in repo root.
 
 ## Environment Variables
 
-Defined in `.env` (see `.env.example`): `IIKO_HOST`, `IIKO_LOGIN`, `IIKO_PASSWORD`, `DATABASE_URL`, `SYNC_HOUR`, `SYNC_MINUTE`
+Defined in `.env` (see `.env.example`): `IIKO_HOST`, `IIKO_LOGIN`, `IIKO_PASSWORD`, `DATABASE_URL`, `IIKO_DEPARTMENT_ID`, `IIKO_DEPARTMENT_NAME`, `SYNC_HOUR`, `SYNC_MINUTE`
 
 ## UI Language
 
