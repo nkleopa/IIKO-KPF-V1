@@ -21,7 +21,7 @@ import { LaborTable } from "./components/labor-table";
 import { WriteoffTable } from "./components/writeoff-table";
 
 export function DashboardPage() {
-  const [branchId, setBranchId] = useState(1);
+  const [branchId, setBranchId] = useState(2);
   const { dateFrom, dateTo, setDateFrom, setDateTo, dateFromStr, dateToStr } =
     useDateRange();
 

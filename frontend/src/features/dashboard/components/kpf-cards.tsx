@@ -73,7 +73,7 @@ export function KPFCards({ data, isLoading }: KPFCardsProps) {
         <MetricCard
           title="LC %"
           value={`${data.lc_percent}%`}
-          subtitle={`Труд: ${fmtRub(data.labor_cost_total)}`}
+          subtitle={`Зал: ${fmtRub(data.hall_labor_cost)} | Кухня: ${fmtRub(data.kitchen_labor_cost)}`}
         />
         <MetricCard
           title="KC %"

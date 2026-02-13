@@ -311,20 +311,46 @@ async def _sync_writeoffs(
         await session.commit()
         return 0
 
+    # Resolve product and account names from iiko
+    try:
+        product_map = await client.get_products()
+    except Exception as e:
+        logger.warning(f"Product name resolution failed: {e}")
+        product_map = {}
+
+    try:
+        account_entities = await client.get_entity_list(["Account"], include_deleted=True)
+        account_map = {e["id"]: e.get("name", "") for e in account_entities}
+    except Exception as e:
+        logger.warning(f"Account name resolution failed: {e}")
+        account_map = {}
+
     count = 0
     for doc in docs:
         # Only PROCESSED docs (API already filters, but double-check)
         if doc.get("status") != "PROCESSED":
             continue
+
+        doc_number = doc.get("documentNumber")
+        account_id = doc.get("accountId")
+        account_name = account_map.get(account_id, "") if account_id else ""
+
         for item in doc.get("items", []):
             cost = _safe_decimal(item.get("cost"))
             product_id = item.get("productId", "unknown")
+            product_name = product_map.get(product_id)
+            quantity = _safe_decimal(item.get("amount"))
+
             record = Writeoff(
                 branch_id=branch_id,
                 date=target_date,
                 article_name=product_id,
-                category=map_writeoff_category(product_id),
+                category=map_writeoff_category(account_name or product_id),
                 amount=cost,
+                document_number=doc_number,
+                account_name=account_name or None,
+                product_name=product_name,
+                item_quantity=quantity if quantity else None,
                 sync_batch_id=batch_id,
             )
             session.add(record)

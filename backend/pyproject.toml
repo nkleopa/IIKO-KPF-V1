@@ -13,3 +13,9 @@ dependencies = [
     "pydantic-settings>=2.7",
     "lxml>=5.3",
 ]
+
+[project.optional-dependencies]
+test = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

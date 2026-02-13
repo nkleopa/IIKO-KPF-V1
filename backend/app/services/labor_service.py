@@ -5,7 +5,7 @@ from sqlalchemy import and_, func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models import EmployeeAttendance, StaffRate
-from app.services.transformers import is_excluded_role, is_kitchen_role
+from app.services.transformers import get_labor_group, is_excluded_role, is_hall_role, is_kitchen_role
 
 
 async def get_labor(
@@ -35,6 +35,7 @@ async def get_labor(
             emp_hours[eid] = {
                 "employee_name": att.employee_name or eid,
                 "role_name": att.role_name,
+                "group": get_labor_group(att.role_name),
                 "total_hours": Decimal("0"),
             }
         emp_hours[eid]["total_hours"] += att.worked_hours
@@ -63,6 +64,7 @@ async def get_labor(
             {
                 "employee_name": data["employee_name"],
                 "role_name": data["role_name"],
+                "group": data["group"],
                 "total_hours": data["total_hours"],
                 "hourly_rate": hourly_rate,
                 "labor_cost": labor_cost,
@@ -83,9 +85,20 @@ async def get_labor_total(
 async def get_kitchen_labor_total(
     session: AsyncSession, branch_id: int, date_from: date, date_to: date
 ) -> Decimal:
-    """Kitchen labor cost only (Повар*, Мангал*) for KC%."""
+    """Kitchen labor cost only (Повар*, Мангал*, Заготовщик*) for KC%."""
     rows = await get_labor(session, branch_id, date_from, date_to)
     return sum(
         (r["labor_cost"] for r in rows if is_kitchen_role(r["role_name"])),
+        Decimal("0"),
+    )
+
+
+async def get_hall_labor_total(
+    session: AsyncSession, branch_id: int, date_from: date, date_to: date
+) -> Decimal:
+    """Hall labor cost only (Официант*, Хостес*, Раннер*, Бармен*, Администратор*)."""
+    rows = await get_labor(session, branch_id, date_from, date_to)
+    return sum(
+        (r["labor_cost"] for r in rows if is_hall_role(r["role_name"])),
         Decimal("0"),
     )

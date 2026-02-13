@@ -30,6 +30,7 @@ export interface KPFData {
   revenue_hall: number;
   labor_cost_total: number;
   kitchen_labor_cost: number;
+  hall_labor_cost: number;
   writeoff_total: number;
   lc_percent: number;
   kc_percent: number;
@@ -52,6 +53,7 @@ export interface RevenueRow {
 export interface LaborRow {
   employee_name: string;
   role_name: string | null;
+  group: string;
   total_hours: number;
   hourly_rate: number;
   labor_cost: number;
@@ -59,7 +61,10 @@ export interface LaborRow {
 
 export interface WriteoffRow {
   date: string;
-  article_name: string;
+  document_number: string | null;
+  account_name: string | null;
+  product_name: string | null;
+  item_quantity: number | null;
   category: string;
   amount: number;
 }

@@ -24,7 +24,10 @@ async def get_writeoffs(
     return [
         {
             "date": r.date,
-            "article_name": r.article_name,
+            "document_number": r.document_number,
+            "account_name": r.account_name,
+            "product_name": r.product_name,
+            "item_quantity": r.item_quantity,
             "category": r.category,
             "amount": r.amount,
         }

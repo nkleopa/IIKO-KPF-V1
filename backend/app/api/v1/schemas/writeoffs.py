@@ -6,7 +6,10 @@ from pydantic import BaseModel
 
 class WriteoffRow(BaseModel):
     date: date
-    article_name: str
+    document_number: str | None = None
+    account_name: str | None = None
+    product_name: str | None = None
+    item_quantity: Decimal | None = None
     category: str
     amount: Decimal
 

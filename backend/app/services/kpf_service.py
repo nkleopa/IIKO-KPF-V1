@@ -3,7 +3,7 @@ from decimal import Decimal, ROUND_HALF_UP
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.services.labor_service import get_kitchen_labor_total, get_labor_total
+from app.services.labor_service import get_hall_labor_total, get_kitchen_labor_total, get_labor_total
 from app.services.revenue_service import (
     get_khinkali_count,
     get_revenue_totals,
@@ -18,6 +18,7 @@ async def get_kpf(
     revenue_by_type = await get_revenue_totals(session, branch_id, date_from, date_to)
     labor_total = await get_labor_total(session, branch_id, date_from, date_to)
     kitchen_labor_total = await get_kitchen_labor_total(session, branch_id, date_from, date_to)
+    hall_labor_total = await get_hall_labor_total(session, branch_id, date_from, date_to)
     writeoff_total = await get_writeoff_total(session, branch_id, date_from, date_to)
     khinkali = await get_khinkali_count(session, branch_id, date_from, date_to)
     upsells = await get_upsell_counts(session, branch_id, date_from, date_to)
@@ -44,6 +45,7 @@ async def get_kpf(
         "revenue_hall": revenue_hall,
         "labor_cost_total": labor_total,
         "kitchen_labor_cost": kitchen_labor_total,
+        "hall_labor_cost": hall_labor_total,
         "writeoff_total": writeoff_total,
         "lc_percent": lc_percent,
         "kc_percent": kc_percent,

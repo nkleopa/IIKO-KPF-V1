@@ -220,6 +220,20 @@ class IikoClient:
                 employees[emp_id] = emp_name
         return employees
 
+    async def get_products(self) -> dict[str, str]:
+        """Fetch product ID → name mapping from /resto/api/products."""
+        url = f"{self._base_url}/resto/api/products"
+        resp = await self._http.get(url, params={"key": self._token})
+        resp.raise_for_status()
+        root = etree.fromstring(resp.content)
+        products: dict[str, str] = {}
+        for p in root.findall(".//productDto"):
+            pid = p.findtext("id")
+            pname = p.findtext("name")
+            if pid and pname:
+                products[pid] = pname
+        return products
+
     async def get_writeoff_documents(
         self, date_from: str, date_to: str
     ) -> list[dict]:

@@ -15,6 +15,7 @@ class KPFResponse(BaseModel):
     revenue_hall: Decimal
     labor_cost_total: Decimal
     kitchen_labor_cost: Decimal = Decimal("0")
+    hall_labor_cost: Decimal = Decimal("0")
     writeoff_total: Decimal
     lc_percent: Decimal
     kc_percent: Decimal

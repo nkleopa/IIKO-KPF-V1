@@ -4,6 +4,12 @@ import type { LaborRow } from "@/lib/api";
 const fmtRub = (v: number) =>
   new Intl.NumberFormat("ru-RU", { style: "currency", currency: "RUB", maximumFractionDigits: 0 }).format(v);
 
+const groupLabel: Record<string, string> = {
+  kitchen: "Кухня",
+  hall: "Зал",
+  other: "Прочее",
+};
+
 export const laborColumns: ColumnDef<LaborRow>[] = [
   {
     accessorKey: "employee_name",
@@ -13,6 +19,11 @@ export const laborColumns: ColumnDef<LaborRow>[] = [
     accessorKey: "role_name",
     header: "Должность",
     cell: ({ row }) => row.getValue<string | null>("role_name") ?? "—",
+  },
+  {
+    accessorKey: "group",
+    header: "Группа",
+    cell: ({ row }) => groupLabel[row.getValue<string>("group")] ?? row.getValue<string>("group"),
   },
   {
     accessorKey: "total_hours",
