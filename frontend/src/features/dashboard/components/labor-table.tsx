@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { Fragment, useMemo } from "react";
 import {
   Table,
   TableBody,
@@ -70,8 +70,8 @@ export function LaborTable({ data, isLoading }: Props) {
         </TableHeader>
         <TableBody>
           {grouped.map((group) => (
-            <>
-              <TableRow key={`hdr-${group.key}`} className="bg-muted/50">
+            <Fragment key={group.key}>
+              <TableRow className="bg-muted/50">
                 <TableCell colSpan={5} className="font-semibold">
                   {group.label}
                 </TableCell>
@@ -85,7 +85,7 @@ export function LaborTable({ data, isLoading }: Props) {
                   <TableCell className="text-right">{fmtRub(row.labor_cost)}</TableCell>
                 </TableRow>
               ))}
-              <TableRow key={`sub-${group.key}`} className="bg-muted/30 font-medium">
+              <TableRow className="bg-muted/30 font-medium">
                 <TableCell colSpan={2} className="text-right">
                   Итого {group.label.toLowerCase()}:
                 </TableCell>
@@ -93,7 +93,7 @@ export function LaborTable({ data, isLoading }: Props) {
                 <TableCell />
                 <TableCell className="text-right">{fmtRub(group.totalCost)}</TableCell>
               </TableRow>
-            </>
+            </Fragment>
           ))}
           <TableRow className="bg-muted font-bold">
             <TableCell colSpan={2} className="text-right">
