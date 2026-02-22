@@ -132,7 +132,12 @@ async def _sync_revenue(
     batch_id: str,
     iiko_department_id: str | None = None,
 ) -> int:
-    filters = {}
+    filters = {
+        "OpenDate.Typed": {
+            "filterType": "IncludeValues",
+            "values": [date_str],
+        },
+    }
     if iiko_department_id:
         filters["Department.Id"] = {
             "filterType": "IncludeValues",
