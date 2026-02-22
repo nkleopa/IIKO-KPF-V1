@@ -22,5 +22,7 @@ class WaiterCheck(TimestampMixin, Base):
     check_count: Mapped[int] = mapped_column(default=0)
     revenue: Mapped[Decimal] = mapped_column(Numeric(14, 2), default=0)
     avg_check: Mapped[Decimal] = mapped_column(Numeric(14, 2), default=0)
+    avg_fullness: Mapped[Decimal | None] = mapped_column(Numeric(3, 1), nullable=True)
+    pct_ideal: Mapped[Decimal | None] = mapped_column(Numeric(5, 1), nullable=True)
 
     branch: Mapped["Branch"] = relationship()  # noqa: F821

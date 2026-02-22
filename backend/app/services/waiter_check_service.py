@@ -27,6 +27,8 @@ async def get_waiter_checks(
             "check_count": r.check_count,
             "revenue": r.revenue,
             "avg_check": r.avg_check,
+            "avg_fullness": r.avg_fullness,
+            "pct_ideal": r.pct_ideal,
         }
         for r in result.scalars().all()
     ]

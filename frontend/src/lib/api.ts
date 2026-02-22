@@ -98,6 +98,15 @@ export interface WaiterCheckRow {
   check_count: number;
   revenue: number;
   avg_check: number;
+  avg_fullness: number | null;
+  pct_ideal: number | null;
+}
+
+export interface DishCategoryRow {
+  id: number;
+  dish_group: string;
+  fullness_category: string | null;
+  parent_group: string | null;
 }
 
 // --- API calls ---
@@ -139,4 +148,17 @@ export const api = {
     fetch(`${BASE}/waiter-checks/sync?date_from=${dateFrom}&date_to=${dateTo}`, {
       method: "POST",
     }).then((r) => r.json()),
+
+  getDishCategories: () =>
+    fetchJSON<DishCategoryRow[]>(`${BASE}/dish-categories`),
+
+  updateDishCategory: (id: number, fullness_category: string | null) =>
+    fetch(`${BASE}/dish-categories/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ fullness_category }),
+    }).then((r) => {
+      if (!r.ok) throw new Error(`API error: ${r.status}`);
+      return r.json() as Promise<DishCategoryRow>;
+    }),
 };

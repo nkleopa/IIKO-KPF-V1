@@ -1,5 +1,6 @@
 from app.models.branch import Branch
 from app.models.daily_revenue import DailyRevenue
+from app.models.dish_category_mapping import DishCategoryMapping
 from app.models.employee_attendance import EmployeeAttendance
 from app.models.staff_rate import StaffRate
 from app.models.writeoff import Writeoff
@@ -9,6 +10,7 @@ from app.models.waiter_check import WaiterCheck
 __all__ = [
     "Branch",
     "DailyRevenue",
+    "DishCategoryMapping",
     "EmployeeAttendance",
     "StaffRate",
     "Writeoff",

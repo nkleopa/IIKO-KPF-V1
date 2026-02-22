@@ -8,6 +8,7 @@ import { useDateRange } from "@/hooks/use-date-range";
 import { useBranches } from "@/features/dashboard/hooks/use-dashboard-data";
 import { useWaiterChecks, useSyncWaiterChecks } from "./hooks/use-waiter-checks";
 import { WaiterChecksTable } from "./components/waiter-checks-table";
+import { DishCategorySettingsButton } from "./components/dish-category-settings";
 
 export function WaiterChecksPage() {
   const [branchId, setBranchId] = useState(0); // 0 = not selected yet
@@ -53,18 +54,21 @@ export function WaiterChecksPage() {
       <main className="p-6 space-y-6">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold">Чеки официантов</h2>
-          <Button
-            onClick={handleSync}
-            disabled={syncMutation.isPending}
-            variant="outline"
-          >
-            {syncMutation.isPending ? (
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            ) : (
-              <RefreshCw className="mr-2 h-4 w-4" />
-            )}
-            Синхронизировать
-          </Button>
+          <div className="flex items-center gap-1">
+            <Button
+              onClick={handleSync}
+              disabled={syncMutation.isPending}
+              variant="outline"
+            >
+              {syncMutation.isPending ? (
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              ) : (
+                <RefreshCw className="mr-2 h-4 w-4" />
+              )}
+              Синхронизировать
+            </Button>
+            <DishCategorySettingsButton />
+          </div>
         </div>
 
         {syncMutation.isSuccess && (
@@ -85,6 +89,7 @@ export function WaiterChecksPage() {
         ) : (
           <WaiterChecksTable data={data} isLoading={isLoading} />
         )}
+
       </main>
     </DashboardShell>
   );

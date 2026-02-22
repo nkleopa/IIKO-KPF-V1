@@ -17,6 +17,23 @@ const fmtDate = (d: string) => {
   return `${day}.${m}.${y}`;
 };
 
+const fmtFullness = (v: number | null) => (v != null ? Number(v).toFixed(1) : "—");
+const fmtPct = (v: number | null) => (v != null ? `${Number(v).toFixed(1)}%` : "—");
+
+/** Weighted average of fullness/pct_ideal across rows, weighted by check_count. */
+function weightedAvg(rows: WaiterCheckRow[], field: "avg_fullness" | "pct_ideal"): number | null {
+  let totalWeight = 0;
+  let totalValue = 0;
+  for (const r of rows) {
+    const v = r[field];
+    if (v != null) {
+      totalWeight += r.check_count;
+      totalValue += Number(v) * r.check_count;
+    }
+  }
+  return totalWeight > 0 ? totalValue / totalWeight : null;
+}
+
 interface Props {
   data: WaiterCheckRow[] | undefined;
   isLoading: boolean;
@@ -37,6 +54,8 @@ export function WaiterChecksTable({ data, isLoading }: Props) {
         rows: groups[date].sort((a, b) => b.revenue - a.revenue),
         totalChecks: groups[date].reduce((s, r) => s + r.check_count, 0),
         totalRevenue: groups[date].reduce((s, r) => s + Number(r.revenue), 0),
+        avgFullness: weightedAvg(groups[date], "avg_fullness"),
+        pctIdeal: weightedAvg(groups[date], "pct_ideal"),
       }));
   }, [data]);
 
@@ -50,6 +69,8 @@ export function WaiterChecksTable({ data, isLoading }: Props) {
 
   const grandTotalChecks = grouped.reduce((s, g) => s + g.totalChecks, 0);
   const grandTotalRevenue = grouped.reduce((s, g) => s + g.totalRevenue, 0);
+  const grandAvgFullness = weightedAvg(data, "avg_fullness");
+  const grandPctIdeal = weightedAvg(data, "pct_ideal");
 
   return (
     <div className="rounded-md border bg-white">
@@ -61,13 +82,15 @@ export function WaiterChecksTable({ data, isLoading }: Props) {
             <TableHead className="text-right">Кол-во чеков</TableHead>
             <TableHead className="text-right">Выручка</TableHead>
             <TableHead className="text-right">Средний чек</TableHead>
+            <TableHead className="text-right">Ср. наполн.</TableHead>
+            <TableHead className="text-right">% идеал.</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
           {grouped.map((group) => (
             <Fragment key={group.date}>
               <TableRow className="bg-muted/50">
-                <TableCell colSpan={5} className="font-semibold">
+                <TableCell colSpan={7} className="font-semibold">
                   {fmtDate(group.date)}
                 </TableCell>
               </TableRow>
@@ -78,6 +101,8 @@ export function WaiterChecksTable({ data, isLoading }: Props) {
                   <TableCell className="text-right">{row.check_count}</TableCell>
                   <TableCell className="text-right">{fmtRub(Number(row.revenue))}</TableCell>
                   <TableCell className="text-right">{fmtRub(Number(row.avg_check))}</TableCell>
+                  <TableCell className="text-right">{fmtFullness(row.avg_fullness)}</TableCell>
+                  <TableCell className="text-right">{fmtPct(row.pct_ideal)}</TableCell>
                 </TableRow>
               ))}
               <TableRow className="bg-muted/30 font-medium">
@@ -89,6 +114,8 @@ export function WaiterChecksTable({ data, isLoading }: Props) {
                 <TableCell className="text-right">
                   {group.totalChecks > 0 ? fmtRub(group.totalRevenue / group.totalChecks) : "—"}
                 </TableCell>
+                <TableCell className="text-right">{fmtFullness(group.avgFullness)}</TableCell>
+                <TableCell className="text-right">{fmtPct(group.pctIdeal)}</TableCell>
               </TableRow>
             </Fragment>
           ))}
@@ -101,6 +128,8 @@ export function WaiterChecksTable({ data, isLoading }: Props) {
             <TableCell className="text-right">
               {grandTotalChecks > 0 ? fmtRub(grandTotalRevenue / grandTotalChecks) : "—"}
             </TableCell>
+            <TableCell className="text-right">{fmtFullness(grandAvgFullness)}</TableCell>
+            <TableCell className="text-right">{fmtPct(grandPctIdeal)}</TableCell>
           </TableRow>
         </TableBody>
       </Table>
