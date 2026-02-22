@@ -12,14 +12,14 @@ def start_scheduler():
 
     scheduler.add_job(
         run_daily_sync,
-        trigger=CronTrigger(hour=settings.SYNC_HOUR, minute=settings.SYNC_MINUTE),
-        id="daily_sync",
+        trigger=CronTrigger(minute=settings.SYNC_MINUTE),
+        id="hourly_sync",
         replace_existing=True,
         misfire_grace_time=3600,
     )
     scheduler.start()
     logger.info(
-        f"Scheduler started. Daily sync at {settings.SYNC_HOUR:02d}:{settings.SYNC_MINUTE:02d}"
+        f"Scheduler started. Hourly sync at :{settings.SYNC_MINUTE:02d}"
     )
 
 
