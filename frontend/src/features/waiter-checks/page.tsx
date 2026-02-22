@@ -15,12 +15,12 @@ export function WaiterChecksPage() {
     useDateRange();
 
   const { data: branches } = useBranches();
-  const rostovBranches = (branches ?? []).filter((b) =>
-    b.name.includes("Ростов")
+  const waiterCheckBranches = (branches ?? []).filter(
+    (b) => b.name.includes("Ростов") || b.name.includes("Шахты")
   );
 
   // Auto-select first Rostov branch if none selected
-  const effectiveBranchId = branchId || rostovBranches[0]?.id || 0;
+  const effectiveBranchId = branchId || waiterCheckBranches[0]?.id || 0;
 
   const params = {
     branch_id: effectiveBranchId,
@@ -41,7 +41,7 @@ export function WaiterChecksPage() {
   return (
     <DashboardShell>
       <Header
-        branches={rostovBranches}
+        branches={waiterCheckBranches}
         selectedBranchId={effectiveBranchId}
         onBranchChange={setBranchId}
         dateFrom={dateFrom}
