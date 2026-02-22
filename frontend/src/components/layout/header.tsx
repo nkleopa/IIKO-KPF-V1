@@ -1,6 +1,7 @@
 import { format } from "date-fns";
 import { ru } from "date-fns/locale";
 import { CalendarIcon } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -74,11 +75,31 @@ export function Header({
   onDateFromChange,
   onDateToChange,
 }: HeaderProps) {
+  const location = useLocation();
   return (
     <header className="border-b bg-white px-6 py-4">
       <div className="flex items-center justify-between gap-4 flex-wrap">
         <div className="flex items-center gap-3">
-          <h1 className="text-xl font-semibold tracking-tight">KPF Dashboard</h1>
+          <nav className="flex items-center gap-4 mr-4">
+            <Link
+              to="/"
+              className={cn(
+                "text-xl font-semibold tracking-tight hover:text-foreground transition-colors",
+                location.pathname === "/" ? "text-foreground" : "text-muted-foreground"
+              )}
+            >
+              KPF
+            </Link>
+            <Link
+              to="/waiter-checks"
+              className={cn(
+                "text-xl font-semibold tracking-tight hover:text-foreground transition-colors",
+                location.pathname === "/waiter-checks" ? "text-foreground" : "text-muted-foreground"
+              )}
+            >
+              Чеки
+            </Link>
+          </nav>
           <Select
             value={String(selectedBranchId)}
             onValueChange={(v) => onBranchChange(Number(v))}

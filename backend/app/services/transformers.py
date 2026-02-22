@@ -21,6 +21,8 @@ HALL_TYPES = {
     "Самовывоз",                       # iiko OLAP: takeout (all variants)
     "С СОБОЙ (СС)",                    # iiko OLAP: takeaway
     "ПРЕДЗАКАЗ",                       # iiko OLAP: pre-order
+    "ЗАЛ",                            # iiko OLAP: hall (short form)
+    'САМОВЫВОЗ "ХИНКАЛЫЧ"',           # iiko OLAP: branded takeout
 }
 
 

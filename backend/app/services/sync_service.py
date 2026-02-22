@@ -9,7 +9,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.logger import logger
 from app.db.engine import async_session
-from app.models import Branch, DailyRevenue, EmployeeAttendance, SyncLog, Writeoff
+from app.models import Branch, DailyRevenue, EmployeeAttendance, SyncLog, WaiterCheck, Writeoff
 from app.services.iiko_client import IikoClient
 from app.services.transformers import (
     adjust_quantity,
@@ -358,3 +358,115 @@ async def _sync_writeoffs(
 
     await session.commit()
     return count
+
+
+# ── Waiter Checks (Rostov branches) ─────────────────────────────
+
+
+async def _ensure_branch_by_dept_id(
+    session: AsyncSession, dept_id: str, name: str, city: str = "Ростов-на-Дону"
+) -> Branch:
+    """Get or create a Branch row by iiko department ID."""
+    result = await session.execute(
+        select(Branch).where(Branch.iiko_department_id == dept_id)
+    )
+    branch = result.scalar_one_or_none()
+    if not branch:
+        branch = Branch(
+            iiko_department_id=dept_id,
+            name=name,
+            city=city,
+            is_active=True,
+        )
+        session.add(branch)
+        await session.commit()
+        await session.refresh(branch)
+    return branch
+
+
+async def _sync_waiter_checks(
+    client: IikoClient,
+    session: AsyncSession,
+    branch_id: int,
+    dept_id: str,
+    date_from: date,
+    date_to: date,
+) -> int:
+    """Fetch per-waiter per-day check data from OLAP and store in DB."""
+    from sqlalchemy import and_, delete
+
+    filters = {
+        "Department.Id": {
+            "filterType": "IncludeValues",
+            "values": [dept_id],
+        },
+    }
+    rows = await client.get_olap_report(
+        report_type="SALES",
+        group_fields=["OpenDate.Typed", "WaiterName"],
+        agg_fields=["UniqOrderId", "DishDiscountSumInt"],
+        date_from=date_from.isoformat(),
+        date_to=date_to.isoformat(),
+        filters=filters,
+    )
+
+    # Delete existing records for this branch + date range
+    await session.execute(
+        delete(WaiterCheck).where(
+            and_(
+                WaiterCheck.branch_id == branch_id,
+                WaiterCheck.date >= date_from,
+                WaiterCheck.date <= date_to,
+            )
+        )
+    )
+
+    count = 0
+    for row in rows:
+        waiter_name = row.get("WaiterName", "").strip()
+        if not waiter_name:
+            continue
+
+        raw_date = row.get("OpenDate.Typed", "")
+        try:
+            check_date = date.fromisoformat(raw_date)
+        except (ValueError, TypeError):
+            logger.warning(f"Skipping waiter check row with bad date: {raw_date}")
+            continue
+
+        check_count = _safe_int(row.get("UniqOrderId"))
+        revenue = _safe_decimal(row.get("DishDiscountSumInt"))
+        avg_check = (revenue / check_count).quantize(Decimal("0.01")) if check_count else Decimal("0")
+
+        record = WaiterCheck(
+            branch_id=branch_id,
+            date=check_date,
+            waiter_name=waiter_name,
+            check_count=check_count,
+            revenue=revenue,
+            avg_check=avg_check,
+        )
+        session.add(record)
+        count += 1
+
+    await session.commit()
+    return count
+
+
+async def sync_waiter_checks(date_from: date, date_to: date) -> dict[str, int]:
+    """Sync waiter check data for all Rostov branches."""
+    from app.core.config import ROSTOV_BRANCHES
+
+    results: dict[str, int] = {}
+    async with async_session() as session:
+        client = IikoClient()
+        async with client.session():
+            for dept_id, name in ROSTOV_BRANCHES.items():
+                branch = await _ensure_branch_by_dept_id(session, dept_id, name)
+                n = await _sync_waiter_checks(
+                    client, session, branch.id, dept_id, date_from, date_to
+                )
+                results[name] = n
+                logger.info(f"Waiter checks synced for {name}: {n} records")
+
+    return results

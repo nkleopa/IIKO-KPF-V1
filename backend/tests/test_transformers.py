@@ -70,8 +70,14 @@ class TestMapOrderType:
     def test_all_external_sources_covered(self):
         assert EXTERNAL_DELIVERY_SOURCES == {"Broniboy", "yandex_food", "delivery_club"}
 
+    def test_zal_is_hall(self):
+        assert map_order_type("ЗАЛ") == "hall"
+
+    def test_samovyvoz_hinkalich_is_hall(self):
+        assert map_order_type('САМОВЫВОЗ "ХИНКАЛЫЧ"') == "hall"
+
     def test_all_hall_types_covered(self):
-        assert HALL_TYPES == {"ОБЫЧНЫЙ ЗАКАЗ", "Самовывоз", "С СОБОЙ (СС)", "ПРЕДЗАКАЗ"}
+        assert HALL_TYPES == {"ОБЫЧНЫЙ ЗАКАЗ", "Самовывоз", "С СОБОЙ (СС)", "ПРЕДЗАКАЗ", "ЗАЛ", 'САМОВЫВОЗ "ХИНКАЛЫЧ"'}
 
 
 # ── is_excluded_role ────────────────────────────────────────────

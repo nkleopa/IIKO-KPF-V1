@@ -92,6 +92,14 @@ export interface BranchInfo {
   is_active: boolean;
 }
 
+export interface WaiterCheckRow {
+  date: string;
+  waiter_name: string;
+  check_count: number;
+  revenue: number;
+  avg_check: number;
+}
+
 // --- API calls ---
 
 interface DateRange {
@@ -123,4 +131,12 @@ export const api = {
     fetch(`${BASE}/sync/trigger`, { method: "POST" }).then((r) => r.json()),
 
   getBranches: () => fetchJSON<BranchInfo[]>(`${BASE}/branches`),
+
+  getWaiterChecks: (p: DateRange) =>
+    fetchJSON<WaiterCheckRow[]>(`${BASE}/waiter-checks?${qs(p)}`),
+
+  syncWaiterChecks: (dateFrom: string, dateTo: string) =>
+    fetch(`${BASE}/waiter-checks/sync?date_from=${dateFrom}&date_to=${dateTo}`, {
+      method: "POST",
+    }).then((r) => r.json()),
 };
