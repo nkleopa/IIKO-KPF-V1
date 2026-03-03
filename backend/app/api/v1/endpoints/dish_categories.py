@@ -19,6 +19,7 @@ async def list_dish_categories(session: SessionDep):
             dish_group=row.dish_group,
             fullness_category=row.fullness_category,
             parent_group=row.parent_group,
+            fullness_weight=row.fullness_weight,
         )
         for row in result.scalars().all()
     ]
@@ -37,7 +38,10 @@ async def update_dish_category(
     if not mapping:
         raise HTTPException(status_code=404, detail="Mapping not found")
 
-    mapping.fullness_category = body.fullness_category
+    if body.fullness_category is not None or "fullness_category" in (body.model_fields_set or set()):
+        mapping.fullness_category = body.fullness_category
+    if body.fullness_weight is not None:
+        mapping.fullness_weight = body.fullness_weight
     await session.commit()
     await session.refresh(mapping)
     return DishCategoryRow(
@@ -45,4 +49,5 @@ async def update_dish_category(
         dish_group=mapping.dish_group,
         fullness_category=mapping.fullness_category,
         parent_group=mapping.parent_group,
+        fullness_weight=mapping.fullness_weight,
     )

@@ -394,13 +394,17 @@ async def _ensure_branch_by_dept_id(
     return branch
 
 
-async def _load_category_mapping(session: AsyncSession) -> dict[str, str | None]:
-    """Load dish_group → fullness_category mapping from DB."""
+async def _load_category_mapping(
+    session: AsyncSession,
+) -> tuple[dict[str, str | None], dict[str, int]]:
+    """Load dish_group → fullness_category mapping and weight mapping from DB."""
     result = await session.execute(select(DishCategoryMapping))
-    return {
-        row.dish_group: row.fullness_category
-        for row in result.scalars().all()
-    }
+    category_map: dict[str, str | None] = {}
+    weight_map: dict[str, int] = {}
+    for row in result.scalars().all():
+        category_map[row.dish_group] = row.fullness_category
+        weight_map[row.dish_group] = row.fullness_weight
+    return category_map, weight_map
 
 
 async def _auto_add_unknown_dish_groups(
@@ -418,7 +422,7 @@ async def _auto_add_unknown_dish_groups(
 
     new_groups = seen_groups - set(mapping.keys())
     for group_name in sorted(new_groups):
-        logger.warning(f"Unknown DishGroup.SecondParent '{group_name}' — adding with fullness_category=NULL")
+        logger.warning(f"Unknown DishGroup '{group_name}' — adding with fullness_category=NULL")
         new_mapping = DishCategoryMapping(
             dish_group=group_name,
             fullness_category=None,
@@ -446,12 +450,20 @@ async def _auto_add_unknown_dish_groups(
 def _compute_fullness(
     fullness_rows: list[dict],
     mapping: dict[str, str | None],
+    weights: dict[str, int] | None = None,
 ) -> dict[tuple[str, str], tuple[Decimal, Decimal]]:
     """Compute avg_fullness and pct_ideal per (date, waiter) from per-check OLAP data.
 
+    Uses weight-based scoring: each unique dish_group with a non-null category
+    contributes its weight (default 1) to the check score.
+    Ideal check: total weight >= 4.
+
     Returns dict of (date_str, waiter_name) → (avg_fullness, pct_ideal).
     """
-    # Group by (date, waiter, order_num) → set of categories
+    if weights is None:
+        weights = {}
+
+    # Group by (date, waiter, order_num) → set of dish_groups with non-null category
     checks: dict[tuple[str, str, str], set[str]] = defaultdict(set)
     for row in fullness_rows:
         waiter = row.get("WaiterName", "").strip()
@@ -461,23 +473,24 @@ def _compute_fullness(
         if not order_num:
             continue
         raw_date = row.get("OpenDate.Typed", "")
-        dish_group = row.get("DishGroup.SecondParent", "")
+        dish_group = row.get("DishGroup", "")
         category = mapping.get(dish_group)
         if category:  # skip NULL (ignored) groups
-            checks[(raw_date, waiter, order_num)].add(category)
+            checks[(raw_date, waiter, order_num)].add(dish_group)
 
     # Aggregate per (date, waiter)
     waiter_checks: dict[tuple[str, str], list[int]] = defaultdict(list)
-    for (dt, waiter, _order), categories in checks.items():
-        waiter_checks[(dt, waiter)].append(len(categories))
+    for (dt, waiter, _order), dish_groups in checks.items():
+        score = sum(weights.get(dg, 1) for dg in dish_groups)
+        waiter_checks[(dt, waiter)].append(score)
 
     result: dict[tuple[str, str], tuple[Decimal, Decimal]] = {}
-    for (dt, waiter), cat_counts in waiter_checks.items():
-        total_checks = len(cat_counts)
+    for (dt, waiter), scores in waiter_checks.items():
+        total_checks = len(scores)
         if total_checks == 0:
             continue
-        avg_f = Decimal(str(sum(cat_counts) / total_checks)).quantize(Decimal("0.1"))
-        ideal_count = sum(1 for c in cat_counts if c >= 4)
+        avg_f = Decimal(str(sum(scores) / total_checks)).quantize(Decimal("0.1"))
+        ideal_count = sum(1 for s in scores if s >= 4)
         pct_i = (Decimal(str(ideal_count * 100)) / Decimal(str(total_checks))).quantize(Decimal("0.1"))
         result[(dt, waiter)] = (avg_f, pct_i)
 
@@ -512,10 +525,13 @@ async def _sync_waiter_checks(
         filters=filters,
     )
 
-    # 2. New OLAP: per-check per-category data for fullness calculation
+    # 2. New OLAP: per-check per-category data for fullness calculation.
+    # Group at DishGroup (leaf) level so each distinct dish group contributes
+    # its own weight. DishGroup.SecondParent is stored as the section header
+    # (category) so the settings UI shows the iiko hierarchy.
     fullness_rows = await client.get_olap_report(
         report_type="SALES",
-        group_fields=["OpenDate.Typed", "OrderNum", "WaiterName", "DishGroup.SecondParent", "DishGroup.TopParent"],
+        group_fields=["OpenDate.Typed", "OrderNum", "WaiterName", "DishGroup", "DishGroup.SecondParent"],
         agg_fields=["DishAmountInt"],
         date_from=date_from.isoformat(),
         date_to=date_to.isoformat(),
@@ -523,20 +539,20 @@ async def _sync_waiter_checks(
     )
 
     # 3. Load category mapping and auto-add unknown dish groups
-    mapping = await _load_category_mapping(session)
+    mapping, weight_map = await _load_category_mapping(session)
     seen_groups: set[str] = set()
     parent_map: dict[str, str] = {}
     for row in fullness_rows:
+        group = row.get("DishGroup", "").strip()
         second = row.get("DishGroup.SecondParent", "").strip()
-        top = row.get("DishGroup.TopParent", "").strip()
-        if second:
-            seen_groups.add(second)
-            if top and second not in parent_map:
-                parent_map[second] = top
+        if group:
+            seen_groups.add(group)
+            if second and group not in parent_map:
+                parent_map[group] = second
     mapping = await _auto_add_unknown_dish_groups(session, seen_groups, mapping, parent_map)
 
-    # 4. Compute fullness metrics
-    fullness_data = _compute_fullness(fullness_rows, mapping)
+    # 4. Compute fullness metrics (weight-based)
+    fullness_data = _compute_fullness(fullness_rows, mapping, weight_map)
 
     # Delete existing records for this branch + date range
     await session.execute(

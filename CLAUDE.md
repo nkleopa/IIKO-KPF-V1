@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 iiko KPF Dashboard — a full-stack SaaS application for calculating restaurant Branch Performance Coefficient (KPF) metrics. It fetches data **read-only** from the iiko ERP API, caches it in PostgreSQL, and presents analytics via a React dashboard.
 
-**Current phase**: Alpha — single branch "СХ Воронеж 20-летия Октября" (СХ1). Next: scale to 14 branches, then multi-tenant SaaS.
+
 
 ## Commands
 
@@ -28,6 +28,20 @@ npm run preview      # Preview production build
 uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
+### Backend tests (from `backend/`)
+```bash
+python3 -m pytest                                  # Run all tests
+python3 -m pytest tests/test_transformers.py       # Run a single test file
+python3 -m pytest -v                               # Verbose output
+```
+No real iiko credentials needed — `tests/conftest.py` stubs them out at module level.
+
+### Production (Docker)
+```bash
+docker compose -f docker-compose.prod.yml up --build
+```
+Uses multi-stage frontend build with nginx serving the SPA and proxying `/api/*`.
+
 ### Database migrations (from `backend/`)
 ```bash
 alembic upgrade head          # Apply all migrations
@@ -39,10 +53,11 @@ alembic revision --autogenerate -m "description"  # Create new migration
 ### Backend: FastAPI + async SQLAlchemy
 - **`backend/app/main.py`** — App entry, CORS, lifespan (scheduler startup), route mounting
 - **`backend/app/core/config.py`** — Pydantic Settings from `.env` (IIKO_HOST, IIKO_LOGIN, IIKO_PASSWORD, DATABASE_URL, IIKO_DEPARTMENT_ID, IIKO_DEPARTMENT_NAME, SYNC_HOUR/MINUTE)
-- **`backend/app/api/v1/`** — REST endpoints: dashboard/kpf, revenue, labor, writeoffs, sync, branches. All accept `branch_id`, `date_from`, `date_to` query params
+- **`backend/app/api/v1/`** — REST endpoints: dashboard/kpf, revenue, labor, writeoffs, sync, branches, waiter_checks, dish_categories. All accept `branch_id`, `date_from`, `date_to` query params
 - **`backend/app/services/`** — Business logic: revenue aggregation, labor cost calculation, write-off mapping, KPF formula
-- **`backend/app/worker/`** — APScheduler CronTrigger for daily sync at 03:00 AM
-- **`backend/app/models/`** — SQLAlchemy models: Branch, DailyRevenue, EmployeeAttendance, StaffRate (SCD Type 2), Writeoff, SyncLog
+- **`backend/app/services/transformers.py`** — **Centralized ETL rules**: `map_order_type()` (Delivery/Hall/Excluded), `is_kitchen_role()`, `is_excluded_role()`, `adjust_quantity()` (Khinkali rule). Always modify order/role logic here.
+- **`backend/app/worker/`** — APScheduler CronTrigger for **hourly** sync (configurable via `SYNC_MINUTE` env var)
+- **`backend/app/models/`** — SQLAlchemy models: Branch, DailyRevenue, EmployeeAttendance, StaffRate (SCD Type 2), Writeoff, WaiterCheck, DishCategoryMapping, SyncLog
 - **`backend/alembic/`** — Database migrations (async PostgreSQL via asyncpg)
 
 ### Frontend: React + Vite + shadcn/ui
@@ -56,7 +71,7 @@ alembic revision --autogenerate -m "description"  # Create new migration
 - Vite proxies `/api/*` → `http://backend:8000` (Docker network)
 
 ### Data flow
-1. APScheduler triggers daily sync → backend fetches from iiko API (OLAP reports as JSON, attendance as XML)
+1. APScheduler triggers hourly sync → backend fetches from iiko API (OLAP reports as JSON, attendance as XML)
 2. Data stored in PostgreSQL (local cache)
 3. Frontend queries backend REST API via React Query (TanStack Query v5)
 4. Dashboard renders KPF metrics, revenue/labor/writeoff tables with TanStack Table v8
@@ -77,7 +92,7 @@ alembic revision --autogenerate -m "description"  # Create new migration
     - **Kitchen roles** (for KC%): roles containing "Повар" or "Мангал" (e.g. "Повар СВОБ", "Повар Хинкали РАСП", "Повар Мангал СВОБ").
 - **Khinkali Rule**: If item name contains "Дюжина Хинкали", multiply quantity by 12.
 - **Staff rates**: SCD Type 2 history in PostgreSQL — hourly rates change over time, old records preserved.
-- **STRICT READ-ONLY**: Never write to iiko. Only fetch and cache locally. Daily sync at 03:00 AM.
+- **STRICT READ-ONLY**: Never write to iiko. Only fetch and cache locally. Sync runs **hourly** (triggered at `SYNC_MINUTE` past each hour).
 
 ## iiko API Integration (Discovered Specs)
 

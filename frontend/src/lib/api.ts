@@ -107,6 +107,7 @@ export interface DishCategoryRow {
   dish_group: string;
   fullness_category: string | null;
   parent_group: string | null;
+  fullness_weight: number;
 }
 
 // --- API calls ---
@@ -152,13 +153,21 @@ export const api = {
   getDishCategories: () =>
     fetchJSON<DishCategoryRow[]>(`${BASE}/dish-categories`),
 
-  updateDishCategory: (id: number, fullness_category: string | null) =>
-    fetch(`${BASE}/dish-categories/${id}`, {
+  updateDishCategory: (
+    id: number,
+    fullness_category?: string | null,
+    fullness_weight?: number,
+  ) => {
+    const body: Record<string, unknown> = {};
+    if (fullness_category !== undefined) body.fullness_category = fullness_category;
+    if (fullness_weight !== undefined) body.fullness_weight = fullness_weight;
+    return fetch(`${BASE}/dish-categories/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ fullness_category }),
+      body: JSON.stringify(body),
     }).then((r) => {
       if (!r.ok) throw new Error(`API error: ${r.status}`);
       return r.json() as Promise<DishCategoryRow>;
-    }),
+    });
+  },
 };

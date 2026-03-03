@@ -51,7 +51,7 @@ export function WaiterChecksTable({ data, isLoading }: Props) {
       .sort()
       .map((date) => ({
         date,
-        rows: groups[date].sort((a, b) => b.revenue - a.revenue),
+        rows: groups[date].sort((a, b) => a.waiter_name.localeCompare(b.waiter_name, "ru")),
         totalChecks: groups[date].reduce((s, r) => s + r.check_count, 0),
         totalRevenue: groups[date].reduce((s, r) => s + Number(r.revenue), 0),
         avgFullness: weightedAvg(groups[date], "avg_fullness"),

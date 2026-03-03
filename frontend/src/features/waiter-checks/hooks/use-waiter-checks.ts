@@ -24,6 +24,7 @@ export function useSyncWaiterChecks() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["waiterChecks"] });
       queryClient.invalidateQueries({ queryKey: ["branches"] });
+      queryClient.invalidateQueries({ queryKey: ["dishCategories"] });
     },
   });
 }
