@@ -1,3 +1,5 @@
+> Общий свод правил работы агентов - `~/rules/RULES.md` (репозиторий nkleopa/rules). Он главнее общих правил этого файла; по пунктам его раздела 8 «Противоречия на решение архитектора» до решения действует правило проекта. Перед работой: `git -C ~/rules pull`.
+
 # CLAUDE.md
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
